@@ -358,6 +358,118 @@ body {
   line-height: 1.7;
 }
 .playbook ul { margin-left: 18px; }
+.sample-workbench {
+  border-top: 1px solid var(--gray-200);
+  display: grid;
+  gap: 18px;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.9fr);
+  padding: 0 26px 28px;
+}
+.sample-workbench h4 {
+  margin-top: 0;
+}
+.sample-run-list {
+  counter-reset: sample-step;
+  display: grid;
+  gap: 8px;
+  list-style: none;
+  margin: 0 0 16px;
+}
+.sample-run-list li {
+  align-items: start;
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  border-radius: 8px;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 28px 1fr;
+  padding: 10px;
+}
+.sample-run-list li::before {
+  align-items: center;
+  background: var(--navy);
+  border-radius: 50%;
+  color: var(--white);
+  content: counter(sample-step);
+  counter-increment: sample-step;
+  display: flex;
+  font-size: 12px;
+  font-weight: 800;
+  height: 24px;
+  justify-content: center;
+  width: 24px;
+}
+.sample-run-list strong {
+  color: var(--navy-dark);
+  display: block;
+  font-size: 13px;
+}
+.sample-run-list span {
+  color: var(--gray-700);
+  display: block;
+  font-size: 12px;
+  line-height: 1.45;
+}
+.sample-shot {
+  background: #f8fafc;
+  border: 1px solid var(--gray-200);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.sample-shot-bar {
+  align-items: center;
+  background: #e2e8f0;
+  display: flex;
+  gap: 6px;
+  padding: 8px 10px;
+}
+.sample-shot-bar span {
+  background: #94a3b8;
+  border-radius: 50%;
+  display: block;
+  height: 8px;
+  width: 8px;
+}
+.sample-shot-body {
+  display: grid;
+  gap: 10px;
+  padding: 14px;
+}
+.sample-shot-kpi {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-left: 4px solid var(--teal);
+  border-radius: 8px;
+  padding: 10px;
+}
+.sample-shot-kpi strong {
+  color: var(--navy-dark);
+  display: block;
+  font-size: 13px;
+}
+.sample-shot-kpi span {
+  color: var(--gray-700);
+  display: block;
+  font-size: 12px;
+}
+.sample-shot-row {
+  align-items: center;
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: 8px;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr auto;
+  padding: 9px 10px;
+}
+.sample-shot-row span {
+  color: var(--gray-700);
+  font-size: 12px;
+}
+.sample-shot-row b {
+  color: var(--teal-dark);
+  font-size: 12px;
+}
 .mini-architecture {
   align-content: center;
   background: #f8fafc;
@@ -797,6 +909,7 @@ tbody tr:last-child td { border-bottom: none; }
   .sample-grid,
   .reference-grid,
   .context-guide,
+  .sample-workbench,
   .playbook-layout,
   .idea-strip { grid-template-columns: 1fr; }
   .reference-diagram { grid-template-columns: 1fr; }

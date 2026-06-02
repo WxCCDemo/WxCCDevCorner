@@ -279,6 +279,31 @@ Desktop.agentContact.addEventListener('eAgentContact', ({ detail }) => {
             <p>Show a first successful API call, then explain how the same token foundation supports automation, dashboards, widgets, and event handlers.</p>
           </div>
         </div>
+        <div class="sample-workbench">
+          <div>
+            <h4>Run / adapt this sample</h4>
+            <ol class="sample-run-list">
+              <li><div><strong>Configure environment</strong><span>Set <code class="inline-code">WXCC_TOKEN</code> and <code class="inline-code">WXCC_ORG_ID</code>.</span></div></li>
+              <li><div><strong>Call a safe read endpoint</strong><span>Validate token, org access, and scopes with agents or queues.</span></div></li>
+              <li><div><strong>Reuse token helper</strong><span>Move from personal token to service-app token cache for production.</span></div></li>
+            </ol>
+            <div class="code-block compact-code"><div class="code-header"><span class="code-lang">Node.js — first WxCC call</span></div><pre><code>const token = process.env.WXCC_TOKEN;
+const orgId = process.env.WXCC_ORG_ID;
+const res = await fetch(
+  `https://webexapis.com/v1/contactCenter/agents?orgId=${orgId}`,
+  { headers: { Authorization: `Bearer ${token}` } }
+);
+console.log(await res.json());</code></pre></div>
+          </div>
+          <div>
+            <h4>Expected screenshot</h4>
+            <div class="sample-shot"><div class="sample-shot-bar"><span></span><span></span><span></span></div><div class="sample-shot-body">
+              <div class="sample-shot-kpi"><strong>Auth check passed</strong><span>Token accepted by WxCC API</span></div>
+              <div class="sample-shot-row"><span>Org ID</span><b>Resolved</b></div>
+              <div class="sample-shot-row"><span>Agents returned</span><b>200 OK</b></div>
+            </div></div>
+          </div>
+        </div>
       </article>
 
       <article class="playbook accent-rest" id="config-playbook">
@@ -303,6 +328,31 @@ Desktop.agentContact.addEventListener('eAgentContact', ({ detail }) => {
             </ul>
             <h4>Best demonstration</h4>
             <p>Show an existing queue/team configuration pulled through API, then explain how this becomes a foundation for governance and repeatable setup.</p>
+          </div>
+        </div>
+        <div class="sample-workbench">
+          <div>
+            <h4>Run / adapt this sample</h4>
+            <ol class="sample-run-list">
+              <li><div><strong>Load configuration</strong><span>Read queues, teams, entry points, and sites with a service-app token.</span></div></li>
+              <li><div><strong>Normalize output</strong><span>Shape API data into rows for CSV, review screens, or governance reports.</span></div></li>
+              <li><div><strong>Compare environments</strong><span>Use exported JSON/CSV as a baseline during onboarding or audits.</span></div></li>
+            </ol>
+            <div class="code-block compact-code"><div class="code-header"><span class="code-lang">Node.js — config export</span></div><pre><code>const queues = await wxcc.get('/contactCenter/queues', { orgId });
+const rows = queues.items.map(q => ({
+  name: q.name,
+  channel: q.channelType,
+  serviceLevel: q.serviceLevelThreshold
+}));
+await writeCsv('queues.csv', rows);</code></pre></div>
+          </div>
+          <div>
+            <h4>Expected screenshot</h4>
+            <div class="sample-shot"><div class="sample-shot-bar"><span></span><span></span><span></span></div><div class="sample-shot-body">
+              <div class="sample-shot-kpi"><strong>Configuration review</strong><span>Queues, teams, and entry points loaded</span></div>
+              <div class="sample-shot-row"><span>Queues</span><b>Exported</b></div>
+              <div class="sample-shot-row"><span>CSV baseline</span><b>Ready</b></div>
+            </div></div>
           </div>
         </div>
       </article>
@@ -331,6 +381,29 @@ Desktop.agentContact.addEventListener('eAgentContact', ({ detail }) => {
             <p>Show an event creating a downstream action such as an email alert, CRM update, compliance log, or recording workflow.</p>
           </div>
         </div>
+        <div class="sample-workbench">
+          <div>
+            <h4>Run / adapt this sample</h4>
+            <ol class="sample-run-list">
+              <li><div><strong>Expose listener</strong><span>Run locally with ngrok or deploy an HTTPS endpoint.</span></div></li>
+              <li><div><strong>Verify signature</strong><span>Use the raw body and webhook secret before processing events.</span></div></li>
+              <li><div><strong>Queue downstream work</strong><span>Respond 200 quickly, then update CRM, email, or archive workflows async.</span></div></li>
+            </ol>
+            <div class="code-block compact-code"><div class="code-header"><span class="code-lang">Express — webhook listener</span></div><pre><code>app.post('/webhooks/wxcc', express.raw({ type: 'application/json' }), (req, res) => {
+  verifyHmac(req.headers['x-spark-signature'], req.body);
+  res.sendStatus(200);
+  queueEvent(JSON.parse(req.body.toString()));
+});</code></pre></div>
+          </div>
+          <div>
+            <h4>Expected screenshot</h4>
+            <div class="sample-shot"><div class="sample-shot-bar"><span></span><span></span><span></span></div><div class="sample-shot-body">
+              <div class="sample-shot-kpi"><strong>Event received</strong><span>task:created delivered to listener</span></div>
+              <div class="sample-shot-row"><span>Signature</span><b>Verified</b></div>
+              <div class="sample-shot-row"><span>CRM update</span><b>Queued</b></div>
+            </div></div>
+          </div>
+        </div>
       </article>
 
       <article class="playbook accent-desktop" id="desktop-playbook">
@@ -355,6 +428,30 @@ Desktop.agentContact.addEventListener('eAgentContact', ({ detail }) => {
             </ul>
             <h4>Best demonstration</h4>
             <p>Show a screen pop or embedded CRM panel that reduces tab switching and helps the agent resolve the customer issue faster.</p>
+          </div>
+        </div>
+        <div class="sample-workbench">
+          <div>
+            <h4>Run / adapt this sample</h4>
+            <ol class="sample-run-list">
+              <li><div><strong>Host widget</strong><span>Serve the widget from HTTPS and register it in Desktop Layout JSON.</span></div></li>
+              <li><div><strong>Initialize SDK</strong><span>Call <code class="inline-code">Desktop.config.init()</code> inside the desktop iFrame.</span></div></li>
+              <li><div><strong>Render context</strong><span>Use contact events and CAD variables to show CRM or knowledge data.</span></div></li>
+            </ol>
+            <div class="code-block compact-code"><div class="code-header"><span class="code-lang">JavaScript — screen pop</span></div><pre><code>await Desktop.config.init({ widgetName: 'CRM Widget' });
+Desktop.agentContact.addEventListener('eAgentContact', async ({ detail }) => {
+  if (detail.type === 'AgentContactOffered') {
+    renderCustomer(await crm.lookup(detail.data.callerId));
+  }
+});</code></pre></div>
+          </div>
+          <div>
+            <h4>Expected screenshot</h4>
+            <div class="sample-shot"><div class="sample-shot-bar"><span></span><span></span><span></span></div><div class="sample-shot-body">
+              <div class="sample-shot-kpi"><strong>CRM Widget</strong><span>Customer record shown before answer</span></div>
+              <div class="sample-shot-row"><span>Caller</span><b>Matched</b></div>
+              <div class="sample-shot-row"><span>Suggested action</span><b>Visible</b></div>
+            </div></div>
           </div>
         </div>
       </article>
@@ -383,6 +480,29 @@ Desktop.agentContact.addEventListener('eAgentContact', ({ detail }) => {
             <p>Show how a team can turn a business request, such as "show customer context during a call," into a working desktop widget prototype with a repeatable project foundation.</p>
           </div>
         </div>
+        <div class="sample-workbench">
+          <div>
+            <h4>Run / adapt this sample</h4>
+            <ol class="sample-run-list">
+              <li><div><strong>Create project shell</strong><span>Start with a widget app, local dev server, and production build target.</span></div></li>
+              <li><div><strong>Add Desktop contract</strong><span>Keep SDK init, event listeners, and layout config in predictable files.</span></div></li>
+              <li><div><strong>Package for hosting</strong><span>Deploy static assets and point Desktop Layout JSON to the hosted URL.</span></div></li>
+            </ol>
+            <div class="code-block compact-code"><div class="code-header"><span class="code-lang">Layout JSON — widget registration</span></div><pre><code>{
+  "comp": "agentx-wc-iframe",
+  "attributes": { "src": "https://apps.example.com/widget/" },
+  "properties": { "title": "Customer Context", "initializeConnector": true }
+}</code></pre></div>
+          </div>
+          <div>
+            <h4>Expected screenshot</h4>
+            <div class="sample-shot"><div class="sample-shot-bar"><span></span><span></span><span></span></div><div class="sample-shot-body">
+              <div class="sample-shot-kpi"><strong>Widget project</strong><span>Build, host, and layout files ready</span></div>
+              <div class="sample-shot-row"><span>Local dev</span><b>Running</b></div>
+              <div class="sample-shot-row"><span>Desktop layout</span><b>Registered</b></div>
+            </div></div>
+          </div>
+        </div>
       </article>
 
       <article class="playbook accent-flow" id="provider-playbook">
@@ -407,6 +527,28 @@ Desktop.agentContact.addEventListener('eAgentContact', ({ detail }) => {
             </ul>
             <h4>Best demonstration</h4>
             <p>Explain how a customer could plug in an external AI service, bot, transcript engine, or analytics service while keeping the contact center flow controlled in WxCC.</p>
+          </div>
+        </div>
+        <div class="sample-workbench">
+          <div>
+            <h4>Run / adapt this sample</h4>
+            <ol class="sample-run-list">
+              <li><div><strong>Build lookup endpoint</strong><span>Expose a fast API that accepts caller input or account ID.</span></div></li>
+              <li><div><strong>Map response fields</strong><span>Return JSON fields that Flow Designer can map to flow variables.</span></div></li>
+              <li><div><strong>Branch the journey</strong><span>Use conditions to route by tier, language, intent, or risk score.</span></div></li>
+            </ol>
+            <div class="code-block compact-code"><div class="code-header"><span class="code-lang">Express — flow lookup</span></div><pre><code>app.post('/api/route-caller', async (req, res) => {
+  const account = await db.account(req.body.accountNumber);
+  res.json({ tier: account.tier, queue: account.tier === 'Gold' ? 'priority' : 'standard' });
+});</code></pre></div>
+          </div>
+          <div>
+            <h4>Expected screenshot</h4>
+            <div class="sample-shot"><div class="sample-shot-bar"><span></span><span></span><span></span></div><div class="sample-shot-body">
+              <div class="sample-shot-kpi"><strong>Flow decision</strong><span>Caller routed using external data</span></div>
+              <div class="sample-shot-row"><span>Account tier</span><b>Gold</b></div>
+              <div class="sample-shot-row"><span>Queue</span><b>Priority</b></div>
+            </div></div>
           </div>
         </div>
       </article>
@@ -435,6 +577,28 @@ Desktop.agentContact.addEventListener('eAgentContact', ({ detail }) => {
             <p>Show a caller or customer identifier being used to retrieve account details, then use that information for routing, a screen pop, or a reporting/enrichment scenario.</p>
           </div>
         </div>
+        <div class="sample-workbench">
+          <div>
+            <h4>Run / adapt this sample</h4>
+            <ol class="sample-run-list">
+              <li><div><strong>Create connector API</strong><span>Keep database access behind a backend service, not inside flows or widgets.</span></div></li>
+              <li><div><strong>Return clean context</strong><span>Expose only the fields needed for routing, screen pop, or reporting.</span></div></li>
+              <li><div><strong>Log every lookup</strong><span>Record request ID, result, latency, and errors for production support.</span></div></li>
+            </ol>
+            <div class="code-block compact-code"><div class="code-header"><span class="code-lang">Node.js — DB connector</span></div><pre><code>app.get('/customers/:ani', async (req, res) => {
+  const customer = await db.customers.findByPhone(req.params.ani);
+  res.json({ name: customer.name, tier: customer.tier, openCases: customer.cases.length });
+});</code></pre></div>
+          </div>
+          <div>
+            <h4>Expected screenshot</h4>
+            <div class="sample-shot"><div class="sample-shot-bar"><span></span><span></span><span></span></div><div class="sample-shot-body">
+              <div class="sample-shot-kpi"><strong>Customer lookup</strong><span>External data available to WxCC</span></div>
+              <div class="sample-shot-row"><span>Open cases</span><b>3</b></div>
+              <div class="sample-shot-row"><span>Latency</span><b>180ms</b></div>
+            </div></div>
+          </div>
+        </div>
       </article>
 
       <article class="playbook accent-reporting" id="reporting-playbook">
@@ -459,6 +623,30 @@ Desktop.agentContact.addEventListener('eAgentContact', ({ detail }) => {
             </ul>
             <h4>Best demonstration</h4>
             <p>Show queue, agent, or historical metrics flowing into a dashboard that helps leaders track service level, demand, and operational performance.</p>
+          </div>
+        </div>
+        <div class="sample-workbench">
+          <div>
+            <h4>Run / adapt this sample</h4>
+            <ol class="sample-run-list">
+              <li><div><strong>Fetch metrics</strong><span>Pull real-time snapshots or historical intervals using reporting scopes.</span></div></li>
+              <li><div><strong>Transform for BI</strong><span>Shape queue, agent, and CDR data into dashboard-friendly rows.</span></div></li>
+              <li><div><strong>Publish dashboard</strong><span>Render a wallboard or export to Power BI, Tableau, or a warehouse.</span></div></li>
+            </ol>
+            <div class="code-block compact-code"><div class="code-header"><span class="code-lang">Node.js — wallboard metric</span></div><pre><code>const stats = await wxcc.get(`/contactCenter/queues/${queueId}/statistics`, { orgId });
+dashboard.update({
+  waiting: stats.contactsInQueue,
+  available: stats.agentsAvailable,
+  sla: stats.serviceLevelPercentage
+});</code></pre></div>
+          </div>
+          <div>
+            <h4>Expected screenshot</h4>
+            <div class="sample-shot"><div class="sample-shot-bar"><span></span><span></span><span></span></div><div class="sample-shot-body">
+              <div class="sample-shot-kpi"><strong>Live wallboard</strong><span>Queue health refreshed every 30 seconds</span></div>
+              <div class="sample-shot-row"><span>Waiting</span><b>12</b></div>
+              <div class="sample-shot-row"><span>SLA</span><b>86%</b></div>
+            </div></div>
           </div>
         </div>
       </article>
