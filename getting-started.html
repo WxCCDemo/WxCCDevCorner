@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Getting Started — WxCC Extensibility Hub</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+<div class="page-progress"><div class="page-progress-bar"></div></div>
+<nav class="topnav">
+  <a href="index.html" class="topnav-brand">
+    <div class="topnav-logo">Wx</div>
+    <div class="topnav-title">WxCC Extensibility Hub <span>Webex Contact Center API Guide</span></div>
+  </a>
+  <ul class="topnav-links">
+    <li><a href="index.html">Overview</a></li>
+    <li><a href="getting-started.html" class="active">Get Started</a></li>
+    <li><a href="rest-apis.html">REST APIs</a></li>
+    <li><a href="webhooks.html">Webhooks</a></li>
+    <li><a href="desktop-sdk.html">Desktop SDK</a></li>
+    <li><a href="flow-designer.html">Flow Designer</a></li>
+    <li><a href="reporting.html">Reporting</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+  </ul>
+  <button class="topnav-hamburger">☰</button>
+</nav>
+<div class="sidebar-overlay"></div>
+<div class="page-wrapper">
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Getting Started</div>
+      <a href="#prerequisites" class="sidebar-link"><span class="icon">📋</span> Prerequisites</a>
+      <a href="#auth" class="sidebar-link"><span class="icon">🔑</span> Authentication</a>
+      <a href="#oauth-flow" class="sidebar-link"><span class="icon">🔄</span> OAuth 2.0 Flow</a>
+      <a href="#service-app" class="sidebar-link"><span class="icon">⚙️</span> Service App</a>
+      <a href="#scopes" class="sidebar-link"><span class="icon">🎯</span> Scopes</a>
+      <a href="#base-urls" class="sidebar-link"><span class="icon">🌐</span> Base URLs</a>
+      <a href="#rate-limits" class="sidebar-link"><span class="icon">⏱️</span> Rate Limits</a>
+      <a href="#first-call" class="sidebar-link"><span class="icon">⚡</span> First API Call</a>
+      <a href="#errors" class="sidebar-link"><span class="icon">❌</span> Error Handling</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Other Sections</div>
+      <a href="rest-apis.html" class="sidebar-link"><span class="icon">🔌</span> REST APIs</a>
+      <a href="webhooks.html" class="sidebar-link"><span class="icon">📡</span> Webhooks</a>
+      <a href="desktop-sdk.html" class="sidebar-link"><span class="icon">🖥️</span> Desktop SDK</a>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a><span class="breadcrumb-sep">›</span>
+      <span>Getting Started</span>
+    </div>
+
+    <div class="section-header">
+      <div class="section-badge">🚀 Getting Started</div>
+      <h1>Authentication & Setup</h1>
+      <div class="divider"></div>
+      <p>Everything you need to authenticate with the Webex Contact Center API, understand OAuth 2.0, and make your first successful API call.</p>
+    </div>
+
+    <!-- PREREQUISITES -->
+    <section id="prerequisites">
+      <h2 class="section-title">Prerequisites</h2>
+      <div class="cards-grid" style="grid-template-columns:repeat(auto-fill,minmax(200px,1fr))">
+        <div class="card" style="cursor:default">
+          <div class="card-icon">👤</div>
+          <h3>Webex Account</h3>
+          <p>A Webex organization with Contact Center enabled. Admin or developer role required.</p>
+        </div>
+        <div class="card" style="cursor:default">
+          <div class="card-icon">🌐</div>
+          <h3>Developer Portal</h3>
+          <p>Access to <strong>developer.webex.com</strong> — free registration, no credit card needed.</p>
+        </div>
+        <div class="card" style="cursor:default">
+          <div class="card-icon">⬡</div>
+          <h3>Node.js / Python</h3>
+          <p>Any HTTP-capable language works. Examples use Node.js 18+ and axios.</p>
+        </div>
+        <div class="card" style="cursor:default">
+          <div class="card-icon">🔒</div>
+          <h3>HTTPS Endpoint</h3>
+          <p>Required only for webhooks. Use ngrok for local development.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- AUTH -->
+    <section id="auth">
+      <h2 class="section-title">Authentication Methods</h2>
+      <p class="body-text">WxCC APIs use <strong>OAuth 2.0 Bearer tokens</strong>. There are three ways to get one depending on your use case:</p>
+
+      <div class="tabs">
+        <div class="tab-list">
+          <button class="tab-btn active" data-group="auth" data-tab="personal">Personal Token</button>
+          <button class="tab-btn" data-group="auth" data-tab="oauth">OAuth 2.0 (3-legged)</button>
+          <button class="tab-btn" data-group="auth" data-tab="service">Service App (Production)</button>
+        </div>
+        <div class="tab-panel active" data-group="auth" data-tab="personal">
+          <div class="info-box warning">
+            <div class="ib-icon">⚠️</div>
+            <div class="ib-body"><h4>Development Only</h4><p>Personal tokens expire after 12 hours. Never use them in production systems.</p></div>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="step-num">1</div><div class="step-content"><h4>Go to developer.webex.com</h4><p>Sign in with your Webex account credentials.</p></div></div>
+            <div class="step"><div class="step-num">2</div><div class="step-content"><h4>Click your avatar → Copy Personal Access Token</h4><p>The token is shown on your profile page under "My Webex Apps".</p></div></div>
+            <div class="step"><div class="step-num">3</div><div class="step-content"><h4>Use in Authorization header</h4><p>Add <code class="inline-code">Authorization: Bearer &lt;token&gt;</code> to every request.</p></div></div>
+          </div>
+        </div>
+        <div class="tab-panel" data-group="auth" data-tab="oauth">
+          <p class="body-text">Use this when building apps where end-users grant your app permission to act on their behalf (e.g., a supervisor dashboard).</p>
+          <div class="steps">
+            <div class="step"><div class="step-num">1</div><div class="step-content"><h4>Create an Integration</h4><p>At developer.webex.com → My Webex Apps → Create an Integration. Set your redirect URI.</p></div></div>
+            <div class="step"><div class="step-num">2</div><div class="step-content"><h4>Redirect user to authorize URL</h4><p>Direct users to the Webex authorization endpoint with your client_id and desired scopes.</p></div></div>
+            <div class="step"><div class="step-num">3</div><div class="step-content"><h4>Exchange code for token</h4><p>After user approves, exchange the returned <code class="inline-code">code</code> for an access + refresh token pair.</p></div></div>
+          </div>
+        </div>
+        <div class="tab-panel" data-group="auth" data-tab="service">
+          <div class="info-box success">
+            <div class="ib-icon">✅</div>
+            <div class="ib-body"><h4>Recommended for Production</h4><p>Service Apps use machine-to-machine tokens with configurable expiry and automatic refresh.</p></div>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="step-num">1</div><div class="step-content"><h4>Create a Service App</h4><p>developer.webex.com → My Webex Apps → Create a Service App. Choose scopes carefully.</p></div></div>
+            <div class="step"><div class="step-num">2</div><div class="step-content"><h4>Organization Admin Authorizes</h4><p>A Webex Org Admin must approve the Service App. This grants access to org-level resources.</p></div></div>
+            <div class="step"><div class="step-num">3</div><div class="step-content"><h4>Use Client Credentials Grant</h4><p>POST to the token endpoint with your client_id and client_secret to get a long-lived access token.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OAUTH FLOW DIAGRAM -->
+    <section id="oauth-flow">
+      <h2 class="section-title">OAuth 2.0 Flow Diagram</h2>
+      <div class="diagram-wrap">
+        <div class="diagram-title">OAuth 2.0 Authorization Code Flow for Webex CC</div>
+        <svg viewBox="0 0 780 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:780px;display:block;margin:0 auto;font-family:-apple-system,sans-serif;font-size:12px;">
+          <!-- Actors -->
+          <rect x="30" y="10" width="110" height="34" rx="8" fill="#00476B"/>
+          <text x="85" y="31" text-anchor="middle" font-weight="700" fill="#fff" font-size="13">Your App</text>
+          <line x1="85" y1="44" x2="85" y2="320" stroke="#00476B" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+          <rect x="320" y="10" width="130" height="34" rx="8" fill="#334155"/>
+          <text x="385" y="31" text-anchor="middle" font-weight="700" fill="#fff" font-size="13">Webex Auth Server</text>
+          <line x1="385" y1="44" x2="385" y2="320" stroke="#334155" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+          <rect x="620" y="10" width="120" height="34" rx="8" fill="#0099c0"/>
+          <text x="680" y="31" text-anchor="middle" font-weight="700" fill="#fff" font-size="13">User / Browser</text>
+          <line x1="680" y1="44" x2="680" y2="320" stroke="#0099c0" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+          <!-- Step 1 -->
+          <rect x="90" y="62" width="270" height="22" rx="4" fill="#e8f7fd"/>
+          <line x1="85" y1="73" x2="370" y2="73" stroke="#00BCEB" stroke-width="2" marker-end="url(#arrow-teal)"/>
+          <text x="220" y="70" text-anchor="middle" fill="#0099c0" font-weight="600">1. Redirect to /authorize?client_id=...&scopes=...</text>
+
+          <!-- Step 2 -->
+          <rect x="400" y="96" width="265" height="22" rx="4" fill="#f1f5f9"/>
+          <line x1="385" y1="107" x2="665" y2="107" stroke="#334155" stroke-width="2" marker-end="url(#arrow-dark)"/>
+          <text x="525" y="104" text-anchor="middle" fill="#334155" font-weight="600">2. Show login + consent screen</text>
+
+          <!-- Step 3 -->
+          <line x1="665" y1="140" x2="400" y2="140" stroke="#0099c0" stroke-width="2" marker-end="url(#arrow-blue)"/>
+          <text x="525" y="137" text-anchor="middle" fill="#0099c0" font-weight="600">3. User approves → redirect with ?code=...</text>
+
+          <!-- Step 4 -->
+          <line x1="370" y1="172" x2="100" y2="172" stroke="#334155" stroke-width="2" marker-end="url(#arrow-dark)"/>
+          <text x="220" y="169" text-anchor="middle" fill="#334155" font-weight="600">4. Your app receives auth code</text>
+
+          <!-- Step 5 -->
+          <rect x="90" y="192" width="270" height="22" rx="4" fill="#e8f7fd"/>
+          <line x1="85" y1="204" x2="370" y2="204" stroke="#00BCEB" stroke-width="2" marker-end="url(#arrow-teal)"/>
+          <text x="220" y="201" text-anchor="middle" fill="#0099c0" font-weight="600">5. POST /token {code, client_id, client_secret}</text>
+
+          <!-- Step 6 -->
+          <line x1="370" y1="238" x2="100" y2="238" stroke="#15803d" stroke-width="2" marker-end="url(#arrow-green)"/>
+          <rect x="90" y="225" width="270" height="22" rx="4" fill="#dcfce7"/>
+          <text x="220" y="237" text-anchor="middle" fill="#15803d" font-weight="600">6. ✅ access_token + refresh_token returned</text>
+
+          <!-- Step 7 -->
+          <rect x="90" y="258" width="270" height="22" rx="4" fill="#f3e8ff"/>
+          <line x1="85" y1="270" x2="370" y2="270" stroke="#7e22ce" stroke-width="2" marker-end="url(#arrow-purple)"/>
+          <text x="220" y="267" text-anchor="middle" fill="#7e22ce" font-weight="600">7. Call WxCC APIs with Bearer access_token</text>
+
+          <!-- Refresh note -->
+          <rect x="30" y="296" width="320" height="20" rx="4" fill="#fffbeb" stroke="#fcd34d" stroke-width="1"/>
+          <text x="190" y="310" text-anchor="middle" fill="#92400e" font-size="11">💡 Use refresh_token to get new access_token before expiry</text>
+
+          <defs>
+            <marker id="arrow-teal" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#00BCEB"/></marker>
+            <marker id="arrow-dark" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#334155"/></marker>
+            <marker id="arrow-blue" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#0099c0"/></marker>
+            <marker id="arrow-green" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#15803d"/></marker>
+            <marker id="arrow-purple" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#7e22ce"/></marker>
+          </defs>
+        </svg>
+      </div>
+    </section>
+
+    <!-- SERVICE APP CODE -->
+    <section id="service-app">
+      <h2 class="section-title">Service App Token (Production)</h2>
+      <p class="body-text">For server-to-server integrations, use the Client Credentials flow — no user interaction required.</p>
+      <div class="code-block">
+        <div class="code-header">
+          <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+          <div class="code-lang">⬡ Node.js — Service App Token</div>
+          <div class="code-actions"><button class="copy-btn">⎘ Copy</button></div>
+        </div>
+<pre class="language-javascript"><code class="language-javascript">const axios = require('axios');
+
+const CLIENT_ID     = process.env.WXCC_CLIENT_ID;
+const CLIENT_SECRET = process.env.WXCC_CLIENT_SECRET;
+
+// Token cache — avoid fetching on every request
+let tokenCache = { token: null, expiresAt: 0 };
+
+async function getAccessToken() {
+  if (tokenCache.token && Date.now() < tokenCache.expiresAt - 60_000) {
+    return tokenCache.token;  // return cached token
+  }
+
+  const credentials = Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString('base64');
+  const response = await axios.post(
+    'https://webexapis.com/v1/access_token',
+    new URLSearchParams({
+      grant_type:   'client_credentials',
+      scope:        'cjp:config cjp:config_read spark:people_read'
+    }),
+    { headers: { 'Authorization': `Basic ${credentials}`, 'Content-Type': 'application/x-www-form-urlencoded' } }
+  );
+
+  const { access_token, expires_in } = response.data;
+  tokenCache = { token: access_token, expiresAt: Date.now() + expires_in * 1000 };
+  return access_token;
+}
+
+// Usage
+async function main() {
+  const token = await getAccessToken();
+  const res = await axios.get('https://webexapis.com/v1/contactCenter/agents', {
+    headers: { Authorization: `Bearer ${token}` },
+    params: { orgId: 'YOUR_ORG_ID' }
+  });
+  console.log(res.data.items);
+}
+
+main();</code></pre>
+      </div>
+    </section>
+
+    <!-- SCOPES -->
+    <section id="scopes">
+      <h2 class="section-title">Required API Scopes</h2>
+      <p class="body-text">Select only the scopes your integration needs — principle of least privilege.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Scope</th><th>Access Level</th><th>Used For</th></tr></thead>
+          <tbody>
+            <tr><td><code class="inline-code">cjp:config</code></td><td><span class="badge badge-post">Read/Write</span></td><td>Manage agents, queues, sites, teams</td></tr>
+            <tr><td><code class="inline-code">cjp:config_read</code></td><td><span class="badge badge-get">Read Only</span></td><td>Read contact center configuration</td></tr>
+            <tr><td><code class="inline-code">cjp:analyzer_read</code></td><td><span class="badge badge-get">Read Only</span></td><td>Access reporting and analytics data</td></tr>
+            <tr><td><code class="inline-code">cjp:user</code></td><td><span class="badge badge-post">Read/Write</span></td><td>Manage agent profiles and settings</td></tr>
+            <tr><td><code class="inline-code">spark:people_read</code></td><td><span class="badge badge-get">Read Only</span></td><td>Resolve user identities via Webex People API</td></tr>
+            <tr><td><code class="inline-code">spark-admin:organizations_read</code></td><td><span class="badge badge-get">Read Only</span></td><td>Get org ID and organization info</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- BASE URLS -->
+    <section id="base-urls">
+      <h2 class="section-title">Base URLs & Regions</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Region</th><th>Base URL</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>Global / US</td><td><code class="inline-code">https://webexapis.com/v1/</code></td><td>Default for most orgs</td></tr>
+            <tr><td>EU (Frankfurt)</td><td><code class="inline-code">https://webexapis.com/v1/</code></td><td>Same base — data residency configured at org level</td></tr>
+            <tr><td>WxCC Specific</td><td><code class="inline-code">https://api.wxcc-us1.cisco.com/</code></td><td>Legacy — use webexapis.com for new integrations</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- RATE LIMITS -->
+    <section id="rate-limits">
+      <h2 class="section-title">Rate Limits</h2>
+      <div class="info-box warning">
+        <div class="ib-icon">⚠️</div>
+        <div class="ib-body">
+          <h4>Respect Rate Limits or Risk 429 Errors</h4>
+          <p>WxCC APIs enforce rate limits per access token. Always check response headers and implement retry with exponential backoff.</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>API Category</th><th>Rate Limit</th><th>Window</th></tr></thead>
+          <tbody>
+            <tr><td>Configuration APIs</td><td>10 requests</td><td>Per second</td></tr>
+            <tr><td>Reporting / Analytics</td><td>5 requests</td><td>Per second</td></tr>
+            <tr><td>Real-time Data</td><td>20 requests</td><td>Per second</td></tr>
+            <tr><td>Webhook Management</td><td>10 requests</td><td>Per minute</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="expand-section">
+        <div class="expand-trigger">
+          <div class="expand-trigger-label"><span class="et-icon">⬡</span> Show: Retry with Exponential Backoff (Node.js)</div>
+          <span class="expand-chevron">▼</span>
+        </div>
+        <div class="expand-content">
+          <div class="code-block">
+            <div class="code-header">
+              <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
+              <div class="code-lang">⬡ Retry Helper</div>
+              <div class="code-actions"><button class="copy-btn">⎘ Copy</button></div>
+            </div>
+<pre class="language-javascript"><code class="language-javascript">async function apiCallWithRetry(fn, maxRetries = 4) {
+  for (let attempt = 0; attempt <= maxRetries; attempt++) {
+    try {
+      return await fn();
+    } catch (err) {
+      if (err.response?.status === 429 && attempt < maxRetries) {
+        const retryAfter = parseInt(err.response.headers['retry-after'] || '1');
+        const delay = Math.max(retryAfter * 1000, 2 ** attempt * 500);
+        console.warn(`Rate limited. Retrying in ${delay}ms (attempt ${attempt + 1})`);
+        await new Promise(r => setTimeout(r, delay));
+      } else {
+        throw err;
+      }
+    }
+  }
+}
+
+// Usage
+const agents = await apiCallWithRetry(() =>
+  axios.get('https://webexapis.com/v1/contactCenter/agents', { headers })
+);</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ERROR HANDLING -->
+    <section id="errors">
+      <h2 class="section-title">Common Errors & Solutions</h2>
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <div class="accordion-title"><span class="q-num">401</span> Unauthorized — Invalid or expired token</div>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            <p><strong>Cause:</strong> The Bearer token is missing, malformed, or has expired.</p>
+            <ul><li>Check that the <code class="inline-code">Authorization</code> header is spelled correctly</li><li>Personal tokens expire after 12 hours — refresh or use a Service App</li><li>Ensure no extra whitespace around the token value</li></ul>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <div class="accordion-title"><span class="q-num">403</span> Forbidden — Missing scope</div>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            <p><strong>Cause:</strong> Your token doesn't have the required scope for the operation.</p>
+            <ul><li>Check the API docs for required scopes</li><li>Re-authorize with the additional scope</li><li>For Service Apps, ensure the admin has approved the new scope</li></ul>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <div class="accordion-title"><span class="q-num">429</span> Too Many Requests — Rate limited</div>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            <p><strong>Cause:</strong> You've exceeded the API rate limit.</p>
+            <ul><li>Check <code class="inline-code">Retry-After</code> header for wait time</li><li>Implement exponential backoff (see code above)</li><li>Cache results where possible to reduce call frequency</li></ul>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <div class="accordion-title"><span class="q-num">404</span> Not Found — Resource doesn't exist</div>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            <p><strong>Cause:</strong> The resource ID is wrong, or you're querying the wrong org.</p>
+            <ul><li>Verify the Org ID in your request params</li><li>Ensure IDs are URL-encoded if they contain special characters</li><li>Confirm the resource exists with a list call first</li></ul>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:28px;text-align:center;">
+        <a href="rest-apis.html" class="btn btn-primary">Next: Explore REST APIs →</a>
+      </div>
+    </section>
+  </main>
+</div>
+
+<footer class="page-footer">
+  <span>© 2024 Cisco Systems · Webex Contact Center Extensibility Hub</span>
+  <span><a href="index.html">Home</a> · <a href="rest-apis.html">REST APIs →</a></span>
+</footer>
+<button id="backToTop" title="Back to top">↑</button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

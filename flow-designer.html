@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flow Designer — WxCC Extensibility Hub</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+<div class="page-progress"><div class="page-progress-bar"></div></div>
+<nav class="topnav">
+  <a href="index.html" class="topnav-brand"><div class="topnav-logo">Wx</div><div class="topnav-title">WxCC Extensibility Hub <span>Webex Contact Center API Guide</span></div></a>
+  <ul class="topnav-links">
+    <li><a href="index.html">Overview</a></li><li><a href="getting-started.html">Get Started</a></li>
+    <li><a href="rest-apis.html">REST APIs</a></li><li><a href="webhooks.html">Webhooks</a></li>
+    <li><a href="desktop-sdk.html">Desktop SDK</a></li><li><a href="flow-designer.html" class="active">Flow Designer</a></li>
+    <li><a href="reporting.html">Reporting</a></li><li><a href="faq.html">FAQ</a></li>
+  </ul>
+  <button class="topnav-hamburger">☰</button>
+</nav>
+<div class="sidebar-overlay"></div>
+<div class="page-wrapper">
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Flow Designer</div>
+      <a href="#what-is-flow" class="sidebar-link"><span class="icon">🔀</span> What is Flow Designer?</a>
+      <a href="#flow-types" class="sidebar-link"><span class="icon">📋</span> Flow Types</a>
+      <a href="#sample-flow" class="sidebar-link"><span class="icon">🗺️</span> Sample Flow Diagram</a>
+      <a href="#http-node" class="sidebar-link"><span class="icon">🌐</span> HTTP Request Node</a>
+      <a href="#variables" class="sidebar-link"><span class="icon">📦</span> Flow Variables</a>
+      <a href="#branching" class="sidebar-link"><span class="icon">🔱</span> Condition & Branching</a>
+      <a href="#custom-widget" class="sidebar-link"><span class="icon">🪟</span> Custom Widgets in Flows</a>
+      <a href="#flow-api" class="sidebar-link"><span class="icon">⚙️</span> Flow Management API</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Related</div>
+      <a href="desktop-sdk.html" class="sidebar-link"><span class="icon">🖥️</span> Desktop SDK</a>
+      <a href="rest-apis.html" class="sidebar-link"><span class="icon">🔌</span> REST APIs</a>
+    </div>
+  </aside>
+  <main class="main-content">
+    <div class="breadcrumb"><a href="index.html">Home</a><span class="breadcrumb-sep">›</span><span>Flow Designer</span></div>
+    <div class="section-header">
+      <div class="section-badge">🔀 Flow Designer</div>
+      <h1>Flow Designer & Intelligent Routing</h1>
+      <div class="divider"></div>
+      <p>Build sophisticated IVR flows, call routing logic, and customer journeys using WxCC Flow Designer — with HTTP integrations to external systems baked in.</p>
+    </div>
+
+    <section id="what-is-flow">
+      <h2 class="section-title">What is Flow Designer?</h2>
+      <p class="body-text">Flow Designer is the visual drag-and-drop builder inside WxCC Admin that defines what happens when a contact arrives — from initial greeting, through IVR menus, external data lookups, to final agent routing. Every flow is made of <strong>nodes</strong> connected by <strong>edges</strong>.</p>
+      <div class="info-box info">
+        <div class="ib-icon">💡</div>
+        <div class="ib-body">
+          <h4>Extensibility in Flows</h4>
+          <ul>
+            <li><strong>HTTP Request node</strong> — call any external REST API mid-flow (CRM lookup, authentication, AI scoring)</li>
+            <li><strong>Flow variables</strong> — pass data between nodes and into agent desktop call variables</li>
+            <li><strong>Custom widget trigger</strong> — pop widgets on the agent desktop based on flow data</li>
+            <li><strong>Subflows</strong> — reusable flow segments that can be imported across multiple main flows</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="flow-types">
+      <h2 class="section-title">Flow Types</h2>
+      <div class="cards-grid" style="grid-template-columns:repeat(auto-fill,minmax(180px,1fr))">
+        <div class="card" style="cursor:default">
+          <div class="card-icon">📞</div>
+          <h3>Inbound Voice Flow</h3>
+          <p>Handles incoming calls. Plays greetings, collects IVR input, routes to agents.</p>
+        </div>
+        <div class="card" style="cursor:default">
+          <div class="card-icon">📤</div>
+          <h3>Outbound Campaign Flow</h3>
+          <p>Drives outbound dialing campaigns with predefined scripts and routing.</p>
+        </div>
+        <div class="card" style="cursor:default">
+          <div class="card-icon">💬</div>
+          <h3>Digital Channel Flow</h3>
+          <p>Handles chat, email, and social contacts through routing and bot escalation.</p>
+        </div>
+        <div class="card" style="cursor:default">
+          <div class="card-icon">🔁</div>
+          <h3>Subflow</h3>
+          <p>Reusable logic blocks (e.g., authentication, CRM lookup) shared across flows.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="sample-flow">
+      <h2 class="section-title">Sample Flow — Authenticated Caller Routing</h2>
+      <p class="body-text">A realistic IVR flow: caller is authenticated via their account number, priority is fetched from a CRM, and routing is adjusted accordingly.</p>
+      <div class="diagram-wrap">
+        <div class="diagram-title">Intelligent Routing Flow with HTTP Integration</div>
+        <div class="mermaid">
+flowchart TD
+    A([📞 Call Arrives\nEntry Point]) --> B[Play Welcome\nGreeting]
+    B --> C[Collect Input\nAccount Number via DTMF]
+    C --> D{Valid\nFormat?}
+    D -- No --> E[Play Error\nPrompt] --> C
+    D -- Yes --> F[🌐 HTTP Request\nPOST /crm/verify-account\nbody: accountNumber]
+    F --> G{Account\nFound?}
+    G -- No --> H[Play\n'Account not found'\nOffer callback] --> Z
+    G -- Yes --> I[Set Flow Variables\ncustomerName, tier, openCases]
+    I --> J{Customer\nTier?}
+    J -- Enterprise --> K[🚀 Route to\nPriority Queue\nSkip wait]
+    J -- Standard --> L[Play Queue\nPosition Message]
+    L --> M[🌐 HTTP Request\nGET /crm/ai-intent\npredict next issue]
+    M --> N[Set callVariable\naiPredictedIntent]
+    N --> O[Route to\nSkills-Based Queue\nbest match agent]
+    K --> P[🤝 Agent Receives Call\n+ Screen Pop with CRM data]
+    O --> P
+    P --> Q[Handle Contact]
+    Q --> R[Wrap-Up\nCollect Code]
+    R --> Z([✅ End])
+
+    style A fill:#00476B,color:#fff,stroke:#00BCEB
+    style Z fill:#10b981,color:#fff,stroke:#059669
+    style F fill:#6366f1,color:#fff,stroke:#4f46e5
+    style M fill:#6366f1,color:#fff,stroke:#4f46e5
+    style K fill:#f59e0b,color:#fff,stroke:#d97706
+    style P fill:#00476B,color:#fff,stroke:#00BCEB
+        </div>
+      </div>
+    </section>
+
+    <section id="http-node">
+      <h2 class="section-title">🌐 HTTP Request Node</h2>
+      <p class="body-text">The HTTP Request node lets your flow call any external REST API. Use it to authenticate callers, fetch customer data, score intent with AI, or log to an external system.</p>
+
+      <div class="diagram-wrap">
+        <div class="diagram-title">HTTP Node Configuration — Visual Reference</div>
+        <svg viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:760px;display:block;margin:0 auto;font-family:-apple-system,sans-serif;font-size:12px;">
+          <!-- Node card -->
+          <rect x="20" y="20" width="340" height="280" rx="12" fill="#fff" stroke="#6366f1" stroke-width="2"/>
+          <rect x="20" y="20" width="340" height="40" rx="12" fill="#6366f1"/>
+          <rect x="20" y="46" width="340" height="14" fill="#6366f1"/>
+          <text x="190" y="45" text-anchor="middle" font-size="14" font-weight="800" fill="#fff">🌐 HTTP Request Node</text>
+
+          <text x="36" y="80" font-size="11" font-weight="700" fill="#334155">Method</text>
+          <rect x="36" y="86" width="80" height="24" rx="5" fill="#dbeafe" stroke="#93c5fd" stroke-width="1"/>
+          <text x="76" y="102" text-anchor="middle" font-size="11" font-weight="700" fill="#1d4ed8">POST</text>
+
+          <text x="36" y="126" font-size="11" font-weight="700" fill="#334155">URL</text>
+          <rect x="36" y="132" width="306" height="24" rx="5" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+          <text x="44" y="148" font-size="10" fill="#64748b">https://crm.example.com/api/verify</text>
+
+          <text x="36" y="172" font-size="11" font-weight="700" fill="#334155">Headers</text>
+          <rect x="36" y="178" width="306" height="24" rx="5" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+          <text x="44" y="194" font-size="10" fill="#64748b">Authorization: Bearer $(Global_CRM_Token)</text>
+
+          <text x="36" y="218" font-size="11" font-weight="700" fill="#334155">Request Body (JSON)</text>
+          <rect x="36" y="224" width="306" height="40" rx="5" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+          <text x="44" y="240" font-size="10" fill="#00BCEB">{"accountNumber":</text>
+          <text x="44" y="255" font-size="10" fill="#ffd700">"$(CollectedDigits)"</text>
+          <text x="44" y="270" font-size="10" fill="#00BCEB">}</text>
+
+          <!-- Response section -->
+          <rect x="400" y="20" width="340" height="280" rx="12" fill="#fff" stroke="#10b981" stroke-width="2"/>
+          <rect x="400" y="20" width="340" height="40" rx="12" fill="#10b981"/>
+          <rect x="400" y="46" width="340" height="14" fill="#10b981"/>
+          <text x="570" y="45" text-anchor="middle" font-size="14" font-weight="800" fill="#fff">📦 Response Parsing</text>
+
+          <text x="416" y="80" font-size="11" font-weight="700" fill="#334155">Parse Response → Flow Variables</text>
+          <rect x="416" y="88" width="306" height="100" rx="6" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+          <text x="424" y="105" font-size="11" fill="#334155" font-weight="600">$.customerName</text>
+          <text x="636" y="105" font-size="11" fill="#6366f1">→ FlowVar_Name</text>
+          <line x1="416" y1="112" x2="722" y2="112" stroke="#e2e8f0" stroke-width="1"/>
+          <text x="424" y="127" font-size="11" fill="#334155" font-weight="600">$.tier</text>
+          <text x="636" y="127" font-size="11" fill="#6366f1">→ FlowVar_Tier</text>
+          <line x1="416" y1="134" x2="722" y2="134" stroke="#e2e8f0" stroke-width="1"/>
+          <text x="424" y="149" font-size="11" fill="#334155" font-weight="600">$.openCases</text>
+          <text x="636" y="149" font-size="11" fill="#6366f1">→ FlowVar_Cases</text>
+          <line x1="416" y1="156" x2="722" y2="156" stroke="#e2e8f0" stroke-width="1"/>
+          <text x="424" y="171" font-size="11" fill="#334155" font-weight="600">$.authenticated</text>
+          <text x="636" y="171" font-size="11" fill="#6366f1">→ FlowVar_Auth</text>
+
+          <text x="416" y="210" font-size="11" font-weight="700" fill="#334155">Output Edges</text>
+          <rect x="416" y="218" width="100" height="26" rx="5" fill="#dcfce7" stroke="#86efac" stroke-width="1"/>
+          <text x="466" y="234" text-anchor="middle" font-size="11" font-weight="700" fill="#15803d">✅ Success</text>
+          <rect x="528" y="218" width="90" height="26" rx="5" fill="#fee2e2" stroke="#fca5a5" stroke-width="1"/>
+          <text x="573" y="234" text-anchor="middle" font-size="11" font-weight="700" fill="#b91c1c">❌ Failure</text>
+          <rect x="630" y="218" width="88" height="26" rx="5" fill="#fef3c7" stroke="#fcd34d" stroke-width="1"/>
+          <text x="674" y="234" text-anchor="middle" font-size="11" font-weight="700" fill="#92400e">⏱ Timeout</text>
+
+          <text x="416" y="274" font-size="10" fill="#94a3b8">Timeout: configurable 1–30s</text>
+          <text x="416" y="288" font-size="10" fill="#94a3b8">Connect to Condition node on each edge</text>
+
+          <!-- Arrow between panels -->
+          <line x1="362" y1="160" x2="396" y2="160" stroke="#6366f1" stroke-width="2"/>
+          <polygon points="392,155 400,160 392,165" fill="#6366f1"/>
+        </svg>
+      </div>
+
+      <div class="expand-section">
+        <div class="expand-trigger">
+          <div class="expand-trigger-label"><span class="et-icon">🌐</span> HTTP Node — Sample CRM Authentication Request</div>
+          <span class="expand-chevron">▼</span>
+        </div>
+        <div class="expand-content">
+          <p class="body-text" style="margin-bottom:12px">Here's what the external API server (your Node.js backend) might look like that the HTTP node calls:</p>
+          <div class="code-block"><div class="code-header"><div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div><div class="code-lang">⬡ Your Backend API (called by HTTP Node)</div><div class="code-actions"><button class="copy-btn">⎘ Copy</button></div></div>
+<pre class="language-javascript"><code class="language-javascript">// Express route that WxCC Flow HTTP Node calls
+app.post('/api/verify-account', async (req, res) => {
+  const { accountNumber } = req.body;
+
+  // Look up in your database
+  const customer = await db.customers.findOne({ accountNumber });
+
+  if (!customer) {
+    return res.status(404).json({ authenticated: false });
+  }
+
+  // Return structured data for Flow variable parsing
+  res.json({
+    authenticated:   true,
+    customerName:    customer.name,
+    tier:            customer.tier,          // 'Enterprise' | 'Standard'
+    openCases:       customer.openCases,
+    accountId:       customer.id,
+    preferredAgent:  customer.csm?.agentId   // preferred CSM agent if any
+  });
+  // WxCC will parse $.customerName → FlowVar_Name, etc.
+});</code></pre></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="variables">
+      <h2 class="section-title">📦 Flow Variables</h2>
+      <p class="body-text">Variables store data across nodes in a flow and can be passed to the agent desktop as call variables.</p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Variable Type</th><th>Scope</th><th>Example Use</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Flow Variables</strong></td><td>Current flow only</td><td>Store HTTP response data mid-flow</td></tr>
+          <tr><td><strong>Global Variables</strong></td><td>All flows in org</td><td>API tokens, shared config values</td></tr>
+          <tr><td><strong>Call Variables (CAD)</strong></td><td>Passed to agent desktop</td><td>Show customer data in desktop screen pop</td></tr>
+          <tr><td><strong>Predefined Variables</strong></td><td>System-set</td><td>callerId, channelType, entryPointId</td></tr>
+        </tbody>
+      </table></div>
+      <div class="info-box info">
+        <div class="ib-icon">💡</div>
+        <div class="ib-body"><h4>Reference syntax</h4><p>In HTTP node bodies and headers, reference variables as <code class="inline-code">$(VariableName)</code>. In Condition node expressions, use the variable name directly: <code class="inline-code">FlowVar_Tier == "Enterprise"</code>.</p></div>
+      </div>
+    </section>
+
+    <section id="branching">
+      <h2 class="section-title">🔱 Condition Node & Branching</h2>
+      <p class="body-text">The <strong>Condition node</strong> evaluates a flow variable and routes to different branches. Chain conditions to build complex logic.</p>
+      <div class="diagram-wrap">
+        <div class="diagram-title">Multi-Branch Condition Logic</div>
+        <div class="mermaid">
+flowchart LR
+    A[HTTP Response\nParsed] --> B{Condition Node\nFlowVar_Tier}
+    B -- == Enterprise --> C[Priority Queue\nMax 30s wait]
+    B -- == Premium --> D[Standard Queue\nWith SLA]
+    B -- == Standard --> E[General Queue]
+    B -- else --> F[New Customer Flow\nSelf-service IVR]
+    C --> G[Agent Gets\nEnterprise Screen Pop]
+    D --> G
+    E --> G
+        </div>
+      </div>
+    </section>
+
+    <section id="flow-api">
+      <h2 class="section-title">⚙️ Flow Management API</h2>
+      <p class="body-text">Flows can also be managed programmatically via the REST API — useful for CI/CD pipelines that auto-deploy flow updates.</p>
+      <div class="tabs">
+        <div class="tab-list">
+          <button class="tab-btn active" data-group="fapi" data-tab="list">List Flows</button>
+          <button class="tab-btn" data-group="fapi" data-tab="publish">Publish Flow</button>
+        </div>
+        <div class="tab-panel active" data-group="fapi" data-tab="list">
+          <div class="code-block"><div class="code-header"><div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div><div class="code-lang">⬡ List all flows</div><div class="code-actions"><button class="copy-btn">⎘ Copy</button></div></div>
+<pre class="language-javascript"><code class="language-javascript">const response = await axios.get('https://webexapis.com/v1/contactCenter/flows', {
+  headers: { Authorization: `Bearer ${token}` },
+  params: { orgId: ORG_ID }
+});
+response.data.items.forEach(f => {
+  console.log(`${f.name} [v${f.version}] — Status: ${f.publishStatus}`);
+});</code></pre></div>
+        </div>
+        <div class="tab-panel" data-group="fapi" data-tab="publish">
+          <div class="code-block"><div class="code-header"><div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div><div class="code-lang">⬡ Publish (activate) a flow version</div><div class="code-actions"><button class="copy-btn">⎘ Copy</button></div></div>
+<pre class="language-javascript"><code class="language-javascript">// Publish a specific flow version to make it live
+await axios.post(
+  `https://webexapis.com/v1/contactCenter/flows/${flowId}/publish`,
+  { version: 3, comment: 'Added enterprise priority routing' },
+  { headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' } }
+);
+console.log('Flow published and now live');</code></pre></div>
+        </div>
+      </div>
+      <div style="margin-top:28px;text-align:center;">
+        <a href="reporting.html" class="btn btn-primary">Next: Reporting & Analytics →</a>
+      </div>
+    </section>
+  </main>
+</div>
+<footer class="page-footer">
+  <span>© 2024 Cisco Systems · Webex Contact Center Extensibility Hub</span>
+  <span><a href="desktop-sdk.html">← Desktop SDK</a> · <a href="reporting.html">Reporting →</a></span>
+</footer>
+<button id="backToTop" title="Back to top">↑</button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+<script src="js/app.js"></script>
+<script>mermaid.initialize({ startOnLoad: true, theme: 'neutral', themeVariables: { primaryColor: '#00476B', primaryTextColor: '#fff', primaryBorderColor: '#00BCEB', lineColor: '#64748b' } });</script>
+</body>
+</html>

@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reporting & Analytics — WxCC Extensibility Hub</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+<div class="page-progress"><div class="page-progress-bar"></div></div>
+<nav class="topnav">
+  <a href="index.html" class="topnav-brand"><div class="topnav-logo">Wx</div><div class="topnav-title">WxCC Extensibility Hub <span>Webex Contact Center API Guide</span></div></a>
+  <ul class="topnav-links">
+    <li><a href="index.html">Overview</a></li><li><a href="getting-started.html">Get Started</a></li>
+    <li><a href="rest-apis.html">REST APIs</a></li><li><a href="webhooks.html">Webhooks</a></li>
+    <li><a href="desktop-sdk.html">Desktop SDK</a></li><li><a href="flow-designer.html">Flow Designer</a></li>
+    <li><a href="reporting.html" class="active">Reporting</a></li><li><a href="faq.html">FAQ</a></li>
+  </ul>
+  <button class="topnav-hamburger">☰</button>
+</nav>
+<div class="sidebar-overlay"></div>
+<div class="page-wrapper">
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Reporting & Analytics</div>
+      <a href="#overview" class="sidebar-link"><span class="icon">📊</span> Overview</a>
+      <a href="#data-pipeline" class="sidebar-link"><span class="icon">🔄</span> Data Pipeline</a>
+      <a href="#realtime" class="sidebar-link"><span class="icon">⚡</span> Real-Time Stats</a>
+      <a href="#historical" class="sidebar-link"><span class="icon">📅</span> Historical Reports</a>
+      <a href="#analyzer" class="sidebar-link"><span class="icon">🔍</span> Analyzer API</a>
+      <a href="#cdr" class="sidebar-link"><span class="icon">📞</span> Call Detail Records</a>
+      <a href="#export" class="sidebar-link"><span class="icon">📤</span> Data Export</a>
+      <a href="#dashboard" class="sidebar-link"><span class="icon">🖥️</span> Custom Dashboard</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Related</div>
+      <a href="rest-apis.html" class="sidebar-link"><span class="icon">🔌</span> REST APIs</a>
+      <a href="webhooks.html" class="sidebar-link"><span class="icon">📡</span> Webhooks</a>
+      <a href="faq.html" class="sidebar-link"><span class="icon">❓</span> FAQ</a>
+    </div>
+  </aside>
+  <main class="main-content">
+    <div class="breadcrumb"><a href="index.html">Home</a><span class="breadcrumb-sep">›</span><span>Reporting & Analytics</span></div>
+    <div class="section-header">
+      <div class="section-badge">📊 Reporting</div>
+      <h1>Reporting & Analytics APIs</h1>
+      <div class="divider"></div>
+      <p>Pull real-time queue stats, historical call data, agent performance metrics, and call detail records into your own dashboards, BI tools, or data warehouses.</p>
+    </div>
+
+    <section id="overview">
+      <h2 class="section-title">What You Can Query</h2>
+      <div class="cards-grid" style="grid-template-columns:repeat(auto-fill,minmax(190px,1fr))">
+        <div class="card" style="cursor:default">
+          <div class="card-icon">⚡</div>
+          <h3>Real-Time Stats</h3>
+          <p>Live queue depths, agent states, and active contact counts. Refreshed every few seconds.</p>
+        </div>
+        <div class="card" style="cursor:default">
+          <div class="card-icon">📅</div>
+          <h3>Historical Reports</h3>
+          <p>Aggregated metrics by day, week, or month. SLA compliance, AHT, abandon rates.</p>
+        </div>
+        <div class="card" style="cursor:default">
+          <div class="card-icon">📞</div>
+          <h3>Call Detail Records</h3>
+          <p>One row per contact. Full timeline: queue time, talk time, hold, wrap-up, outcome.</p>
+        </div>
+        <div class="card" style="cursor:default">
+          <div class="card-icon">👤</div>
+          <h3>Agent Performance</h3>
+          <p>Per-agent stats: contacts handled, AHT, adherence, state durations.</p>
+        </div>
+      </div>
+      <div class="info-box warning">
+        <div class="ib-icon">⚠️</div>
+        <div class="ib-body">
+          <h4>Scope Required</h4>
+          <p>Reporting APIs require the <code class="inline-code">cjp:analyzer_read</code> scope. Historical data is available for up to 13 months. Real-time data is a point-in-time snapshot.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="data-pipeline">
+      <h2 class="section-title">Data Pipeline Architecture</h2>
+      <div class="diagram-wrap">
+        <div class="diagram-title">WxCC Reporting — Data Flow from Contact Center to Your BI Tool</div>
+        <div class="mermaid">
+flowchart LR
+    A[📞 Contact\nEvents] --> B[(WxCC\nEvent Stream)]
+    B --> C[(Analyzer DB\nHistorical Store)]
+    B --> D[(Real-Time\nData Store)]
+
+    C --> E[Historical\nReporting API]
+    C --> F[CDR\nAPI]
+    D --> G[Real-Time\nStats API]
+
+    E --> H[Your\nBI Tool]
+    F --> H
+    G --> I[Live\nDashboard]
+    G --> J[Alerting\nSystem]
+    H --> K[(Data\nWarehouse)]
+
+    style A fill:#00476B,color:#fff
+    style B fill:#334155,color:#fff
+    style C fill:#334155,color:#fff
+    style D fill:#334155,color:#fff
+    style E fill:#6366f1,color:#fff
+    style F fill:#6366f1,color:#fff
+    style G fill:#10b981,color:#fff
+    style H fill:#f59e0b,color:#fff
+    style I fill:#10b981,color:#fff
+    style K fill:#00476B,color:#fff
+        </div>
+      </div>
+    </section>
+
+    <section id="realtime">
+      <h2 class="section-title">⚡ Real-Time Statistics</h2>
+      <p class="body-text">Poll real-time endpoints to build live wallboards and supervisor dashboards. Combine with webhooks to push updates on state changes.</p>
+
+      <div class="tabs">
+        <div class="tab-list">
+          <button class="tab-btn active" data-group="rt" data-tab="queue">Queue Stats</button>
+          <button class="tab-btn" data-group="rt" data-tab="agent">Agent Stats</button>
+          <button class="tab-btn" data-group="rt" data-tab="poll">Auto-Poll</button>
+        </div>
+        <div class="tab-panel active" data-group="rt" data-tab="queue">
+          <div class="code-block"><div class="code-header"><div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div><div class="code-lang">⬡ Real-time Queue Snapshot</div><div class="code-actions"><button class="copy-btn">⎘ Copy</button></div></div>
+<pre class="language-javascript"><code class="language-javascript">async function getQueueSnapshot(queueId) {
+  const res = await axios.get(
+    `https://webexapis.com/v1/contactCenter/queues/${queueId}/statistics`,
+    {
+      headers: { Authorization: `Bearer ${token}` },
+      params:  { orgId: ORG_ID }
+    }
+  );
+  const s = res.data;
+  return {
+    queueName:        s.queueName,
+    contactsWaiting:  s.contactsInQueue,      // waiting for agent
+    longestWait:      s.longestContactInQueue, // seconds
+    agentsAvailable:  s.agentsAvailable,
+    agentsOnContact:  s.agentsOnContact,
+    agentsIdle:       s.agentsIdle,
+    serviceLevel:     s.serviceLevelPercentage // % in SLA window
+  };
+}
+
+const snapshot = await getQueueSnapshot('QUEUE_ID');
+console.table(snapshot);</code></pre></div>
+        </div>
+        <div class="tab-panel" data-group="rt" data-tab="agent">
+          <div class="code-block"><div class="code-header"><div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div><div class="code-lang">⬡ Real-time Agent States</div><div class="code-actions"><button class="copy-btn">⎘ Copy</button></div></div>
+<pre class="language-javascript"><code class="language-javascript">async function getAgentStates(teamId) {
+  const res = await axios.get(
+    'https://webexapis.com/v1/contactCenter/agents/states',
+    {
+      headers: { Authorization: `Bearer ${token}` },
+      params:  { orgId: ORG_ID, teamId }
+    }
+  );
+
+  const summary = { Available: 0, Idle: 0, InACall: 0, WrapUp: 0 };
+  res.data.items.forEach(a => {
+    summary[a.agentState] = (summary[a.agentState] || 0) + 1;
+  });
+  return summary;
+}
+
+// Useful for: team supervisor dashboard, staffing alerts
+const states = await getAgentStates('TEAM_ID');
+if (states.Available === 0) {
+  await sendAlert('⚠️ No agents available in team!');
+}</code></pre></div>
+        </div>
+        <div class="tab-panel" data-group="rt" data-tab="poll">
+          <div class="code-block"><div class="code-header"><div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div><div class="code-lang">⬡ Auto-polling wallboard (30s interval)</div><div class="code-actions"><button class="copy-btn">⎘ Copy</button></div></div>
+<pre class="language-javascript"><code class="language-javascript">class LiveWallboard {
+  constructor(queueIds, intervalMs = 30_000) {
+    this.queueIds   = queueIds;
+    this.intervalMs = intervalMs;
+    this.timer      = null;
+  }
+
+  start() {
+    this.refresh();
+    this.timer = setInterval(() => this.refresh(), this.intervalMs);
+    console.log(`📊 Wallboard polling every ${this.intervalMs / 1000}s`);
+  }
+
+  stop() {
+    clearInterval(this.timer);
+    console.log('Wallboard stopped');
+  }
+
+  async refresh() {
+    const stats = await Promise.all(
+      this.queueIds.map(id => getQueueSnapshot(id))
+    );
+    // Emit to your UI (WebSocket, DOM update, etc.)
+    this.emit('update', stats);
+  }
+
+  emit(event, data) {
+    // Connect to your front-end via WebSocket, EventSource, etc.
+    console.log(`[${new Date().toISOString()}]`, data);
+  }
+}
+
+const board = new LiveWallboard(['QUEUE_1', 'QUEUE_2', 'QUEUE_3']);
+board.start();</code></pre></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="historical">
+      <h2 class="section-title">📅 Historical Reports</h2>
+      <p class="body-text">Query aggregated metrics for any time range up to 13 months back. Granularity can be hourly, daily, or monthly.</p>
+      <div class="code-block"><div class="code-header"><div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div><div class="code-lang">⬡ Historical Queue Metrics</div><div class="code-actions"><button class="copy-btn">⎘ Copy</button></div></div>
+<pre class="language-javascript"><code class="language-javascript">// Get yesterday's stats for all queues
+const yesterday = new Date();
+yesterday.setDate(yesterday.getDate() - 1);
+const dateStr = yesterday.toISOString().split('T')[0]; // "2024-01-14"
+
+const res = await axios.get(
+  'https://webexapis.com/v1/contactCenter/reports/queues',
+  {
+    headers: { Authorization: `Bearer ${token}` },
+    params: {
+      orgId:       ORG_ID,
+      startDate:   `${dateStr}T00:00:00Z`,
+      endDate:     `${dateStr}T23:59:59Z`,
+      granularity: 'HOURLY',    // HOURLY | DAILY | WEEKLY | MONTHLY
+      metrics:     'contactsHandled,avgHandleTime,serviceLevelPercentage,abandonRate'
+    }
+  }
+);
+
+// Each item: { queueId, queueName, hour, contactsHandled, avgHandleTime, ... }
+const report = res.data.items;
+const totalHandled = report.reduce((sum, r) => sum + r.contactsHandled, 0);
+console.log(`Total contacts handled yesterday: ${totalHandled}`);
+
+// Export to CSV
+const csv = [
+  'Queue,Hour,Handled,AHT (s),SLA %,Abandon %',
+  ...report.map(r =>
+    `${r.queueName},${r.hour},${r.contactsHandled},${r.avgHandleTime},${r.serviceLevelPercentage},${r.abandonRate}`
+  )
+].join('\n');
+require('fs').writeFileSync('report.csv', csv);</code></pre></div>
+    </section>
+
+    <section id="cdr">
+      <h2 class="section-title">📞 Call Detail Records (CDR)</h2>
+      <p class="body-text">Every contact generates a CDR — the most granular data available. One record per contact with full timestamps, agent assignments, and outcomes.</p>
+      <div class="code-block"><div class="code-header"><div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div><div class="code-lang">⬡ Fetch Call Detail Records</div><div class="code-actions"><button class="copy-btn">⎘ Copy</button></div></div>
+<pre class="language-javascript"><code class="language-javascript">async function fetchCDRs({ startDate, endDate, channelType }) {
+  const allRecords = [];
+  let cursor = null;
+
+  do {
+    const params = { orgId: ORG_ID, startDate, endDate, channelType, max: 1000 };
+    if (cursor) params.cursor = cursor;
+
+    const res = await axios.get(
+      'https://webexapis.com/v1/contactCenter/recordings/calls',
+      { headers: { Authorization: `Bearer ${token}` }, params }
+    );
+
+    allRecords.push(...res.data.items);
+    cursor = res.data.next ? new URL(res.data.next).searchParams.get('cursor') : null;
+
+  } while (cursor);
+
+  return allRecords;
+}
+
+const cdrs = await fetchCDRs({
+  startDate:   '2024-01-01T00:00:00Z',
+  endDate:     '2024-01-31T23:59:59Z',
+  channelType: 'telephony'
+});
+
+// Each CDR contains:
+// callId, callerId, agentId, agentName, queueId, startTime, endTime,
+// talkDuration, holdDuration, wrapUpDuration, totalDuration,
+// wrapUpCode, transferCount, disconnectType, callVariables
+
+console.log(`Fetched ${cdrs.length} CDRs`);
+const avgHandle = cdrs.reduce((s, c) => s + c.totalDuration, 0) / cdrs.length;
+console.log(`Average handle time: ${Math.round(avgHandle)}s`);</code></pre></div>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>CDR Field</th><th>Type</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td><code class="inline-code">callId</code></td><td>string</td><td>Unique contact identifier</td></tr>
+            <tr><td><code class="inline-code">callerId</code></td><td>string</td><td>Customer phone number or chat ID</td></tr>
+            <tr><td><code class="inline-code">agentId</code></td><td>string</td><td>Handling agent's ID</td></tr>
+            <tr><td><code class="inline-code">queueId</code></td><td>string</td><td>Queue where contact was routed</td></tr>
+            <tr><td><code class="inline-code">talkDuration</code></td><td>integer</td><td>Active talk/chat time in seconds</td></tr>
+            <tr><td><code class="inline-code">holdDuration</code></td><td>integer</td><td>Total hold time in seconds</td></tr>
+            <tr><td><code class="inline-code">wrapUpCode</code></td><td>string</td><td>Agent's selected outcome code</td></tr>
+            <tr><td><code class="inline-code">callVariables</code></td><td>object</td><td>Flow/CAD variables attached to contact</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="export">
+      <h2 class="section-title">📤 Scheduled Data Export</h2>
+      <p class="body-text">For large-scale data pipelines, schedule nightly exports to your data warehouse instead of polling continuously.</p>
+      <div class="code-block"><div class="code-header"><div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div><div class="code-lang">⬡ Nightly ETL Pipeline (Node-cron)</div><div class="code-actions"><button class="copy-btn">⎘ Copy</button></div></div>
+<pre class="language-javascript"><code class="language-javascript">const cron = require('node-cron');
+const { BigQuery } = require('@google-cloud/bigquery');
+
+const bq = new BigQuery({ projectId: 'your-gcp-project' });
+
+// Run at 2 AM every night — export yesterday's CDRs to BigQuery
+cron.schedule('0 2 * * *', async () => {
+  console.log('🔄 Starting nightly WxCC CDR export...');
+
+  const yesterday = new Date(Date.now() - 86_400_000);
+  const dateStr   = yesterday.toISOString().split('T')[0];
+
+  const cdrs = await fetchCDRs({
+    startDate: `${dateStr}T00:00:00Z`,
+    endDate:   `${dateStr}T23:59:59Z`
+  });
+
+  if (cdrs.length > 0) {
+    await bq
+      .dataset('contact_center')
+      .table('call_detail_records')
+      .insert(cdrs.map(r => ({
+        call_id:          r.callId,
+        caller_id:        r.callerId,
+        agent_id:         r.agentId,
+        queue_id:         r.queueId,
+        date:             dateStr,
+        talk_duration:    r.talkDuration,
+        hold_duration:    r.holdDuration,
+        total_duration:   r.totalDuration,
+        wrap_up_code:     r.wrapUpCode,
+        channel_type:     r.channelType
+      })));
+
+    console.log(`✅ Exported ${cdrs.length} CDRs to BigQuery`);
+  }
+});</code></pre></div>
+    </section>
+
+    <section id="dashboard">
+      <h2 class="section-title">🖥️ Building a Custom Dashboard</h2>
+      <p class="body-text">Combine real-time stats polling with historical data to build a complete supervisor dashboard. The example below shows the architecture pattern.</p>
+      <div class="diagram-wrap">
+        <div class="diagram-title">Custom Dashboard Architecture</div>
+        <div class="mermaid">
+flowchart TD
+    A[WxCC Real-Time API\nPoll every 30s] --> B[Node.js Backend\nAggregation Server]
+    C[WxCC Historical API\nPoll on page load] --> B
+    D[WxCC Webhooks\nEvent stream] --> B
+    B --> E[WebSocket\nServer]
+    E --> F[Browser\nDashboard App]
+    F --> G[📊 Live Queue Wall]
+    F --> H[👤 Agent State Grid]
+    F --> I[📈 Trend Charts]
+    F --> J[🔔 Alerts Panel]
+
+    style A fill:#10b981,color:#fff
+    style D fill:#6366f1,color:#fff
+    style B fill:#00476B,color:#fff
+    style E fill:#00476B,color:#fff
+    style F fill:#334155,color:#fff
+        </div>
+      </div>
+      <div style="margin-top:28px;text-align:center;">
+        <a href="faq.html" class="btn btn-primary">Next: FAQ →</a>
+      </div>
+    </section>
+  </main>
+</div>
+<footer class="page-footer">
+  <span>© 2024 Cisco Systems · Webex Contact Center Extensibility Hub</span>
+  <span><a href="flow-designer.html">← Flow Designer</a> · <a href="faq.html">FAQ →</a></span>
+</footer>
+<button id="backToTop" title="Back to top">↑</button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+<script src="js/app.js"></script>
+<script>mermaid.initialize({ startOnLoad: true, theme: 'neutral', themeVariables: { primaryColor: '#00476B', primaryTextColor: '#fff', primaryBorderColor: '#00BCEB', lineColor: '#64748b' } });</script>
+</body>
+</html>

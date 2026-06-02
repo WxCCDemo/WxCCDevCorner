@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Desktop JS SDK — WxCC Extensibility Hub</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+<div class="page-progress"><div class="page-progress-bar"></div></div>
+<nav class="topnav">
+  <a href="index.html" class="topnav-brand"><div class="topnav-logo">Wx</div><div class="topnav-title">WxCC Extensibility Hub <span>Webex Contact Center API Guide</span></div></a>
+  <ul class="topnav-links">
+    <li><a href="index.html">Overview</a></li><li><a href="getting-started.html">Get Started</a></li>
+    <li><a href="rest-apis.html">REST APIs</a></li><li><a href="webhooks.html">Webhooks</a></li>
+    <li><a href="desktop-sdk.html" class="active">Desktop SDK</a></li><li><a href="flow-designer.html">Flow Designer</a></li>
+    <li><a href="reporting.html">Reporting</a></li><li><a href="faq.html">FAQ</a></li>
+  </ul>
+  <button class="topnav-hamburger">☰</button>
+</nav>
+<div class="sidebar-overlay"></div>
+<div class="page-wrapper">
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Desktop JS SDK</div>
+      <a href="#what-is-sdk" class="sidebar-link"><span class="icon">🖥️</span> What is the SDK?</a>
+      <a href="#architecture" class="sidebar-link"><span class="icon">🏗️</span> Widget Architecture</a>
+      <a href="#setup" class="sidebar-link"><span class="icon">⚙️</span> Setup & Config</a>
+      <a href="#init" class="sidebar-link"><span class="icon">🚀</span> SDK Initialization</a>
+      <a href="#screen-pop" class="sidebar-link"><span class="icon">🪟</span> Screen Pop</a>
+      <a href="#agent-state" class="sidebar-link"><span class="icon">🔄</span> Agent State</a>
+      <a href="#task-events" class="sidebar-link"><span class="icon">📞</span> Task Events</a>
+      <a href="#custom-widget" class="sidebar-link"><span class="icon">📦</span> Custom Widget</a>
+      <a href="#actions" class="sidebar-link"><span class="icon">⚡</span> Desktop Actions</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Related</div>
+      <a href="flow-designer.html" class="sidebar-link"><span class="icon">🔀</span> Flow Designer</a>
+      <a href="webhooks.html" class="sidebar-link"><span class="icon">📡</span> Webhooks</a>
+    </div>
+  </aside>
+  <main class="main-content">
+    <div class="breadcrumb"><a href="index.html">Home</a><span class="breadcrumb-sep">›</span><span>Desktop JS SDK</span></div>
+    <div class="section-header">
+      <div class="section-badge">🖥️ Desktop SDK</div>
+      <h1>Agent Desktop JS SDK</h1>
+      <div class="divider"></div>
+      <p>Embed custom panels, widgets, and integrations directly inside the Webex Contact Center agent desktop. Show screen pops, CRM data, AI suggestions — all without leaving the desktop.</p>
+    </div>
+
+    <section id="what-is-sdk">
+      <h2 class="section-title">What is the Desktop SDK?</h2>
+      <p class="body-text">The <strong>Webex Contact Center Desktop JS SDK</strong> (also called the Agent Desktop Widget SDK) lets you build web-based custom widgets that run inside an iFrame panel on the agent desktop. Your widget receives real-time task and agent events from WxCC and can trigger desktop actions like changing agent state or popping notifications.</p>
+      <div class="info-box info">
+        <div class="ib-icon">💡</div>
+        <div class="ib-body">
+          <h4>Key Capabilities</h4>
+          <ul>
+            <li>React to task events (new call, hold, wrap-up) in real time</li>
+            <li>Read current agent info, task details, and call variables</li>
+            <li>Display CRM data, AI-suggested responses, or custom tools</li>
+            <li>Trigger desktop actions: change state, send notifications, update call variables</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="architecture">
+      <h2 class="section-title">Widget Architecture</h2>
+      <div class="diagram-wrap">
+        <div class="diagram-title">Desktop SDK — iFrame Widget Architecture</div>
+        <svg viewBox="0 0 780 360" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:780px;display:block;margin:0 auto;font-family:-apple-system,sans-serif;font-size:12px;">
+          <!-- Agent Desktop Shell -->
+          <rect x="10" y="10" width="760" height="340" rx="14" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+          <rect x="10" y="10" width="760" height="38" rx="14" fill="#00476B"/>
+          <rect x="10" y="34" width="760" height="14" fill="#00476B"/>
+          <text x="30" y="34" font-size="13" font-weight="700" fill="#fff">Webex Contact Center — Agent Desktop</text>
+          <circle cx="730" cy="29" r="6" fill="#ff5f57"/><circle cx="745" cy="29" r="6" fill="#febc2e"/><circle cx="760" cy="29" r="6" fill="#28c840"/>
+
+          <!-- Left Panel: Task List -->
+          <rect x="20" y="58" width="160" height="282" rx="8" fill="#fff" stroke="#e2e8f0" stroke-width="1.5"/>
+          <rect x="20" y="58" width="160" height="28" rx="8" fill="#e2e8f0"/>
+          <rect x="20" y="72" width="160" height="14" fill="#e2e8f0"/>
+          <text x="100" y="77" text-anchor="middle" font-size="11" font-weight="700" fill="#334155">Active Tasks</text>
+          <rect x="28" y="96" width="144" height="40" rx="6" fill="#dcfce7" stroke="#86efac" stroke-width="1"/>
+          <text x="100" y="112" text-anchor="middle" font-size="11" font-weight="600" fill="#15803d">📞 John Smith</text>
+          <text x="100" y="127" text-anchor="middle" font-size="10" fill="#15803d">+1-408-555-1234 · 2:34</text>
+          <rect x="28" y="144" width="144" height="40" rx="6" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1"/>
+          <text x="100" y="160" text-anchor="middle" font-size="11" font-weight="600" fill="#64748b">💬 Sarah Chen</text>
+          <text x="100" y="175" text-anchor="middle" font-size="10" fill="#94a3b8">Chat · waiting</text>
+
+          <!-- Center: Main task area -->
+          <rect x="192" y="58" width="340" height="282" rx="8" fill="#fff" stroke="#e2e8f0" stroke-width="1.5"/>
+          <rect x="192" y="58" width="340" height="28" rx="8" fill="#00476B"/>
+          <rect x="192" y="72" width="340" height="14" fill="#00476B"/>
+          <text x="362" y="77" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Current Task — John Smith</text>
+          <text x="210" y="110" font-size="11" fill="#64748b">📞 Caller ID</text><text x="380" y="110" font-size="11" fill="#334155" font-weight="600">+1-408-555-1234</text>
+          <text x="210" y="128" font-size="11" fill="#64748b">⏱  Duration</text><text x="380" y="128" font-size="11" fill="#334155" font-weight="600">02:34</text>
+          <text x="210" y="146" font-size="11" fill="#64748b">📋 Queue</text><text x="380" y="146" font-size="11" fill="#334155" font-weight="600">Support - Tier 1</text>
+          <text x="210" y="164" font-size="11" fill="#64748b">🏷  Account</text><text x="380" y="164" font-size="11" fill="#15803d" font-weight="600">ACC-98765</text>
+          <!-- Call controls -->
+          <rect x="215" y="180" width="60" height="28" rx="6" fill="#ef4444"/>
+          <text x="245" y="198" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">End</text>
+          <rect x="285" y="180" width="60" height="28" rx="6" fill="#f59e0b"/>
+          <text x="315" y="198" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Hold</text>
+          <rect x="355" y="180" width="80" height="28" rx="6" fill="#6366f1"/>
+          <text x="395" y="198" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Transfer</text>
+          <rect x="445" y="180" width="70" height="28" rx="6" fill="#10b981"/>
+          <text x="480" y="198" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Consult</text>
+
+          <!-- Right Panel: CUSTOM WIDGET -->
+          <rect x="544" y="58" width="216" height="282" rx="8" fill="#e8f7fd" stroke="#00BCEB" stroke-width="2"/>
+          <rect x="544" y="58" width="216" height="28" rx="8" fill="#00476B"/>
+          <rect x="544" y="72" width="216" height="14" fill="#00476B"/>
+          <text x="652" y="77" text-anchor="middle" font-size="11" font-weight="700" fill="#00BCEB">📦 YOUR CUSTOM WIDGET</text>
+          <!-- Widget content -->
+          <rect x="554" y="96" width="196" height="50" rx="6" fill="#fff" stroke="#cbd5e1" stroke-width="1"/>
+          <text x="652" y="112" text-anchor="middle" font-size="10" font-weight="700" fill="#334155">CRM — Customer Record</text>
+          <text x="562" y="128" font-size="10" fill="#64748b">Name: John Smith</text>
+          <text x="562" y="140" font-size="10" fill="#64748b">Plan: Enterprise · Since 2019</text>
+
+          <rect x="554" y="154" width="196" height="50" rx="6" fill="#fff" stroke="#cbd5e1" stroke-width="1"/>
+          <text x="652" y="170" text-anchor="middle" font-size="10" font-weight="700" fill="#334155">🤖 AI Suggested Response</text>
+          <text x="562" y="184" font-size="10" fill="#64748b">"Based on account history,</text>
+          <text x="562" y="196" font-size="10" fill="#64748b">offer billing credit..."</text>
+
+          <rect x="554" y="212" width="196" height="36" rx="6" fill="#00476B"/>
+          <text x="652" y="233" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Open in CRM →</text>
+
+          <!-- SDK label -->
+          <rect x="554" y="256" width="196" height="74" rx="6" fill="rgba(0,188,235,0.08)" stroke="#00BCEB" stroke-width="1" stroke-dasharray="4,3"/>
+          <text x="652" y="278" text-anchor="middle" font-size="10" font-weight="700" fill="#0099c0">Powered by</text>
+          <text x="652" y="294" text-anchor="middle" font-size="11" font-weight="800" fill="#00476B">Desktop JS SDK</text>
+          <text x="652" y="310" text-anchor="middle" font-size="9" fill="#64748b">iFrame • postMessage • Events</text>
+          <text x="652" y="324" text-anchor="middle" font-size="9" fill="#64748b">Your code runs here ↑</text>
+
+          <!-- Arrow from center to right -->
+          <line x1="532" y1="150" x2="542" y2="150" stroke="#00BCEB" stroke-width="2"/>
+          <polygon points="538,146 542,150 538,154" fill="#00BCEB"/>
+          <text x="520" y="145" font-size="9" fill="#00BCEB" text-anchor="middle">Events</text>
+        </svg>
+      </div>
+    </section>
+
+    <section id="setup">
+      <h2 class="section-title">Setup & Configuration</h2>
+      <p class="body-text">Custom widgets are configured in the <strong>Desktop Layout JSON</strong> — a JSON file uploaded to WxCC that defines which panels and widgets appear on the agent desktop.</p>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-content"><h4>Build your widget as a web app</h4><p>Any framework works — React, Vue, plain HTML. It will run inside an iFrame. Host it on any HTTPS URL.</p></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-content"><h4>Include the Desktop SDK</h4><p>Add the SDK script tag or install via npm: <code class="inline-code">npm install @wxcc-desktop/sdk</code></p></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-content"><h4>Register widget in Desktop Layout JSON</h4><p>Add your widget's URL to the layout config and upload it in WxCC Admin Portal under Desktop Layout.</p></div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-content"><h4>Assign layout to a team</h4><p>In WxCC Admin, assign the desktop layout to the team(s) whose agents should see your widget.</p></div></div>
+      </div>
+
+      <div class="expand-section">
+        <div class="expand-trigger">
+          <div class="expand-trigger-label"><span class="et-icon">📄</span> Show: Desktop Layout JSON — Adding a custom widget panel</div>
+          <span class="expand-chevron">▼</span>
+        </div>
+        <div class="expand-content">
+          <div class="code-block"><div class="code-header"><div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div><div class="code-lang">JSON — Desktop Layout Config</div><div class="code-actions"><button class="copy-btn">⎘ Copy</button></div></div>
+<pre class="language-javascript"><code class="language-javascript">{
+  "layoutVersion": 1.0,
+  "appTitle": "Webex Contact Center",
+  "logo": "https://your-cdn.com/logo.png",
+  "taskPageIllustration": "https://your-cdn.com/idle.svg",
+  "agentErrorPageIllustration": "https://your-cdn.com/error.svg",
+  "area": {
+    "panel": {
+      "children": [
+        {
+          "comp": "agentx-wc-iframe",
+          "attributes": {
+            "src": "https://your-widget-server.com/crm-widget/index.html"
+          },
+          "properties": {
+            "title": "Customer CRM",
+            "initializeConnector": true
+          },
+          "wrapper": {
+            "title": "CRM Panel",
+            "maximizeAreaName": "app-maximize-area"
+          }
+        }
+      ]
+    }
+  }
+}</code></pre></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="init">
+      <h2 class="section-title">SDK Initialization</h2>
+      <div class="code-block"><div class="code-header"><div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div><div class="code-lang">⬡ Initialize the Desktop SDK</div><div class="code-actions"><button class="copy-btn">⎘ Copy</button></div></div>
+<pre class="language-javascript"><code class="language-javascript">import { Desktop } from '@wxcc-desktop/sdk';
+
+// Initialize once when your widget loads
+async function initSDK() {
+  try {
+    await Desktop.config.init({
+      // Required: matches the "src" URL in your layout JSON
+      widgetName: 'CRM Widget',
+      widgetSrc:  'https://your-widget-server.com/crm-widget/index.html'
+    });
+
+    console.log('✅ Desktop SDK initialized');
+
+    // Get current agent info immediately after init
+    const agentInfo = await Desktop.agentContact.fetchAgentInfo();
+    console.log(`Agent: ${agentInfo.agentName} | State: ${agentInfo.subStatus}`);
+
+  } catch (err) {
+    console.error('SDK init failed:', err);
+  }
+}
+
+// Call on page load
+document.addEventListener('DOMContentLoaded', initSDK);</code></pre></div>
+    </section>
+
+    <section id="screen-pop">
+      <h2 class="section-title">🪟 Screen Pop — Auto-open CRM on new call</h2>
+      <p class="body-text">The most common use case: when a new call arrives, automatically look up the caller and display their record — no manual searching required.</p>
+      <div class="code-block"><div class="code-header"><div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div><div class="code-lang">⬡ Screen Pop Implementation</div><div class="code-actions"><button class="copy-btn">⎘ Copy</button></div></div>
+<pre class="language-javascript"><code class="language-javascript">import { Desktop } from '@wxcc-desktop/sdk';
+
+// Subscribe to new task events
+Desktop.agentContact.addEventListener('eAgentContact', async (event) => {
+  const { type, data } = event.detail;
+
+  if (type === 'AgentContactOffered') {
+    // New task offered to this agent
+    const { callerId, callVariables, taskId } = data;
+    console.log(`📞 Incoming call from: ${callerId}`);
+
+    // Fetch caller info from your CRM
+    const customer = await fetchFromCRM(callerId);
+
+    if (customer) {
+      // Update your widget UI with customer data
+      renderCustomerCard({
+        name:      customer.name,
+        account:   customer.accountId,
+        plan:      customer.plan,
+        openCases: customer.openCases,
+        crmUrl:    `https://crm.example.com/contacts/${customer.id}`
+      });
+
+      // Auto-open CRM in a new tab (screen pop)
+      window.open(customer.crmUrl, '_blank');
+    }
+  }
+
+  if (type === 'AgentContactEnded') {
+    // Clear the panel when call ends
+    clearCustomerCard();
+  }
+});
+
+// Helper to render customer info
+function renderCustomerCard({ name, account, plan, openCases, crmUrl }) {
+  document.getElementById('customer-name').textContent    = name;
+  document.getElementById('customer-account').textContent = account;
+  document.getElementById('customer-plan').textContent    = plan;
+  document.getElementById('open-cases').textContent       = openCases;
+  document.getElementById('crm-link').href               = crmUrl;
+  document.getElementById('customer-card').style.display  = 'block';
+}</code></pre></div>
+    </section>
+
+    <section id="agent-state">
+      <h2 class="section-title">🔄 Reading & Setting Agent State</h2>
+      <div class="tabs">
+        <div class="tab-list">
+          <button class="tab-btn active" data-group="state" data-tab="read">Read State</button>
+          <button class="tab-btn" data-group="state" data-tab="set">Set State</button>
+          <button class="tab-btn" data-group="state" data-tab="listen">Listen for Changes</button>
+        </div>
+        <div class="tab-panel active" data-group="state" data-tab="read">
+          <div class="code-block"><div class="code-header"><div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div><div class="code-lang">⬡ Read current agent state</div><div class="code-actions"><button class="copy-btn">⎘ Copy</button></div></div>
+<pre class="language-javascript"><code class="language-javascript">const agentInfo = await Desktop.agentContact.fetchAgentInfo();
+
+console.log({
+  agentId:   agentInfo.agentId,
+  name:      agentInfo.agentName,
+  state:     agentInfo.status,       // Available | Idle | InACall
+  subStatus: agentInfo.subStatus,    // e.g. "LUNCH_BREAK" when Idle
+  teamId:    agentInfo.teamId,
+  siteId:    agentInfo.siteId
+});</code></pre></div>
+        </div>
+        <div class="tab-panel" data-group="state" data-tab="set">
+          <div class="code-block"><div class="code-header"><div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div><div class="code-lang">⬡ Change agent state from widget</div><div class="code-actions"><button class="copy-btn">⎘ Copy</button></div></div>
+<pre class="language-javascript"><code class="language-javascript">// Change agent to Available
+await Desktop.agentContact.setAgentStatus({
+  state:   'Available',
+  auxCode: null
+});
+
+// Set to Idle with a reason code
+await Desktop.agentContact.setAgentStatus({
+  state:   'Idle',
+  auxCode: 'LUNCH_BREAK'   // must match an idle code configured in WxCC Admin
+});
+
+// Useful for: auto-setting agent to Available after CRM task completion</code></pre></div>
+        </div>
+        <div class="tab-panel" data-group="state" data-tab="listen">
+          <div class="code-block"><div class="code-header"><div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div><div class="code-lang">⬡ Listen for state changes</div><div class="code-actions"><button class="copy-btn">⎘ Copy</button></div></div>
+<pre class="language-javascript"><code class="language-javascript">Desktop.agentContact.addEventListener('eAgentContact', (event) => {
+  const { type, data } = event.detail;
+
+  switch (type) {
+    case 'AgentStateChange':
+      console.log(`State: ${data.currentState} (was ${data.previousState})`);
+      updateStatusBadge(data.currentState);
+      break;
+    case 'AgentLogout':
+      console.log('Agent logged out');
+      break;
+  }
+});</code></pre></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="task-events">
+      <h2 class="section-title">📞 Task Event Reference</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Event Type</th><th>Trigger</th><th>Key Data Fields</th></tr></thead>
+        <tbody>
+          <tr><td><code class="inline-code">AgentContactOffered</code></td><td>Task offered to agent</td><td>taskId, callerId, queueId, callVariables</td></tr>
+          <tr><td><code class="inline-code">AgentContactAccepted</code></td><td>Agent accepted the task</td><td>taskId, agentId, acceptTime</td></tr>
+          <tr><td><code class="inline-code">AgentContactEnded</code></td><td>Task ended</td><td>taskId, duration, wrapUpCode</td></tr>
+          <tr><td><code class="inline-code">AgentContactHeld</code></td><td>Contact placed on hold</td><td>taskId, holdTime</td></tr>
+          <tr><td><code class="inline-code">AgentContactUnheld</code></td><td>Hold removed</td><td>taskId</td></tr>
+          <tr><td><code class="inline-code">AgentStateChange</code></td><td>Agent changed state</td><td>currentState, previousState, auxCode</td></tr>
+          <tr><td><code class="inline-code">AgentConsulting</code></td><td>Agent initiated consult</td><td>taskId, consultedAgentId</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="actions">
+      <h2 class="section-title">⚡ Desktop Actions</h2>
+      <p class="body-text">Your widget can trigger actions on the desktop — not just read data.</p>
+      <div class="expand-section">
+        <div class="expand-trigger">
+          <div class="expand-trigger-label"><span class="et-icon">📝</span> Update Call Variables from widget</div>
+          <span class="expand-chevron">▼</span>
+        </div>
+        <div class="expand-content">
+          <div class="code-block"><div class="code-header"><div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div><div class="code-lang">⬡ Update call variables</div><div class="code-actions"><button class="copy-btn">⎘ Copy</button></div></div>
+<pre class="language-javascript"><code class="language-javascript">// After CRM lookup, write data back to the call record
+await Desktop.agentContact.setTaskVariable({
+  taskId: currentTaskId,
+  callVariables: {
+    customerName:    'John Smith',
+    accountId:       'ACC-98765',
+    customerSegment: 'Enterprise',
+    crmCaseId:       'CASE-12345'
+  }
+});</code></pre></div>
+        </div>
+      </div>
+      <div class="expand-section">
+        <div class="expand-trigger">
+          <div class="expand-trigger-label"><span class="et-icon">🔔</span> Show a desktop notification</div>
+          <span class="expand-chevron">▼</span>
+        </div>
+        <div class="expand-content">
+          <div class="code-block"><div class="code-header"><div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div><div class="code-lang">⬡ Desktop notification</div><div class="code-actions"><button class="copy-btn">⎘ Copy</button></div></div>
+<pre class="language-javascript"><code class="language-javascript">Desktop.agentContact.showNotification({
+  type:    'INFO',      // INFO | WARNING | ERROR
+  title:   '⚠️ High Value Customer',
+  message: 'This customer has an open P1 incident. Handle with priority.',
+  timeout: 8000         // auto-dismiss after 8 seconds
+});</code></pre></div>
+        </div>
+      </div>
+      <div style="margin-top:28px;text-align:center;">
+        <a href="flow-designer.html" class="btn btn-primary">Next: Flow Designer →</a>
+      </div>
+    </section>
+  </main>
+</div>
+<footer class="page-footer">
+  <span>© 2024 Cisco Systems · Webex Contact Center Extensibility Hub</span>
+  <span><a href="webhooks.html">← Webhooks</a> · <a href="flow-designer.html">Flow Designer →</a></span>
+</footer>
+<button id="backToTop" title="Back to top">↑</button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+<script src="js/app.js"></script>
+<script>mermaid.initialize({ startOnLoad: true, theme: 'neutral' });</script>
+</body>
+</html>

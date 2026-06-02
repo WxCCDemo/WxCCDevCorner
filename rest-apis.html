@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>REST APIs — WxCC Extensibility Hub</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+<div class="page-progress"><div class="page-progress-bar"></div></div>
+<nav class="topnav">
+  <a href="index.html" class="topnav-brand"><div class="topnav-logo">Wx</div><div class="topnav-title">WxCC Extensibility Hub <span>Webex Contact Center API Guide</span></div></a>
+  <ul class="topnav-links">
+    <li><a href="index.html">Overview</a></li><li><a href="getting-started.html">Get Started</a></li>
+    <li><a href="rest-apis.html" class="active">REST APIs</a></li><li><a href="webhooks.html">Webhooks</a></li>
+    <li><a href="desktop-sdk.html">Desktop SDK</a></li><li><a href="flow-designer.html">Flow Designer</a></li>
+    <li><a href="reporting.html">Reporting</a></li><li><a href="faq.html">FAQ</a></li>
+  </ul>
+  <button class="topnav-hamburger">☰</button>
+</nav>
+<div class="sidebar-overlay"></div>
+<div class="page-wrapper">
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">REST APIs</div>
+      <a href="#overview" class="sidebar-link"><span class="icon">🗺️</span> API Categories</a>
+      <a href="#tasks" class="sidebar-link"><span class="icon">📞</span> Task / Contact APIs</a>
+      <a href="#agents" class="sidebar-link"><span class="icon">👤</span> Agent APIs</a>
+      <a href="#queues" class="sidebar-link"><span class="icon">📋</span> Queue APIs</a>
+      <a href="#config" class="sidebar-link"><span class="icon">⚙️</span> Configuration APIs</a>
+      <a href="#pagination" class="sidebar-link"><span class="icon">📄</span> Pagination</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Related</div>
+      <a href="webhooks.html" class="sidebar-link"><span class="icon">📡</span> Webhooks</a>
+      <a href="reporting.html" class="sidebar-link"><span class="icon">📊</span> Reporting</a>
+      <a href="getting-started.html" class="sidebar-link"><span class="icon">🔑</span> Auth Setup</a>
+    </div>
+  </aside>
+  <main class="main-content">
+    <div class="breadcrumb"><a href="index.html">Home</a><span class="breadcrumb-sep">›</span><span>REST APIs</span></div>
+    <div class="section-header">
+      <div class="section-badge">🔌 REST APIs</div>
+      <h1>Contact Center REST APIs</h1>
+      <div class="divider"></div>
+      <p>Manage every aspect of your Webex Contact Center programmatically — tasks, agents, queues, teams, and configuration. All endpoints use JSON and Bearer auth.</p>
+    </div>
+
+    <!-- API CATEGORY MAP -->
+    <section id="overview">
+      <h2 class="section-title">API Category Map</h2>
+      <div class="diagram-wrap">
+        <div class="diagram-title">WxCC REST API Surface — Click a category to jump</div>
+        <svg viewBox="0 0 780 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:780px;display:block;margin:0 auto;font-family:-apple-system,sans-serif;">
+          <!-- Center hub -->
+          <circle cx="390" cy="150" r="58" fill="#00476B" stroke="#00BCEB" stroke-width="3"/>
+          <text x="390" y="144" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">WxCC</text>
+          <text x="390" y="161" text-anchor="middle" font-size="11" font-weight="600" fill="#00BCEB">REST APIs</text>
+
+          <!-- Spokes -->
+          <line x1="340" y1="108" x2="230" y2="62" stroke="#00BCEB" stroke-width="1.5" stroke-dasharray="4,3"/>
+          <line x1="332" y1="150" x2="195" y2="150" stroke="#00BCEB" stroke-width="1.5" stroke-dasharray="4,3"/>
+          <line x1="340" y1="192" x2="230" y2="238" stroke="#00BCEB" stroke-width="1.5" stroke-dasharray="4,3"/>
+          <line x1="440" y1="108" x2="550" y2="62" stroke="#00BCEB" stroke-width="1.5" stroke-dasharray="4,3"/>
+          <line x1="448" y1="150" x2="585" y2="150" stroke="#00BCEB" stroke-width="1.5" stroke-dasharray="4,3"/>
+          <line x1="440" y1="192" x2="550" y2="238" stroke="#00BCEB" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+          <!-- Node: Task/Contact -->
+          <a href="#tasks" style="cursor:pointer">
+            <rect x="110" y="30" width="120" height="52" rx="10" fill="#00476B" stroke="#00BCEB" stroke-width="1.5"/>
+            <text x="170" y="52" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">📞 Tasks</text>
+            <text x="170" y="70" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.7)">Contact management</text>
+          </a>
+          <!-- Node: Agents -->
+          <a href="#agents" style="cursor:pointer">
+            <rect x="60" y="124" width="120" height="52" rx="10" fill="#00476B" stroke="#00BCEB" stroke-width="1.5"/>
+            <text x="120" y="146" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">👤 Agents</text>
+            <text x="120" y="164" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.7)">Profile &amp; state</text>
+          </a>
+          <!-- Node: Config -->
+          <a href="#config" style="cursor:pointer">
+            <rect x="110" y="218" width="120" height="52" rx="10" fill="#00476B" stroke="#00BCEB" stroke-width="1.5"/>
+            <text x="170" y="240" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">⚙️ Config</text>
+            <text x="170" y="258" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.7)">Sites, teams, skills</text>
+          </a>
+          <!-- Node: Queues -->
+          <a href="#queues" style="cursor:pointer">
+            <rect x="548" y="30" width="120" height="52" rx="10" fill="#005a87" stroke="#00BCEB" stroke-width="1.5"/>
+            <text x="608" y="52" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">📋 Queues</text>
+            <text x="608" y="70" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.7)">Routing &amp; skills</text>
+          </a>
+          <!-- Node: Reporting -->
+          <a href="reporting.html" style="cursor:pointer">
+            <rect x="598" y="124" width="120" height="52" rx="10" fill="#005a87" stroke="#00BCEB" stroke-width="1.5"/>
+            <text x="658" y="146" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">📊 Reporting</text>
+            <text x="658" y="164" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.7)">Analytics &amp; stats</text>
+          </a>
+          <!-- Node: Webhooks -->
+          <a href="webhooks.html" style="cursor:pointer">
+            <rect x="548" y="218" width="120" height="52" rx="10" fill="#005a87" stroke="#00BCEB" stroke-width="1.5"/>
+            <text x="608" y="240" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">📡 Webhooks</text>
+            <text x="608" y="258" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.7)">Event subscriptions</text>
+          </a>
+          <text x="390" y="295" text-anchor="middle" font-size="10" fill="#94a3b8">Click any node to explore that API category</text>
+        </svg>
+      </div>
+    </section>
+
+    <!-- TASK APIS -->
+    <section id="tasks">
+      <h2 class="section-title">📞 Task / Contact APIs</h2>
+      <p class="body-text">A <strong>Task</strong> in WxCC represents a single customer interaction (call, chat, email). These APIs let you query, update, and manage active and historical tasks.</p>
+
+      <div class="endpoint-card">
+        <div class="endpoint-header">
+          <span class="endpoint-method badge badge-get">GET</span>
+          <span class="endpoint-path">/v1/contactCenter/tasks</span>
+          <span class="endpoint-desc">List all active tasks in your org</span>
+          <span style="margin-left:auto;font-size:18px;color:#94a3b8">▼</span>
+        </div>
+        <div class="endpoint-body">
+          <p class="body-text">Returns paginated list of all currently active contact tasks. Filter by queue, agent, channel type, or status.</p>
+          <h4 style="font-size:13px;font-weight:700;margin-bottom:8px;color:#334155">Query Parameters</h4>
+          <div class="table-wrap"><table>
+            <thead><tr><th>Parameter</th><th>Type</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td><code class="inline-code">orgId</code></td><td>string</td><td>Required. Your organization ID</td></tr>
+              <tr><td><code class="inline-code">channelType</code></td><td>string</td><td>Filter: telephony | chat | email | social</td></tr>
+              <tr><td><code class="inline-code">status</code></td><td>string</td><td>Filter: active | parked | held</td></tr>
+              <tr><td><code class="inline-code">max</code></td><td>integer</td><td>Max results per page (default 100, max 1000)</td></tr>
+            </tbody>
+          </table></div>
+          <div class="code-block"><div class="code-header"><div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div><div class="code-lang">⬡ JavaScript</div><div class="code-actions"><button class="copy-btn">⎘ Copy</button></div></div>
+<pre class="language-javascript"><code class="language-javascript">const response = await axios.get('https://webexapis.com/v1/contactCenter/tasks', {
+  headers: { Authorization: `Bearer ${token}` },
+  params: {
+    orgId: ORG_ID,
+    channelType: 'telephony',
+    status: 'active',
+    max: 50
+  }
+});
+
+// Each task item:
+// { id, channelType, status, queueId, agentId, callerId, startTime, ... }
+const tasks = response.data.items;
+console.log(`Active calls: ${tasks.length}`);</code></pre></div>
+        </div>
+      </div>
+
+      <div class="endpoint-card">
+        <div class="endpoint-header">
+          <span class="endpoint-method badge badge-get">GET</span>
+          <span class="endpoint-path">/v1/contactCenter/tasks/{taskId}</span>
+          <span class="endpoint-desc">Get details of a specific task</span>
+          <span style="margin-left:auto;font-size:18px;color:#94a3b8">▼</span>
+        </div>
+        <div class="endpoint-body">
+          <p class="body-text">Fetch full details of a task including call variables, routing history, and agent assignment.</p>
+          <div class="code-block"><div class="code-header"><div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div><div class="code-lang">⬡ JavaScript</div><div class="code-actions"><button class="copy-btn">⎘ Copy</button></div></div>
+<pre class="language-javascript"><code class="language-javascript">const taskId = 'abc123-task-id';
+const response = await axios.get(
+  `https://webexapis.com/v1/contactCenter/tasks/${taskId}`,
+  { headers: { Authorization: `Bearer ${token}` } }
+);
+const task = response.data;
+console.log(`Task ${task.id}: ${task.channelType} — Agent: ${task.agentId}`);</code></pre></div>
+        </div>
+      </div>
+
+      <div class="endpoint-card">
+        <div class="endpoint-header">
+          <span class="endpoint-method badge badge-post">POST</span>
+          <span class="endpoint-path">/v1/contactCenter/tasks/{taskId}/end</span>
+          <span class="endpoint-desc">End / wrap up a task</span>
+          <span style="margin-left:auto;font-size:18px;color:#94a3b8">▼</span>
+        </div>
+        <div class="endpoint-body">
+          <p class="body-text">Programmatically end a task and set wrap-up reason.</p>
+          <div class="code-block"><div class="code-header"><div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div><div class="code-lang">⬡ JavaScript</div><div class="code-actions"><button class="copy-btn">⎘ Copy</button></div></div>
+<pre class="language-javascript"><code class="language-javascript">await axios.post(
+  `https://webexapis.com/v1/contactCenter/tasks/${taskId}/end`,
+  { wrapUpCode: 'RESOLVED', notes: 'Customer issue resolved' },
+  { headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' } }
+);</code></pre></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AGENT APIS -->
+    <section id="agents">
+      <h2 class="section-title">👤 Agent APIs</h2>
+      <p class="body-text">Manage agent profiles, retrieve state information, and assign agents to teams or skill profiles.</p>
+
+      <div class="endpoint-card">
+        <div class="endpoint-header">
+          <span class="endpoint-method badge badge-get">GET</span>
+          <span class="endpoint-path">/v1/contactCenter/agents</span>
+          <span class="endpoint-desc">List all agents in the org</span>
+          <span style="margin-left:auto;font-size:18px;color:#94a3b8">▼</span>
+        </div>
+        <div class="endpoint-body">
+          <div class="code-block"><div class="code-header"><div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div><div class="code-lang">⬡ JavaScript</div><div class="code-actions"><button class="copy-btn">⎘ Copy</button></div></div>
+<pre class="language-javascript"><code class="language-javascript">async function listAgents(siteId = null) {
+  const params = { orgId: ORG_ID, max: 200 };
+  if (siteId) params.siteId = siteId;
+
+  const response = await axios.get('https://webexapis.com/v1/contactCenter/agents', {
+    headers: { Authorization: `Bearer ${token}` },
+    params
+  });
+
+  return response.data.items.map(a => ({
+    id: a.id,
+    name: a.name,
+    email: a.email,
+    state: a.agentState,        // Available | Idle | InACall | WrapUp
+    team: a.teamName,
+    site: a.siteName
+  }));
+}
+
+const agents = await listAgents();
+const available = agents.filter(a => a.state === 'Available');
+console.log(`${available.length} agents currently available`);</code></pre></div>
+        </div>
+      </div>
+
+      <div class="endpoint-card">
+        <div class="endpoint-header">
+          <span class="endpoint-method badge badge-post">POST</span>
+          <span class="endpoint-path">/v1/contactCenter/agents</span>
+          <span class="endpoint-desc">Create a new agent</span>
+          <span style="margin-left:auto;font-size:18px;color:#94a3b8">▼</span>
+        </div>
+        <div class="endpoint-body">
+          <div class="code-block"><div class="code-header"><div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div><div class="code-lang">⬡ JavaScript</div><div class="code-actions"><button class="copy-btn">⎘ Copy</button></div></div>
+<pre class="language-javascript"><code class="language-javascript">const newAgent = await axios.post(
+  'https://webexapis.com/v1/contactCenter/agents',
+  {
+    orgId: ORG_ID,
+    firstName: 'Jane',
+    lastName: 'Smith',
+    email: 'jane.smith@company.com',
+    siteId: 'site-id-here',
+    teamId: 'team-id-here',
+    skillProfileId: 'skill-profile-id',
+    dialNumber: '+14085551234',
+    agentType: 'AGENT'   // AGENT | SUPERVISOR
+  },
+  { headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' } }
+);
+console.log(`Created agent: ${newAgent.data.id}`);</code></pre></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUEUE APIS -->
+    <section id="queues">
+      <h2 class="section-title">📋 Queue APIs</h2>
+      <p class="body-text">Queues (Entry Points in WxCC) define how contacts are routed to agents. These APIs let you read queue stats and manage queue configuration.</p>
+
+      <div class="tabs">
+        <div class="tab-list">
+          <button class="tab-btn active" data-group="queue" data-tab="list">List Queues</button>
+          <button class="tab-btn" data-group="queue" data-tab="stats">Queue Stats</button>
+          <button class="tab-btn" data-group="queue" data-tab="update">Update Queue</button>
+        </div>
+        <div class="tab-panel active" data-group="queue" data-tab="list">
+          <div class="code-block"><div class="code-header"><div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div><div class="code-lang">⬡ List Queues</div><div class="code-actions"><button class="copy-btn">⎘ Copy</button></div></div>
+<pre class="language-javascript"><code class="language-javascript">const response = await axios.get('https://webexapis.com/v1/contactCenter/queues', {
+  headers: { Authorization: `Bearer ${token}` },
+  params: { orgId: ORG_ID }
+});
+// Returns: id, name, channelType, serviceLevel, maxWaitTime, agentCount
+response.data.items.forEach(q => {
+  console.log(`Queue: ${q.name} | Agents: ${q.agentCount} | SLA: ${q.serviceLevel}%`);
+});</code></pre></div>
+        </div>
+        <div class="tab-panel" data-group="queue" data-tab="stats">
+          <div class="code-block"><div class="code-header"><div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div><div class="code-lang">⬡ Real-time Queue Stats</div><div class="code-actions"><button class="copy-btn">⎘ Copy</button></div></div>
+<pre class="language-javascript"><code class="language-javascript">// Real-time queue statistics (snapshot)
+const stats = await axios.get(
+  `https://webexapis.com/v1/contactCenter/queues/${queueId}/statistics`,
+  { headers: { Authorization: `Bearer ${token}` }, params: { orgId: ORG_ID } }
+);
+const s = stats.data;
+console.log(`
+  Queue: ${s.queueName}
+  Contacts waiting: ${s.contactsWaiting}
+  Longest wait:     ${s.longestWaitTime}s
+  Agents available: ${s.agentsAvailable}
+  Calls handled:    ${s.contactsHandled}
+`);</code></pre></div>
+        </div>
+        <div class="tab-panel" data-group="queue" data-tab="update">
+          <div class="code-block"><div class="code-header"><div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div><div class="code-lang">⬡ Update Queue Settings</div><div class="code-actions"><button class="copy-btn">⎘ Copy</button></div></div>
+<pre class="language-javascript"><code class="language-javascript">await axios.put(
+  `https://webexapis.com/v1/contactCenter/queues/${queueId}`,
+  {
+    orgId: ORG_ID,
+    name: 'Support Queue - Tier 1',
+    serviceLevel: 80,          // % of calls answered within SLA time
+    serviceLevelThreshold: 30, // seconds
+    maxWaitTime: 300,          // max 5 min wait before overflow
+    routingType: 'SKILLS_BASED'
+  },
+  { headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' } }
+);</code></pre></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONFIG APIS -->
+    <section id="config">
+      <h2 class="section-title">⚙️ Configuration APIs</h2>
+      <p class="body-text">Manage the building blocks of your contact center: sites, teams, skill profiles, and entry points.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Resource</th><th>Endpoints</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td>Sites</td><td><span class="badge badge-get">GET</span> <span class="badge badge-post">POST</span> <span class="badge badge-put">PUT</span></td><td>Physical or virtual contact center locations</td></tr>
+            <tr><td>Teams</td><td><span class="badge badge-get">GET</span> <span class="badge badge-post">POST</span> <span class="badge badge-put">PUT</span></td><td>Group agents by function (e.g., Billing, Tech Support)</td></tr>
+            <tr><td>Skill Profiles</td><td><span class="badge badge-get">GET</span> <span class="badge badge-post">POST</span></td><td>Assign skill sets and proficiency levels to agents</td></tr>
+            <tr><td>Entry Points</td><td><span class="badge badge-get">GET</span> <span class="badge badge-post">POST</span></td><td>DNIs and channel endpoints that route into WxCC</td></tr>
+            <tr><td>Wrap-Up Codes</td><td><span class="badge badge-get">GET</span> <span class="badge badge-post">POST</span></td><td>Outcome codes agents select after a contact</td></tr>
+            <tr><td>Idle Codes</td><td><span class="badge badge-get">GET</span> <span class="badge badge-post">POST</span></td><td>Reasons agents can give when moving to idle state</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="expand-section">
+        <div class="expand-trigger">
+          <div class="expand-trigger-label"><span class="et-icon">⚙️</span> Show: Bulk-create teams from a list</div>
+          <span class="expand-chevron">▼</span>
+        </div>
+        <div class="expand-content">
+          <div class="code-block"><div class="code-header"><div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div><div class="code-lang">⬡ Bulk Create Teams</div><div class="code-actions"><button class="copy-btn">⎘ Copy</button></div></div>
+<pre class="language-javascript"><code class="language-javascript">const teamNames = ['Billing', 'Tech Support', 'Sales', 'Escalations'];
+
+async function bulkCreateTeams(siteId, teamNames) {
+  const results = [];
+  for (const name of teamNames) {
+    const res = await axios.post(
+      'https://webexapis.com/v1/contactCenter/teams',
+      { orgId: ORG_ID, siteId, name, teamType: 'INBOUND' },
+      { headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' } }
+    );
+    results.push({ name, id: res.data.id });
+    await new Promise(r => setTimeout(r, 200)); // gentle rate-limit spacing
+  }
+  return results;
+}
+
+const teams = await bulkCreateTeams('SITE_ID', teamNames);
+console.table(teams);</code></pre></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGINATION -->
+    <section id="pagination">
+      <h2 class="section-title">Pagination</h2>
+      <p class="body-text">All list endpoints use cursor-based pagination. Use the <code class="inline-code">next</code> URL from the response to fetch subsequent pages.</p>
+      <div class="code-block"><div class="code-header"><div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div><div class="code-lang">⬡ Auto-paginate all results</div><div class="code-actions"><button class="copy-btn">⎘ Copy</button></div></div>
+<pre class="language-javascript"><code class="language-javascript">async function getAllPages(url, params, headers) {
+  const allItems = [];
+  let nextUrl = url;
+  let pageParams = { ...params, max: 500 };
+
+  while (nextUrl) {
+    const response = await axios.get(nextUrl, { headers, params: pageParams });
+    allItems.push(...(response.data.items || []));
+
+    // WxCC returns a 'next' link header for cursor pagination
+    const linkHeader = response.headers['link'];
+    const nextMatch = linkHeader?.match(/<([^>]+)>;\s*rel="next"/);
+    nextUrl = nextMatch ? nextMatch[1] : null;
+    pageParams = {};  // next URL already has params baked in
+  }
+  return allItems;
+}
+
+// Fetch ALL agents across all pages
+const allAgents = await getAllPages(
+  'https://webexapis.com/v1/contactCenter/agents',
+  { orgId: ORG_ID },
+  { Authorization: `Bearer ${token}` }
+);
+console.log(`Total agents: ${allAgents.length}`);</code></pre></div>
+      <div style="margin-top:28px;text-align:center;">
+        <a href="webhooks.html" class="btn btn-primary">Next: Webhooks & Events →</a>
+      </div>
+    </section>
+  </main>
+</div>
+<footer class="page-footer">
+  <span>© 2024 Cisco Systems · Webex Contact Center Extensibility Hub</span>
+  <span><a href="getting-started.html">← Auth Setup</a> · <a href="webhooks.html">Webhooks →</a></span>
+</footer>
+<button id="backToTop" title="Back to top">↑</button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

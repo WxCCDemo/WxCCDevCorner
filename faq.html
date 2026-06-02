@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ — WxCC Extensibility Hub</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+<div class="page-progress"><div class="page-progress-bar"></div></div>
+<nav class="topnav">
+  <a href="index.html" class="topnav-brand"><div class="topnav-logo">Wx</div><div class="topnav-title">WxCC Extensibility Hub <span>Webex Contact Center API Guide</span></div></a>
+  <ul class="topnav-links">
+    <li><a href="index.html">Overview</a></li><li><a href="getting-started.html">Get Started</a></li>
+    <li><a href="rest-apis.html">REST APIs</a></li><li><a href="webhooks.html">Webhooks</a></li>
+    <li><a href="desktop-sdk.html">Desktop SDK</a></li><li><a href="flow-designer.html">Flow Designer</a></li>
+    <li><a href="reporting.html">Reporting</a></li><li><a href="faq.html" class="active">FAQ</a></li>
+  </ul>
+  <button class="topnav-hamburger">☰</button>
+</nav>
+<div class="sidebar-overlay"></div>
+<div class="page-wrapper">
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">FAQ Categories</div>
+      <a href="#auth-faq" class="sidebar-link"><span class="icon">🔑</span> Authentication</a>
+      <a href="#api-faq" class="sidebar-link"><span class="icon">🔌</span> REST APIs</a>
+      <a href="#webhook-faq" class="sidebar-link"><span class="icon">📡</span> Webhooks</a>
+      <a href="#sdk-faq" class="sidebar-link"><span class="icon">🖥️</span> Desktop SDK</a>
+      <a href="#flow-faq" class="sidebar-link"><span class="icon">🔀</span> Flow Designer</a>
+      <a href="#reporting-faq" class="sidebar-link"><span class="icon">📊</span> Reporting</a>
+      <a href="#errors-faq" class="sidebar-link"><span class="icon">❌</span> Errors & Debugging</a>
+      <a href="#best-practices" class="sidebar-link"><span class="icon">⭐</span> Best Practices</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Pages</div>
+      <a href="getting-started.html" class="sidebar-link"><span class="icon">🚀</span> Getting Started</a>
+      <a href="rest-apis.html" class="sidebar-link"><span class="icon">🔌</span> REST APIs</a>
+      <a href="webhooks.html" class="sidebar-link"><span class="icon">📡</span> Webhooks</a>
+    </div>
+  </aside>
+  <main class="main-content">
+    <div class="breadcrumb"><a href="index.html">Home</a><span class="breadcrumb-sep">›</span><span>FAQ</span></div>
+    <div class="section-header">
+      <div class="section-badge">❓ FAQ</div>
+      <h1>Frequently Asked Questions</h1>
+      <div class="divider"></div>
+      <p>Common questions about building on Webex Contact Center — authentication, APIs, webhooks, the Desktop SDK, and best practices.</p>
+    </div>
+
+    <!-- Search -->
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="faqSearch" class="search-input" placeholder="Search questions… e.g. &quot;rate limit&quot;, &quot;webhook secret&quot;, &quot;screen pop&quot;">
+    </div>
+
+    <!-- Quick jump chips -->
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px;">
+      <a href="#auth-faq" style="text-decoration:none"><span style="background:#e8f7fd;color:#0099c0;font-size:12px;font-weight:700;padding:5px 14px;border-radius:20px;border:1px solid #00BCEB;cursor:pointer">🔑 Auth</span></a>
+      <a href="#api-faq" style="text-decoration:none"><span style="background:#e8f7fd;color:#0099c0;font-size:12px;font-weight:700;padding:5px 14px;border-radius:20px;border:1px solid #00BCEB;cursor:pointer">🔌 APIs</span></a>
+      <a href="#webhook-faq" style="text-decoration:none"><span style="background:#e8f7fd;color:#0099c0;font-size:12px;font-weight:700;padding:5px 14px;border-radius:20px;border:1px solid #00BCEB;cursor:pointer">📡 Webhooks</span></a>
+      <a href="#sdk-faq" style="text-decoration:none"><span style="background:#e8f7fd;color:#0099c0;font-size:12px;font-weight:700;padding:5px 14px;border-radius:20px;border:1px solid #00BCEB;cursor:pointer">🖥️ Desktop SDK</span></a>
+      <a href="#flow-faq" style="text-decoration:none"><span style="background:#e8f7fd;color:#0099c0;font-size:12px;font-weight:700;padding:5px 14px;border-radius:20px;border:1px solid #00BCEB;cursor:pointer">🔀 Flow Designer</span></a>
+      <a href="#errors-faq" style="text-decoration:none"><span style="background:#fee2e2;color:#b91c1c;font-size:12px;font-weight:700;padding:5px 14px;border-radius:20px;border:1px solid #fca5a5;cursor:pointer">❌ Errors</span></a>
+      <a href="#best-practices" style="text-decoration:none"><span style="background:#dcfce7;color:#15803d;font-size:12px;font-weight:700;padding:5px 14px;border-radius:20px;border:1px solid #86efac;cursor:pointer">⭐ Best Practices</span></a>
+    </div>
+
+    <!-- AUTH FAQ -->
+    <section id="auth-faq">
+      <h2 class="section-title">🔑 Authentication</h2>
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <div class="accordion-title"><span class="q-num">Q1</span> What's the difference between a Personal Token and a Service App?</div>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            <p><strong>Personal Tokens</strong> are tied to your individual user account, expire after <strong>12 hours</strong>, and are only suitable for testing and development on developer.webex.com.</p>
+            <p style="margin-top:8px"><strong>Service Apps</strong> use the OAuth 2.0 Client Credentials grant (machine-to-machine). They don't expire on a fixed schedule, support automatic token refresh, and are the correct choice for production integrations. An org admin must approve a Service App before it can access org resources.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <div class="accordion-title"><span class="q-num">Q2</span> My token works on developer.webex.com but not in my code — why?</div>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            <p>The most common causes:</p>
+            <ul>
+              <li><strong>Expired token</strong> — personal tokens expire after 12 hours. Copy a fresh one.</li>
+              <li><strong>Wrong header format</strong> — must be <code class="inline-code">Authorization: Bearer YOUR_TOKEN</code> (capital B, space after Bearer, no quotes around the token).</li>
+              <li><strong>Trailing whitespace</strong> — copy-pasting tokens often includes an invisible newline. Trim it with <code class="inline-code">.trim()</code>.</li>
+              <li><strong>Wrong org</strong> — your token might belong to a personal org, not the WxCC-enabled org.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <div class="accordion-title"><span class="q-num">Q3</span> Which scopes do I need for a read-only integration?</div>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            <p>For read-only access (dashboards, reporting, monitoring), request these scopes:</p>
+            <ul>
+              <li><code class="inline-code">cjp:config_read</code> — read agents, queues, teams, sites</li>
+              <li><code class="inline-code">cjp:analyzer_read</code> — access historical and real-time reporting</li>
+              <li><code class="inline-code">spark:people_read</code> — resolve user identities (optional)</li>
+            </ul>
+            <p style="margin-top:8px">Avoid requesting <code class="inline-code">cjp:config</code> (write access) if you only need to read data.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <div class="accordion-title"><span class="q-num">Q4</span> How do I handle token refresh automatically?</div>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            <p>Cache the token with its expiry time and refresh it proactively 60 seconds before expiry. See the token caching example in the <a href="getting-started.html#service-app" style="color:var(--teal-dark)">Getting Started — Service App</a> section.</p>
+            <div class="code-block"><div class="code-header"><div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div><div class="code-lang">⬡ Token refresh pattern</div><div class="code-actions"><button class="copy-btn">⎘ Copy</button></div></div>
+<pre class="language-javascript"><code class="language-javascript">// Refresh 60 seconds before expiry
+const isExpired = Date.now() >= tokenCache.expiresAt - 60_000;
+if (isExpired) await refreshToken();</code></pre></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- API FAQ -->
+    <section id="api-faq">
+      <h2 class="section-title">🔌 REST APIs</h2>
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <div class="accordion-title"><span class="q-num">Q5</span> How do I find my Org ID?</div>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            <p>Three ways to get your Org ID:</p>
+            <ul>
+              <li><strong>API call:</strong> <code class="inline-code">GET https://webexapis.com/v1/organizations</code> — the <code class="inline-code">id</code> field in the first item is your Org ID.</li>
+              <li><strong>WxCC Admin portal:</strong> Log in to <code class="inline-code">admin.webex.com</code> → Organization Settings — the Org ID is shown at the top.</li>
+              <li><strong>Developer portal:</strong> At developer.webex.com, click your avatar → the "My Profile" page shows your org.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <div class="accordion-title"><span class="q-num">Q6</span> I'm hitting rate limits — how do I handle 429 errors?</div>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            <p>When you receive a <code class="inline-code">429 Too Many Requests</code>:</p>
+            <ul>
+              <li>Check the <code class="inline-code">Retry-After</code> header — it tells you how many seconds to wait.</li>
+              <li>Implement <strong>exponential backoff</strong>: wait 1s, then 2s, then 4s, then 8s between retries.</li>
+              <li><strong>Cache aggressively</strong> — agent lists and queue configs don't change every second. Cache for 30–60 seconds.</li>
+              <li>For bulk operations, add a 200ms delay between requests using <code class="inline-code">setTimeout</code>.</li>
+            </ul>
+            <p style="margin-top:8px">See the full retry helper in <a href="getting-started.html#rate-limits" style="color:var(--teal-dark)">Getting Started → Rate Limits</a>.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <div class="accordion-title"><span class="q-num">Q7</span> Can I create agents in bulk via API?</div>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            <p>There is no native bulk-create endpoint. You'll need to loop over a list and call <code class="inline-code">POST /contactCenter/agents</code> for each agent individually. Add a small delay (100–200ms) between each call to avoid rate limiting. The Bulk Create Teams example in <a href="rest-apis.html#config" style="color:var(--teal-dark)">REST APIs → Configuration</a> shows this pattern.</p>
+            <div class="info-box warning" style="margin-top:12px">
+              <div class="ib-icon">⚠️</div>
+              <div class="ib-body"><p>The agent's Webex user account must already exist before you can create a WxCC agent profile. Use the Webex Provisioning API or admin.webex.com to create the user first.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <div class="accordion-title"><span class="q-num">Q8</span> How do pagination cursors work?</div>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            <p>WxCC list endpoints return a <code class="inline-code">Link</code> response header with a <code class="inline-code">rel="next"</code> URL when more pages exist. To fetch all results, keep requesting the <code class="inline-code">next</code> URL until it's absent. Never use <code class="inline-code">offset</code>-based pagination — it's not supported. See the auto-paginate helper in <a href="rest-apis.html#pagination" style="color:var(--teal-dark)">REST APIs → Pagination</a>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WEBHOOK FAQ -->
+    <section id="webhook-faq">
+      <h2 class="section-title">📡 Webhooks</h2>
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <div class="accordion-title"><span class="q-num">Q9</span> My webhook endpoint isn't receiving events — how do I debug?</div>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            <p>Work through this checklist in order:</p>
+            <ul>
+              <li>✅ Is your server publicly reachable over HTTPS? Use <code class="inline-code">ngrok</code> for local testing.</li>
+              <li>✅ Does your server respond <code class="inline-code">200 OK</code> within 5 seconds? WxCC will not retry if it times out.</li>
+              <li>✅ Is the webhook registration still active? <code class="inline-code">GET /v1/webhooks</code> and check <code class="inline-code">status</code> field — should be <code class="inline-code">active</code>.</li>
+              <li>✅ Are you subscribed to the correct <code class="inline-code">resource</code> and <code class="inline-code">event</code>? Re-check your registration payload.</li>
+              <li>✅ Is your TLS certificate valid? WxCC won't deliver to endpoints with self-signed or expired certs.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <div class="accordion-title"><span class="q-num">Q10</span> Does WxCC retry failed webhook deliveries?</div>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            <p>Yes. If your endpoint returns a non-2xx status or times out (>5s), WxCC retries with exponential backoff for up to <strong>24 hours</strong>. After 24 hours of failures, the webhook subscription may be automatically disabled. Always respond 200 immediately and process the event asynchronously.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <div class="accordion-title"><span class="q-num">Q11</span> Can I receive webhook events for a specific agent or queue only?</div>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            <p>WxCC webhooks are org-level subscriptions — you'll receive events for all agents/queues in your org. To filter by agent or queue, check the relevant field (<code class="inline-code">data.agentId</code>, <code class="inline-code">data.queueId</code>) in your event handler and ignore events that don't match your criteria.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <div class="accordion-title"><span class="q-num">Q12</span> What is the X-Spark-Signature header and why does it matter?</div>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            <p>It's an <strong>HMAC-SHA1 signature</strong> of the raw request body, computed using the <code class="inline-code">secret</code> you provided when registering the webhook. Always verify this signature before processing any event — it proves the request genuinely came from Webex and hasn't been tampered with. See the full verification code in <a href="webhooks.html#security" style="color:var(--teal-dark)">Webhooks → Security</a>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SDK FAQ -->
+    <section id="sdk-faq">
+      <h2 class="section-title">🖥️ Desktop SDK</h2>
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <div class="accordion-title"><span class="q-num">Q13</span> My widget loads but the SDK init() never resolves — what's wrong?</div>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            <p>The SDK communicates with the parent desktop via <code class="inline-code">postMessage</code> — it only works when loaded inside the WxCC agent desktop iFrame. If you open your widget URL directly in a browser tab, <code class="inline-code">init()</code> will hang forever because there's no parent to handshake with.</p>
+            <p style="margin-top:8px"><strong>To test locally:</strong> Load the widget through the actual agent desktop (<code class="inline-code">desktop.wxcc-us1.cisco.com</code>). Use the Desktop Layout JSON to point to your ngrok URL during development.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <div class="accordion-title"><span class="q-num">Q14</span> How many custom widget panels can I add to the desktop?</div>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            <p>You can add multiple widgets to different areas of the desktop layout — the panel (right side), the task area (center), or the navigation bar (left). Each widget runs in its own iFrame. There's no hard limit on count, but consider agent usability — too many panels create cognitive overload. Most deployments use 1–3 custom widgets.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <div class="accordion-title"><span class="q-num">Q15</span> Can my widget make API calls to external systems?</div>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            <p>Yes — your widget is just a web app in an iFrame. It can call any external API (your CRM, knowledge base, AI service, etc.) using standard <code class="inline-code">fetch</code> or <code class="inline-code">axios</code> calls. Make sure your backend endpoints have CORS configured to allow the widget's origin (<code class="inline-code">*.wxcc-us1.cisco.com</code>).</p>
+            <div class="info-box warning" style="margin-top:12px">
+              <div class="ib-icon">⚠️</div>
+              <div class="ib-body"><p>Never store API keys or secrets in the widget's frontend code. Always proxy sensitive calls through your backend server.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <div class="accordion-title"><span class="q-num">Q16</span> How do I pass data from the flow (call variables) into my widget?</div>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            <p>Flow variables set as <strong>Call-Associated Data (CAD)</strong> are automatically passed to the agent desktop when the task is assigned. Your widget can read them via the SDK's task event data:</p>
+            <div class="code-block"><div class="code-header"><div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div><div class="code-lang">⬡ Read flow variables in widget</div><div class="code-actions"><button class="copy-btn">⎘ Copy</button></div></div>
+<pre class="language-javascript"><code class="language-javascript">Desktop.agentContact.addEventListener('eAgentContact', (event) => {
+  if (event.detail.type === 'AgentContactOffered') {
+    const { callVariables } = event.detail.data;
+    // callVariables contains everything set in your Flow Designer
+    console.log(callVariables.customerTier);   // "Enterprise"
+    console.log(callVariables.accountId);      // "ACC-98765"
+  }
+});</code></pre></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FLOW FAQ -->
+    <section id="flow-faq">
+      <h2 class="section-title">🔀 Flow Designer</h2>
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <div class="accordion-title"><span class="q-num">Q17</span> What's the timeout limit for the HTTP Request node?</div>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            <p>You can configure the HTTP node timeout from <strong>1 to 30 seconds</strong>. If the external API doesn't respond within the timeout, the flow takes the "Timeout" output edge. Keep your external APIs fast — callers on hold experience any delay directly. Target <strong>under 2 seconds</strong> for good caller experience.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <div class="accordion-title"><span class="q-num">Q18</span> Can I call multiple external APIs in a single flow?</div>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            <p>Yes — you can chain multiple HTTP Request nodes in a flow. For example: node 1 authenticates the caller, node 2 fetches their account balance, node 3 logs the interaction to an audit system. Each node parses its own response into flow variables that downstream nodes can use.</p>
+            <p style="margin-top:8px">Keep the total external call time under 5–6 seconds combined to avoid making callers wait too long in IVR.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <div class="accordion-title"><span class="q-num">Q19</span> What's the difference between a Flow Variable and a Global Variable?</div>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            <ul>
+              <li><strong>Flow Variables</strong> — exist only within a single flow execution. Created in Flow Designer per-flow. Use these for data that's specific to one call (customer name, account ID, intent).</li>
+              <li><strong>Global Variables</strong> — shared across all flows in the org. Configured in WxCC Admin. Use these for shared config values like API endpoint URLs or authentication tokens that don't change per-call.</li>
+              <li><strong>CAD Variables (Call-Associated Data)</strong> — a special subset of flow variables that get attached to the task record and are visible on the agent desktop.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <div class="accordion-title"><span class="q-num">Q20</span> Can I version-control my flows?</div>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            <p>WxCC Flow Designer maintains a version history of each flow. You can view past versions, compare changes, and roll back to a previous version from the admin portal. For CI/CD pipelines, use the <a href="flow-designer.html#flow-api" style="color:var(--teal-dark)">Flow Management API</a> to publish specific versions programmatically.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REPORTING FAQ -->
+    <section id="reporting-faq">
+      <h2 class="section-title">📊 Reporting & Analytics</h2>
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <div class="accordion-title"><span class="q-num">Q21</span> How far back can I query historical data?</div>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            <p>Historical reports and CDRs are available for up to <strong>13 months</strong> from the current date. For longer-term storage, export data to your own data warehouse (BigQuery, Snowflake, Redshift) on a regular schedule. See the nightly ETL example in <a href="reporting.html#export" style="color:var(--teal-dark)">Reporting → Scheduled Export</a>.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <div class="accordion-title"><span class="q-num">Q22</span> How often is real-time data updated?</div>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            <p>Real-time statistics endpoints return a <strong>point-in-time snapshot</strong> — the data reflects the state at the moment of your API call. WxCC doesn't push real-time updates via the stats API. For live wallboards, poll every <strong>15–30 seconds</strong>. For truly real-time state changes, combine polling with <a href="webhooks.html" style="color:var(--teal-dark)">webhooks</a> — webhooks notify you of state changes instantly.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <div class="accordion-title"><span class="q-num">Q23</span> Can I get call recordings via API?</div>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            <p>Yes — if call recording is enabled on your WxCC instance, you can retrieve recording metadata and download URLs via <code class="inline-code">GET /v1/contactCenter/recordings</code>. The actual audio files are stored in Cisco's secure storage and accessed via time-limited signed URLs returned by the API. Requires the <code class="inline-code">cjp:analyzer_read</code> scope and the recording feature to be enabled in your org.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ERRORS FAQ -->
+    <section id="errors-faq">
+      <h2 class="section-title">❌ Errors & Debugging</h2>
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <div class="accordion-title"><span class="q-num">Q24</span> I get a 403 even though I have the right scope — what else could it be?</div>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            <p>Beyond missing scopes, 403 can also mean:</p>
+            <ul>
+              <li><strong>Service App not approved</strong> — a Webex Org Admin must authorize your Service App. Pending approval returns 403.</li>
+              <li><strong>Feature not enabled</strong> — some APIs require specific WxCC features (e.g., outbound campaigns, AI) to be enabled on your org's subscription.</li>
+              <li><strong>Wrong orgId</strong> — you're querying a resource that belongs to a different org than your token's org.</li>
+              <li><strong>Resource-level restriction</strong> — some endpoints are admin-only and require the <code class="inline-code">spark-admin</code> role, not just API scopes.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <div class="accordion-title"><span class="q-num">Q25</span> How do I enable detailed error logging for my integration?</div>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            <p>Add an Axios interceptor to log all requests and responses:</p>
+            <div class="code-block"><div class="code-header"><div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div><div class="code-lang">⬡ Axios error interceptor</div><div class="code-actions"><button class="copy-btn">⎘ Copy</button></div></div>
+<pre class="language-javascript"><code class="language-javascript">axios.interceptors.response.use(
+  res => res,
+  err => {
+    const { status, data, headers } = err.response || {};
+    console.error({
+      status,
+      errorCode:  data?.errorCode,
+      message:    data?.message,
+      trackingId: headers?.['trackingid'],  // include in support tickets!
+      url:        err.config?.url
+    });
+    return Promise.reject(err);
+  }
+);
+// Always include the trackingId when contacting Cisco support</code></pre></div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <div class="accordion-title"><span class="q-num">Q26</span> The API returns data but it's missing some agents/queues — why?</div>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            <p>Two likely causes:</p>
+            <ul>
+              <li><strong>Pagination</strong> — you're only reading the first page. The default <code class="inline-code">max</code> is often 100. If you have more resources, use the cursor from the <code class="inline-code">Link</code> header to fetch all pages.</li>
+              <li><strong>Site/team scoping</strong> — some endpoints filter by site or team by default. Check if your token's user is scoped to specific sites and try adding <code class="inline-code">siteId</code> as a parameter or removing it to get org-wide results.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BEST PRACTICES -->
+    <section id="best-practices">
+      <h2 class="section-title">⭐ Best Practices</h2>
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <div class="accordion-title"><span class="q-num">Q27</span> What are the top security best practices for WxCC integrations?</div>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            <ul>
+              <li>🔒 <strong>Never hardcode tokens</strong> — use environment variables or a secrets manager (AWS Secrets Manager, HashiCorp Vault).</li>
+              <li>🔒 <strong>Verify webhook signatures</strong> — always validate <code class="inline-code">X-Spark-Signature</code> on every incoming request.</li>
+              <li>🔒 <strong>Use Service Apps, not personal tokens</strong> — personal tokens are tied to individuals and expire.</li>
+              <li>🔒 <strong>Principle of least privilege</strong> — request only the scopes you actually need.</li>
+              <li>🔒 <strong>No secrets in widget code</strong> — frontend JS is visible to anyone. Proxy sensitive calls through your backend.</li>
+              <li>🔒 <strong>Rotate secrets regularly</strong> — rotate webhook secrets and API credentials on a schedule.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <div class="accordion-title"><span class="q-num">Q28</span> How should I structure my integration for production reliability?</div>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            <ul>
+              <li>⚡ <strong>Cache aggressively</strong> — agent lists, queue configs, and org data rarely change. Cache for 30–60 seconds.</li>
+              <li>🔁 <strong>Implement retry with backoff</strong> — all API calls should retry on 429 and 5xx errors.</li>
+              <li>⏱️ <strong>Set request timeouts</strong> — never make an API call without a timeout (recommend 10s max).</li>
+              <li>📊 <strong>Monitor your webhook endpoint</strong> — track delivery success rate; alert if it drops below 99%.</li>
+              <li>🧪 <strong>Test against a sandbox org</strong> — use a non-production WxCC org to validate changes before deploying.</li>
+              <li>📝 <strong>Log trackingIds</strong> — always log the <code class="inline-code">trackingid</code> header for debugging with Cisco support.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <div class="accordion-title"><span class="q-num">Q29</span> What's the recommended architecture for a CRM screen-pop integration?</div>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            <p>The recommended pattern combines webhooks (server-side) with the Desktop SDK (client-side):</p>
+            <ul>
+              <li><strong>Webhook listener</strong> on your server catches <code class="inline-code">task:created</code> events and fetches CRM data immediately (before the agent even picks up)</li>
+              <li><strong>Desktop SDK widget</strong> on the agent desktop subscribes to <code class="inline-code">AgentContactOffered</code> and calls your backend to retrieve the pre-fetched CRM data</li>
+              <li>This two-pronged approach means data is ready <em>before</em> the agent answers — no waiting</li>
+            </ul>
+            <p style="margin-top:8px">For the implementation, see <a href="desktop-sdk.html#screen-pop" style="color:var(--teal-dark)">Desktop SDK → Screen Pop</a> and <a href="webhooks.html#listener" style="color:var(--teal-dark)">Webhooks → Listener</a>.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <div class="accordion-title"><span class="q-num">Q30</span> Where can I get more help?</div>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            <ul>
+              <li>📘 <strong>Official Docs:</strong> <a href="https://developer.webex.com/webex-contact-center/docs" target="_blank" style="color:var(--teal-dark)">developer.webex.com/webex-contact-center</a></li>
+              <li>💬 <strong>Developer Community:</strong> <a href="https://developer.webex.com/community" target="_blank" style="color:var(--teal-dark)">developer.webex.com/community</a> — Cisco engineers actively monitor this</li>
+              <li>🐙 <strong>Code Samples:</strong> <a href="https://github.com/WebexSamples/webex-contact-center-api-samples" target="_blank" style="color:var(--teal-dark)">github.com/WebexSamples/webex-contact-center-api-samples</a></li>
+              <li>🎫 <strong>Support Tickets:</strong> Include your <code class="inline-code">trackingid</code> header value and a minimal reproduction of the issue</li>
+              <li>🔬 <strong>API Explorer:</strong> Use the interactive API explorer at developer.webex.com to test endpoints without writing code</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:40px;text-align:center;padding:36px;background:linear-gradient(135deg,#00476B,#005a87);border-radius:16px;color:#fff;">
+        <div style="font-size:36px;margin-bottom:12px">🚀</div>
+        <h3 style="font-size:22px;font-weight:800;margin-bottom:8px">Ready to build?</h3>
+        <p style="color:rgba(255,255,255,0.8);margin-bottom:24px;font-size:15px">Start with authentication, make your first API call, and go from there.</p>
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+          <a href="getting-started.html" class="btn btn-primary" style="font-size:15px;padding:12px 28px">🔑 Get Started</a>
+          <a href="index.html" class="btn btn-outline" style="font-size:15px;padding:12px 28px">🗺️ Back to Overview</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+<footer class="page-footer">
+  <span>© 2024 Cisco Systems · Webex Contact Center Extensibility Hub</span>
+  <span><a href="reporting.html">← Reporting</a> · <a href="index.html">Home</a></span>
+</footer>
+<button id="backToTop" title="Back to top">↑</button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
