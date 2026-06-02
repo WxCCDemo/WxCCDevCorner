@@ -133,6 +133,18 @@
           <a href="#desktop-playbook">View local playbook →</a>
         </article>
 
+        <article class="sample-card accent-desktop">
+          <div class="sample-topline"><span>Widget Starter</span><span>Beginner</span></div>
+          <h3>Start a production-ready widget project</h3>
+          <p>Gives developers a cleaner starting point for building, packaging, and iterating on Webex Contact Center desktop widgets.</p>
+          <ul>
+            <li>Business value: faster path from idea to agent-ready prototype</li>
+            <li>Good for: widget teams, demos, extensibility workshops</li>
+            <li>Source: CiscoDevNet widget starter</li>
+          </ul>
+          <a href="#widget-starter-playbook">View local playbook →</a>
+        </article>
+
         <article class="sample-card accent-flow">
           <div class="sample-topline"><span>Journey Design</span><span>Intermediate</span></div>
           <h3>Use flow data to personalize routing</h3>
@@ -155,6 +167,18 @@
             <li>Source: GraphQL and reporting samples</li>
           </ul>
           <a href="#reporting-playbook">View local playbook →</a>
+        </article>
+
+        <article class="sample-card accent-reporting">
+          <div class="sample-topline"><span>Data Integration</span><span>Intermediate</span></div>
+          <h3>Connect contact center workflows to database-backed data</h3>
+          <p>Shows how WxCC can use external data patterns to enrich routing, reporting, and operational workflows.</p>
+          <ul>
+            <li>Business value: connect customer data to contact center decisions</li>
+            <li>Good for: account lookup, case context, operational data stores</li>
+            <li>Source: CiscoDevNet DB connector</li>
+          </ul>
+          <a href="#dbconnector-playbook">View local playbook →</a>
         </article>
       </div>
     </section>
@@ -267,6 +291,32 @@
         </div>
       </article>
 
+      <article class="playbook accent-desktop" id="widget-starter-playbook">
+        <div class="playbook-header">
+          <span>Widget Starter</span>
+          <h3>Reusable project foundation for custom desktop widgets</h3>
+          <p>Based on CiscoDevNet webex-contact-center-widget-starter patterns for starting a custom desktop widget project.</p>
+        </div>
+        <div class="playbook-layout">
+          <div class="mini-architecture">
+            <div>Widget Idea</div><span>Starter App</span><div>Build + Test</div><span>Layout JSON</span><div>Agent Desktop</div>
+          </div>
+          <div>
+            <h4>Business benefit</h4>
+            <p>Shortens the path from business idea to working agent desktop experience by giving developers a project structure they can adapt quickly.</p>
+            <h4>What the sample teaches</h4>
+            <ul>
+              <li>Start from a structured widget project rather than a blank web page.</li>
+              <li>Organize widget code, assets, and desktop integration behavior in one place.</li>
+              <li>Prepare the widget for hosting and desktop layout registration.</li>
+              <li>Use the starter as a reusable foundation for CRM panels, knowledge widgets, agent assist, and operational tools.</li>
+            </ul>
+            <h4>Best demonstration</h4>
+            <p>Show how a team can turn a business request, such as "show customer context during a call," into a working desktop widget prototype with a repeatable project foundation.</p>
+          </div>
+        </div>
+      </article>
+
       <article class="playbook accent-flow" id="provider-playbook">
         <div class="playbook-header">
           <span>Advanced Provider Patterns</span>
@@ -289,6 +339,32 @@
             </ul>
             <h4>Best demonstration</h4>
             <p>Explain how a customer could plug in an external AI service, bot, transcript engine, or analytics service while keeping the contact center flow controlled in WxCC.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="playbook accent-reporting" id="dbconnector-playbook">
+        <div class="playbook-header">
+          <span>Data Integration</span>
+          <h3>Database-backed connector patterns for richer customer journeys</h3>
+          <p>Based on CiscoDevNet webex-contact-center-dbconnector patterns for connecting contact center workflows with external data sources.</p>
+        </div>
+        <div class="playbook-layout">
+          <div class="mini-architecture">
+            <div>WxCC Flow or App</div><span>Connector</span><div>Database</div><span>Result</span><div>Routing / Screen Pop / Report</div>
+          </div>
+          <div>
+            <h4>Business benefit</h4>
+            <p>Helps organizations use customer, account, case, or operational data to make better routing decisions and create more useful agent experiences.</p>
+            <h4>What the sample teaches</h4>
+            <ul>
+              <li>Connect a Webex Contact Center use case to a database-backed service layer.</li>
+              <li>Use external data for account lookup, customer context, journey decisions, or reporting enrichment.</li>
+              <li>Separate data access from contact center logic so flows and widgets stay easier to maintain.</li>
+              <li>Demonstrate how WxCC can integrate with enterprise data without forcing agents to leave the desktop.</li>
+            </ul>
+            <h4>Best demonstration</h4>
+            <p>Show a caller or customer identifier being used to retrieve account details, then use that information for routing, a screen pop, or a reporting/enrichment scenario.</p>
           </div>
         </div>
       </article>
