@@ -1555,6 +1555,67 @@ tr:hover td { background: var(--bg-hover); }
 
 .playbook h3 { margin: 0; }
 
+.sample-screenshot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: var(--space-md);
+  margin: var(--space-md) 0;
+}
+
+.sample-screenshot {
+  background: var(--bg-code);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.sample-shot-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background: var(--bg-elevated);
+  border-bottom: 1px solid var(--border-subtle);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.sample-shot-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-cyan);
+  opacity: 0.8;
+}
+
+.sample-shot-body {
+  padding: var(--space-md);
+  display: grid;
+  gap: 8px;
+}
+
+.sample-shot-title {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.sample-shot-line {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  padding: 7px 9px;
+  border-radius: var(--radius-sm);
+  background: rgba(255,255,255,0.03);
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+}
+
+.sample-shot-value {
+  color: var(--accent-cyan);
+  font-weight: 700;
+}
+
 /* ------------------------------------------------------------------
    23. FAQ Page
    ------------------------------------------------------------------ */
