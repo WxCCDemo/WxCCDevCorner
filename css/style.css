@@ -405,7 +405,14 @@ tbody tr:last-child td { border-bottom: none; }
 .search-icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--gray-500); font-size: 16px; }
 
 /* ---- RESPONSIVE ---- */
-@media (max-width: 900px) {
+
+/* Tablet: shrink sidebar + compact nav */
+@media (max-width: 1100px) {
+  .topnav-links a { font-size: 12px; padding: 5px 8px; }
+}
+
+/* Tablet narrow / large mobile: collapse sidebar, hide nav links */
+@media (max-width: 768px) {
   .sidebar { transform: translateX(-100%); }
   .sidebar.open { transform: translateX(0); }
   .main-content { margin-left: 0; padding: 24px 20px; }
