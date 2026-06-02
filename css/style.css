@@ -406,26 +406,74 @@ tbody tr:last-child td { border-bottom: none; }
 
 /* ---- RESPONSIVE ---- */
 
-/* Tablet: shrink sidebar + compact nav */
+/* 2xl: 4K / large LED TV (1920px+) */
+@media (min-width: 1920px) {
+  :root { --sidebar-width: 300px; --topnav-height: 72px; }
+  body { font-size: 18px; }
+  .topnav { height: var(--topnav-height); padding: 0 48px; }
+  .topnav-logo { width: 44px; height: 44px; font-size: 18px; }
+  .topnav-title { font-size: 17px; }
+  .topnav-links a { font-size: 15px; padding: 8px 16px; }
+  .sidebar { width: var(--sidebar-width); padding: 28px 0; }
+  .sidebar-link { font-size: 15px; padding: 10px 24px; }
+  .main-content { padding: 48px 72px; max-width: 1300px; }
+  .hero { padding: 72px 64px; }
+  .hero h1 { font-size: 52px; }
+  .hero p { font-size: 20px; max-width: 720px; }
+  .section-header h1 { font-size: 40px; }
+  h2.section-title { font-size: 30px; }
+  p.body-text, .dp-section p { font-size: 17px; }
+  .card h3 { font-size: 18px; }
+  .card p  { font-size: 15px; }
+  .cards-grid { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 28px; }
+  .table-wrap table { font-size: 15px; }
+  pre[class*="language-"] { font-size: 15px !important; }
+  .page-footer { padding: 40px 72px; font-size: 15px; }
+  #backToTop { width: 52px; height: 52px; font-size: 22px; bottom: 40px; right: 40px; }
+}
+
+/* xl: large monitors 1440–1919px */
+@media (min-width: 1440px) and (max-width: 1919px) {
+  .main-content { max-width: 1100px; }
+  .hero h1 { font-size: 42px; }
+}
+
+/* Compact nav at 1100–1440px */
 @media (max-width: 1100px) {
   .topnav-links a { font-size: 12px; padding: 5px 8px; }
 }
 
-/* Tablet narrow / large mobile: collapse sidebar, hide nav links */
-@media (max-width: 768px) {
+/* md: tablets 768–1023px — sidebar slides in via hamburger */
+@media (max-width: 1023px) {
   .sidebar { transform: translateX(-100%); }
   .sidebar.open { transform: translateX(0); }
-  .main-content { margin-left: 0; padding: 24px 20px; }
+  .main-content { margin-left: 0; padding: 24px 28px; }
   .topnav-links { display: none; }
   .topnav-hamburger { display: block; }
-  .hero { padding: 36px 24px; }
-  .hero h1 { font-size: 26px; }
+  .hero { padding: 36px 28px; }
+  .hero h1 { font-size: 28px; }
   .cards-grid { grid-template-columns: 1fr 1fr; }
 }
-@media (max-width: 560px) {
-  .cards-grid { grid-template-columns: 1fr; }
+
+/* sm: phones 480–767px */
+@media (max-width: 767px) {
   .main-content { padding: 20px 16px; }
-  .page-footer { flex-direction: column; text-align: center; }
+  .hero { padding: 28px 20px; }
+  .hero h1 { font-size: 24px; }
+  .cards-grid { grid-template-columns: 1fr 1fr; }
+  .page-footer { flex-direction: column; text-align: center; padding: 24px 20px; }
+}
+
+/* xs: small phones ≤479px */
+@media (max-width: 479px) {
+  .cards-grid { grid-template-columns: 1fr; }
+  .main-content { padding: 16px 14px; }
+  .hero { padding: 24px 16px; }
+  .hero h1 { font-size: 22px; }
+  .section-header h1 { font-size: 22px; }
+  h2.section-title { font-size: 18px; }
+  .topnav { padding: 0 14px; }
+  .topnav-title span { display: none; }
 }
 
 /* ---- UTILITY ---- */
