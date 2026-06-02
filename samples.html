@@ -1306,46 +1306,110 @@ Body
     <div class="content-section">
       <div class="section-header"><span class="section-icon">✨</span><h2>What To Build Next</h2></div>
       <div class="cta-grid">
-        <a href="#flow-template-playbook" class="cta-card">
-          <span class="cta-card-label">Revenue</span>
-          <span class="cta-card-title">Priority Routing</span>
-          <span class="cta-card-desc">Use Flow HTTP lookup plus provider responses to return customer tier, preferred queue, and routing reason.</span>
-        </a>
-        <a href="#desktop-playbook" class="cta-card">
-          <span class="cta-card-label">Agent UX</span>
-          <span class="cta-card-title">CRM Screen Pop</span>
-          <span class="cta-card-desc">Start from task variables, request customer context, and render account actions inside the agent desktop.</span>
-        </a>
-        <a href="#ai-provider-playbook" class="cta-card">
-          <span class="cta-card-label">Agent UX</span>
-          <span class="cta-card-title">Agent Assist Widget</span>
-          <span class="cta-card-desc">Combine AI provider intent, suggested response, and next best action with desktop task context.</span>
-        </a>
-        <a href="#webhook-playbook" class="cta-card">
-          <span class="cta-card-label">Operations</span>
-          <span class="cta-card-title">SLA Alerts</span>
-          <span class="cta-card-desc">Subscribe to contact and agent events, verify signatures, and post alerts to an operations channel.</span>
-        </a>
-        <a href="#powerbi-playbook" class="cta-card">
-          <span class="cta-card-label">Analytics</span>
-          <span class="cta-card-title">BI Connector</span>
-          <span class="cta-card-desc">Export CDRs, queue metrics, and agent activity into a refreshable Power BI model.</span>
-        </a>
-        <a href="#click-to-call-playbook" class="cta-card">
-          <span class="cta-card-label">CRM Action</span>
-          <span class="cta-card-title">Click To Call</span>
-          <span class="cta-card-desc">Trigger outbound calls from CRM records with a JSON payload containing agent, destination, and context.</span>
-        </a>
-        <a href="#callback-playbook" class="cta-card">
-          <span class="cta-card-label">Customer Experience</span>
-          <span class="cta-card-title">Callback Deflection</span>
-          <span class="cta-card-desc">Offer callback when estimated wait is high, then create the callback request with customer consent data.</span>
-        </a>
-        <a href="#config-playbook" class="cta-card">
-          <span class="cta-card-label">Admin Automation</span>
-          <span class="cta-card-title">Config Migration Audit</span>
-          <span class="cta-card-desc">Read queues, teams, sites, users, and skills into a baseline JSON file before making controlled changes.</span>
-        </a>
+        <details class="cta-card build-next-card">
+          <summary>
+            <span class="cta-card-label">Revenue</span>
+            <span class="cta-card-title">Priority Routing</span>
+            <span class="cta-card-desc">Use Flow HTTP lookup plus provider responses to return customer tier, preferred queue, and routing reason.</span>
+          </summary>
+          <div class="build-next-details">
+            <span><strong>Trigger:</strong> Flow HTTP Request during IVR lookup.</span>
+            <span><strong>Payload:</strong> ANI, account number, language, current queue.</span>
+            <span><strong>Response:</strong> queueId, priority, tier, reason.</span>
+            <a href="#flow-template-playbook">Open flow template playbook →</a>
+          </div>
+        </details>
+        <details class="cta-card build-next-card">
+          <summary>
+            <span class="cta-card-label">Agent UX</span>
+            <span class="cta-card-title">CRM Screen Pop</span>
+            <span class="cta-card-desc">Start from task variables, request customer context, and render account actions inside the agent desktop.</span>
+          </summary>
+          <div class="build-next-details">
+            <span><strong>Trigger:</strong> AgentContactOffered desktop event.</span>
+            <span><strong>Payload:</strong> taskId, ANI, CAD variables, CRM record ID.</span>
+            <span><strong>Output:</strong> account summary, case list, guided next action.</span>
+            <a href="#desktop-playbook">Open agent experience playbook →</a>
+          </div>
+        </details>
+        <details class="cta-card build-next-card">
+          <summary>
+            <span class="cta-card-label">Agent UX</span>
+            <span class="cta-card-title">Agent Assist Widget</span>
+            <span class="cta-card-desc">Combine AI provider intent, suggested response, and next best action with desktop task context.</span>
+          </summary>
+          <div class="build-next-details">
+            <span><strong>Trigger:</strong> transcript, intent, or contact-offered event.</span>
+            <span><strong>Payload:</strong> utterance, customer tier, queue, conversation state.</span>
+            <span><strong>Output:</strong> suggested response, knowledge link, confidence.</span>
+            <a href="#ai-provider-playbook">Open AI provider playbook →</a>
+          </div>
+        </details>
+        <details class="cta-card build-next-card">
+          <summary>
+            <span class="cta-card-label">Operations</span>
+            <span class="cta-card-title">SLA Alerts</span>
+            <span class="cta-card-desc">Subscribe to contact and agent events, verify signatures, and post alerts to an operations channel.</span>
+          </summary>
+          <div class="build-next-details">
+            <span><strong>Trigger:</strong> queue threshold, task event, or scheduled reporting snapshot.</span>
+            <span><strong>Payload:</strong> queueId, contacts waiting, longest wait, service level.</span>
+            <span><strong>Output:</strong> Webex space alert, ticket, or supervisor notification.</span>
+            <a href="#webhook-playbook">Open webhook listener playbook →</a>
+          </div>
+        </details>
+        <details class="cta-card build-next-card">
+          <summary>
+            <span class="cta-card-label">Analytics</span>
+            <span class="cta-card-title">BI Connector</span>
+            <span class="cta-card-desc">Export CDRs, queue metrics, and agent activity into a refreshable Power BI model.</span>
+          </summary>
+          <div class="build-next-details">
+            <span><strong>Trigger:</strong> nightly export or dashboard refresh.</span>
+            <span><strong>Payload:</strong> date range, report fields, pagination cursor.</span>
+            <span><strong>Output:</strong> fact table, dimensions, service-level dashboard.</span>
+            <a href="#powerbi-playbook">Open Power BI playbook →</a>
+          </div>
+        </details>
+        <details class="cta-card build-next-card">
+          <summary>
+            <span class="cta-card-label">CRM Action</span>
+            <span class="cta-card-title">Click To Call</span>
+            <span class="cta-card-desc">Trigger outbound calls from CRM records with a JSON payload containing agent, destination, and context.</span>
+          </summary>
+          <div class="build-next-details">
+            <span><strong>Trigger:</strong> CRM contact button or desktop widget action.</span>
+            <span><strong>Payload:</strong> agentId, destination, outdial ANI, CRM context.</span>
+            <span><strong>Output:</strong> outbound task, audit event, CRM activity note.</span>
+            <a href="#click-to-call-playbook">Open click-to-call playbook →</a>
+          </div>
+        </details>
+        <details class="cta-card build-next-card">
+          <summary>
+            <span class="cta-card-label">Customer Experience</span>
+            <span class="cta-card-title">Callback Deflection</span>
+            <span class="cta-card-desc">Offer callback when estimated wait is high, then create the callback request with customer consent data.</span>
+          </summary>
+          <div class="build-next-details">
+            <span><strong>Trigger:</strong> long wait time, after-hours flow, or web form.</span>
+            <span><strong>Payload:</strong> callback number, queue, preferred time, consent.</span>
+            <span><strong>Output:</strong> callback request, CRM status, customer confirmation.</span>
+            <a href="#callback-playbook">Open callback playbook →</a>
+          </div>
+        </details>
+        <details class="cta-card build-next-card">
+          <summary>
+            <span class="cta-card-label">Admin Automation</span>
+            <span class="cta-card-title">Config Migration Audit</span>
+            <span class="cta-card-desc">Read queues, teams, sites, users, and skills into a baseline JSON file before making controlled changes.</span>
+          </summary>
+          <div class="build-next-details">
+            <span><strong>Trigger:</strong> migration readiness, pre-change audit, or scheduled compliance check.</span>
+            <span><strong>Payload:</strong> orgId, site filters, object types, export format.</span>
+            <span><strong>Output:</strong> baseline JSON, delta report, rollback reference.</span>
+            <a href="#config-playbook">Open config automation playbook →</a>
+          </div>
+        </details>
       </div>
     </div>
 

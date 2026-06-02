@@ -1195,6 +1195,54 @@ tr:hover td { background: var(--bg-hover); }
   color: var(--text-muted);
 }
 
+.build-next-card {
+  cursor: pointer;
+}
+
+.build-next-card summary {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  list-style: none;
+}
+
+.build-next-card summary::-webkit-details-marker {
+  display: none;
+}
+
+.build-next-card summary::after {
+  content: "Show build details";
+  margin-top: var(--space-xs);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+}
+
+.build-next-card[open] summary::after {
+  content: "Hide build details";
+}
+
+.build-next-details {
+  display: grid;
+  gap: var(--space-xs);
+  margin-top: var(--space-sm);
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--border-subtle);
+  font-size: 0.78125rem;
+  color: var(--text-secondary);
+}
+
+.build-next-details a {
+  margin-top: var(--space-xs);
+  font-weight: 600;
+  color: var(--accent-cyan);
+  text-decoration: none;
+}
+
+.build-next-details a:hover {
+  text-decoration: underline;
+}
+
 /* ------------------------------------------------------------------
    19. Page Footer (prev/next)
    ------------------------------------------------------------------ */
