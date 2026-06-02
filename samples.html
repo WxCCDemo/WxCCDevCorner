@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solutions & Samples — WxCC Extensibility Hub</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="page-progress"><div class="page-progress-bar"></div></div>
+<nav class="topnav">
+  <a href="index.html" class="topnav-brand">
+    <div class="topnav-logo">Wx</div>
+    <div class="topnav-title">WxCC Extensibility Hub <span>Business-led API learning</span></div>
+  </a>
+  <ul class="topnav-links">
+    <li><a href="index.html">Explorer</a></li>
+    <li><a href="getting-started.html">Get Started</a></li>
+    <li><a href="rest-apis.html">REST APIs</a></li>
+    <li><a href="webhooks.html">Webhooks</a></li>
+    <li><a href="desktop-sdk.html">Desktop SDK</a></li>
+    <li><a href="flow-designer.html">Flow Designer</a></li>
+    <li><a href="reporting.html">Reporting</a></li>
+    <li><a href="samples.html" class="active">Samples</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+  </ul>
+  <button class="topnav-hamburger" aria-label="Open menu">☰</button>
+</nav>
+<div class="sidebar-overlay"></div>
+
+<div class="page-wrapper">
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Solution Paths</div>
+      <a href="#journey" class="sidebar-link"><span class="icon">🧭</span> Business Journey</a>
+      <a href="#samples" class="sidebar-link"><span class="icon">🧩</span> Sample Gallery</a>
+      <a href="#ignite" class="sidebar-link"><span class="icon">✨</span> What To Build Next</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Related</div>
+      <a href="getting-started.html" class="sidebar-link"><span class="icon">🔑</span> Get Started</a>
+      <a href="desktop-sdk.html" class="sidebar-link"><span class="icon">🖥️</span> Desktop SDK</a>
+      <a href="reporting.html" class="sidebar-link"><span class="icon">📊</span> Reporting</a>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <div class="breadcrumb"><a href="index.html">Home</a><span class="breadcrumb-sep">›</span><span>Solutions & Samples</span></div>
+
+    <div class="section-header">
+      <div class="section-badge">🧩 Solutions & Samples</div>
+      <h1>Build Business Confidence With Working Patterns</h1>
+      <div class="divider"></div>
+      <p>Explore practical Webex Contact Center examples by business outcome, then open the sample source that helps your team move from idea to proof of value.</p>
+    </div>
+
+    <section id="journey">
+      <h2 class="section-title">Business Journey</h2>
+      <div class="value-grid">
+        <article class="value-card">
+          <span class="value-kicker">Start</span>
+          <h3>Connect securely</h3>
+          <p>Use the right auth model so teams can test quickly, automate safely, and move toward production with confidence.</p>
+        </article>
+        <article class="value-card">
+          <span class="value-kicker">Operate</span>
+          <h3>Automate contact center work</h3>
+          <p>Use REST APIs and configuration samples to reduce manual setup, synchronize systems, and keep operations consistent.</p>
+        </article>
+        <article class="value-card">
+          <span class="value-kicker">Respond</span>
+          <h3>Act when moments happen</h3>
+          <p>Use webhooks to trigger notifications, downloads, CRM updates, and workflows as soon as customer events occur.</p>
+        </article>
+        <article class="value-card">
+          <span class="value-kicker">Elevate</span>
+          <h3>Improve agent experience</h3>
+          <p>Use Desktop SDK widgets to bring CRM, knowledge, AI suggestions, and call controls into the agent workspace.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="samples">
+      <h2 class="section-title">Sample Gallery</h2>
+      <p class="body-text">Each sample below is framed as a business capability first, then a developer starting point. Use these as demonstration paths, proof-of-concept starters, or learning exercises.</p>
+
+      <div class="sample-grid">
+        <article class="sample-card accent-auth">
+          <div class="sample-topline"><span>Auth Foundation</span><span>Beginner</span></div>
+          <h3>Get an access token and make your first API call</h3>
+          <p>Helps teams prove secure API access, understand scopes, and create a repeatable starting point for every integration.</p>
+          <ul>
+            <li>Business value: faster onboarding for technical teams</li>
+            <li>Good for: demos, training, initial validation</li>
+            <li>Source: WebexSamples API fundamentals</li>
+          </ul>
+          <a href="https://github.com/WebexSamples/webex-contact-center-api-samples" target="_blank" rel="noopener">Open sample repository →</a>
+        </article>
+
+        <article class="sample-card accent-rest">
+          <div class="sample-topline"><span>Operations</span><span>Intermediate</span></div>
+          <h3>Manage configuration and reduce manual admin work</h3>
+          <p>Shows how configuration APIs can support repeatable setup, data extraction, environment review, and operational governance.</p>
+          <ul>
+            <li>Business value: consistent configuration at scale</li>
+            <li>Good for: partner onboarding, admin automation</li>
+            <li>Source: configuration samples</li>
+          </ul>
+          <a href="https://github.com/WebexSamples/webex-contact-center-api-samples" target="_blank" rel="noopener">Explore configuration samples →</a>
+        </article>
+
+        <article class="sample-card accent-webhooks">
+          <div class="sample-topline"><span>Real-time Action</span><span>Intermediate</span></div>
+          <h3>Send notifications when important events occur</h3>
+          <p>Demonstrates event-driven automation so supervisors, systems, and downstream teams can respond without waiting for reports.</p>
+          <ul>
+            <li>Business value: faster response to customer events</li>
+            <li>Good for: alerts, recording workflows, CRM updates</li>
+            <li>Source: webhook notification samples</li>
+          </ul>
+          <a href="https://github.com/WebexSamples/webex-contact-center-api-samples" target="_blank" rel="noopener">Explore webhook samples →</a>
+        </article>
+
+        <article class="sample-card accent-desktop">
+          <div class="sample-topline"><span>Agent Experience</span><span>Intermediate</span></div>
+          <h3>Build a custom desktop widget for agents</h3>
+          <p>Brings useful customer context into the agent desktop so agents can act with less switching, fewer delays, and more confidence.</p>
+          <ul>
+            <li>Business value: better agent productivity and experience</li>
+            <li>Good for: CRM panels, screen pops, call controls</li>
+            <li>Source: widget and Desktop JS SDK samples</li>
+          </ul>
+          <a href="https://github.com/WebexSamples/webex-contact-center-api-samples" target="_blank" rel="noopener">Explore desktop samples →</a>
+        </article>
+
+        <article class="sample-card accent-flow">
+          <div class="sample-topline"><span>Journey Design</span><span>Intermediate</span></div>
+          <h3>Use flow data to personalize routing</h3>
+          <p>Connects IVR, HTTP lookups, variables, and routing decisions so callers reach the right experience sooner.</p>
+          <ul>
+            <li>Business value: smarter routing and shorter resolution paths</li>
+            <li>Good for: account lookup, priority routing, AI intent</li>
+            <li>Source: provider and backend examples</li>
+          </ul>
+          <a href="https://github.com/CiscoDevNet/webex-contact-center-provider-sample-code" target="_blank" rel="noopener">Explore provider samples →</a>
+        </article>
+
+        <article class="sample-card accent-reporting">
+          <div class="sample-topline"><span>Insight</span><span>Advanced</span></div>
+          <h3>Build dashboards and reporting connectors</h3>
+          <p>Turns operational data into dashboards, exports, wallboards, and analytics paths that help leaders make better decisions.</p>
+          <ul>
+            <li>Business value: stronger visibility and measurable outcomes</li>
+            <li>Good for: wallboards, Power BI, historical analysis</li>
+            <li>Source: GraphQL and reporting samples</li>
+          </ul>
+          <a href="https://github.com/WebexSamples/webex-contact-center-api-samples" target="_blank" rel="noopener">Explore reporting samples →</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="ignite">
+      <h2 class="section-title">What To Build Next</h2>
+      <div class="idea-strip">
+        <div><strong>Revenue protection</strong><span>Route high-value customers by tier, wait time, or intent.</span></div>
+        <div><strong>Agent assist</strong><span>Show CRM context and suggested actions inside the desktop.</span></div>
+        <div><strong>Operational control</strong><span>Alert supervisors when queues, service levels, or staffing signals change.</span></div>
+        <div><strong>Analytics maturity</strong><span>Export contact data to BI tools and create repeatable business reviews.</span></div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<footer class="page-footer">
+  <span>© 2026 Cisco Systems · Webex Contact Center Extensibility Hub</span>
+  <span><a href="reporting.html">Reporting</a> · <a href="faq.html">FAQ</a></span>
+</footer>
+
+<button id="backToTop" title="Back to top">↑</button>
+<script src="js/app.js"></script>
+</body>
+</html>

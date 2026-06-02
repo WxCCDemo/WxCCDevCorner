@@ -136,6 +136,72 @@
   color: var(--cat-text);
 }
 
+/* ── BUSINESS OUTCOMES + SAMPLE PREVIEW ─────────────────── */
+.outcome-section,
+.sample-preview-section {
+  margin: 42px 0;
+  text-align: center;
+}
+
+.outcome-section h2,
+.sample-preview-section h2 {
+  font-size: clamp(18px, 2vw, 26px);
+  font-weight: 800;
+  color: var(--navy-dark);
+  margin-bottom: 6px;
+}
+
+.outcome-grid,
+.sample-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.sample-preview-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+.outcome-card,
+.sample-preview-card {
+  background: #fff;
+  border: 1.5px solid var(--gray-200);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  color: inherit;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 150px;
+  padding: 20px;
+  text-align: left;
+  text-decoration: none;
+  transition: transform 0.18s, border-color 0.18s, box-shadow 0.18s;
+}
+
+.outcome-card:hover,
+.sample-preview-card:hover {
+  border-color: var(--teal);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-3px);
+}
+
+.outcome-card span,
+.sample-preview-card span {
+  color: var(--teal-dark);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.outcome-card strong,
+.sample-preview-card strong {
+  color: var(--navy-dark);
+  font-size: 15px;
+  line-height: 1.45;
+}
+
 /* ── DETAIL OVERLAY + PANEL ───────────────────────────────── */
 .detail-overlay {
   display: none;
@@ -619,6 +685,8 @@
   /* tree: allow horizontal scroll at tablet */
   .tree-wrap     { overflow-x: auto; }
   .tree-svg      { min-width: 700px; }
+  .outcome-grid,
+  .sample-preview-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* sm: 480–767px — phones */
@@ -637,6 +705,8 @@
   /* prereqs stack */
   .prereq-cards  { flex-direction: column; align-items: stretch; }
   .prereq-card   { max-width: 100%; }
+  .outcome-grid,
+  .sample-preview-grid { grid-template-columns: 1fr; }
 
   /* panel full-screen on phone */
   .detail-overlay { padding: 0; align-items: flex-end; }

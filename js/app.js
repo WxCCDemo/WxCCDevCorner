@@ -26,6 +26,14 @@ document.addEventListener('DOMContentLoaded', () => {
       sidebar.classList.remove('open');
       overlay.classList.remove('active');
     });
+  } else if (hamburger) {
+    const drawer = document.createElement('div');
+    drawer.className = 'mobile-nav-drawer';
+    drawer.innerHTML = Array.from(document.querySelectorAll('.topnav-links a'))
+      .map(a => `<a href="${a.getAttribute('href')}" class="${a.classList.contains('active') ? 'active' : ''}">${a.textContent}</a>`)
+      .join('');
+    document.body.appendChild(drawer);
+    hamburger.addEventListener('click', () => drawer.classList.toggle('open'));
   }
 
   // ---- Copy to clipboard ----
@@ -194,6 +202,7 @@ function renderNav(activePage) {
     { href: 'desktop-sdk.html', label: 'Desktop SDK' },
     { href: 'flow-designer.html', label: 'Flow Designer' },
     { href: 'reporting.html', label: 'Reporting' },
+    { href: 'samples.html', label: 'Samples' },
     { href: 'faq.html', label: 'FAQ' },
   ];
   return pages.map(p =>
