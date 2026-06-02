@@ -70,6 +70,9 @@
       <li><a href="#desktop-playbook"><span class="toc-icon">🖥️</span> Agent Experience</a></li>
       <li><a href="#reporting-playbook"><span class="toc-icon">📊</span> Reporting Dashboard</a></li>
       <li><a href="#provider-playbook"><span class="toc-icon">🔀</span> Flow HTTP Lookup</a></li>
+      <li><a href="#desktop-api-playbook"><span class="toc-icon">🎧</span> Desktop APIs</a></li>
+      <li><a href="#callback-playbook"><span class="toc-icon">📞</span> Callback Automation</a></li>
+      <li><a href="#recording-playbook"><span class="toc-icon">🎙️</span> Recording Workflow</a></li>
     </ul>
   </aside>
 
@@ -173,6 +176,42 @@ flowchart LR
           <a href="#provider-playbook" class="sample-card-link">View Playbook →</a>
         </div>
 
+        <div class="sample-card">
+          <div class="sample-card-meta"><span class="sample-card-level level-advanced">Advanced</span><span class="tag">Desktop APIs</span></div>
+          <h3>Agent Control API</h3>
+          <p>Build supervisor or automation tools that listen to agent/contact events and safely perform supported desktop actions.</p>
+          <ul class="sample-card-bullets">
+            <li>Desktop REST APIs</li>
+            <li>WebSocket notifications</li>
+            <li>Agent/contact state monitoring</li>
+          </ul>
+          <a href="#desktop-api-playbook" class="sample-card-link">View Playbook →</a>
+        </div>
+
+        <div class="sample-card">
+          <div class="sample-card-meta"><span class="sample-card-level level-intermediate">Intermediate</span><span class="tag">Callback</span></div>
+          <h3>Callback Automation</h3>
+          <p>Create callback requests from a web form, CRM workflow, or service app so customers can avoid waiting in queue.</p>
+          <ul class="sample-card-bullets">
+            <li>Customer callback request</li>
+            <li>Queue and schedule mapping</li>
+            <li>Status handoff to CRM</li>
+          </ul>
+          <a href="#callback-playbook" class="sample-card-link">View Playbook →</a>
+        </div>
+
+        <div class="sample-card">
+          <div class="sample-card-meta"><span class="sample-card-level level-advanced">Advanced</span><span class="tag">Recordings</span></div>
+          <h3>Recording Workflow</h3>
+          <p>React to recording availability, download metadata, and move interaction records into compliance or QA systems.</p>
+          <ul class="sample-card-bullets">
+            <li>Recording event trigger</li>
+            <li>Secure file handoff</li>
+            <li>QA/compliance archive</li>
+          </ul>
+          <a href="#recording-playbook" class="sample-card-link">View Playbook →</a>
+        </div>
+
       </div>
     </div>
 
@@ -231,6 +270,12 @@ data.items.forEach(a => console.log(` • ${a.name} (${a.agentState})`));</code>
             <p>Token accepted → 200 OK → Agent list returned with name and state. Now you have a working foundation for every other integration.</p>
           </div>
         </div>
+        <h4>Source references</h4>
+        <ul>
+          <li><a href="https://github.com/WebexSamples/webex-contact-center-api-samples/tree/main/app-auth-sample" target="_blank" rel="noopener">App auth sample</a></li>
+          <li><a href="https://github.com/WebexSamples/webex-contact-center-api-samples/tree/main/token-management-samples" target="_blank" rel="noopener">Token management samples</a></li>
+          <li><a href="getting-started.html">Authentication &amp; setup guide</a></li>
+        </ul>
       </div>
     </div>
 
@@ -256,6 +301,14 @@ flowchart LR
           </div>
         </div>
         <p><strong>Business benefit:</strong> Lets teams respond to customer moments immediately — email alerts, CRM updates, compliance logs, recording workflows.</p>
+        <h4>Implementation checklist</h4>
+        <ul>
+          <li>Create webhook subscription for the exact event types your workflow needs.</li>
+          <li>Expose an HTTPS endpoint, using ngrok only for local development.</li>
+          <li>Verify the signature before trusting the payload.</li>
+          <li>Return <code>200 OK</code> quickly, then process the event asynchronously.</li>
+          <li>Store event IDs to avoid duplicate processing during retries.</li>
+        </ul>
         <div class="code-block"><div class="code-block-header"><span class="code-lang">JavaScript</span><span class="code-label">Express Webhook Listener</span><button class="copy-btn">⎘ Copy</button></div>
         <pre><code>app.post('/webhooks/wxcc', express.raw({ type: 'application/json' }), (req, res) => {
   // 1. Verify HMAC-SHA1 signature
@@ -271,6 +324,31 @@ flowchart LR
   const event = JSON.parse(req.body.toString());
   queueEventForProcessing(event);
 });</code></pre></div>
+        <div class="code-block" style="margin-top:var(--space-md);"><div class="code-block-header"><span class="code-lang">JSON</span><span class="code-label">Event Processing Shape</span><button class="copy-btn">⎘ Copy</button></div>
+        <pre><code>{
+  "eventId": "evt_12345",
+  "resource": "task",
+  "eventType": "task:ended",
+  "data": {
+    "taskId": "task-abc",
+    "queueId": "sales-queue",
+    "agentId": "agent-001",
+    "ani": "+14155550100",
+    "wrapupCode": "Resolved"
+  }
+}</code></pre></div>
+        <h4>Expected output</h4>
+        <ul>
+          <li>Listener logs <code>signature verified</code>, <code>event queued</code>, and <code>crm updated</code>.</li>
+          <li>Supervisor receives alert only for selected event types.</li>
+          <li>Duplicate event IDs are ignored rather than creating repeated CRM notes.</li>
+        </ul>
+        <h4>Source references</h4>
+        <ul>
+          <li><a href="https://github.com/WebexSamples/webex-contact-center-api-samples/tree/main/webhook-email-notify-sample" target="_blank" rel="noopener">Webhook email notify sample</a></li>
+          <li><a href="https://github.com/WebexSamples/webex-contact-center-api-samples/tree/main/call-recording-samples" target="_blank" rel="noopener">Call recording samples</a></li>
+          <li><a href="webhooks.html">Webhook guide</a></li>
+        </ul>
       </div>
     </div>
 
@@ -285,6 +363,25 @@ flowchart LR
           </div>
         </div>
         <p><strong>Business benefit:</strong> Improves agent productivity — customer context visible before the agent even answers, zero tab switching.</p>
+        <div class="diagram-wrap" style="margin-bottom:var(--space-md);">
+          <div class="mermaid">
+flowchart LR
+  A[Incoming Contact] --> B[Agent Desktop]
+  B --> C[Custom Widget iFrame]
+  C --> D[Desktop JS SDK Events]
+  C --> E[CRM Lookup]
+  E --> F[Customer Context Panel]
+  style C fill:#00476B,color:#fff
+  style F fill:#10b981,color:#fff
+          </div>
+        </div>
+        <h4>Implementation checklist</h4>
+        <ul>
+          <li>Host the widget on HTTPS and register the widget URL in desktop layout JSON.</li>
+          <li>Initialize the Desktop JS SDK and subscribe to contact lifecycle events.</li>
+          <li>Use ANI, DNIS, or call variables to look up CRM context.</li>
+          <li>Write disposition notes or outcome fields back after contact end.</li>
+        </ul>
         <div class="code-block"><div class="code-block-header"><span class="code-lang">JavaScript</span><span class="code-label">Screen Pop on Incoming Call</span><button class="copy-btn">⎘ Copy</button></div>
         <pre><code>await Desktop.config.init({ widgetName: 'CRM Widget' });
 
@@ -297,6 +394,35 @@ Desktop.agentContact.addEventListener('eAgentContact', async ({ detail }) => {
     clearContext();
   }
 });</code></pre></div>
+        <div class="code-block" style="margin-top:var(--space-md);"><div class="code-block-header"><span class="code-lang">JSON</span><span class="code-label">Desktop Layout Registration</span><button class="copy-btn">⎘ Copy</button></div>
+        <pre><code>{
+  "widgets": {
+    "crmContext": {
+      "comp": "md-tabs",
+      "attributes": {
+        "slot": "WIDGET",
+        "children": [{
+          "comp": "iframe",
+          "attributes": {
+            "src": "https://your-app.example.com/wxcc-widget",
+            "title": "CRM Context"
+          }
+        }]
+      }
+    }
+  }
+}</code></pre></div>
+        <h4>Expected output</h4>
+        <ul>
+          <li>When a call is offered, the widget shows customer name, tier, open cases, and suggested next action.</li>
+          <li>When the contact ends, the widget clears context and optionally posts wrap-up data to CRM.</li>
+        </ul>
+        <h4>Source references</h4>
+        <ul>
+          <li><a href="https://github.com/WebexSamples/webex-contact-center-api-samples/tree/main/widget-samples/desktop-js-sdk-sample" target="_blank" rel="noopener">Desktop JS SDK sample</a></li>
+          <li><a href="https://github.com/WebexSamples/webex-contact-center-api-samples/tree/main/widget-samples/addressbook-widget-sample" target="_blank" rel="noopener">Address book widget sample</a></li>
+          <li><a href="https://github.com/WebexSamples/webex-contact-center-api-samples/tree/main/widget-samples/desktop-js-sdk-callcontrol-sample" target="_blank" rel="noopener">Call control widget sample</a></li>
+        </ul>
       </div>
     </div>
 
@@ -311,6 +437,24 @@ Desktop.agentContact.addEventListener('eAgentContact', async ({ detail }) => {
           </div>
         </div>
         <p><strong>Business benefit:</strong> Turns contact center activity into measurable insight for supervisors and leaders in real time.</p>
+        <div class="diagram-wrap" style="margin-bottom:var(--space-md);">
+          <div class="mermaid">
+flowchart LR
+  A[GraphQL Query] --> B[Reporting Service]
+  B --> C[Metric Normalizer]
+  C --> D[Live Wallboard]
+  C --> E[Power BI / Data Lake]
+  style D fill:#10b981,color:#fff
+  style E fill:#818cf8,color:#fff
+          </div>
+        </div>
+        <h4>Implementation checklist</h4>
+        <ul>
+          <li>Start with one queue or team before building a global dashboard.</li>
+          <li>Normalize API responses into a stable metric model used by every widget.</li>
+          <li>Refresh live wallboards on a controlled interval and cache historical exports.</li>
+          <li>Separate supervisor wallboards from scheduled BI exports.</li>
+        </ul>
         <div class="code-block"><div class="code-block-header"><span class="code-lang">JavaScript</span><span class="code-label">Wallboard Metric Refresh</span><button class="copy-btn">⎘ Copy</button></div>
         <pre><code>const stats = await wxcc.get(`/contactCenter/queues/${queueId}/statistics`, { orgId });
 dashboard.update({
@@ -319,6 +463,29 @@ dashboard.update({
   sla:       stats.serviceLevelPercentage
 });
 // Schedule next refresh in 30 seconds</code></pre></div>
+        <div class="code-block" style="margin-top:var(--space-md);"><div class="code-block-header"><span class="code-lang">GraphQL</span><span class="code-label">Historical CDR Query Pattern</span><button class="copy-btn">⎘ Copy</button></div>
+        <pre><code>query ContactSummary($from: DateTime!, $to: DateTime!) {
+  contacts(from: $from, to: $to) {
+    id
+    channelType
+    queueName
+    agentName
+    startedAt
+    endedAt
+    wrapupCode
+  }
+}</code></pre></div>
+        <h4>Expected output</h4>
+        <ul>
+          <li>Supervisor wallboard shows contacts waiting, agents available, SLA, and longest wait.</li>
+          <li>Historical export includes enough fields for BI trend analysis and quality review.</li>
+        </ul>
+        <h4>Source references</h4>
+        <ul>
+          <li><a href="https://github.com/WebexSamples/webex-contact-center-api-samples/tree/main/graphql-sample" target="_blank" rel="noopener">GraphQL sample</a></li>
+          <li><a href="https://github.com/WebexSamples/webex-contact-center-api-samples/tree/main/graphql-wallboard-sample" target="_blank" rel="noopener">GraphQL wallboard sample</a></li>
+          <li><a href="https://github.com/WebexSamples/webex-contact-center-api-samples/tree/main/graphql-powerbi-sample" target="_blank" rel="noopener">GraphQL Power BI sample</a></li>
+        </ul>
       </div>
     </div>
 
@@ -333,6 +500,28 @@ dashboard.update({
           </div>
         </div>
         <p><strong>Business benefit:</strong> Smarter routing and shorter resolution paths — Gold customers skip the queue, standard callers get AI-predicted routing.</p>
+        <div class="diagram-wrap" style="margin-bottom:var(--space-md);">
+          <div class="mermaid">
+flowchart LR
+  A[Flow HTTP Request Node] --> B[Lookup API]
+  B --> C[CRM / DB]
+  C --> B
+  B --> D[JSON Response]
+  D --> E[Flow Variables]
+  E --> F{Tier / Intent}
+  F --> G[Priority Queue]
+  F --> H[Standard Queue]
+  style B fill:#00476B,color:#fff
+  style G fill:#10b981,color:#fff
+          </div>
+        </div>
+        <h4>Implementation checklist</h4>
+        <ul>
+          <li>Design the HTTP response around flow variables, not backend object names.</li>
+          <li>Always return a safe fallback queue and error reason.</li>
+          <li>Keep lookup latency low; Flow Designer should not wait on slow CRM operations.</li>
+          <li>Log correlation IDs so failed lookups can be traced from flow to backend.</li>
+        </ul>
         <div class="code-block"><div class="code-block-header"><span class="code-lang">JavaScript</span><span class="code-label">Flow Lookup Backend API</span><button class="copy-btn">⎘ Copy</button></div>
         <pre><code>app.post('/api/route-caller', async (req, res) => {
   const account = await db.account(req.body.accountNumber);
@@ -344,6 +533,26 @@ dashboard.update({
   });
   // WxCC Flow Designer parses $.tier → FlowVar_Tier, $.queue → FlowVar_Queue
 });</code></pre></div>
+        <div class="code-block" style="margin-top:var(--space-md);"><div class="code-block-header"><span class="code-lang">JSON</span><span class="code-label">Flow Response Mapping</span><button class="copy-btn">⎘ Copy</button></div>
+        <pre><code>{
+  "tier": "Gold",
+  "queue": "priority-queue-id",
+  "name": "Ava Chen",
+  "openCases": 2,
+  "fallbackQueue": "standard-queue-id",
+  "lookupStatus": "matched"
+}</code></pre></div>
+        <h4>Expected output</h4>
+        <ul>
+          <li>Flow variable <code>FlowVar_Tier</code> becomes <code>Gold</code>.</li>
+          <li>Condition node routes Gold callers to priority queue and unmatched callers to fallback queue.</li>
+        </ul>
+        <h4>Source references</h4>
+        <ul>
+          <li><a href="https://github.com/CiscoDevNet/webex-contact-center-provider-sample-code" target="_blank" rel="noopener">Provider sample code</a></li>
+          <li><a href="https://github.com/WebexSamples/webex-contact-center-flows" target="_blank" rel="noopener">Webex Contact Center flows</a></li>
+          <li><a href="flow-designer.html">Flow Designer guide</a></li>
+        </ul>
       </div>
     </div>
 
@@ -358,6 +567,26 @@ dashboard.update({
           </div>
         </div>
         <p><strong>Business benefit:</strong> Consistent configuration at scale — partner onboarding, admin automation, governance audits.</p>
+        <div class="diagram-wrap" style="margin-bottom:var(--space-md);">
+          <div class="mermaid">
+flowchart LR
+  A[Admin / Partner Tool] --> B[Config API Client]
+  B --> C[Queues]
+  B --> D[Teams]
+  B --> E[Entry Points]
+  B --> F[CSV / JSON Export]
+  F --> G[Review / Migration / Audit]
+  style B fill:#00476B,color:#fff
+  style G fill:#10b981,color:#fff
+          </div>
+        </div>
+        <h4>Implementation checklist</h4>
+        <ul>
+          <li>Export current configuration before making changes.</li>
+          <li>Use IDs for API calls and names only for human review tables.</li>
+          <li>Validate required fields before bulk-create or bulk-update operations.</li>
+          <li>Produce a dry-run report showing what will be created, updated, or skipped.</li>
+        </ul>
         <div class="code-block"><div class="code-block-header"><span class="code-lang">JavaScript</span><span class="code-label">Config Export to CSV</span><button class="copy-btn">⎘ Copy</button></div>
         <pre><code>const { data } = await wxcc.get('/contactCenter/queues', { orgId: ORG_ID });
 const rows = data.items.map(q => ({
@@ -367,6 +596,209 @@ const rows = data.items.map(q => ({
 }));
 await writeCsv('queues.csv', rows);
 console.log(`✅ Exported ${rows.length} queues to queues.csv`);</code></pre></div>
+        <div class="code-block" style="margin-top:var(--space-md);"><div class="code-block-header"><span class="code-lang">JavaScript</span><span class="code-label">Dry-run Change Plan</span><button class="copy-btn">⎘ Copy</button></div>
+        <pre><code>const desired = await readCsv('queues-desired.csv');
+const current = await wxcc.getQueues({ orgId: ORG_ID });
+
+const plan = desired.map(row => {
+  const existing = current.find(q => q.name === row.name);
+  return {
+    action: existing ? 'update' : 'create',
+    name: row.name,
+    targetServiceLevel: row.serviceLevel
+  };
+});
+
+console.table(plan);</code></pre></div>
+        <h4>Expected output</h4>
+        <ul>
+          <li>CSV export lists queue name, channel, service level, and routing metadata.</li>
+          <li>Dry-run plan clearly separates create, update, and skip actions before any write call.</li>
+        </ul>
+        <h4>Source references</h4>
+        <ul>
+          <li><a href="https://github.com/WebexSamples/webex-contact-center-api-samples/tree/main/configuration-samples" target="_blank" rel="noopener">Configuration samples</a></li>
+          <li><a href="https://github.com/WebexSamples/webex-contact-center-api-samples/tree/main/configuration-samples/configuration-extraction-sample" target="_blank" rel="noopener">Configuration extraction sample</a></li>
+          <li><a href="rest-apis.html">REST API guide</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Desktop API Playbook -->
+    <div id="desktop-api-playbook" class="content-section">
+      <div class="playbook">
+        <div class="playbook-header">
+          <span style="font-size:2rem;">🎧</span>
+          <div>
+            <span class="sample-card-level level-advanced">Advanced</span>
+            <h3>Desktop APIs — Agent State &amp; Contact Monitor</h3>
+          </div>
+        </div>
+        <p><strong>Business benefit:</strong> Gives operations teams a controlled way to observe agent/contact state and build supervisor tooling outside the standard desktop.</p>
+        <div class="diagram-wrap" style="margin-bottom:var(--space-md);">
+          <div class="mermaid">
+flowchart LR
+  A[Service App] --> B[Desktop REST API]
+  A --> C[WebSocket Notifications]
+  C --> D[Agent State Stream]
+  C --> E[Contact Event Stream]
+  D --> F[Supervisor Tool]
+  E --> F
+  style C fill:#00476B,color:#fff
+  style F fill:#10b981,color:#fff
+          </div>
+        </div>
+        <h4>Implementation checklist</h4>
+        <ul>
+          <li>Use REST calls for point-in-time state and WebSocket events for live changes.</li>
+          <li>Track agent ID, session ID, contact ID, and event timestamp together.</li>
+          <li>Do not use monitoring tools to bypass supervisor permissions or business policy.</li>
+        </ul>
+        <div class="code-block"><div class="code-block-header"><span class="code-lang">JavaScript</span><span class="code-label">Subscribe to Desktop Events</span><button class="copy-btn">⎘ Copy</button></div>
+        <pre><code>const socket = new WebSocket(process.env.WXCC_DESKTOP_EVENTS_URL, {
+  headers: { Authorization: `Bearer ${process.env.WXCC_TOKEN}` }
+});
+
+socket.onmessage = message => {
+  const event = JSON.parse(message.data);
+  if (event.type === 'agent.state.changed') {
+    stateStore.upsertAgent(event.agentId, {
+      state: event.state,
+      reason: event.reasonCode,
+      changedAt: event.timestamp
+    });
+  }
+};</code></pre></div>
+        <h4>Expected output</h4>
+        <ul>
+          <li>Supervisor tool updates agent state changes without manual refresh.</li>
+          <li>Contact events can be correlated with queue, agent, and wrap-up outcomes.</li>
+        </ul>
+        <h4>Source references</h4>
+        <ul>
+          <li><a href="https://github.com/WebexSamples/webex-contact-center-api-samples/tree/main/desktop-sample/desktop-api-sample" target="_blank" rel="noopener">Desktop API sample</a></li>
+          <li><a href="desktop-sdk.html">Desktop guide</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Callback Playbook -->
+    <div id="callback-playbook" class="content-section">
+      <div class="playbook">
+        <div class="playbook-header">
+          <span style="font-size:2rem;">📞</span>
+          <div>
+            <span class="sample-card-level level-intermediate">Intermediate</span>
+            <h3>Callback Automation — Web Form to WxCC Callback</h3>
+          </div>
+        </div>
+        <p><strong>Business benefit:</strong> Reduces queue frustration by letting customers request a callback from a website, CRM case, or mobile app.</p>
+        <div class="diagram-wrap" style="margin-bottom:var(--space-md);">
+          <div class="mermaid">
+flowchart LR
+  A[Customer Form] --> B[Callback API Service]
+  B --> C[Validate Phone / Consent]
+  C --> D[WxCC Callback Request]
+  D --> E[Queue / Team]
+  E --> F[Agent Calls Back]
+  style B fill:#00476B,color:#fff
+  style F fill:#10b981,color:#fff
+          </div>
+        </div>
+        <h4>Implementation checklist</h4>
+        <ul>
+          <li>Validate phone number, timezone, and consent before creating the request.</li>
+          <li>Map web form intent to the right queue, team, or entry point.</li>
+          <li>Write callback status back to the CRM or customer case.</li>
+        </ul>
+        <div class="code-block"><div class="code-block-header"><span class="code-lang">JavaScript</span><span class="code-label">Create Callback Request</span><button class="copy-btn">⎘ Copy</button></div>
+        <pre><code>app.post('/api/callbacks', async (req, res) => {
+  const request = {
+    phoneNumber: req.body.phoneNumber,
+    customerName: req.body.name,
+    queueId: mapIntentToQueue(req.body.intent),
+    preferredTime: req.body.preferredTime,
+    attributes: {
+      crmCaseId: req.body.caseId,
+      source: 'web-form'
+    }
+  };
+
+  const callback = await wxcc.createCallback(request);
+  res.status(201).json({ callbackId: callback.id, status: 'created' });
+});</code></pre></div>
+        <h4>Expected output</h4>
+        <ul>
+          <li>Customer receives confirmation with callback reference.</li>
+          <li>WxCC creates a callback routed to the correct queue.</li>
+          <li>CRM case stores callback ID for follow-up tracking.</li>
+        </ul>
+        <h4>Source references</h4>
+        <ul>
+          <li><a href="https://github.com/WebexSamples/webex-contact-center-api-samples/tree/main/callback-samples" target="_blank" rel="noopener">Callback samples</a></li>
+          <li><a href="rest-apis.html">REST API guide</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Recording Playbook -->
+    <div id="recording-playbook" class="content-section">
+      <div class="playbook">
+        <div class="playbook-header">
+          <span style="font-size:2rem;">🎙️</span>
+          <div>
+            <span class="sample-card-level level-advanced">Advanced</span>
+            <h3>Recording Workflow — QA and Compliance Archive</h3>
+          </div>
+        </div>
+        <p><strong>Business benefit:</strong> Moves recording metadata and availability events into QA, compliance, and audit workflows without manual supervisor effort.</p>
+        <div class="diagram-wrap" style="margin-bottom:var(--space-md);">
+          <div class="mermaid">
+flowchart LR
+  A[Recording Available Event] --> B[Webhook Listener]
+  B --> C[Recording Metadata API]
+  C --> D[Secure Archive]
+  C --> E[QA Review Queue]
+  D --> F[Audit / Compliance]
+  style B fill:#00476B,color:#fff
+  style F fill:#10b981,color:#fff
+          </div>
+        </div>
+        <h4>Implementation checklist</h4>
+        <ul>
+          <li>Trigger from recording-related events instead of polling aggressively.</li>
+          <li>Store metadata, retention policy, and review status separately from media files.</li>
+          <li>Limit archive access by role and log every retrieval.</li>
+        </ul>
+        <div class="code-block"><div class="code-block-header"><span class="code-lang">JavaScript</span><span class="code-label">Queue Recording for Review</span><button class="copy-btn">⎘ Copy</button></div>
+        <pre><code>async function processRecordingEvent(event) {
+  const recording = await wxcc.getRecording(event.data.recordingId);
+
+  await archive.storeMetadata({
+    recordingId: recording.id,
+    contactId: recording.contactId,
+    agentId: recording.agentId,
+    queueName: recording.queueName,
+    startedAt: recording.startedAt
+  });
+
+  await qaQueue.add({
+    recordingId: recording.id,
+    reason: 'new-recording',
+    priority: recording.queueName === 'complaints' ? 'high' : 'normal'
+  });
+}</code></pre></div>
+        <h4>Expected output</h4>
+        <ul>
+          <li>New recordings appear in QA review with contact, agent, queue, and timestamp metadata.</li>
+          <li>Compliance archive can prove when recording metadata was received and who accessed it.</li>
+        </ul>
+        <h4>Source references</h4>
+        <ul>
+          <li><a href="https://github.com/WebexSamples/webex-contact-center-api-samples/tree/main/call-recording-samples" target="_blank" rel="noopener">Call recording samples</a></li>
+          <li><a href="webhooks.html">Webhook guide</a></li>
+          <li><a href="reporting.html">Reporting guide</a></li>
+        </ul>
       </div>
     </div>
 
