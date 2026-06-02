@@ -48,6 +48,19 @@
       <p>React to contact center events the moment they happen — no polling required. Register a URL and WxCC will push event payloads to you in real time.</p>
     </div>
 
+    <section class="context-guide" aria-label="Webhook learning path">
+      <div class="context-guide-copy">
+        <span>Explorer Pattern</span>
+        <h2>Understand event flow before writing the listener</h2>
+        <p>Use this page for the second-tier webhook concept and delivery diagram, then drill into event payloads, listener code, and HMAC validation.</p>
+      </div>
+      <div class="context-guide-actions">
+        <a href="#flow-diagram"><strong>Concept + diagram</strong><span>How WxCC events move from contact center to your system.</span></a>
+        <a href="#listener"><strong>Code details</strong><span>Listener, payload, security, and management examples.</span></a>
+        <a href="samples.html#webhook-playbook"><strong>Sample + FAQ</strong><span>Event-driven sample path and webhook troubleshooting.</span></a>
+      </div>
+    </section>
+
     <section id="what-are-webhooks">
       <h2 class="section-title">What are Webhooks?</h2>
       <p class="body-text">Instead of constantly asking "has anything changed?" (polling), webhooks let WxCC <strong>tell you</strong> when something happens. You register an HTTPS endpoint on your server, and WxCC sends an HTTP POST with an event payload whenever a subscribed event fires.</p>

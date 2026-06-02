@@ -49,6 +49,19 @@
       <p>Embed custom panels, widgets, and integrations directly inside the Webex Contact Center agent desktop. Show screen pops, CRM data, AI suggestions — all without leaving the desktop.</p>
     </div>
 
+    <section class="context-guide" aria-label="Desktop SDK learning path">
+      <div class="context-guide-copy">
+        <span>Explorer Pattern</span>
+        <h2>Start with widget architecture, then pick the agent action</h2>
+        <p>Use this page for the second-tier Desktop SDK concept and architecture, then drill into screen pop, custom widget, state, and task-event code.</p>
+      </div>
+      <div class="context-guide-actions">
+        <a href="#architecture"><strong>Concept + diagram</strong><span>Desktop layout, iFrame, SDK init, and event flow.</span></a>
+        <a href="#screen-pop"><strong>Code details</strong><span>Screen pop, widget registration, and agent state examples.</span></a>
+        <a href="samples.html#desktop-playbook"><strong>Sample + FAQ</strong><span>Agent-experience samples and widget troubleshooting.</span></a>
+      </div>
+    </section>
+
     <section id="what-is-sdk">
       <h2 class="section-title">What is the Desktop SDK?</h2>
       <p class="body-text">The <strong>Webex Contact Center Desktop JS SDK</strong> (also called the Agent Desktop Widget SDK) lets you build web-based custom widgets that run inside an iFrame panel on the agent desktop. Your widget receives real-time task and agent events from WxCC and can trigger desktop actions like changing agent state or popping notifications.</p>
@@ -153,7 +166,7 @@
         <div class="step"><div class="step-num">4</div><div class="step-content"><h4>Assign layout to a team</h4><p>In WxCC Admin, assign the desktop layout to the team(s) whose agents should see your widget.</p></div></div>
       </div>
 
-      <div class="expand-section">
+      <div class="expand-section" id="custom-widget">
         <div class="expand-trigger">
           <div class="expand-trigger-label"><span class="et-icon">📄</span> Show: Desktop Layout JSON — Adding a custom widget panel</div>
           <span class="expand-chevron">▼</span>
