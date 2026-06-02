@@ -66,7 +66,7 @@ console.<span class="fn">log</span>(<span class="str">\`\${available.length} age
     },
     faqs: [
       { q: 'How does pagination work?', a: 'WxCC list endpoints return a <code>Link</code> header with a <code>rel="next"</code> cursor URL when more pages exist. Keep fetching the next URL until it\'s absent. Never use offset-based pagination — it\'s not supported.' },
-      { q: 'What are the rate limits?', a: 'Configuration APIs: 10 req/sec · Reporting: 5 req/sec · Real-time: 20 req/sec. On 429, check the <code>Retry-After</code> header and implement exponential backoff.' },
+      { q: 'How should API calls support a business workflow?', a: 'Keep API calls focused on the outcome: lookup the right customer, update the right record, or retrieve the right operational data. Cache stable configuration data and request only what the experience needs.' },
       { q: 'Can I create agents programmatically?', a: 'Yes — POST to <code>/contactCenter/agents</code>. The Webex user account must already exist first. There\'s no native bulk endpoint, so loop with a small delay between calls.' }
     ],
     link: 'rest-apis.html'

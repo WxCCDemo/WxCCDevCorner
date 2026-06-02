@@ -37,7 +37,6 @@
       <a href="#service-app" class="sidebar-link"><span class="icon">⚙️</span> Service App</a>
       <a href="#scopes" class="sidebar-link"><span class="icon">🎯</span> Scopes</a>
       <a href="#base-urls" class="sidebar-link"><span class="icon">🌐</span> Base URLs</a>
-      <a href="#rate-limits" class="sidebar-link"><span class="icon">⏱️</span> Rate Limits</a>
       <a href="#first-call" class="sidebar-link"><span class="icon">⚡</span> First API Call</a>
       <a href="#errors" class="sidebar-link"><span class="icon">❌</span> Error Handling</a>
     </div>
@@ -286,65 +285,6 @@ main();</code></pre>
       </div>
     </section>
 
-    <!-- RATE LIMITS -->
-    <section id="rate-limits">
-      <h2 class="section-title">Rate Limits</h2>
-      <div class="info-box warning">
-        <div class="ib-icon">⚠️</div>
-        <div class="ib-body">
-          <h4>Respect Rate Limits or Risk 429 Errors</h4>
-          <p>WxCC APIs enforce rate limits per access token. Always check response headers and implement retry with exponential backoff.</p>
-        </div>
-      </div>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>API Category</th><th>Rate Limit</th><th>Window</th></tr></thead>
-          <tbody>
-            <tr><td>Configuration APIs</td><td>10 requests</td><td>Per second</td></tr>
-            <tr><td>Reporting / Analytics</td><td>5 requests</td><td>Per second</td></tr>
-            <tr><td>Real-time Data</td><td>20 requests</td><td>Per second</td></tr>
-            <tr><td>Webhook Management</td><td>10 requests</td><td>Per minute</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="expand-section">
-        <div class="expand-trigger">
-          <div class="expand-trigger-label"><span class="et-icon">⬡</span> Show: Retry with Exponential Backoff (Node.js)</div>
-          <span class="expand-chevron">▼</span>
-        </div>
-        <div class="expand-content">
-          <div class="code-block">
-            <div class="code-header">
-              <div class="code-dots"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div></div>
-              <div class="code-lang">⬡ Retry Helper</div>
-              <div class="code-actions"><button class="copy-btn">⎘ Copy</button></div>
-            </div>
-<pre class="language-javascript"><code class="language-javascript">async function apiCallWithRetry(fn, maxRetries = 4) {
-  for (let attempt = 0; attempt <= maxRetries; attempt++) {
-    try {
-      return await fn();
-    } catch (err) {
-      if (err.response?.status === 429 && attempt < maxRetries) {
-        const retryAfter = parseInt(err.response.headers['retry-after'] || '1');
-        const delay = Math.max(retryAfter * 1000, 2 ** attempt * 500);
-        console.warn(`Rate limited. Retrying in ${delay}ms (attempt ${attempt + 1})`);
-        await new Promise(r => setTimeout(r, delay));
-      } else {
-        throw err;
-      }
-    }
-  }
-}
-
-// Usage
-const agents = await apiCallWithRetry(() =>
-  axios.get('https://webexapis.com/v1/contactCenter/agents', { headers })
-);</code></pre>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- ERROR HANDLING -->
     <section id="errors">
       <h2 class="section-title">Common Errors & Solutions</h2>
@@ -376,7 +316,7 @@ const agents = await apiCallWithRetry(() =>
           </div>
           <div class="accordion-body">
             <p><strong>Cause:</strong> You've exceeded the API rate limit.</p>
-            <ul><li>Check <code class="inline-code">Retry-After</code> header for wait time</li><li>Implement exponential backoff (see code above)</li><li>Cache results where possible to reduce call frequency</li></ul>
+            <ul><li>Check the response headers for the recommended wait time.</li><li>Reduce repeated calls by caching stable configuration data.</li><li>Retry only after a sensible delay instead of immediately repeating the request.</li></ul>
           </div>
         </div>
         <div class="accordion-item">
