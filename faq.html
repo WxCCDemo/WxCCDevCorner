@@ -53,7 +53,7 @@
       <div class="page-hero-icon">&#x2753;</div>
       <div class="page-hero-text">
         <h1>Frequently Asked Questions</h1>
-        <p class="subtitle">29 answered questions covering authentication, REST APIs, webhooks, Desktop SDK, Flow Designer, reporting, common errors, and production best practices.</p>
+        <p class="subtitle">37 answered questions covering authentication, REST APIs, webhooks, Desktop SDK, Flow Designer, reporting, samples, common errors, and production best practices.</p>
       </div>
     </div>
   </div>
@@ -69,6 +69,7 @@
       <li><a href="#flow-faq"><span class="toc-icon">🔀</span> Flow Designer</a></li>
       <li><a href="#reporting-faq"><span class="toc-icon">📊</span> Reporting</a></li>
       <li><a href="#errors-faq"><span class="toc-icon">❌</span> Errors &amp; Debugging</a></li>
+      <li><a href="#samples-faq"><span class="toc-icon">🧩</span> Samples &amp; Next Builds</a></li>
       <li><a href="#best-practices"><span class="toc-icon">⭐</span> Best Practices</a></li>
     </ul>
   </aside>
@@ -85,6 +86,7 @@
       <button class="faq-filter-btn" data-filter="flow">🔀 Flow</button>
       <button class="faq-filter-btn" data-filter="reporting">📊 Reporting</button>
       <button class="faq-filter-btn" data-filter="errors">❌ Errors</button>
+      <button class="faq-filter-btn" data-filter="samples">🧩 Samples</button>
     </div>
 
     <!-- Auth FAQ -->
@@ -130,10 +132,14 @@
           <button class="accordion-header">Q4 — How do I handle token refresh automatically? <span class="accordion-chevron">▾</span></button>
           <div class="accordion-body">
             <p>Cache the token with its expiry time and refresh it proactively 60 seconds before expiry. See the token caching example in <a href="getting-started.html#service-app">Getting Started → Service App</a>.</p>
-            <div class="code-block"><div class="code-block-header"><span class="code-lang">JavaScript</span><button class="copy-btn">⎘ Copy</button></div>
-            <pre><code>// Refresh 60 seconds before expiry to prevent any race condition
-const isExpired = Date.now() >= tokenCache.expiresAt - 60_000;
-if (isExpired) await refreshToken();</code></pre></div>
+            <div class="code-block"><div class="code-block-header"><span class="code-lang">JSON</span><button class="copy-btn">⎘ Copy</button></div>
+            <pre><code>{
+  "postmanEnvironment": {
+    "access_token": "{{access_token}}",
+    "expires_at": "refresh at least 60 seconds before expiry",
+    "refreshPolicy": "request a new token before any API call when expires_at is near"
+  }
+}</code></pre></div>
           </div>
         </div>
 
@@ -241,7 +247,7 @@ if (isExpired) await refreshToken();</code></pre></div>
         <div class="accordion">
           <button class="accordion-header">Q14 — Can my widget make API calls to external systems? <span class="accordion-chevron">▾</span></button>
           <div class="accordion-body">
-            <p>Yes — your widget is a web app in an iFrame and can call any external API using standard <code>fetch</code> or <code>axios</code>. Make sure your backend endpoints have CORS configured to allow the widget's origin (<code>*.wxcc-us1.cisco.com</code>).</p>
+            <p>Yes — your widget is a web app in an iFrame and can call external APIs through your backend. Keep secrets on the server side, expose an HTTPS endpoint, and configure CORS to allow the widget's origin (<code>*.wxcc-us1.cisco.com</code>).</p>
             <div class="callout callout-danger"><span class="callout-icon">🔒</span><div class="callout-body"><strong>Never store secrets in widget frontend code</strong><p>Frontend JS is visible to anyone. Always proxy sensitive API calls through your backend server.</p></div></div>
           </div>
         </div>
@@ -249,15 +255,18 @@ if (isExpired) await refreshToken();</code></pre></div>
         <div class="accordion">
           <button class="accordion-header">Q15 — How do I pass flow variables (CAD) into my widget? <span class="accordion-chevron">▾</span></button>
           <div class="accordion-body">
-            <p>Flow variables set as Call-Associated Data (CAD) are automatically passed to the agent desktop when a task is assigned. Read them from the SDK task event:</p>
-            <div class="code-block"><div class="code-block-header"><span class="code-lang">JavaScript</span><button class="copy-btn">⎘ Copy</button></div>
-            <pre><code>Desktop.agentContact.addEventListener('eAgentContact', (event) => {
-  if (event.detail.type === 'AgentContactOffered') {
-    const { callVariables } = event.detail.data;
-    console.log(callVariables.customerTier); // "Enterprise"
-    console.log(callVariables.accountId);    // "ACC-98765"
+            <p>Flow variables set as Call-Associated Data (CAD) are automatically passed to the agent desktop when a task is assigned. Treat them as event data attached to the task:</p>
+            <div class="code-block"><div class="code-block-header"><span class="code-lang">application/json</span><button class="copy-btn">⎘ Copy</button></div>
+            <pre><code>{
+  "type": "AgentContactOffered",
+  "data": {
+    "taskId": "task-8421",
+    "callVariables": {
+      "customerTier": "Enterprise",
+      "accountId": "ACC-98765"
+    }
   }
-});</code></pre></div>
+}</code></pre></div>
           </div>
         </div>
 
@@ -354,21 +363,16 @@ if (isExpired) await refreshToken();</code></pre></div>
         <div class="accordion">
           <button class="accordion-header">Q24 — How do I enable detailed error logging for my integration? <span class="accordion-chevron">▾</span></button>
           <div class="accordion-body">
-            <div class="code-block"><div class="code-block-header"><span class="code-lang">JavaScript</span><span class="code-label">Axios Error Interceptor</span><button class="copy-btn">⎘ Copy</button></div>
-            <pre><code>axios.interceptors.response.use(
-  res => res,
-  err => {
-    const { status, data, headers } = err.response || {};
-    console.error({
-      status,
-      errorCode:  data?.errorCode,
-      message:    data?.message,
-      trackingId: headers?.['trackingid'], // always include in support tickets!
-      url:        err.config?.url
-    });
-    return Promise.reject(err);
-  }
-);</code></pre></div>
+            <div class="code-block"><div class="code-block-header"><span class="code-lang">HTTP</span><span class="code-label">Error Response to Log</span><button class="copy-btn">⎘ Copy</button></div>
+            <pre><code>HTTP/1.1 403 Forbidden
+trackingid: WXCC-abc-123
+Content-Type: application/json
+
+{
+  "errorCode": "missing_scope",
+  "message": "Token does not include the required contact center scope",
+  "requiredScope": "cjp:config_read"
+}</code></pre></div>
             <div class="callout callout-info"><span class="callout-icon">💡</span><div class="callout-body"><strong>Always log the trackingId</strong><p>The <code>trackingid</code> response header is your reference number for Cisco support tickets. Log it for every error.</p></div></div>
           </div>
         </div>
@@ -387,13 +391,168 @@ if (isExpired) await refreshToken();</code></pre></div>
       </div>
     </div>
 
+    <!-- Samples FAQ -->
+    <div id="samples-faq" class="faq-section" data-category="samples">
+      <div class="faq-section-title">🧩 Samples &amp; Next Builds</div>
+      <div class="accordion-group">
+
+        <div class="accordion">
+          <button class="accordion-header">Q26 — Which sample should I build first? <span class="accordion-chevron">▾</span></button>
+          <div class="accordion-body">
+            <p>Start with the sample that matches the business problem, not the API category. For most teams, the best first build is one of these:</p>
+            <ul>
+              <li><strong>Config Automation</strong> if the team needs repeatable setup, audits, or migration readiness.</li>
+              <li><strong>Flow HTTP Lookup</strong> if callers need routing based on CRM, entitlement, or intent data.</li>
+              <li><strong>Desktop API / Agent Experience</strong> if agents need screen pop, account context, or guided actions.</li>
+              <li><strong>Reporting / Power BI</strong> if leaders need queue, agent, and CDR visibility outside Analyzer.</li>
+            </ul>
+            <p>Use <a href="samples.html#gallery">Samples → Gallery</a> as the starting map, then open the matching playbook for code, diagrams, expected output, and references.</p>
+          </div>
+        </div>
+
+        <div class="accordion">
+          <button class="accordion-header">Q27 — How do I turn Priority Routing into a working sample? <span class="accordion-chevron">▾</span></button>
+          <div class="accordion-body">
+            <p>Use a Flow HTTP Request node that sends caller context to your routing service. The service returns a normalized routing decision that the flow stores in variables before the queue step.</p>
+            <div class="code-block"><div class="code-block-header"><span class="code-lang">HTTP</span><span class="code-label">Flow Lookup Request</span><button class="copy-btn">⎘ Copy</button></div>
+            <pre><code>POST https://your-api.example.com/wxcc/route-decision
+Authorization: Bearer {{access_token}}
+Content-Type: application/json
+
+{
+  "orgId": "{{orgId}}",
+  "ani": "{{ani}}",
+  "accountNumber": "{{accountNumber}}",
+  "currentQueueId": "{{queueId}}",
+  "language": "{{language}}"
+}</code></pre></div>
+            <div class="code-block"><div class="code-block-header"><span class="code-lang">application/json</span><span class="code-label">Routing Response</span><button class="copy-btn">⎘ Copy</button></div>
+            <pre><code>{
+  "routeToQueueId": "queue-premier-support",
+  "priority": 8,
+  "customerTier": "Platinum",
+  "reason": "High-value customer with open severity-1 case"
+}</code></pre></div>
+            <p>Document the flow diagram, the HTTP node mapping, and a screenshot of the routing result in the sample.</p>
+          </div>
+        </div>
+
+        <div class="accordion">
+          <button class="accordion-header">Q28 — What should an SLA alert sample include? <span class="accordion-chevron">▾</span></button>
+          <div class="accordion-body">
+            <p>Include both event-driven and snapshot logic. Webhooks catch state changes, while periodic reporting calls confirm queue depth, abandon rate, or service level thresholds.</p>
+            <div class="code-block"><div class="code-block-header"><span class="code-lang">application/json</span><span class="code-label">Alert Rule</span><button class="copy-btn">⎘ Copy</button></div>
+            <pre><code>{
+  "ruleName": "Premium queue SLA breach",
+  "queueId": "{{premiumQueueId}}",
+  "conditions": {
+    "contactsWaitingGreaterThan": 10,
+    "longestWaitSecondsGreaterThan": 180,
+    "serviceLevelLessThan": 80
+  },
+  "notify": {
+    "channel": "webex-space",
+    "spaceId": "{{operationsSpaceId}}"
+  }
+}</code></pre></div>
+            <p>The sample should show the webhook subscription, alert decision payload, Webex message output, and a simple runbook for suppressing duplicate alerts.</p>
+          </div>
+        </div>
+
+        <div class="accordion">
+          <button class="accordion-header">Q29 — How should I structure a Power BI or reporting connector sample? <span class="accordion-chevron">▾</span></button>
+          <div class="accordion-body">
+            <p>Build the connector as a repeatable extraction workflow: authenticate, request a time window, page through results, normalize rows, then load them into a table or dataset.</p>
+            <div class="code-block"><div class="code-block-header"><span class="code-lang">HTTP</span><span class="code-label">CDR Export Request</span><button class="copy-btn">⎘ Copy</button></div>
+            <pre><code>POST https://webexapis.com/v1/contactCenter/analytics/cdr
+Authorization: Bearer {{access_token}}
+Content-Type: application/json
+
+{
+  "from": "2026-06-01T00:00:00Z",
+  "to": "2026-06-01T23:59:59Z",
+  "timezone": "UTC",
+  "fields": ["contactId", "queueName", "agentName", "handleDuration", "wrapupCode"]
+}</code></pre></div>
+            <p>Include a screenshot of the resulting model: fact table, queue dimension, agent dimension, and a dashboard tile for service level or handle time.</p>
+          </div>
+        </div>
+
+        <div class="accordion">
+          <button class="accordion-header">Q30 — How do I validate Click-to-Call safely? <span class="accordion-chevron">▾</span></button>
+          <div class="accordion-body">
+            <p>Start with a test queue, a test agent, and allowlisted destination numbers. The sample should include a dry-run mode that validates the request without placing a real call.</p>
+            <div class="code-block"><div class="code-block-header"><span class="code-lang">application/json</span><span class="code-label">Click-to-Call Payload</span><button class="copy-btn">⎘ Copy</button></div>
+            <pre><code>{
+  "agentId": "{{agentId}}",
+  "destination": "+14155550100",
+  "outdialAni": "{{outdialAni}}",
+  "attributes": {
+    "crmRecordId": "CASE-1042",
+    "reason": "Customer requested callback",
+    "dryRun": true
+  }
+}</code></pre></div>
+            <p>Show the CRM button, the outbound request, the desktop task result, and the audit record created after the call completes.</p>
+          </div>
+        </div>
+
+        <div class="accordion">
+          <button class="accordion-header">Q31 — What screenshots should each sample include? <span class="accordion-chevron">▾</span></button>
+          <div class="accordion-body">
+            <p>Each sample should include screenshots or mock outputs for the moments a builder needs to verify:</p>
+            <ul>
+              <li><strong>Configuration:</strong> Service App, webhook subscription, desktop layout, flow node, or reporting schedule.</li>
+              <li><strong>Request:</strong> Postman request with URL, headers, and JSON body.</li>
+              <li><strong>Response:</strong> Successful JSON response and one error response.</li>
+              <li><strong>Business output:</strong> Agent screen pop, supervisor alert, BI dashboard, callback record, or flow routing decision.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accordion">
+          <button class="accordion-header">Q32 — How should I organize a Postman collection for WxCC samples? <span class="accordion-chevron">▾</span></button>
+          <div class="accordion-body">
+            <p>Create one collection with folders that match the sample journey: Auth, Config, Flow, Webhooks, Desktop Context, Reporting, and Production Checks.</p>
+            <div class="code-block"><div class="code-block-header"><span class="code-lang">application/json</span><span class="code-label">Postman Environment</span><button class="copy-btn">⎘ Copy</button></div>
+            <pre><code>{
+  "orgId": "{{orgId}}",
+  "access_token": "{{access_token}}",
+  "baseUrl": "https://webexapis.com/v1",
+  "queueId": "{{queueId}}",
+  "teamId": "{{teamId}}",
+  "agentId": "{{agentId}}",
+  "taskId": "{{taskId}}",
+  "webhookSecret": "{{webhookSecret}}"
+}</code></pre></div>
+            <p>Keep secrets in the environment, not in request bodies. Add a saved example response for each request so readers can understand the shape before they connect to a real org.</p>
+          </div>
+        </div>
+
+        <div class="accordion">
+          <button class="accordion-header">Q33 — How do I move a sample into production? <span class="accordion-chevron">▾</span></button>
+          <div class="accordion-body">
+            <p>Promote samples through a checklist: least-privilege scopes, admin-approved Service App, retries for 429 and 5xx, tracking ID logging, webhook signature validation, and screenshots of the final business output.</p>
+            <ul>
+              <li>Replace personal tokens with Service App credentials.</li>
+              <li>Move endpoint URLs, org IDs, and queue IDs into environment variables.</li>
+              <li>Add monitoring for token refresh, webhook delivery, API latency, and failed requests.</li>
+              <li>Keep a rollback plan for flow changes, desktop layout changes, and config automation runs.</li>
+            </ul>
+            <p>The sample is ready when another developer can import the collection, set environment values, run the requests, and compare their result to the included screenshot or expected JSON.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
     <!-- Best Practices -->
     <div id="best-practices" class="faq-section" data-category="all">
       <div class="faq-section-title">⭐ Best Practices</div>
       <div class="accordion-group">
 
         <div class="accordion">
-          <button class="accordion-header">Q26 — Top security best practices for WxCC integrations <span class="accordion-chevron">▾</span></button>
+          <button class="accordion-header">Q34 — Top security best practices for WxCC integrations <span class="accordion-chevron">▾</span></button>
           <div class="accordion-body">
             <ul>
               <li>🔒 <strong>Never hardcode tokens</strong> — use environment variables or a secrets manager (AWS Secrets Manager, HashiCorp Vault).</li>
@@ -407,7 +566,7 @@ if (isExpired) await refreshToken();</code></pre></div>
         </div>
 
         <div class="accordion">
-          <button class="accordion-header">Q27 — How should I structure my integration for production reliability? <span class="accordion-chevron">▾</span></button>
+          <button class="accordion-header">Q35 — How should I structure my integration for production reliability? <span class="accordion-chevron">▾</span></button>
           <div class="accordion-body">
             <ul>
               <li>⚡ <strong>Cache aggressively</strong> — agent lists, queue configs, and org data rarely change. Cache for 30–60 seconds.</li>
@@ -421,7 +580,7 @@ if (isExpired) await refreshToken();</code></pre></div>
         </div>
 
         <div class="accordion">
-          <button class="accordion-header">Q28 — Recommended architecture for a CRM screen-pop integration? <span class="accordion-chevron">▾</span></button>
+          <button class="accordion-header">Q36 — Recommended architecture for a CRM screen-pop integration? <span class="accordion-chevron">▾</span></button>
           <div class="accordion-body">
             <p>Combine webhooks (server-side) with the Desktop SDK (client-side) for the best result:</p>
             <ul>
@@ -434,7 +593,7 @@ if (isExpired) await refreshToken();</code></pre></div>
         </div>
 
         <div class="accordion">
-          <button class="accordion-header">Q29 — Where can I get more help? <span class="accordion-chevron">▾</span></button>
+          <button class="accordion-header">Q37 — Where can I get more help? <span class="accordion-chevron">▾</span></button>
           <div class="accordion-body">
             <ul>
               <li>📘 <strong>Official Docs:</strong> <a href="https://developer.webex.com/webex-contact-center/docs" target="_blank" rel="noopener">developer.webex.com/webex-contact-center</a></li>

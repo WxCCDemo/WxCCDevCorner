@@ -239,73 +239,53 @@ sequenceDiagram
     <div id="register" class="content-section">
       <div class="section-header"><span class="section-icon">📝</span><h2>Register a Webhook</h2></div>
       <div class="callout callout-info"><span class="callout-icon">💡</span><div class="callout-body"><strong>Local Development Tip</strong><p>Use <code>ngrok http 3000</code> to expose your local server publicly. WxCC will deliver events to the ngrok URL during testing.</p></div></div>
-      <div class="code-block"><div class="code-block-header"><span class="code-lang">JavaScript</span><span class="code-label">Register Webhook</span><button class="copy-btn">⎘ Copy</button></div>
-      <pre><code>const webhook = await axios.post(
-  'https://webexapis.com/v1/webhooks',
-  {
-    name:      'WxCC Integration — Task Events',
-    targetUrl: 'https://your-server.com/webhooks/wxcc',
-    resource:  'task',   // task | agentSession | queue
-    event:     'all',    // all | created | updated | deleted
-    orgId:     ORG_ID,
-    secret:    'my-hmac-secret-keep-this-safe'
-  },
-  { headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' } }
-);
-// Save webhook.data.id — you need it to update or delete later
-console.log(`Webhook registered: ${webhook.data.id}`);</code></pre></div>
+      <div class="code-block"><div class="code-block-header"><span class="code-lang">HTTP</span><span class="code-label">Register Webhook — application/json</span><button class="copy-btn">⎘ Copy</button></div>
+      <pre><code>POST https://webexapis.com/v1/webhooks
+
+Headers
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+Body
+{
+  "name": "WxCC Integration - Task Events",
+  "targetUrl": "https://your-server.com/webhooks/wxcc",
+  "resource": "task",
+  "event": "all",
+  "orgId": "{{orgId}}",
+  "secret": "{{webhook_secret}}"
+}</code></pre></div>
     </div>
 
     <div id="listener" class="content-section">
       <div class="section-header"><span class="section-icon">🖥️</span><h2>Building a Webhook Listener</h2></div>
       <div class="callout callout-success"><span class="callout-icon">✅</span><div class="callout-body"><strong>Always respond 200 first</strong><p>Return HTTP 200 immediately before any async processing. If WxCC doesn't get a 200 within 5 seconds, it marks the delivery as failed and retries.</p></div></div>
-      <div class="code-block"><div class="code-block-header"><span class="code-lang">JavaScript</span><span class="code-label">Express Webhook Server</span><button class="copy-btn">⎘ Copy</button></div>
-      <pre><code>const express = require('express');
-const crypto  = require('crypto');
-const app     = express();
+      <div class="code-block"><div class="code-block-header"><span class="code-lang">HTTP</span><span class="code-label">Incoming Webhook Delivery — application/json</span><button class="copy-btn">⎘ Copy</button></div>
+      <pre><code>POST https://your-server.com/webhooks/wxcc
 
-const WEBHOOK_SECRET = process.env.WXCC_WEBHOOK_SECRET;
+Headers
+Content-Type: application/json
+X-Spark-Signature: {{hmac_signature}}
 
-// Parse raw body for HMAC verification
-app.use('/webhooks', express.raw({ type: 'application/json' }));
-
-// Signature verification middleware
-function verifySignature(req, res, next) {
-  const sig  = req.headers['x-spark-signature'];
-  if (!sig) return res.status(400).send('Missing signature');
-
-  const hmac     = crypto.createHmac('sha1', WEBHOOK_SECRET);
-  const expected = hmac.update(req.body).digest('hex');
-
-  if (!crypto.timingSafeEqual(Buffer.from(sig), Buffer.from(expected))) {
-    console.warn('⚠️  Invalid webhook signature');
-    return res.status(401).send('Invalid signature');
+Body
+{
+  "id": "evt_12345",
+  "name": "task:ended",
+  "resource": "task",
+  "orgId": "{{orgId}}",
+  "data": {
+    "taskId": "task-abc",
+    "callerId": "+14155550100",
+    "agentId": "agent-001",
+    "wrapUpCode": "RESOLVED"
   }
-  req.event = JSON.parse(req.body.toString());
-  next();
 }
 
-// Event handlers
-const handlers = {
-  'task:created':             async (data) => { await lookupCallerInCRM(data.callerId); },
-  'task:assigned':            async (data) => { await logInteractionStart(data); },
-  'task:ended':               async (data) => { await updateCRMWithOutcome(data); },
-  'agentSession:stateChange': async (data) => { console.log(`${data.agentName}: ${data.previousState} → ${data.currentState}`); }
-};
+Expected listener response
+HTTP/1.1 200 OK
+Content-Type: application/json
 
-// Main webhook route
-app.post('/webhooks/wxcc', verifySignature, async (req, res) => {
-  res.status(200).json({ status: 'received' }); // respond immediately
-
-  const { name, data } = req.event;
-  const handler = handlers[name];
-  if (handler) {
-    try { await handler(data); }
-    catch (err) { console.error(`Handler error for ${name}:`, err.message); }
-  }
-});
-
-app.listen(3000, () => console.log('🚀 Webhook server listening on :3000'));</code></pre></div>
+{ "status": "received" }</code></pre></div>
     </div>
 
     <div id="security" class="content-section">
@@ -334,21 +314,27 @@ flowchart LR
           <button class="code-tab-btn">Update</button>
           <button class="code-tab-btn">Delete</button>
         </div>
-        <div class="code-tab-pane active"><div style="padding:8px 16px;background:var(--bg-elevated);border-bottom:1px solid var(--border-subtle);display:flex;justify-content:space-between;"><span style="font-size:0.75rem;color:var(--accent-cyan);font-weight:600;">GET /v1/webhooks</span><button class="copy-btn">⎘ Copy</button></div><pre><code>const { data } = await axios.get('https://webexapis.com/v1/webhooks', {
-  headers: { Authorization: `Bearer ${token}` }
-});
-data.items.forEach(wh => {
-  console.log(`${wh.name} → ${wh.targetUrl} [${wh.status}]`);
-});</code></pre></div>
-        <div class="code-tab-pane"><div style="padding:8px 16px;background:var(--bg-elevated);border-bottom:1px solid var(--border-subtle);display:flex;justify-content:space-between;"><span style="font-size:0.75rem;color:var(--accent-cyan);font-weight:600;">PUT /v1/webhooks/{id}</span><button class="copy-btn">⎘ Copy</button></div><pre><code>await axios.put(
-  `https://webexapis.com/v1/webhooks/${webhookId}`,
-  { name: 'Updated Webhook', targetUrl: 'https://new-server.com/webhooks/wxcc', secret: NEW_SECRET },
-  { headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' } }
-);</code></pre></div>
-        <div class="code-tab-pane"><div style="padding:8px 16px;background:var(--bg-elevated);border-bottom:1px solid var(--border-subtle);display:flex;justify-content:space-between;"><span style="font-size:0.75rem;color:var(--accent-cyan);font-weight:600;">DELETE /v1/webhooks/{id}</span><button class="copy-btn">⎘ Copy</button></div><pre><code>await axios.delete(`https://webexapis.com/v1/webhooks/${webhookId}`, {
-  headers: { Authorization: `Bearer ${token}` }
-});
-console.log('Webhook deleted');</code></pre></div>
+        <div class="code-tab-pane active"><div style="padding:8px 16px;background:var(--bg-elevated);border-bottom:1px solid var(--border-subtle);display:flex;justify-content:space-between;"><span style="font-size:0.75rem;color:var(--accent-cyan);font-weight:600;">GET /v1/webhooks</span><button class="copy-btn">⎘ Copy</button></div><pre><code>GET https://webexapis.com/v1/webhooks?orgId={{orgId}}
+
+Headers
+Authorization: Bearer {{access_token}}
+Accept: application/json</code></pre></div>
+        <div class="code-tab-pane"><div style="padding:8px 16px;background:var(--bg-elevated);border-bottom:1px solid var(--border-subtle);display:flex;justify-content:space-between;"><span style="font-size:0.75rem;color:var(--accent-cyan);font-weight:600;">PUT /v1/webhooks/{id}</span><button class="copy-btn">⎘ Copy</button></div><pre><code>PUT https://webexapis.com/v1/webhooks/{{webhookId}}
+
+Headers
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+Body
+{
+  "name": "Updated Webhook",
+  "targetUrl": "https://new-server.com/webhooks/wxcc",
+  "secret": "{{new_webhook_secret}}"
+}</code></pre></div>
+        <div class="code-tab-pane"><div style="padding:8px 16px;background:var(--bg-elevated);border-bottom:1px solid var(--border-subtle);display:flex;justify-content:space-between;"><span style="font-size:0.75rem;color:var(--accent-cyan);font-weight:600;">DELETE /v1/webhooks/{id}</span><button class="copy-btn">⎘ Copy</button></div><pre><code>DELETE https://webexapis.com/v1/webhooks/{{webhookId}}
+
+Headers
+Authorization: Bearer {{access_token}}</code></pre></div>
       </div>
     </div>
   </article>

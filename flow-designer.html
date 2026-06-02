@@ -193,24 +193,28 @@ flowchart TD
       </div>
 
       <p style="margin-top:var(--space-md);">Here's what the external API server might look like — called by the HTTP node:</p>
-      <div class="code-block"><div class="code-block-header"><span class="code-lang">JavaScript</span><span class="code-label">Your Backend API (called by HTTP Node)</span><button class="copy-btn">⎘ Copy</button></div>
-      <pre><code>// Express route that WxCC Flow HTTP Node calls
-app.post('/api/verify-account', async (req, res) => {
-  const { accountNumber } = req.body;
-  const customer = await db.customers.findOne({ accountNumber });
+      <div class="code-block"><div class="code-block-header"><span class="code-lang">HTTP</span><span class="code-label">HTTP Node Request — application/json</span><button class="copy-btn">⎘ Copy</button></div>
+      <pre><code>POST https://your-api.example.com/api/verify-account
 
-  if (!customer) return res.status(404).json({ authenticated: false });
+Headers
+Content-Type: application/json
+X-Correlation-Id: {{flowExecutionId}}
 
-  // Return structured data — WxCC parses $.field into Flow Variables
-  res.json({
-    authenticated:  true,
-    customerName:   customer.name,
-    tier:           customer.tier,         // 'Enterprise' | 'Standard'
-    openCases:      customer.openCases,
-    accountId:      customer.id,
-    preferredAgent: customer.csm?.agentId  // route to preferred CSM if any
-  });
-});</code></pre></div>
+Body
+{
+  "accountNumber": "$(AccountNumber)",
+  "callerId": "$(callerId)",
+  "entryPointId": "$(entryPointId)"
+}</code></pre></div>
+      <div class="code-block" style="margin-top:var(--space-md);"><div class="code-block-header"><span class="code-lang">application/json</span><span class="code-label">HTTP Node Response Mapping</span><button class="copy-btn">⎘ Copy</button></div>
+      <pre><code>{
+  "authenticated": true,
+  "customerName": "Ava Chen",
+  "tier": "Enterprise",
+  "openCases": 2,
+  "accountId": "acct-1042",
+  "preferredAgent": "agent-001"
+}</code></pre></div>
 
       <div class="callout callout-warning"><span class="callout-icon">⚠️</span><div class="callout-body"><strong>Keep HTTP Node responses fast</strong><p>Callers feel every millisecond of IVR delay. Target under 2 seconds for HTTP node response time. Keep total external call time under 5–6 seconds combined.</p></div></div>
     </div>
@@ -260,20 +264,22 @@ flowchart LR
           <button class="code-tab-btn active">List Flows</button>
           <button class="code-tab-btn">Publish Flow</button>
         </div>
-        <div class="code-tab-pane active"><div style="padding:8px 16px;background:var(--bg-elevated);border-bottom:1px solid var(--border-subtle);display:flex;justify-content:space-between;"><span style="font-size:0.75rem;color:var(--accent-cyan);font-weight:600;">GET /v1/contactCenter/flows</span><button class="copy-btn">⎘ Copy</button></div><pre><code>const { data } = await axios.get('https://webexapis.com/v1/contactCenter/flows', {
-  headers: { Authorization: `Bearer ${token}` },
-  params: { orgId: ORG_ID }
-});
-data.items.forEach(f => {
-  console.log(`${f.name} [v${f.version}] — Status: ${f.publishStatus}`);
-});</code></pre></div>
-        <div class="code-tab-pane"><div style="padding:8px 16px;background:var(--bg-elevated);border-bottom:1px solid var(--border-subtle);display:flex;justify-content:space-between;"><span style="font-size:0.75rem;color:var(--accent-cyan);font-weight:600;">POST /v1/contactCenter/flows/{id}/publish</span><button class="copy-btn">⎘ Copy</button></div><pre><code>// Publish a specific flow version to make it live
-await axios.post(
-  `https://webexapis.com/v1/contactCenter/flows/${flowId}/publish`,
-  { version: 3, comment: 'Added enterprise priority routing' },
-  { headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' } }
-);
-console.log('Flow published and now live');</code></pre></div>
+        <div class="code-tab-pane active"><div style="padding:8px 16px;background:var(--bg-elevated);border-bottom:1px solid var(--border-subtle);display:flex;justify-content:space-between;"><span style="font-size:0.75rem;color:var(--accent-cyan);font-weight:600;">GET /v1/contactCenter/flows</span><button class="copy-btn">⎘ Copy</button></div><pre><code>GET https://webexapis.com/v1/contactCenter/flows?orgId={{orgId}}
+
+Headers
+Authorization: Bearer {{access_token}}
+Accept: application/json</code></pre></div>
+        <div class="code-tab-pane"><div style="padding:8px 16px;background:var(--bg-elevated);border-bottom:1px solid var(--border-subtle);display:flex;justify-content:space-between;"><span style="font-size:0.75rem;color:var(--accent-cyan);font-weight:600;">POST /v1/contactCenter/flows/{id}/publish</span><button class="copy-btn">⎘ Copy</button></div><pre><code>POST https://webexapis.com/v1/contactCenter/flows/{{flowId}}/publish
+
+Headers
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+Body
+{
+  "version": 3,
+  "comment": "Added enterprise priority routing"
+}</code></pre></div>
       </div>
     </div>
   </article>

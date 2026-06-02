@@ -316,18 +316,23 @@ flowchart LR
           <li class="step"><div class="step-content"><h4>Call a safe read endpoint</h4><p>Validate token, org access, and scopes with the agents or queues endpoint first.</p></div></li>
           <li class="step"><div class="step-content"><h4>Move to Service App</h4><p>Replace personal token with the service-app token cache pattern for production use.</p></div></li>
         </ol>
-        <div class="code-block"><div class="code-block-header"><span class="code-lang">JavaScript</span><span class="code-label">First WxCC API Call</span><button class="copy-btn">⎘ Copy</button></div>
-        <pre><code>const token = process.env.WXCC_TOKEN;
-const orgId = process.env.WXCC_ORG_ID;
+        <div class="code-block"><div class="code-block-header"><span class="code-lang">HTTP</span><span class="code-label">Postman Request — First WxCC API Call</span><button class="copy-btn">⎘ Copy</button></div>
+        <pre><code>GET https://webexapis.com/v1/contactCenter/agents?orgId={{orgId}}&amp;max=5
 
-const res = await fetch(
-  `https://webexapis.com/v1/contactCenter/agents?orgId=${orgId}&max=5`,
-  { headers: { Authorization: `Bearer ${token}` } }
-);
-
-const data = await res.json();
-console.log(`✅ Token valid — ${data.items.length} agents returned`);
-data.items.forEach(a => console.log(` • ${a.name} (${a.agentState})`));</code></pre></div>
+Headers
+Authorization: Bearer {{access_token}}
+Accept: application/json</code></pre></div>
+        <div class="code-block" style="margin-top:var(--space-md);"><div class="code-block-header"><span class="code-lang">application/json</span><span class="code-label">200 OK Response</span><button class="copy-btn">⎘ Copy</button></div>
+        <pre><code>{
+  "items": [
+    {
+      "id": "agent-001",
+      "name": "Ava Chen",
+      "agentState": "Available",
+      "teamName": "Care Team"
+    }
+  ]
+}</code></pre></div>
         <div class="callout callout-success" style="margin-top:var(--space-md);">
           <span class="callout-icon">✅</span>
           <div class="callout-body">
@@ -374,21 +379,25 @@ flowchart LR
           <li>Return <code>200 OK</code> quickly, then process the event asynchronously.</li>
           <li>Store event IDs to avoid duplicate processing during retries.</li>
         </ul>
-        <div class="code-block"><div class="code-block-header"><span class="code-lang">JavaScript</span><span class="code-label">Express Webhook Listener</span><button class="copy-btn">⎘ Copy</button></div>
-        <pre><code>app.post('/webhooks/wxcc', express.raw({ type: 'application/json' }), (req, res) => {
-  // 1. Verify HMAC-SHA1 signature
-  const sig  = req.headers['x-spark-signature'];
-  const hmac = require('crypto').createHmac('sha1', process.env.WEBHOOK_SECRET);
-  const expected = hmac.update(req.body).digest('hex');
-  if (sig !== expected) return res.status(401).send('Invalid signature');
+        <div class="code-block"><div class="code-block-header"><span class="code-lang">HTTP</span><span class="code-label">Webhook Delivery — application/json</span><button class="copy-btn">⎘ Copy</button></div>
+        <pre><code>POST https://your-domain.example.com/webhooks/wxcc
 
-  // 2. Respond 200 immediately — never delay this
-  res.sendStatus(200);
+Headers
+Content-Type: application/json
+X-Spark-Signature: {{hmac_signature}}
+X-Webhook-Event: task:ended
 
-  // 3. Process asynchronously
-  const event = JSON.parse(req.body.toString());
-  queueEventForProcessing(event);
-});</code></pre></div>
+Body
+{
+  "id": "evt_12345",
+  "resource": "task",
+  "event": "task:ended",
+  "data": {
+    "taskId": "task-abc",
+    "agentId": "agent-001",
+    "queueId": "sales-queue"
+  }
+}</code></pre></div>
         <div class="code-block" style="margin-top:var(--space-md);"><div class="code-block-header"><span class="code-lang">JSON</span><span class="code-label">Event Processing Shape</span><button class="copy-btn">⎘ Copy</button></div>
         <pre><code>{
   "eventId": "evt_12345",
@@ -447,18 +456,29 @@ flowchart LR
           <li>Use ANI, DNIS, or call variables to look up CRM context.</li>
           <li>Write disposition notes or outcome fields back after contact end.</li>
         </ul>
-        <div class="code-block"><div class="code-block-header"><span class="code-lang">JavaScript</span><span class="code-label">Screen Pop on Incoming Call</span><button class="copy-btn">⎘ Copy</button></div>
-        <pre><code>await Desktop.config.init({ widgetName: 'CRM Widget' });
+        <div class="code-block"><div class="code-block-header"><span class="code-lang">HTTP</span><span class="code-label">CRM Screen Pop Lookup — application/json</span><button class="copy-btn">⎘ Copy</button></div>
+        <pre><code>POST https://crm.example.com/api/customer-lookup
 
-Desktop.agentContact.addEventListener('eAgentContact', async ({ detail }) => {
-  if (detail.type === 'AgentContactOffered') {
-    const customer = await crm.lookup(detail.data.callerId);
-    if (customer) renderCustomerContext(customer);
-  }
-  if (detail.type === 'AgentContactEnded') {
-    clearContext();
-  }
-});</code></pre></div>
+Headers
+Content-Type: application/json
+Authorization: Bearer {{crm_access_token}}
+
+Body
+{
+  "eventType": "AgentContactOffered",
+  "callerId": "{{ani}}",
+  "interactionId": "{{interactionId}}",
+  "agentId": "{{agentId}}"
+}</code></pre></div>
+        <div class="code-block" style="margin-top:var(--space-md);"><div class="code-block-header"><span class="code-lang">application/json</span><span class="code-label">Customer Context Response</span><button class="copy-btn">⎘ Copy</button></div>
+        <pre><code>{
+  "matched": true,
+  "customerId": "crm-1042",
+  "name": "Ava Chen",
+  "tier": "Gold",
+  "openCases": 2,
+  "nextBestAction": "Offer priority callback"
+}</code></pre></div>
         <div class="code-block" style="margin-top:var(--space-md);"><div class="code-block-header"><span class="code-lang">JSON</span><span class="code-label">Desktop Layout Registration</span><button class="copy-btn">⎘ Copy</button></div>
         <pre><code>{
   "widgets": {
@@ -520,24 +540,30 @@ flowchart LR
           <li>Refresh live wallboards on a controlled interval and cache historical exports.</li>
           <li>Separate supervisor wallboards from scheduled BI exports.</li>
         </ul>
-        <div class="code-block"><div class="code-block-header"><span class="code-lang">JavaScript</span><span class="code-label">Wallboard Metric Refresh</span><button class="copy-btn">⎘ Copy</button></div>
-        <pre><code>const stats = await wxcc.get(`/contactCenter/queues/${queueId}/statistics`, { orgId });
-dashboard.update({
-  waiting:   stats.contactsInQueue,
-  available: stats.agentsAvailable,
-  sla:       stats.serviceLevelPercentage
-});
-// Schedule next refresh in 30 seconds</code></pre></div>
-        <div class="code-block" style="margin-top:var(--space-md);"><div class="code-block-header"><span class="code-lang">GraphQL</span><span class="code-label">Historical CDR Query Pattern</span><button class="copy-btn">⎘ Copy</button></div>
-        <pre><code>query ContactSummary($from: DateTime!, $to: DateTime!) {
-  contacts(from: $from, to: $to) {
-    id
-    channelType
-    queueName
-    agentName
-    startedAt
-    endedAt
-    wrapupCode
+        <div class="code-block"><div class="code-block-header"><span class="code-lang">HTTP</span><span class="code-label">GraphQL Wallboard Request — application/json</span><button class="copy-btn">⎘ Copy</button></div>
+        <pre><code>POST https://webexapis.com/v1/contactCenter/analytics/graphql
+
+Headers
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+Body
+{
+  "query": "query QueueWallboard($queueId: ID!) { queue(id: $queueId) { name contactsInQueue agentsAvailable serviceLevelPercentage longestWaitSeconds } }",
+  "variables": {
+    "queueId": "{{queueId}}"
+  }
+}</code></pre></div>
+        <div class="code-block" style="margin-top:var(--space-md);"><div class="code-block-header"><span class="code-lang">application/json</span><span class="code-label">Wallboard Response</span><button class="copy-btn">⎘ Copy</button></div>
+        <pre><code>{
+  "data": {
+    "queue": {
+      "name": "Care Queue",
+      "contactsInQueue": 14,
+      "agentsAvailable": 8,
+      "serviceLevelPercentage": 87.4,
+      "longestWaitSeconds": 92
+    }
   }
 }</code></pre></div>
         <h4>Expected output</h4>
@@ -587,17 +613,20 @@ flowchart LR
           <li>Keep lookup latency low; Flow Designer should not wait on slow CRM operations.</li>
           <li>Log correlation IDs so failed lookups can be traced from flow to backend.</li>
         </ul>
-        <div class="code-block"><div class="code-block-header"><span class="code-lang">JavaScript</span><span class="code-label">Flow Lookup Backend API</span><button class="copy-btn">⎘ Copy</button></div>
-        <pre><code>app.post('/api/route-caller', async (req, res) => {
-  const account = await db.account(req.body.accountNumber);
-  res.json({
-    tier:  account.tier,
-    queue: account.tier === 'Gold' ? 'priority-queue-id' : 'standard-queue-id',
-    name:  account.name,
-    openCases: account.openCases
-  });
-  // WxCC Flow Designer parses $.tier → FlowVar_Tier, $.queue → FlowVar_Queue
-});</code></pre></div>
+        <div class="code-block"><div class="code-block-header"><span class="code-lang">HTTP</span><span class="code-label">Flow HTTP Request Node — application/json</span><button class="copy-btn">⎘ Copy</button></div>
+        <pre><code>POST https://your-api.example.com/api/route-caller
+
+Headers
+Content-Type: application/json
+X-Correlation-Id: {{flowExecutionId}}
+
+Body
+{
+  "accountNumber": "{{FlowVar_AccountNumber}}",
+  "ani": "{{NewPhoneContact.ANI}}",
+  "entryPointId": "{{EntryPointId}}",
+  "language": "{{FlowVar_Language}}"
+}</code></pre></div>
         <div class="code-block" style="margin-top:var(--space-md);"><div class="code-block-header"><span class="code-lang">JSON</span><span class="code-label">Flow Response Mapping</span><button class="copy-btn">⎘ Copy</button></div>
         <pre><code>{
   "tier": "Gold",
@@ -652,29 +681,30 @@ flowchart LR
           <li>Validate required fields before bulk-create or bulk-update operations.</li>
           <li>Produce a dry-run report showing what will be created, updated, or skipped.</li>
         </ul>
-        <div class="code-block"><div class="code-block-header"><span class="code-lang">JavaScript</span><span class="code-label">Config Export to CSV</span><button class="copy-btn">⎘ Copy</button></div>
-        <pre><code>const { data } = await wxcc.get('/contactCenter/queues', { orgId: ORG_ID });
-const rows = data.items.map(q => ({
-  name:         q.name,
-  channel:      q.channelType,
-  serviceLevel: q.serviceLevelThreshold
-}));
-await writeCsv('queues.csv', rows);
-console.log(`✅ Exported ${rows.length} queues to queues.csv`);</code></pre></div>
-        <div class="code-block" style="margin-top:var(--space-md);"><div class="code-block-header"><span class="code-lang">JavaScript</span><span class="code-label">Dry-run Change Plan</span><button class="copy-btn">⎘ Copy</button></div>
-        <pre><code>const desired = await readCsv('queues-desired.csv');
-const current = await wxcc.getQueues({ orgId: ORG_ID });
+        <div class="code-block"><div class="code-block-header"><span class="code-lang">HTTP</span><span class="code-label">Config Export — Queues</span><button class="copy-btn">⎘ Copy</button></div>
+        <pre><code>GET https://webexapis.com/v1/contactCenter/queues?orgId={{orgId}}&amp;max=100
 
-const plan = desired.map(row => {
-  const existing = current.find(q => q.name === row.name);
-  return {
-    action: existing ? 'update' : 'create',
-    name: row.name,
-    targetServiceLevel: row.serviceLevel
-  };
-});
-
-console.table(plan);</code></pre></div>
+Headers
+Authorization: Bearer {{access_token}}
+Accept: application/json</code></pre></div>
+        <div class="code-block" style="margin-top:var(--space-md);"><div class="code-block-header"><span class="code-lang">application/json</span><span class="code-label">Dry-run Change Plan</span><button class="copy-btn">⎘ Copy</button></div>
+        <pre><code>{
+  "dryRun": true,
+  "source": "queues-desired.csv",
+  "changes": [
+    {
+      "action": "update",
+      "name": "Care Queue",
+      "currentServiceLevel": 80,
+      "targetServiceLevel": 90
+    },
+    {
+      "action": "create",
+      "name": "Premium Support",
+      "targetServiceLevel": 95
+    }
+  ]
+}</code></pre></div>
         <h4>Expected output</h4>
         <ul>
           <li>CSV export lists queue name, channel, service level, and routing metadata.</li>
@@ -719,21 +749,21 @@ flowchart LR
           <li>Track agent ID, session ID, contact ID, and event timestamp together.</li>
           <li>Do not use monitoring tools to bypass supervisor permissions or business policy.</li>
         </ul>
-        <div class="code-block"><div class="code-block-header"><span class="code-lang">JavaScript</span><span class="code-label">Subscribe to Desktop Events</span><button class="copy-btn">⎘ Copy</button></div>
-        <pre><code>const socket = new WebSocket(process.env.WXCC_DESKTOP_EVENTS_URL, {
-  headers: { Authorization: `Bearer ${process.env.WXCC_TOKEN}` }
-});
+        <div class="code-block"><div class="code-block-header"><span class="code-lang">HTTP</span><span class="code-label">Desktop API Session</span><button class="copy-btn">⎘ Copy</button></div>
+        <pre><code>GET https://webexapis.com/v1/contactCenter/desktop/agents/{{agentId}}/state
 
-socket.onmessage = message => {
-  const event = JSON.parse(message.data);
-  if (event.type === 'agent.state.changed') {
-    stateStore.upsertAgent(event.agentId, {
-      state: event.state,
-      reason: event.reasonCode,
-      changedAt: event.timestamp
-    });
-  }
-};</code></pre></div>
+Headers
+Authorization: Bearer {{access_token}}
+Accept: application/json</code></pre></div>
+        <div class="code-block" style="margin-top:var(--space-md);"><div class="code-block-header"><span class="code-lang">application/json</span><span class="code-label">Desktop Event Payload</span><button class="copy-btn">⎘ Copy</button></div>
+        <pre><code>{
+  "type": "agent.state.changed",
+  "agentId": "agent-001",
+  "sessionId": "session-123",
+  "state": "Available",
+  "reasonCode": null,
+  "timestamp": "2026-06-02T09:30:00Z"
+}</code></pre></div>
         <h4>Expected output</h4>
         <ul>
           <li>Supervisor tool updates agent state changes without manual refresh.</li>
@@ -776,22 +806,25 @@ flowchart LR
           <li>Map web form intent to the right queue, team, or entry point.</li>
           <li>Write callback status back to the CRM or customer case.</li>
         </ul>
-        <div class="code-block"><div class="code-block-header"><span class="code-lang">JavaScript</span><span class="code-label">Create Callback Request</span><button class="copy-btn">⎘ Copy</button></div>
-        <pre><code>app.post('/api/callbacks', async (req, res) => {
-  const request = {
-    phoneNumber: req.body.phoneNumber,
-    customerName: req.body.name,
-    queueId: mapIntentToQueue(req.body.intent),
-    preferredTime: req.body.preferredTime,
-    attributes: {
-      crmCaseId: req.body.caseId,
-      source: 'web-form'
-    }
-  };
+        <div class="code-block"><div class="code-block-header"><span class="code-lang">HTTP</span><span class="code-label">Create Callback Request — application/json</span><button class="copy-btn">⎘ Copy</button></div>
+        <pre><code>POST https://webexapis.com/v1/contactCenter/callbacks
 
-  const callback = await wxcc.createCallback(request);
-  res.status(201).json({ callbackId: callback.id, status: 'created' });
-});</code></pre></div>
+Headers
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+Body
+{
+  "orgId": "{{orgId}}",
+  "phoneNumber": "+14155550100",
+  "customerName": "Ava Chen",
+  "queueId": "{{queueId}}",
+  "preferredTime": "2026-06-02T10:30:00Z",
+  "attributes": {
+    "crmCaseId": "CASE-10042",
+    "source": "web-form"
+  }
+}</code></pre></div>
         <h4>Expected output</h4>
         <ul>
           <li>Customer receives confirmation with callback reference.</li>
@@ -835,23 +868,23 @@ flowchart LR
           <li>Store metadata, retention policy, and review status separately from media files.</li>
           <li>Limit archive access by role and log every retrieval.</li>
         </ul>
-        <div class="code-block"><div class="code-block-header"><span class="code-lang">JavaScript</span><span class="code-label">Queue Recording for Review</span><button class="copy-btn">⎘ Copy</button></div>
-        <pre><code>async function processRecordingEvent(event) {
-  const recording = await wxcc.getRecording(event.data.recordingId);
+        <div class="code-block"><div class="code-block-header"><span class="code-lang">HTTP</span><span class="code-label">Recording Metadata Lookup</span><button class="copy-btn">⎘ Copy</button></div>
+        <pre><code>GET https://webexapis.com/v1/contactCenter/recordings/{{recordingId}}?orgId={{orgId}}
 
-  await archive.storeMetadata({
-    recordingId: recording.id,
-    contactId: recording.contactId,
-    agentId: recording.agentId,
-    queueName: recording.queueName,
-    startedAt: recording.startedAt
-  });
-
-  await qaQueue.add({
-    recordingId: recording.id,
-    reason: 'new-recording',
-    priority: recording.queueName === 'complaints' ? 'high' : 'normal'
-  });
+Headers
+Authorization: Bearer {{access_token}}
+Accept: application/json</code></pre></div>
+        <div class="code-block" style="margin-top:var(--space-md);"><div class="code-block-header"><span class="code-lang">application/json</span><span class="code-label">QA Queue Payload</span><button class="copy-btn">⎘ Copy</button></div>
+        <pre><code>{
+  "recordingId": "rec-10042",
+  "contactId": "task-8421",
+  "agentId": "agent-001",
+  "queueName": "Complaints",
+  "startedAt": "2026-06-02T09:10:00Z",
+  "review": {
+    "reason": "new-recording",
+    "priority": "high"
+  }
 }</code></pre></div>
         <h4>Expected output</h4>
         <ul>
@@ -896,31 +929,35 @@ flowchart LR
           <li>Map GraphQL results into stable BI columns such as queue, channel, agent, wrap-up, start time, and duration.</li>
           <li>Schedule refreshes with token renewal and explicit API error handling.</li>
         </ul>
-        <div class="code-block"><div class="code-block-header"><span class="code-lang">GraphQL</span><span class="code-label">Power BI Dataset Query</span><button class="copy-btn">⎘ Copy</button></div>
-        <pre><code>query PowerBiContactDataset($from: DateTime!, $to: DateTime!) {
-  contacts(from: $from, to: $to) {
-    id
-    channelType
-    queueName
-    agentName
-    wrapupCode
-    startedAt
-    endedAt
-    totalDuration
+        <div class="code-block"><div class="code-block-header"><span class="code-lang">HTTP</span><span class="code-label">Power BI GraphQL Request — application/json</span><button class="copy-btn">⎘ Copy</button></div>
+        <pre><code>POST https://webexapis.com/v1/contactCenter/analytics/graphql
+
+Headers
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+Body
+{
+  "query": "query PowerBiContactDataset($from: DateTime!, $to: DateTime!) { contacts(from: $from, to: $to) { id channelType queueName agentName wrapupCode startedAt endedAt totalDuration } }",
+  "variables": {
+    "from": "2026-06-01T00:00:00Z",
+    "to": "2026-06-02T00:00:00Z"
   }
 }</code></pre></div>
-        <div class="code-block" style="margin-top:var(--space-md);"><div class="code-block-header"><span class="code-lang">JavaScript</span><span class="code-label">Normalize Rows for BI</span><button class="copy-btn">⎘ Copy</button></div>
-        <pre><code>const rows = result.contacts.map(contact => ({
-  ContactId: contact.id,
-  Channel: contact.channelType,
-  Queue: contact.queueName,
-  Agent: contact.agentName || 'Unassigned',
-  Wrapup: contact.wrapupCode || 'None',
-  StartedAt: contact.startedAt,
-  DurationSeconds: contact.totalDuration
-}));
-
-return rows;</code></pre></div>
+        <div class="code-block" style="margin-top:var(--space-md);"><div class="code-block-header"><span class="code-lang">application/json</span><span class="code-label">Normalized BI Rows</span><button class="copy-btn">⎘ Copy</button></div>
+        <pre><code>{
+  "rows": [
+    {
+      "ContactId": "task-8421",
+      "Channel": "telephony",
+      "Queue": "Care Queue",
+      "Agent": "Ava Chen",
+      "Wrapup": "Resolved",
+      "StartedAt": "2026-06-01T09:00:00Z",
+      "DurationSeconds": 318
+    }
+  ]
+}</code></pre></div>
         <h4>Expected screenshot / output</h4>
         <div class="sample-screenshot-grid">
           <div class="sample-screenshot">
@@ -980,28 +1017,31 @@ flowchart LR
           <li>Disable call-control buttons when the current contact state does not support that action.</li>
           <li>Log action intent and outcome so supervisors can troubleshoot failed consult or transfer attempts.</li>
         </ul>
-        <div class="code-block"><div class="code-block-header"><span class="code-lang">JavaScript</span><span class="code-label">Click-to-Dial Action</span><button class="copy-btn">⎘ Copy</button></div>
-        <pre><code>async function dialContact(contact) {
-  const number = normalizePhone(contact.phone);
+        <div class="code-block"><div class="code-block-header"><span class="code-lang">HTTP</span><span class="code-label">Click-to-Call Action — application/json</span><button class="copy-btn">⎘ Copy</button></div>
+        <pre><code>POST https://webexapis.com/v1/contactCenter/desktop/agents/{{agentId}}/outdial
 
-  await Desktop.dialer.startOutdial({
-    destination: number,
-    attributes: {
-      crmContactId: contact.id,
-      source: 'address-book-widget'
-    }
-  });
+Headers
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
 
-  renderToast(`Dialing ${contact.name}`);
+Body
+{
+  "destination": "+14155550100",
+  "outdialAni": "{{outdialAni}}",
+  "attributes": {
+    "crmContactId": "crm-1042",
+    "source": "address-book-widget"
+  }
 }</code></pre></div>
-        <div class="code-block" style="margin-top:var(--space-md);"><div class="code-block-header"><span class="code-lang">JavaScript</span><span class="code-label">State-aware Control Buttons</span><button class="copy-btn">⎘ Copy</button></div>
-        <pre><code>function renderControls(contactState) {
-  return {
-    canHold: contactState === 'connected',
-    canTransfer: contactState === 'connected',
-    canConsult: contactState === 'connected',
-    canResume: contactState === 'held'
-  };
+        <div class="code-block" style="margin-top:var(--space-md);"><div class="code-block-header"><span class="code-lang">application/json</span><span class="code-label">State-aware Control Model</span><button class="copy-btn">⎘ Copy</button></div>
+        <pre><code>{
+  "contactState": "connected",
+  "availableActions": {
+    "hold": true,
+    "resume": false,
+    "consult": true,
+    "transfer": true
+  }
 }</code></pre></div>
         <h4>Expected screenshot / output</h4>
         <div class="sample-screenshot-grid">
@@ -1061,18 +1101,20 @@ flowchart LR
           <li>Fetch only metadata in the agent view unless playback is explicitly approved for the role.</li>
           <li>Mask or avoid sensitive audio access for restricted queues.</li>
         </ul>
-        <div class="code-block"><div class="code-block-header"><span class="code-lang">JavaScript</span><span class="code-label">Render Audio Context</span><button class="copy-btn">⎘ Copy</button></div>
-        <pre><code>Desktop.agentContact.addEventListener('eAgentContact', async ({ detail }) => {
-  if (detail.type !== 'AgentContactEnded') return;
+        <div class="code-block"><div class="code-block-header"><span class="code-lang">HTTP</span><span class="code-label">Audio Context Lookup</span><button class="copy-btn">⎘ Copy</button></div>
+        <pre><code>GET https://webexapis.com/v1/contactCenter/recordings?orgId={{orgId}}&amp;contactId={{contactId}}
 
-  const recording = await recordings.findByContactId(detail.data.interactionId);
-  renderAudioPanel({
-    contactId: detail.data.interactionId,
-    recordingId: recording?.id,
-    duration: recording?.duration,
-    reviewStatus: recording ? 'available' : 'pending'
-  });
-});</code></pre></div>
+Headers
+Authorization: Bearer {{access_token}}
+Accept: application/json</code></pre></div>
+        <div class="code-block" style="margin-top:var(--space-md);"><div class="code-block-header"><span class="code-lang">application/json</span><span class="code-label">Audio Widget Context</span><button class="copy-btn">⎘ Copy</button></div>
+        <pre><code>{
+  "contactId": "task-8421",
+  "recordingId": "rec-10042",
+  "duration": "04:18",
+  "reviewStatus": "available",
+  "playbackAllowed": false
+}</code></pre></div>
         <h4>Expected screenshot / output</h4>
         <div class="sample-screenshot-grid">
           <div class="sample-screenshot">
@@ -1200,22 +1242,35 @@ flowchart LR
           <li>Validate runtime tokens/signatures before accepting media or conversation events.</li>
           <li>Trace every call turn with a correlation ID from flow to provider service.</li>
         </ul>
-        <div class="code-block"><div class="code-block-header"><span class="code-lang">JavaScript</span><span class="code-label">Provider Event Handler Shape</span><button class="copy-btn">⎘ Copy</button></div>
-        <pre><code>async function handleVirtualAgentTurn(event) {
-  verifyRuntimeJwt(event.headers.authorization);
+        <div class="code-block"><div class="code-block-header"><span class="code-lang">HTTP</span><span class="code-label">Provider Runtime Event — application/json</span><button class="copy-btn">⎘ Copy</button></div>
+        <pre><code>POST https://provider.example.com/wxcc/virtual-agent/turn
 
-  const botReply = await virtualAgent.respond({
-    sessionId: event.sessionId,
-    transcript: event.input.text,
-    language: event.input.language,
-    context: event.context
-  });
+Headers
+Content-Type: application/json
+Authorization: Bearer {{runtime_jwt}}
+X-Correlation-Id: {{flowExecutionId}}
 
-  return {
-    action: botReply.transferToAgent ? 'transfer' : 'continue',
-    prompt: botReply.message,
-    variables: botReply.outputVariables
-  };
+Body
+{
+  "sessionId": "va-session-1042",
+  "input": {
+    "text": "I need help with my bill",
+    "language": "en-US"
+  },
+  "context": {
+    "ani": "+14155550100",
+    "queueId": "{{queueId}}",
+    "customerTier": "Gold"
+  }
+}</code></pre></div>
+        <div class="code-block" style="margin-top:var(--space-md);"><div class="code-block-header"><span class="code-lang">application/json</span><span class="code-label">Provider Response</span><button class="copy-btn">⎘ Copy</button></div>
+        <pre><code>{
+  "action": "continue",
+  "prompt": "I can help with billing. Please confirm the last four digits on the account.",
+  "variables": {
+    "intent": "billing",
+    "confidence": 0.91
+  }
 }</code></pre></div>
         <h4>Expected screenshot / output</h4>
         <div class="sample-screenshot-grid">
@@ -1251,26 +1306,46 @@ flowchart LR
     <div class="content-section">
       <div class="section-header"><span class="section-icon">✨</span><h2>What To Build Next</h2></div>
       <div class="cta-grid">
-        <div class="cta-card">
+        <a href="#flow-template-playbook" class="cta-card">
           <span class="cta-card-label">Revenue</span>
           <span class="cta-card-title">Priority Routing</span>
-          <span class="cta-card-desc">Route high-value customers by tier, wait time, or AI intent score.</span>
-        </div>
-        <div class="cta-card">
+          <span class="cta-card-desc">Use Flow HTTP lookup plus provider responses to return customer tier, preferred queue, and routing reason.</span>
+        </a>
+        <a href="#desktop-playbook" class="cta-card">
+          <span class="cta-card-label">Agent UX</span>
+          <span class="cta-card-title">CRM Screen Pop</span>
+          <span class="cta-card-desc">Start from task variables, request customer context, and render account actions inside the agent desktop.</span>
+        </a>
+        <a href="#ai-provider-playbook" class="cta-card">
           <span class="cta-card-label">Agent UX</span>
           <span class="cta-card-title">Agent Assist Widget</span>
-          <span class="cta-card-desc">Show CRM context and AI-suggested actions inside the desktop.</span>
-        </div>
-        <div class="cta-card">
+          <span class="cta-card-desc">Combine AI provider intent, suggested response, and next best action with desktop task context.</span>
+        </a>
+        <a href="#webhook-playbook" class="cta-card">
           <span class="cta-card-label">Operations</span>
           <span class="cta-card-title">SLA Alerts</span>
-          <span class="cta-card-desc">Alert supervisors when queue depths or SLA signals change.</span>
-        </div>
-        <div class="cta-card">
+          <span class="cta-card-desc">Subscribe to contact and agent events, verify signatures, and post alerts to an operations channel.</span>
+        </a>
+        <a href="#powerbi-playbook" class="cta-card">
           <span class="cta-card-label">Analytics</span>
           <span class="cta-card-title">BI Connector</span>
-          <span class="cta-card-desc">Export contact data to Power BI or Tableau for business reviews.</span>
-        </div>
+          <span class="cta-card-desc">Export CDRs, queue metrics, and agent activity into a refreshable Power BI model.</span>
+        </a>
+        <a href="#click-to-call-playbook" class="cta-card">
+          <span class="cta-card-label">CRM Action</span>
+          <span class="cta-card-title">Click To Call</span>
+          <span class="cta-card-desc">Trigger outbound calls from CRM records with a JSON payload containing agent, destination, and context.</span>
+        </a>
+        <a href="#callback-playbook" class="cta-card">
+          <span class="cta-card-label">Customer Experience</span>
+          <span class="cta-card-title">Callback Deflection</span>
+          <span class="cta-card-desc">Offer callback when estimated wait is high, then create the callback request with customer consent data.</span>
+        </a>
+        <a href="#config-playbook" class="cta-card">
+          <span class="cta-card-label">Admin Automation</span>
+          <span class="cta-card-title">Config Migration Audit</span>
+          <span class="cta-card-desc">Read queues, teams, sites, users, and skills into a baseline JSON file before making controlled changes.</span>
+        </a>
       </div>
     </div>
 

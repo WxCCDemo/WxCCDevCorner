@@ -142,101 +142,39 @@ flowchart LR
           <button class="code-tab-btn">Agent States</button>
           <button class="code-tab-btn">Auto-Poll Wallboard</button>
         </div>
-        <div class="code-tab-pane active"><div style="padding:8px 16px;background:var(--bg-elevated);border-bottom:1px solid var(--border-subtle);display:flex;justify-content:space-between;"><span style="font-size:0.75rem;color:var(--accent-cyan);font-weight:600;">REAL-TIME QUEUE SNAPSHOT</span><button class="copy-btn">⎘ Copy</button></div><pre><code>async function getQueueSnapshot(queueId) {
-  const { data: s } = await axios.get(
-    `https://webexapis.com/v1/contactCenter/queues/${queueId}/statistics`,
-    { headers: { Authorization: `Bearer ${token}` }, params: { orgId: ORG_ID } }
-  );
-  return {
-    queueName:       s.queueName,
-    contactsWaiting: s.contactsInQueue,
-    longestWait:     s.longestContactInQueue, // seconds
-    agentsAvailable: s.agentsAvailable,
-    agentsOnContact: s.agentsOnContact,
-    agentsIdle:      s.agentsIdle,
-    serviceLevel:    s.serviceLevelPercentage // % in SLA window
-  };
-}
+        <div class="code-tab-pane active"><div style="padding:8px 16px;background:var(--bg-elevated);border-bottom:1px solid var(--border-subtle);display:flex;justify-content:space-between;"><span style="font-size:0.75rem;color:var(--accent-cyan);font-weight:600;">REAL-TIME QUEUE SNAPSHOT</span><button class="copy-btn">⎘ Copy</button></div><pre><code>GET https://webexapis.com/v1/contactCenter/queues/{{queueId}}/statistics?orgId={{orgId}}
 
-const snapshot = await getQueueSnapshot('QUEUE_ID');
-console.table(snapshot);</code></pre></div>
-        <div class="code-tab-pane"><div style="padding:8px 16px;background:var(--bg-elevated);border-bottom:1px solid var(--border-subtle);display:flex;justify-content:space-between;"><span style="font-size:0.75rem;color:var(--accent-cyan);font-weight:600;">AGENT STATE SUMMARY</span><button class="copy-btn">⎘ Copy</button></div><pre><code>async function getAgentStates(teamId) {
-  const { data } = await axios.get(
-    'https://webexapis.com/v1/contactCenter/agents/states',
-    { headers: { Authorization: `Bearer ${token}` }, params: { orgId: ORG_ID, teamId } }
-  );
-  const summary = { Available: 0, Idle: 0, InACall: 0, WrapUp: 0 };
-  data.items.forEach(a => { summary[a.agentState] = (summary[a.agentState] || 0) + 1; });
-  return summary;
-}
+Headers
+Authorization: Bearer {{access_token}}
+Accept: application/json</code></pre></div>
+        <div class="code-tab-pane"><div style="padding:8px 16px;background:var(--bg-elevated);border-bottom:1px solid var(--border-subtle);display:flex;justify-content:space-between;"><span style="font-size:0.75rem;color:var(--accent-cyan);font-weight:600;">AGENT STATE SUMMARY</span><button class="copy-btn">⎘ Copy</button></div><pre><code>GET https://webexapis.com/v1/contactCenter/agents/states?orgId={{orgId}}&amp;teamId={{teamId}}
 
-const states = await getAgentStates('TEAM_ID');
-if (states.Available === 0) {
-  await sendAlert('⚠️ No agents available in team!');
+Headers
+Authorization: Bearer {{access_token}}
+Accept: application/json</code></pre></div>
+        <div class="code-tab-pane"><div style="padding:8px 16px;background:var(--bg-elevated);border-bottom:1px solid var(--border-subtle);display:flex;justify-content:space-between;"><span style="font-size:0.75rem;color:var(--accent-cyan);font-weight:600;">LIVE WALLBOARD RESPONSE</span><button class="copy-btn">⎘ Copy</button></div><pre><code>{
+  "refreshIntervalSeconds": 30,
+  "queues": [
+    {
+      "queueId": "QUEUE_1",
+      "contactsWaiting": 14,
+      "agentsAvailable": 8,
+      "serviceLevelPercentage": 87.4
+    }
+  ]
 }</code></pre></div>
-        <div class="code-tab-pane"><div style="padding:8px 16px;background:var(--bg-elevated);border-bottom:1px solid var(--border-subtle);display:flex;justify-content:space-between;"><span style="font-size:0.75rem;color:var(--accent-cyan);font-weight:600;">LIVE WALLBOARD CLASS</span><button class="copy-btn">⎘ Copy</button></div><pre><code>class LiveWallboard {
-  constructor(queueIds, intervalMs = 30_000) {
-    this.queueIds   = queueIds;
-    this.intervalMs = intervalMs;
-  }
-
-  start() {
-    this.refresh();
-    this.timer = setInterval(() => this.refresh(), this.intervalMs);
-  }
-
-  stop() { clearInterval(this.timer); }
-
-  async refresh() {
-    const stats = await Promise.all(this.queueIds.map(id => getQueueSnapshot(id)));
-    this.emit('update', stats);
-  }
-
-  emit(event, data) {
-    // Push to your UI via WebSocket, EventSource, or DOM update
-    document.dispatchEvent(new CustomEvent(`wallboard:${event}`, { detail: data }));
-  }
-}
-
-const board = new LiveWallboard(['QUEUE_1', 'QUEUE_2', 'QUEUE_3']);
-board.start();</code></pre></div>
       </div>
     </div>
 
     <div id="historical" class="content-section">
       <div class="section-header"><span class="section-icon">📅</span><h2>Historical Reports</h2></div>
       <p>Query aggregated metrics for any time range up to 13 months back at hourly, daily, weekly, or monthly granularity.</p>
-      <div class="code-block"><div class="code-block-header"><span class="code-lang">JavaScript</span><span class="code-label">Yesterday's Queue Metrics → CSV Export</span><button class="copy-btn">⎘ Copy</button></div>
-      <pre><code>const yesterday = new Date(Date.now() - 86_400_000);
-const dateStr   = yesterday.toISOString().split('T')[0]; // "2024-01-14"
+      <div class="code-block"><div class="code-block-header"><span class="code-lang">HTTP</span><span class="code-label">Queue Metrics Export</span><button class="copy-btn">⎘ Copy</button></div>
+      <pre><code>GET https://webexapis.com/v1/contactCenter/reports/queues?orgId={{orgId}}&amp;startDate=2026-06-01T00:00:00Z&amp;endDate=2026-06-01T23:59:59Z&amp;granularity=HOURLY&amp;metrics=contactsHandled,avgHandleTime,serviceLevelPercentage,abandonRate
 
-const { data } = await axios.get(
-  'https://webexapis.com/v1/contactCenter/reports/queues',
-  {
-    headers: { Authorization: `Bearer ${token}` },
-    params: {
-      orgId:       ORG_ID,
-      startDate:   `${dateStr}T00:00:00Z`,
-      endDate:     `${dateStr}T23:59:59Z`,
-      granularity: 'HOURLY',  // HOURLY | DAILY | WEEKLY | MONTHLY
-      metrics:     'contactsHandled,avgHandleTime,serviceLevelPercentage,abandonRate'
-    }
-  }
-);
-
-const report = data.items;
-const totalHandled = report.reduce((sum, r) => sum + r.contactsHandled, 0);
-console.log(`Total contacts handled yesterday: ${totalHandled}`);
-
-// Export to CSV
-const csv = [
-  'Queue,Hour,Handled,AHT(s),SLA%,Abandon%',
-  ...report.map(r =>
-    `${r.queueName},${r.hour},${r.contactsHandled},${r.avgHandleTime},${r.serviceLevelPercentage},${r.abandonRate}`
-  )
-].join('\n');
-require('fs').writeFileSync('report.csv', csv);
-console.log('✅ report.csv written');</code></pre></div>
+Headers
+Authorization: Bearer {{access_token}}
+Accept: application/json</code></pre></div>
     </div>
 
     <div id="cdr" class="content-section">
@@ -257,72 +195,33 @@ console.log('✅ report.csv written');</code></pre></div>
           </tbody>
         </table>
       </div>
-      <div class="code-block"><div class="code-block-header"><span class="code-lang">JavaScript</span><span class="code-label">Paginated CDR Fetch</span><button class="copy-btn">⎘ Copy</button></div>
-      <pre><code>async function fetchCDRs({ startDate, endDate, channelType }) {
-  const allRecords = [];
-  let cursor = null;
+      <div class="code-block"><div class="code-block-header"><span class="code-lang">HTTP</span><span class="code-label">Paginated CDR Fetch</span><button class="copy-btn">⎘ Copy</button></div>
+      <pre><code>GET https://webexapis.com/v1/contactCenter/recordings/calls?orgId={{orgId}}&amp;startDate=2026-06-01T00:00:00Z&amp;endDate=2026-06-01T23:59:59Z&amp;channelType=telephony&amp;max=1000
 
-  do {
-    const params = { orgId: ORG_ID, startDate, endDate, channelType, max: 1000 };
-    if (cursor) params.cursor = cursor;
+Headers
+Authorization: Bearer {{access_token}}
+Accept: application/json
 
-    const { data } = await axios.get(
-      'https://webexapis.com/v1/contactCenter/recordings/calls',
-      { headers: { Authorization: `Bearer ${token}` }, params }
-    );
-
-    allRecords.push(...data.items);
-    cursor = data.next ? new URL(data.next).searchParams.get('cursor') : null;
-
-  } while (cursor);
-
-  return allRecords;
-}
-
-const cdrs = await fetchCDRs({
-  startDate: '2024-01-01T00:00:00Z',
-  endDate:   '2024-01-31T23:59:59Z',
-  channelType: 'telephony'
-});
-
-const avgHandle = cdrs.reduce((s, c) => s + c.totalDuration, 0) / cdrs.length;
-console.log(`Fetched ${cdrs.length} CDRs | Avg handle: ${Math.round(avgHandle)}s`);</code></pre></div>
+Pagination
+Use the Link response header with rel="next" for the next page.</code></pre></div>
     </div>
 
     <div id="export" class="content-section">
       <div class="section-header"><span class="section-icon">📤</span><h2>Scheduled Data Export</h2></div>
       <p>For large-scale pipelines, schedule nightly exports to your data warehouse rather than polling continuously.</p>
-      <div class="code-block"><div class="code-block-header"><span class="code-lang">JavaScript</span><span class="code-label">Nightly ETL → BigQuery</span><button class="copy-btn">⎘ Copy</button></div>
-      <pre><code>const cron     = require('node-cron');
-const { BigQuery } = require('@google-cloud/bigquery');
-
-const bq = new BigQuery({ projectId: 'your-gcp-project' });
-
-// Run at 2 AM every night
-cron.schedule('0 2 * * *', async () => {
-  const yesterday = new Date(Date.now() - 86_400_000);
-  const dateStr   = yesterday.toISOString().split('T')[0];
-
-  const cdrs = await fetchCDRs({ startDate: `${dateStr}T00:00:00Z`, endDate: `${dateStr}T23:59:59Z` });
-
-  if (cdrs.length > 0) {
-    await bq.dataset('contact_center').table('call_detail_records').insert(
-      cdrs.map(r => ({
-        call_id:       r.callId,
-        caller_id:     r.callerId,
-        agent_id:      r.agentId,
-        queue_id:      r.queueId,
-        date:          dateStr,
-        talk_duration: r.talkDuration,
-        hold_duration: r.holdDuration,
-        total_duration: r.totalDuration,
-        wrap_up_code:  r.wrapUpCode,
-        channel_type:  r.channelType
-      }))
-    );
-    console.log(`✅ Exported ${cdrs.length} CDRs to BigQuery`);
-  }
-});</code></pre></div>
+      <div class="code-block"><div class="code-block-header"><span class="code-lang">application/json</span><span class="code-label">Data Warehouse Row Shape</span><button class="copy-btn">⎘ Copy</button></div>
+      <pre><code>{
+  "call_id": "task-8421",
+  "caller_id": "+14155550100",
+  "agent_id": "agent-001",
+  "queue_id": "care-queue",
+  "date": "2026-06-01",
+  "talk_duration": 241,
+  "hold_duration": 18,
+  "total_duration": 318,
+  "wrap_up_code": "RESOLVED",
+  "channel_type": "telephony"
+}</code></pre></div>
     </div>
 
     <div id="dashboard" class="content-section">

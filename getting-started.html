@@ -122,8 +122,8 @@
         </div>
         <div class="card">
           <div class="card-icon">⬡</div>
-          <h4>Node.js or Python</h4>
-          <p>Any HTTP-capable language works. Examples use Node.js 18+ and axios.</p>
+          <h4>Postman or API Client</h4>
+          <p>Any HTTP-capable tool works. Examples use Postman-style requests with headers and JSON bodies.</p>
         </div>
         <div class="card">
           <div class="card-icon">🔒</div>
@@ -221,57 +221,19 @@ sequenceDiagram
       <p>For server-to-server integrations, use the Client Credentials flow — no user interaction required. Cache the token to avoid fetching on every request.</p>
       <div class="code-block">
         <div class="code-block-header">
-          <span class="code-lang">JavaScript</span>
-          <span class="code-label">Service App — Token Cache</span>
+          <span class="code-lang">HTTP</span>
+          <span class="code-label">Service App Token Request</span>
           <button class="copy-btn">⎘ Copy</button>
         </div>
-        <pre><code>const axios = require('axios');
+        <pre><code>POST https://webexapis.com/v1/access_token
 
-const CLIENT_ID     = process.env.WXCC_CLIENT_ID;
-const CLIENT_SECRET = process.env.WXCC_CLIENT_SECRET;
+Headers
+Authorization: Basic {{base64_client_id_client_secret}}
+Content-Type: application/x-www-form-urlencoded
 
-// Token cache — avoid fetching on every request
-let tokenCache = { token: null, expiresAt: 0 };
-
-async function getAccessToken() {
-  if (tokenCache.token && Date.now() &lt; tokenCache.expiresAt - 60_000) {
-    return tokenCache.token; // return cached token
-  }
-
-  const credentials = Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString('base64');
-  const response = await axios.post(
-    'https://webexapis.com/v1/access_token',
-    new URLSearchParams({
-      grant_type: 'client_credentials',
-      scope: 'cjp:config cjp:config_read spark:people_read'
-    }),
-    {
-      headers: {
-        'Authorization': `Basic ${credentials}`,
-        'Content-Type': 'application/x-www-form-urlencoded'
-      }
-    }
-  );
-
-  const { access_token, expires_in } = response.data;
-  tokenCache = {
-    token: access_token,
-    expiresAt: Date.now() + expires_in * 1000
-  };
-  return access_token;
-}
-
-// Usage — call getAccessToken() before every API request
-async function main() {
-  const token = await getAccessToken();
-  const res = await axios.get('https://webexapis.com/v1/contactCenter/agents', {
-    headers: { Authorization: `Bearer ${token}` },
-    params: { orgId: process.env.WXCC_ORG_ID }
-  });
-  console.log(`Agents: ${res.data.items.length}`);
-}
-
-main();</code></pre>
+Body
+grant_type=client_credentials
+scope=cjp:config cjp:config_read spark:people_read</code></pre>
       </div>
 
       <div class="callout callout-info">
@@ -340,60 +302,47 @@ main();</code></pre>
       <p>Validate your token and org access with a safe read endpoint before building further.</p>
       <div class="code-tabs">
         <div class="code-tab-bar">
-          <button class="code-tab-btn active">Node.js</button>
-          <button class="code-tab-btn">Python</button>
-          <button class="code-tab-btn">curl</button>
+          <button class="code-tab-btn active">Request</button>
+          <button class="code-tab-btn">Response</button>
+          <button class="code-tab-btn">Variables</button>
         </div>
         <div class="code-tab-pane active">
           <div style="padding:8px 16px;background:var(--bg-elevated);border-bottom:1px solid var(--border-subtle);display:flex;justify-content:space-between;align-items:center;">
-            <span style="font-size:0.75rem;color:var(--accent-cyan);font-weight:600;">JAVASCRIPT</span>
+            <span style="font-size:0.75rem;color:var(--accent-cyan);font-weight:600;">HTTP</span>
             <button class="copy-btn">⎘ Copy</button>
           </div>
-          <pre><code>const token = process.env.WXCC_TOKEN;
-const orgId = process.env.WXCC_ORG_ID;
+          <pre><code>GET https://webexapis.com/v1/contactCenter/agents?orgId={{orgId}}&amp;max=5
 
-const res = await fetch(
-  `https://webexapis.com/v1/contactCenter/agents?orgId=${orgId}&amp;max=5`,
-  { headers: { Authorization: `Bearer ${token}` } }
-);
-
-if (!res.ok) throw new Error(`HTTP ${res.status}: ${res.statusText}`);
-
-const data = await res.json();
-console.log(`✅ Token valid — ${data.items.length} agents returned`);
-data.items.forEach(a =&gt; console.log(` • ${a.name} (${a.agentState})`));</code></pre>
+Headers
+Authorization: Bearer {{access_token}}
+Accept: application/json</code></pre>
         </div>
         <div class="code-tab-pane">
           <div style="padding:8px 16px;background:var(--bg-elevated);border-bottom:1px solid var(--border-subtle);display:flex;justify-content:space-between;align-items:center;">
-            <span style="font-size:0.75rem;color:var(--accent-cyan);font-weight:600;">PYTHON</span>
+            <span style="font-size:0.75rem;color:var(--accent-cyan);font-weight:600;">application/json</span>
             <button class="copy-btn">⎘ Copy</button>
           </div>
-          <pre><code>import os, requests
-
-token  = os.environ['WXCC_TOKEN']
-org_id = os.environ['WXCC_ORG_ID']
-
-r = requests.get(
-    'https://webexapis.com/v1/contactCenter/agents',
-    headers={'Authorization': f'Bearer {token}'},
-    params={'orgId': org_id, 'max': 5}
-)
-r.raise_for_status()
-
-data = r.json()
-print(f"✅ Token valid — {len(data['items'])} agents returned")
-for a in data['items']:
-    print(f" • {a['name']} ({a['agentState']})")</code></pre>
+          <pre><code>{
+  "items": [
+    {
+      "id": "agent-001",
+      "name": "Ava Chen",
+      "agentState": "Available",
+      "teamName": "Care Team"
+    }
+  ]
+}</code></pre>
         </div>
         <div class="code-tab-pane">
           <div style="padding:8px 16px;background:var(--bg-elevated);border-bottom:1px solid var(--border-subtle);display:flex;justify-content:space-between;align-items:center;">
-            <span style="font-size:0.75rem;color:var(--accent-cyan);font-weight:600;">CURL</span>
+            <span style="font-size:0.75rem;color:var(--accent-cyan);font-weight:600;">POSTMAN VARIABLES</span>
             <button class="copy-btn">⎘ Copy</button>
           </div>
-          <pre><code>curl -X GET \
-  "https://webexapis.com/v1/contactCenter/agents?orgId=$WXCC_ORG_ID&amp;max=5" \
-  -H "Authorization: Bearer $WXCC_TOKEN" \
-  -H "Accept: application/json" | jq '.items[] | {name, agentState}'</code></pre>
+          <pre><code>{
+  "orgId": "your-webex-org-id",
+  "access_token": "paste-service-app-or-personal-token",
+  "base64_client_id_client_secret": "base64(clientId:clientSecret)"
+}</code></pre>
         </div>
       </div>
     </div>

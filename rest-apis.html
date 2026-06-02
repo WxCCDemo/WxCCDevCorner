@@ -161,21 +161,14 @@ flowchart LR
             </div>
             <div class="code-block">
               <div class="code-block-header">
-                <span class="code-lang">JavaScript</span>
+                <span class="code-lang">HTTP</span>
                 <button class="copy-btn">⎘ Copy</button>
               </div>
-              <pre><code>const response = await axios.get('https://webexapis.com/v1/contactCenter/tasks', {
-  headers: { Authorization: `Bearer ${token}` },
-  params: {
-    orgId: ORG_ID,
-    channelType: 'telephony',
-    status: 'active',
-    max: 50
-  }
-});
-// Each task: { id, channelType, status, queueId, agentId, callerId, startTime }
-const activeCalls = response.data.items;
-console.log(`Active calls: ${activeCalls.length}`);</code></pre>
+              <pre><code>GET https://webexapis.com/v1/contactCenter/tasks?orgId={{orgId}}&amp;channelType=telephony&amp;status=active&amp;max=50
+
+Headers
+Authorization: Bearer {{access_token}}
+Accept: application/json</code></pre>
             </div>
           </div>
         </div>
@@ -190,14 +183,14 @@ console.log(`Active calls: ${activeCalls.length}`);</code></pre>
             <p>Fetch full details including call variables, routing history, and agent assignment.</p>
             <div class="code-block">
               <div class="code-block-header">
-                <span class="code-lang">JavaScript</span>
+                <span class="code-lang">HTTP</span>
                 <button class="copy-btn">⎘ Copy</button>
               </div>
-              <pre><code>const { data: task } = await axios.get(
-  `https://webexapis.com/v1/contactCenter/tasks/${taskId}`,
-  { headers: { Authorization: `Bearer ${token}` } }
-);
-console.log(`Task ${task.id}: ${task.channelType} — Agent: ${task.agentId}`);</code></pre>
+              <pre><code>GET https://webexapis.com/v1/contactCenter/tasks/{{taskId}}?orgId={{orgId}}
+
+Headers
+Authorization: Bearer {{access_token}}
+Accept: application/json</code></pre>
             </div>
           </div>
         </div>
@@ -212,14 +205,21 @@ console.log(`Task ${task.id}: ${task.channelType} — Agent: ${task.agentId}`);<
             <p>Programmatically end a task and set a wrap-up reason code.</p>
             <div class="code-block">
               <div class="code-block-header">
-                <span class="code-lang">JavaScript</span>
+                <span class="code-lang">HTTP</span>
                 <button class="copy-btn">⎘ Copy</button>
               </div>
-              <pre><code>await axios.post(
-  `https://webexapis.com/v1/contactCenter/tasks/${taskId}/end`,
-  { wrapUpCode: 'RESOLVED', notes: 'Customer issue resolved' },
-  { headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' } }
-);</code></pre>
+              <pre><code>POST https://webexapis.com/v1/contactCenter/tasks/{{taskId}}/end
+
+Headers
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+Body
+{
+  "orgId": "{{orgId}}",
+  "wrapUpCode": "RESOLVED",
+  "notes": "Customer issue resolved"
+}</code></pre>
             </div>
           </div>
         </div>
@@ -244,31 +244,14 @@ console.log(`Task ${task.id}: ${task.channelType} — Agent: ${task.agentId}`);<
           <div class="endpoint-body">
             <div class="code-block">
               <div class="code-block-header">
-                <span class="code-lang">JavaScript</span>
+                <span class="code-lang">HTTP</span>
                 <button class="copy-btn">⎘ Copy</button>
               </div>
-              <pre><code>async function listAgents(siteId = null) {
-  const params = { orgId: ORG_ID, max: 200 };
-  if (siteId) params.siteId = siteId;
+              <pre><code>GET https://webexapis.com/v1/contactCenter/agents?orgId={{orgId}}&amp;siteId={{siteId}}&amp;max=200
 
-  const { data } = await axios.get(
-    'https://webexapis.com/v1/contactCenter/agents',
-    { headers: { Authorization: `Bearer ${token}` }, params }
-  );
-
-  return data.items.map(a => ({
-    id:    a.id,
-    name:  a.name,
-    email: a.email,
-    state: a.agentState,  // Available | Idle | InACall | WrapUp
-    team:  a.teamName,
-    site:  a.siteName
-  }));
-}
-
-const agents    = await listAgents();
-const available = agents.filter(a => a.state === 'Available');
-console.log(`${available.length} agents currently available`);</code></pre>
+Headers
+Authorization: Bearer {{access_token}}
+Accept: application/json</code></pre>
             </div>
           </div>
         </div>
@@ -289,25 +272,27 @@ console.log(`${available.length} agents currently available`);</code></pre>
             </div>
             <div class="code-block">
               <div class="code-block-header">
-                <span class="code-lang">JavaScript</span>
+                <span class="code-lang">HTTP</span>
                 <button class="copy-btn">⎘ Copy</button>
               </div>
-              <pre><code>const { data: newAgent } = await axios.post(
-  'https://webexapis.com/v1/contactCenter/agents',
-  {
-    orgId:           ORG_ID,
-    firstName:       'Jane',
-    lastName:        'Smith',
-    email:           'jane.smith@company.com',
-    siteId:          'site-id-here',
-    teamId:          'team-id-here',
-    skillProfileId:  'skill-profile-id',
-    dialNumber:      '+14085551234',
-    agentType:       'AGENT'  // AGENT | SUPERVISOR
-  },
-  { headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' } }
-);
-console.log(`Created agent: ${newAgent.id}`);</code></pre>
+              <pre><code>POST https://webexapis.com/v1/contactCenter/agents
+
+Headers
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+Body
+{
+  "orgId": "{{orgId}}",
+  "firstName": "Jane",
+  "lastName": "Smith",
+  "email": "jane.smith@company.com",
+  "siteId": "{{siteId}}",
+  "teamId": "{{teamId}}",
+  "skillProfileId": "{{skillProfileId}}",
+  "dialNumber": "+14085551234",
+  "agentType": "AGENT"
+}</code></pre>
             </div>
           </div>
         </div>
@@ -332,49 +317,43 @@ console.log(`Created agent: ${newAgent.id}`);</code></pre>
             <span style="font-size:0.75rem;color:var(--accent-cyan);font-weight:600;">GET /v1/contactCenter/queues</span>
             <button class="copy-btn">⎘ Copy</button>
           </div>
-          <pre><code>const { data } = await axios.get(
-  'https://webexapis.com/v1/contactCenter/queues',
-  { headers: { Authorization: `Bearer ${token}` }, params: { orgId: ORG_ID } }
-);
-// Returns: id, name, channelType, serviceLevel, maxWaitTime, agentCount
-data.items.forEach(q => {
-  console.log(`Queue: ${q.name} | Agents: ${q.agentCount} | SLA: ${q.serviceLevel}%`);
-});</code></pre>
+          <pre><code>GET https://webexapis.com/v1/contactCenter/queues?orgId={{orgId}}&amp;max=100
+
+Headers
+Authorization: Bearer {{access_token}}
+Accept: application/json</code></pre>
         </div>
         <div class="code-tab-pane">
           <div style="padding:8px 16px;background:var(--bg-elevated);border-bottom:1px solid var(--border-subtle);display:flex;justify-content:space-between;">
             <span style="font-size:0.75rem;color:var(--accent-cyan);font-weight:600;">GET /v1/contactCenter/queues/{id}/statistics</span>
             <button class="copy-btn">⎘ Copy</button>
           </div>
-          <pre><code>const { data: s } = await axios.get(
-  `https://webexapis.com/v1/contactCenter/queues/${queueId}/statistics`,
-  { headers: { Authorization: `Bearer ${token}` }, params: { orgId: ORG_ID } }
-);
-console.log(`
-  Queue:            ${s.queueName}
-  Contacts waiting: ${s.contactsWaiting}
-  Longest wait:     ${s.longestWaitTime}s
-  Agents available: ${s.agentsAvailable}
-  SLA:              ${s.serviceLevelPercentage}%
-`);</code></pre>
+          <pre><code>GET https://webexapis.com/v1/contactCenter/queues/{{queueId}}/statistics?orgId={{orgId}}
+
+Headers
+Authorization: Bearer {{access_token}}
+Accept: application/json</code></pre>
         </div>
         <div class="code-tab-pane">
           <div style="padding:8px 16px;background:var(--bg-elevated);border-bottom:1px solid var(--border-subtle);display:flex;justify-content:space-between;">
             <span style="font-size:0.75rem;color:var(--accent-cyan);font-weight:600;">PUT /v1/contactCenter/queues/{id}</span>
             <button class="copy-btn">⎘ Copy</button>
           </div>
-          <pre><code>await axios.put(
-  `https://webexapis.com/v1/contactCenter/queues/${queueId}`,
-  {
-    orgId:                 ORG_ID,
-    name:                  'Support Queue - Tier 1',
-    serviceLevel:          80,   // % calls answered within SLA threshold
-    serviceLevelThreshold: 30,   // seconds
-    maxWaitTime:           300,  // max 5 min before overflow
-    routingType:           'SKILLS_BASED'
-  },
-  { headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' } }
-);</code></pre>
+          <pre><code>PUT https://webexapis.com/v1/contactCenter/queues/{{queueId}}
+
+Headers
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+Body
+{
+  "orgId": "{{orgId}}",
+  "name": "Support Queue - Tier 1",
+  "serviceLevel": 80,
+  "serviceLevelThreshold": 30,
+  "maxWaitTime": 300,
+  "routingType": "SKILLS_BASED"
+}</code></pre>
         </div>
       </div>
     </div>
@@ -404,27 +383,22 @@ console.log(`
         <div class="accordion-body">
           <div class="code-block">
             <div class="code-block-header">
-              <span class="code-lang">JavaScript</span>
+              <span class="code-lang">HTTP</span>
               <button class="copy-btn">⎘ Copy</button>
             </div>
-            <pre><code>const teamNames = ['Billing', 'Tech Support', 'Sales', 'Escalations'];
+            <pre><code>POST https://webexapis.com/v1/contactCenter/teams
 
-async function bulkCreateTeams(siteId, teamNames) {
-  const results = [];
-  for (const name of teamNames) {
-    const { data } = await axios.post(
-      'https://webexapis.com/v1/contactCenter/teams',
-      { orgId: ORG_ID, siteId, name, teamType: 'INBOUND' },
-      { headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' } }
-    );
-    results.push({ name, id: data.id });
-    await new Promise(r => setTimeout(r, 200)); // gentle rate-limit spacing
-  }
-  return results;
-}
+Headers
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
 
-const teams = await bulkCreateTeams('SITE_ID', teamNames);
-console.table(teams);</code></pre>
+Body
+{
+  "orgId": "{{orgId}}",
+  "siteId": "{{siteId}}",
+  "name": "Billing",
+  "teamType": "INBOUND"
+}</code></pre>
           </div>
         </div>
       </div>
@@ -446,35 +420,21 @@ console.table(teams);</code></pre>
       </div>
       <div class="code-block">
         <div class="code-block-header">
-          <span class="code-lang">JavaScript</span>
-          <span class="code-label">Auto-paginate all results</span>
+          <span class="code-lang">HTTP</span>
+          <span class="code-label">Cursor pagination in Postman</span>
           <button class="copy-btn">⎘ Copy</button>
         </div>
-        <pre><code>async function getAllPages(url, params, headers) {
-  const allItems = [];
-  let nextUrl = url;
-  let pageParams = { ...params, max: 500 };
+        <pre><code>GET https://webexapis.com/v1/contactCenter/agents?orgId={{orgId}}&amp;max=500
 
-  while (nextUrl) {
-    const response = await axios.get(nextUrl, { headers, params: pageParams });
-    allItems.push(...(response.data.items || []));
+Headers
+Authorization: Bearer {{access_token}}
+Accept: application/json
 
-    // WxCC returns a 'Link' header with rel="next" for cursor pagination
-    const linkHeader = response.headers['link'];
-    const nextMatch  = linkHeader?.match(/&lt;([^&gt;]+)&gt;;\s*rel="next"/);
-    nextUrl          = nextMatch ? nextMatch[1] : null;
-    pageParams       = {}; // next URL already has params baked in
-  }
-  return allItems;
-}
-
-// Fetch ALL agents across all pages
-const allAgents = await getAllPages(
-  'https://webexapis.com/v1/contactCenter/agents',
-  { orgId: ORG_ID },
-  { Authorization: `Bearer ${token}` }
-);
-console.log(`Total agents: ${allAgents.length}`);</code></pre>
+Postman usage
+1. Send the first request.
+2. Copy the URL from the Link response header where rel="next".
+3. Send that URL as the next request.
+4. Repeat until no rel="next" link is returned.</code></pre>
       </div>
     </div>
 
