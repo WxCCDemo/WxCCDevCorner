@@ -187,7 +187,32 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // ------------------------------------------------------------------
-// 9. Nav active state
+// 9. Clickable Sample Cards
+// ------------------------------------------------------------------
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.sample-card').forEach(card => {
+    const link = card.querySelector('.sample-card-link[href^="#"]');
+    if (!link) return;
+
+    card.setAttribute('role', 'link');
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('aria-label', `${card.querySelector('h3')?.textContent || 'Sample'} details`);
+
+    card.addEventListener('click', event => {
+      if (event.target.closest('a')) return;
+      link.click();
+    });
+
+    card.addEventListener('keydown', event => {
+      if (event.key !== 'Enter' && event.key !== ' ') return;
+      event.preventDefault();
+      link.click();
+    });
+  });
+});
+
+// ------------------------------------------------------------------
+// 10. Nav active state
 // ------------------------------------------------------------------
 (function setActiveNav() {
   const current = window.location.pathname.split('/').pop() || 'index.html';
