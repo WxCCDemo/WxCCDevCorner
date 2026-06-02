@@ -28,6 +28,8 @@
   --warning: #f59e0b;
   --danger: #ef4444;
   --code-bg: #0d1117;
+  --badge-bg: #e8f7fd;
+  --badge-text: var(--teal-dark);
   --sidebar-width: 260px;
   --topnav-height: 64px;
   --radius: 10px;
@@ -383,6 +385,66 @@ body {
   text-align: center;
   text-transform: uppercase;
 }
+.reference-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 20px 0 34px;
+}
+.reference-card {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 18px;
+}
+.reference-card h3 {
+  color: var(--navy-dark);
+  font-size: 16px;
+  margin: 14px 0 10px;
+}
+.reference-diagram {
+  align-items: center;
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  display: grid;
+  gap: 8px;
+  grid-template-columns: 1fr auto 1fr auto 1fr;
+  padding: 12px;
+}
+.reference-diagram div {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: 8px;
+  color: var(--navy-dark);
+  font-size: 12px;
+  font-weight: 800;
+  min-height: 44px;
+  padding: 8px;
+  text-align: center;
+}
+.reference-diagram span {
+  color: var(--teal-dark);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-align: center;
+  text-transform: uppercase;
+}
+.compact-code {
+  margin: 0;
+}
+.compact-code pre {
+  background: var(--code-bg);
+  color: #e2e8f0;
+  font-family: 'Monaco', 'Menlo', 'Consolas', monospace;
+  font-size: 12px;
+  line-height: 1.6;
+  margin: 0;
+  overflow-x: auto;
+  padding: 14px;
+}
 .idea-strip {
   display: grid;
   gap: 12px;
@@ -671,8 +733,10 @@ tbody tr:last-child td { border-bottom: none; }
   .page-footer { flex-direction: column; text-align: center; padding: 24px 20px; }
   .value-grid,
   .sample-grid,
+  .reference-grid,
   .playbook-layout,
   .idea-strip { grid-template-columns: 1fr; }
+  .reference-diagram { grid-template-columns: 1fr; }
 }
 
 /* xs: small phones ≤479px */

@@ -187,6 +187,61 @@
       <h2 class="section-title">Local Implementation Playbooks</h2>
       <p class="body-text">These playbooks are baked into the portal from the WebexSamples and CiscoDevNet sample sources. Use them to explain the business outcome first, then show how the technical pieces connect.</p>
 
+      <div class="reference-grid">
+        <article class="reference-card">
+          <div class="reference-diagram">
+            <div>App</div><span>Bearer token</span><div>WxCC REST API</div><span>JSON response</span><div>Business UI</div>
+          </div>
+          <h3>REST API starter</h3>
+          <div class="code-block compact-code">
+            <div class="code-header"><span class="code-lang">JavaScript</span></div>
+            <pre><code>const { data } = await axios.get(
+  'https://webexapis.com/v1/contactCenter/queues',
+  { headers: { Authorization: `Bearer ${token}` } }
+);</code></pre>
+          </div>
+        </article>
+        <article class="reference-card">
+          <div class="reference-diagram">
+            <div>WxCC Event</div><span>HTTPS POST</span><div>Webhook listener</div><span>Verify HMAC</span><div>CRM / Alert</div>
+          </div>
+          <h3>Webhook listener</h3>
+          <div class="code-block compact-code">
+            <div class="code-header"><span class="code-lang">Node.js</span></div>
+            <pre><code>app.post('/webhooks/wxcc', express.raw({ type: 'application/json' }), (req, res) => {
+  verifySignature(req.headers['x-spark-signature'], req.body);
+  res.sendStatus(200);
+});</code></pre>
+          </div>
+        </article>
+        <article class="reference-card">
+          <div class="reference-diagram">
+            <div>Desktop Layout</div><span>iFrame</span><div>Widget</div><span>SDK event</span><div>Screen pop</div>
+          </div>
+          <h3>Desktop widget</h3>
+          <div class="code-block compact-code">
+            <div class="code-header"><span class="code-lang">JavaScript</span></div>
+            <pre><code>await Desktop.config.init({ widgetName: 'CRM Widget' });
+Desktop.agentContact.addEventListener('eAgentContact', ({ detail }) => {
+  renderCustomerContext(detail.data);
+});</code></pre>
+          </div>
+        </article>
+        <article class="reference-card">
+          <div class="reference-diagram">
+            <div>Flow</div><span>HTTP node</span><div>Lookup API</div><span>Variables</span><div>Route decision</div>
+          </div>
+          <h3>Flow HTTP lookup</h3>
+          <div class="code-block compact-code">
+            <div class="code-header"><span class="code-lang">Express</span></div>
+            <pre><code>app.post('/api/lookup', async (req, res) => {
+  const customer = await crm.find(req.body.accountNumber);
+  res.json({ tier: customer.tier, route: customer.queue });
+});</code></pre>
+          </div>
+        </article>
+      </div>
+
       <article class="playbook accent-auth" id="auth-playbook">
         <div class="playbook-header">
           <span>Auth Foundation</span>

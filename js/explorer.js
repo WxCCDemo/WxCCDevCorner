@@ -23,8 +23,8 @@
     /* badge */
     const badge = $('#dpBadge');
     badge.textContent    = node.badge;
-    badge.style.background = node.badgeColor;
-    badge.style.color      = node.badgeText;
+    badge.style.background = 'var(--badge-bg)';
+    badge.style.color      = 'var(--badge-text)';
 
     /* header */
     $('#dpTitle').textContent    = node.title;
