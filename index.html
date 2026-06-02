@@ -1,271 +1,392 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WxCC Extensibility Hub — Interactive Explorer</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/explorer.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WxCC Extensibility Hub — Developer Portal</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .home-section-title {
+      text-align: center;
+      font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+      margin-bottom: var(--space-lg);
+      color: var(--text-primary);
+    }
+    .home-section-sub {
+      text-align: center;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto var(--space-xl);
+    }
+    .home-section { padding: var(--space-2xl) var(--space-lg); }
+    .home-section-inner { max-width: var(--page-max); margin: 0 auto; }
+
+    .arch-overview {
+      background: var(--bg-code);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-xl);
+      overflow-x: auto;
+    }
+    .arch-nodes { display: flex; flex-direction: column; gap: var(--space-lg); align-items: center; }
+    .arch-row   { display: flex; gap: var(--space-md); flex-wrap: wrap; justify-content: center; }
+    .arch-node  {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 10px 16px;
+      text-align: center;
+      min-width: 110px;
+      transition: all var(--transition);
+    }
+    .arch-node:hover { border-color: var(--border-medium); }
+    .arch-node.highlight { border-color: var(--accent-cyan); background: rgba(0,188,235,0.08); }
+    .arch-node .an-icon  { font-size: 1.25rem; display: block; margin-bottom: 4px; }
+    .arch-node .an-label { font-size: 0.8125rem; font-weight: 600; color: var(--text-primary); }
+    .arch-node .an-sub   { font-size: 0.6875rem; color: var(--text-muted); }
+    .arch-divider {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-md);
+      color: var(--text-muted);
+      font-size: 0.75rem;
+    }
+    .arch-divider::before, .arch-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border-subtle);
+    }
+    .quickstart {
+      background: linear-gradient(135deg, var(--color-cisco-navy), rgba(0,71,107,0.4));
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-xl);
+      padding: var(--space-xl);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-lg);
+      flex-wrap: wrap;
+      max-width: var(--page-max);
+      margin: 0 auto;
+    }
+    .quickstart-text h2 { margin: 0 0 6px; font-size: 1.375rem; }
+    .quickstart-text p  { margin: 0; color: var(--text-secondary); }
+    .quickstart-actions { display: flex; gap: var(--space-md); flex-wrap: wrap; }
+  </style>
 </head>
-<body class="explorer-page">
+<body>
 
-  <!-- ── scroll progress bar ── -->
-  <div class="page-progress"><div class="page-progress-bar"></div></div>
-
-  <!-- ── top navigation ── -->
-  <nav class="topnav">
-    <a href="index.html" class="topnav-brand">
-      <div class="topnav-logo">Wx</div>
-      <div class="topnav-title">
-        WxCC Extensibility Hub
-        <span>Business-led API learning</span>
+<!-- HEADER -->
+<header class="site-header">
+  <nav class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-mark">Wx</div>
+      <div class="nav-logo-text">
+        <span>WxCC Extensibility Hub</span>
+        <span>Developer Portal</span>
       </div>
     </a>
-    <ul class="topnav-links">
-      <li><a href="index.html" class="active">Explorer</a></li>
-      <li><a href="getting-started.html">Get Started</a></li>
-      <li><a href="rest-apis.html">REST APIs</a></li>
-      <li><a href="webhooks.html">Webhooks</a></li>
-      <li><a href="desktop-sdk.html">Desktop SDK</a></li>
-      <li><a href="flow-designer.html">Flow Designer</a></li>
-      <li><a href="reporting.html">Reporting</a></li>
-      <li><a href="samples.html">Samples</a></li>
-      <li><a href="faq.html">FAQ</a></li>
+    <div class="nav-spacer"></div>
+    <ul class="nav-links">
+      <li><a href="samples.html">&#x1F9E9; Samples</a></li>
+      <li><a href="faq.html">&#x2753; FAQ</a></li>
     </ul>
-    <button class="topnav-hamburger" aria-label="Open menu">☰</button>
+    <a href="getting-started.html" class="nav-cta">Start Building &#x2192;</a>
+    <button class="nav-mobile-btn" aria-label="Open menu">&#x2630;</button>
   </nav>
+</header>
 
-  <!-- ── mobile sidebar overlay ── -->
-  <div class="sidebar-overlay"></div>
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobile-nav">
+  <div class="mobile-nav-backdrop"></div>
+  <div class="mobile-nav-panel">
+    <button class="mobile-nav-close" aria-label="Close">&#x2715;</button>
+    <div class="mobile-nav-section">Guide</div>
+    <a href="getting-started.html">&#x1F511; Auth &amp; Setup</a>
+    <a href="rest-apis.html">&#x1F50C; REST APIs</a>
+    <a href="webhooks.html">&#x1F4E1; Webhooks</a>
+    <a href="desktop-sdk.html">&#x1F5A5;&#xFE0F; Desktop SDK</a>
+    <a href="flow-designer.html">&#x1F500; Flow Designer</a>
+    <a href="reporting.html">&#x1F4CA; Reporting</a>
+    <div class="mobile-nav-section">Resources</div>
+    <a href="samples.html">&#x1F9E9; Samples</a>
+    <a href="faq.html">&#x2753; FAQ</a>
+    <a href="index.html">&#x1F5FA;&#xFE0F; Overview</a>
+  </div>
+</div>
 
-  <!-- ── page wrapper (no sidebar on explorer) ── -->
-  <div class="page-wrapper">
-    <main class="main-content">
-      <div class="explorer-wrap">
+<!-- HERO -->
+<section class="home-hero">
+  <h1>Build Better Contact Center Experiences</h1>
+  <p class="hero-subtitle">The complete developer guide for Webex Contact Center APIs, Webhooks, Desktop SDK, Flow Designer, and Reporting — from first API call to production integration.</p>
+  <div class="home-hero-actions">
+    <a href="getting-started.html" class="btn btn-primary">&#x1F680; Start Building</a>
+    <a href="samples.html" class="btn btn-secondary">&#x1F9E9; Explore Samples</a>
+    <a href="faq.html" class="btn btn-ghost">&#x2753; FAQ</a>
+  </div>
+</section>
 
-        <!-- ── HERO ── -->
-        <header class="explorer-hero">
-          <div class="section-badge">🗺️ Interactive Explorer</div>
-          <h1>Build Better Customer<br>Experiences With WxCC</h1>
-          <p class="hero-desc">
-            Explore practical ways to automate operations, improve agent workflows,
-            connect business systems, and prove the value of Webex Contact Center.
-          </p>
-          <p class="explorer-hint">↓ Click any node below to explore that topic</p>
-        </header>
+<!-- LEARNING JOURNEY -->
+<section class="journey-map">
+  <div class="journey-map-inner">
+    <h2 class="home-section-title">Your Learning Journey</h2>
+    <p class="home-section-sub">Follow this path from first API call to a production-grade contact center integration.</p>
+    <div class="journey-flow">
+      <a href="getting-started.html" class="journey-flow-step" style="text-decoration:none;color:inherit;">
+        <div class="journey-flow-num">1</div>
+        <span class="jf-icon">&#x1F511;</span>
+        <h4>Auth &amp; Setup</h4>
+        <p>OAuth 2.0, Service Apps, scopes, base URLs</p>
+      </a>
+      <div class="journey-flow-connector">&#x2192;</div>
+      <a href="rest-apis.html" class="journey-flow-step" style="text-decoration:none;color:inherit;">
+        <div class="journey-flow-num">2</div>
+        <span class="jf-icon">&#x1F50C;</span>
+        <h4>REST APIs</h4>
+        <p>Tasks, Agents, Queues, Config</p>
+      </a>
+      <div class="journey-flow-connector">&#x2192;</div>
+      <a href="webhooks.html" class="journey-flow-step" style="text-decoration:none;color:inherit;">
+        <div class="journey-flow-num">3</div>
+        <span class="jf-icon">&#x1F4E1;</span>
+        <h4>Webhooks</h4>
+        <p>Real-time events, HMAC security</p>
+      </a>
+      <div class="journey-flow-connector">&#x2192;</div>
+      <a href="desktop-sdk.html" class="journey-flow-step" style="text-decoration:none;color:inherit;">
+        <div class="journey-flow-num">4</div>
+        <span class="jf-icon">&#x1F5A5;&#xFE0F;</span>
+        <h4>Desktop SDK</h4>
+        <p>Custom widgets, screen pops</p>
+      </a>
+      <div class="journey-flow-connector">&#x2192;</div>
+      <a href="flow-designer.html" class="journey-flow-step" style="text-decoration:none;color:inherit;">
+        <div class="journey-flow-num">5</div>
+        <span class="jf-icon">&#x1F500;</span>
+        <h4>Flow Designer</h4>
+        <p>IVR routing, HTTP nodes</p>
+      </a>
+      <div class="journey-flow-connector">&#x2192;</div>
+      <a href="reporting.html" class="journey-flow-step" style="text-decoration:none;color:inherit;">
+        <div class="journey-flow-num">6</div>
+        <span class="jf-icon">&#x1F4CA;</span>
+        <h4>Reporting</h4>
+        <p>Analytics, CDRs, dashboards</p>
+      </a>
+    </div>
+  </div>
+</section>
 
-        <!-- ── INTERACTIVE TREE (desktop / tablet) ── -->
-        <section class="tree-section" aria-label="API category tree">
-          <div class="tree-wrap">
-            <svg class="tree-svg" viewBox="0 0 1100 310"
-                 xmlns="http://www.w3.org/2000/svg"
-                 role="img" aria-label="WxCC extensibility tree diagram">
+<!-- CAPABILITIES -->
+<section class="home-section" style="background: var(--bg-page);">
+  <div class="home-section-inner">
+    <h2 class="home-section-title">API Capabilities</h2>
+    <p class="home-section-sub">Every extensibility surface, explained with diagrams, code, and business context.</p>
+    <div class="capability-grid">
 
-              <!-- connector lines: root → categories -->
-              <line class="tree-line tree-line-cat" x1="550" y1="58"  x2="90"   y2="118"/>
-              <line class="tree-line tree-line-cat" x1="550" y1="58"  x2="270"  y2="118"/>
-              <line class="tree-line tree-line-cat" x1="550" y1="58"  x2="450"  y2="118"/>
-              <line class="tree-line tree-line-cat" x1="550" y1="58"  x2="630"  y2="118"/>
-              <line class="tree-line tree-line-cat" x1="550" y1="58"  x2="810"  y2="118"/>
-              <line class="tree-line tree-line-cat" x1="550" y1="58"  x2="1010" y2="118"/>
+      <a href="getting-started.html" class="capability-card" style="text-decoration:none;">
+        <span class="capability-card-icon">&#x1F511;</span>
+        <h3>Authentication &amp; Setup</h3>
+        <p>Personal tokens, OAuth 2.0, Service Apps with machine-to-machine token caching. Production-ready from day one.</p>
+        <div class="capability-card-tags">
+          <span class="tag tag-cyan">OAuth 2.0</span>
+          <span class="tag">Service App</span>
+          <span class="tag">Scopes</span>
+        </div>
+        <span class="capability-card-link">Get Started &#x2192;</span>
+      </a>
 
-              <!-- connector lines: categories → leaves -->
-              <line class="tree-line" x1="90"   y1="155" x2="28"   y2="215"/>
-              <line class="tree-line" x1="90"   y1="155" x2="90"   y2="215"/>
-              <line class="tree-line" x1="90"   y1="155" x2="152"  y2="215"/>
+      <a href="rest-apis.html" class="capability-card" style="text-decoration:none;">
+        <span class="capability-card-icon">&#x1F50C;</span>
+        <h3>REST APIs</h3>
+        <p>Manage tasks, agents, queues, sites, teams, and configuration. Full CRUD access to every contact center resource.</p>
+        <div class="capability-card-tags">
+          <span class="tag tag-green">Tasks</span>
+          <span class="tag tag-green">Agents</span>
+          <span class="tag tag-green">Queues</span>
+          <span class="tag">Config</span>
+        </div>
+        <span class="capability-card-link">Explore APIs &#x2192;</span>
+      </a>
 
-              <line class="tree-line" x1="270"  y1="155" x2="208"  y2="215"/>
-              <line class="tree-line" x1="270"  y1="155" x2="270"  y2="215"/>
-              <line class="tree-line" x1="270"  y1="155" x2="332"  y2="215"/>
+      <a href="webhooks.html" class="capability-card" style="text-decoration:none;">
+        <span class="capability-card-icon">&#x1F4E1;</span>
+        <h3>Webhooks &amp; Events</h3>
+        <p>Real-time push events for task lifecycle, agent state changes, and queue activity. HMAC-verified and retry-backed.</p>
+        <div class="capability-card-tags">
+          <span class="tag tag-purple">Real-time</span>
+          <span class="tag">HMAC</span>
+          <span class="tag">task:created</span>
+        </div>
+        <span class="capability-card-link">Setup Webhooks &#x2192;</span>
+      </a>
 
-              <line class="tree-line" x1="450"  y1="155" x2="388"  y2="215"/>
-              <line class="tree-line" x1="450"  y1="155" x2="450"  y2="215"/>
-              <line class="tree-line" x1="450"  y1="155" x2="512"  y2="215"/>
+      <a href="desktop-sdk.html" class="capability-card" style="text-decoration:none;">
+        <span class="capability-card-icon">&#x1F5A5;&#xFE0F;</span>
+        <h3>Desktop JS SDK</h3>
+        <p>Embed custom panels, CRM screen pops, and AI widgets directly inside the agent desktop iFrame. No tab switching.</p>
+        <div class="capability-card-tags">
+          <span class="tag tag-amber">Screen Pop</span>
+          <span class="tag">iFrame</span>
+          <span class="tag">SDK Events</span>
+        </div>
+        <span class="capability-card-link">Build Widgets &#x2192;</span>
+      </a>
 
-              <line class="tree-line" x1="630"  y1="155" x2="568"  y2="215"/>
-              <line class="tree-line" x1="630"  y1="155" x2="630"  y2="215"/>
-              <line class="tree-line" x1="630"  y1="155" x2="692"  y2="215"/>
+      <a href="flow-designer.html" class="capability-card" style="text-decoration:none;">
+        <span class="capability-card-icon">&#x1F500;</span>
+        <h3>Flow Designer</h3>
+        <p>Visual IVR builder with HTTP Request nodes that call external APIs mid-flow. Intelligent routing with external data.</p>
+        <div class="capability-card-tags">
+          <span class="tag">HTTP Node</span>
+          <span class="tag">Variables</span>
+          <span class="tag tag-cyan">Routing</span>
+        </div>
+        <span class="capability-card-link">Design Flows &#x2192;</span>
+      </a>
 
-              <line class="tree-line" x1="810"  y1="155" x2="748"  y2="215"/>
-              <line class="tree-line" x1="810"  y1="155" x2="810"  y2="215"/>
-              <line class="tree-line" x1="810"  y1="155" x2="872"  y2="215"/>
+      <a href="reporting.html" class="capability-card" style="text-decoration:none;">
+        <span class="capability-card-icon">&#x1F4CA;</span>
+        <h3>Reporting &amp; Analytics</h3>
+        <p>Real-time queue stats, historical metrics, CDRs, and scheduled exports to your data warehouse or BI tool.</p>
+        <div class="capability-card-tags">
+          <span class="tag tag-green">Real-time</span>
+          <span class="tag">Historical</span>
+          <span class="tag">CDR</span>
+        </div>
+        <span class="capability-card-link">Query Data &#x2192;</span>
+      </a>
 
-              <line class="tree-line" x1="1010" y1="155" x2="948"  y2="215"/>
-              <line class="tree-line" x1="1010" y1="155" x2="1010" y2="215"/>
-              <line class="tree-line" x1="1010" y1="155" x2="1072" y2="215"/>
+      <a href="samples.html" class="capability-card card-highlight" style="text-decoration:none;">
+        <span class="capability-card-icon">&#x1F9E9;</span>
+        <h3>Solutions &amp; Samples</h3>
+        <p>End-to-end implementation playbooks — Auth, Config Automation, Webhook Listeners, Screen Pops, and Dashboards.</p>
+        <div class="capability-card-tags">
+          <span class="tag tag-cyan">8 Playbooks</span>
+          <span class="tag">Business Use Cases</span>
+        </div>
+        <span class="capability-card-link">Browse Samples &#x2192;</span>
+      </a>
 
-              <!-- ROOT node -->
-              <g>
-                <rect x="370" y="6" width="360" height="52" rx="14" fill="#003050"/>
-                <text x="550" y="27" text-anchor="middle" fill="#fff"    font-size="15" font-weight="800" font-family="-apple-system,sans-serif">WxCC Extensibility Hub</text>
-                <text x="550" y="47" text-anchor="middle" fill="#33c9ef" font-size="10" font-family="-apple-system,sans-serif">Official Cisco / Webex developer samples</text>
-              </g>
+      <a href="faq.html" class="capability-card" style="text-decoration:none;">
+        <span class="capability-card-icon">&#x2753;</span>
+        <h3>FAQ &amp; Troubleshooting</h3>
+        <p>29 answered questions covering auth, APIs, webhooks, SDK, flow, reporting, errors, and production best practices.</p>
+        <div class="capability-card-tags">
+          <span class="tag">Debugging</span>
+          <span class="tag">Best Practices</span>
+          <span class="tag">Security</span>
+        </div>
+        <span class="capability-card-link">Read FAQ &#x2192;</span>
+      </a>
 
-              <!-- CATEGORY nodes -->
-              <g onclick="openNode('auth')"      style="cursor:pointer">
-                <rect x="28"  y="118" width="124" height="37" rx="10" fill="#ffffff" stroke="#00BCEB" stroke-width="2"/>
-                <text x="90"  y="133" text-anchor="middle" fill="#003050" font-size="12" font-weight="700" font-family="-apple-system,sans-serif">🔑 Auth &amp; Setup</text>
-                <text x="90"  y="148" text-anchor="middle" fill="#0099c0" font-size="10" font-family="-apple-system,sans-serif">OAuth2 · Tokens · Scopes</text>
-              </g>
-              <g onclick="openNode('rest')"      style="cursor:pointer">
-                <rect x="208" y="118" width="124" height="37" rx="10" fill="#ffffff" stroke="#00BCEB" stroke-width="2"/>
-                <text x="270" y="133" text-anchor="middle" fill="#003050" font-size="12" font-weight="700" font-family="-apple-system,sans-serif">🔌 REST APIs</text>
-                <text x="270" y="148" text-anchor="middle" fill="#0099c0" font-size="10" font-family="-apple-system,sans-serif">Tasks · Agents · Queues</text>
-              </g>
-              <g onclick="openNode('webhooks')"  style="cursor:pointer">
-                <rect x="388" y="118" width="124" height="37" rx="10" fill="#ffffff" stroke="#00BCEB" stroke-width="2"/>
-                <text x="450" y="133" text-anchor="middle" fill="#003050" font-size="12" font-weight="700" font-family="-apple-system,sans-serif">📡 Webhooks</text>
-                <text x="450" y="148" text-anchor="middle" fill="#0099c0" font-size="10" font-family="-apple-system,sans-serif">Real-time events · HMAC</text>
-              </g>
-              <g onclick="openNode('desktop')"   style="cursor:pointer">
-                <rect x="568" y="118" width="124" height="37" rx="10" fill="#ffffff" stroke="#00BCEB" stroke-width="2"/>
-                <text x="630" y="133" text-anchor="middle" fill="#003050" font-size="12" font-weight="700" font-family="-apple-system,sans-serif">🖥️ Desktop SDK</text>
-                <text x="630" y="148" text-anchor="middle" fill="#0099c0" font-size="10" font-family="-apple-system,sans-serif">JS SDK · Custom widgets</text>
-              </g>
-              <g onclick="openNode('flow')"      style="cursor:pointer">
-                <rect x="748" y="118" width="124" height="37" rx="10" fill="#ffffff" stroke="#00BCEB" stroke-width="2"/>
-                <text x="810" y="133" text-anchor="middle" fill="#003050" font-size="12" font-weight="700" font-family="-apple-system,sans-serif">🔀 Flow Designer</text>
-                <text x="810" y="148" text-anchor="middle" fill="#0099c0" font-size="10" font-family="-apple-system,sans-serif">IVR · HTTP nodes · Routing</text>
-              </g>
-              <g onclick="openNode('reporting')" style="cursor:pointer">
-                <rect x="948" y="118" width="124" height="37" rx="10" fill="#ffffff" stroke="#00BCEB" stroke-width="2"/>
-                <text x="1010" y="133" text-anchor="middle" fill="#003050" font-size="12" font-weight="700" font-family="-apple-system,sans-serif">📊 Reporting</text>
-                <text x="1010" y="148" text-anchor="middle" fill="#0099c0" font-size="10" font-family="-apple-system,sans-serif">Analytics · CDRs · Live stats</text>
-              </g>
+    </div>
+  </div>
+</section>
 
-              <!-- LEAF nodes — Auth -->
-              <g onclick="openNode('personal-token')" style="cursor:pointer"><rect x="0"   y="215" width="56" height="30" rx="7" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/><text x="28"  y="228" text-anchor="middle" fill="#1e40af" font-size="9" font-family="-apple-system,sans-serif">Personal</text><text x="28"  y="240" text-anchor="middle" fill="#1e40af" font-size="9" font-family="-apple-system,sans-serif">Token</text></g>
-              <g onclick="openNode('oauth')"          style="cursor:pointer"><rect x="62"  y="215" width="56" height="30" rx="7" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/><text x="90"  y="228" text-anchor="middle" fill="#1e40af" font-size="9" font-family="-apple-system,sans-serif">OAuth 2.0</text><text x="90"  y="240" text-anchor="middle" fill="#1e40af" font-size="9" font-family="-apple-system,sans-serif">Flow</text></g>
-              <g onclick="openNode('service-app')"    style="cursor:pointer"><rect x="124" y="215" width="56" height="30" rx="7" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/><text x="152" y="228" text-anchor="middle" fill="#1e40af" font-size="9" font-family="-apple-system,sans-serif">Service</text><text x="152" y="240" text-anchor="middle" fill="#1e40af" font-size="9" font-family="-apple-system,sans-serif">App</text></g>
-
-              <!-- LEAF nodes — REST APIs -->
-              <g onclick="openNode('tasks')"  style="cursor:pointer"><rect x="180" y="215" width="56" height="30" rx="7" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/><text x="208" y="228" text-anchor="middle" fill="#166534" font-size="9" font-family="-apple-system,sans-serif">Task</text><text x="208" y="240" text-anchor="middle" fill="#166534" font-size="9" font-family="-apple-system,sans-serif">APIs</text></g>
-              <g onclick="openNode('agents')" style="cursor:pointer"><rect x="242" y="215" width="56" height="30" rx="7" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/><text x="270" y="228" text-anchor="middle" fill="#166534" font-size="9" font-family="-apple-system,sans-serif">Agent</text><text x="270" y="240" text-anchor="middle" fill="#166534" font-size="9" font-family="-apple-system,sans-serif">APIs</text></g>
-              <g onclick="openNode('queues')" style="cursor:pointer"><rect x="304" y="215" width="56" height="30" rx="7" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/><text x="332" y="228" text-anchor="middle" fill="#166534" font-size="9" font-family="-apple-system,sans-serif">Queue</text><text x="332" y="240" text-anchor="middle" fill="#166534" font-size="9" font-family="-apple-system,sans-serif">APIs</text></g>
-
-              <!-- LEAF nodes — Webhooks -->
-              <g onclick="openNode('task-events')"       style="cursor:pointer"><rect x="360" y="215" width="56" height="30" rx="7" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/><text x="388" y="228" text-anchor="middle" fill="#92400e" font-size="9" font-family="-apple-system,sans-serif">Task</text><text x="388" y="240" text-anchor="middle" fill="#92400e" font-size="9" font-family="-apple-system,sans-serif">Events</text></g>
-              <g onclick="openNode('agent-events')"      style="cursor:pointer"><rect x="422" y="215" width="56" height="30" rx="7" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/><text x="450" y="228" text-anchor="middle" fill="#92400e" font-size="9" font-family="-apple-system,sans-serif">Agent</text><text x="450" y="240" text-anchor="middle" fill="#92400e" font-size="9" font-family="-apple-system,sans-serif">Events</text></g>
-              <g onclick="openNode('webhook-security')"  style="cursor:pointer"><rect x="484" y="215" width="56" height="30" rx="7" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/><text x="512" y="228" text-anchor="middle" fill="#92400e" font-size="9" font-family="-apple-system,sans-serif">Security</text><text x="512" y="240" text-anchor="middle" fill="#92400e" font-size="9" font-family="-apple-system,sans-serif">&amp; HMAC</text></g>
-
-              <!-- LEAF nodes — Desktop SDK -->
-              <g onclick="openNode('screen-pop')"    style="cursor:pointer"><rect x="540" y="215" width="56" height="30" rx="7" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/><text x="568" y="228" text-anchor="middle" fill="#6d28d9" font-size="9" font-family="-apple-system,sans-serif">Screen</text><text x="568" y="240" text-anchor="middle" fill="#6d28d9" font-size="9" font-family="-apple-system,sans-serif">Pop</text></g>
-              <g onclick="openNode('custom-widget')" style="cursor:pointer"><rect x="602" y="215" width="56" height="30" rx="7" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/><text x="630" y="228" text-anchor="middle" fill="#6d28d9" font-size="9" font-family="-apple-system,sans-serif">Custom</text><text x="630" y="240" text-anchor="middle" fill="#6d28d9" font-size="9" font-family="-apple-system,sans-serif">Widget</text></g>
-              <g onclick="openNode('agent-state')"   style="cursor:pointer"><rect x="664" y="215" width="56" height="30" rx="7" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/><text x="692" y="228" text-anchor="middle" fill="#6d28d9" font-size="9" font-family="-apple-system,sans-serif">Agent</text><text x="692" y="240" text-anchor="middle" fill="#6d28d9" font-size="9" font-family="-apple-system,sans-serif">State</text></g>
-
-              <!-- LEAF nodes — Flow Designer -->
-              <g onclick="openNode('http-node')"      style="cursor:pointer"><rect x="720" y="215" width="56" height="30" rx="7" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/><text x="748" y="228" text-anchor="middle" fill="#9f1239" font-size="9" font-family="-apple-system,sans-serif">HTTP</text><text x="748" y="240" text-anchor="middle" fill="#9f1239" font-size="9" font-family="-apple-system,sans-serif">Node</text></g>
-              <g onclick="openNode('flow-variables')" style="cursor:pointer"><rect x="782" y="215" width="56" height="30" rx="7" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/><text x="810" y="228" text-anchor="middle" fill="#9f1239" font-size="9" font-family="-apple-system,sans-serif">Flow</text><text x="810" y="240" text-anchor="middle" fill="#9f1239" font-size="9" font-family="-apple-system,sans-serif">Variables</text></g>
-              <g onclick="openNode('routing')"        style="cursor:pointer"><rect x="844" y="215" width="56" height="30" rx="7" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/><text x="872" y="228" text-anchor="middle" fill="#9f1239" font-size="9" font-family="-apple-system,sans-serif">Routing</text><text x="872" y="240" text-anchor="middle" fill="#9f1239" font-size="9" font-family="-apple-system,sans-serif">Logic</text></g>
-
-              <!-- LEAF nodes — Reporting -->
-              <g onclick="openNode('realtime')"   style="cursor:pointer"><rect x="920"  y="215" width="56" height="30" rx="7" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/><text x="948"  y="228" text-anchor="middle" fill="#0e7490" font-size="9" font-family="-apple-system,sans-serif">Real-time</text><text x="948"  y="240" text-anchor="middle" fill="#0e7490" font-size="9" font-family="-apple-system,sans-serif">Stats</text></g>
-              <g onclick="openNode('historical')" style="cursor:pointer"><rect x="982"  y="215" width="56" height="30" rx="7" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/><text x="1010" y="228" text-anchor="middle" fill="#0e7490" font-size="9" font-family="-apple-system,sans-serif">Historical</text><text x="1010" y="240" text-anchor="middle" fill="#0e7490" font-size="9" font-family="-apple-system,sans-serif">Reports</text></g>
-              <g onclick="openNode('cdr')"        style="cursor:pointer"><rect x="1044" y="215" width="56" height="30" rx="7" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/><text x="1072" y="228" text-anchor="middle" fill="#0e7490" font-size="9" font-family="-apple-system,sans-serif">CDR</text><text x="1072" y="240" text-anchor="middle" fill="#0e7490" font-size="9" font-family="-apple-system,sans-serif">Export</text></g>
-
-              <!-- hint text -->
-              <text x="550" y="296" text-anchor="middle" fill="#94a3b8" font-size="12"
-                    font-family="-apple-system,sans-serif" font-style="italic">
-                Click any node to explore further
-              </text>
-            </svg>
+<!-- ARCHITECTURE OVERVIEW -->
+<section class="home-section" style="background: var(--bg-surface); border-top: 1px solid var(--border-subtle);">
+  <div class="home-section-inner">
+    <h2 class="home-section-title">Platform Architecture</h2>
+    <p class="home-section-sub">How all the extensibility surfaces connect — from a customer call to your integrations.</p>
+    <div class="arch-overview">
+      <div class="arch-nodes">
+        <div class="arch-row">
+          <div class="arch-node">
+            <span class="an-icon">&#x1F4DE;</span>
+            <div class="an-label">Customer</div>
+            <div class="an-sub">Call / Chat / Email</div>
           </div>
-
-          <!-- MOBILE GRID (shown on phones, hides SVG) -->
-          <div class="tree-mobile-grid">
-            <div class="tree-mobile-card cat-auth"  onclick="openNode('auth')">
-              <div class="mc-icon">🔑</div>
-              <div class="mc-title">Auth &amp; Setup</div>
-              <div class="mc-sub">OAuth2 · Tokens</div>
-            </div>
-            <div class="tree-mobile-card cat-rest"  onclick="openNode('rest')">
-              <div class="mc-icon">🔌</div>
-              <div class="mc-title">REST APIs</div>
-              <div class="mc-sub">Tasks · Agents</div>
-            </div>
-            <div class="tree-mobile-card cat-wh"    onclick="openNode('webhooks')">
-              <div class="mc-icon">📡</div>
-              <div class="mc-title">Webhooks</div>
-              <div class="mc-sub">Real-time events</div>
-            </div>
-            <div class="tree-mobile-card cat-desk"  onclick="openNode('desktop')">
-              <div class="mc-icon">🖥️</div>
-              <div class="mc-title">Desktop SDK</div>
-              <div class="mc-sub">Custom widgets</div>
-            </div>
-            <div class="tree-mobile-card cat-flow"  onclick="openNode('flow')">
-              <div class="mc-icon">🔀</div>
-              <div class="mc-title">Flow Designer</div>
-              <div class="mc-sub">IVR · Routing</div>
-            </div>
-            <div class="tree-mobile-card cat-rep"   onclick="openNode('reporting')">
-              <div class="mc-icon">📊</div>
-              <div class="mc-title">Reporting</div>
-              <div class="mc-sub">Analytics · CDR</div>
-            </div>
+          <div class="arch-node">
+            <span class="an-icon">&#x1F310;</span>
+            <div class="an-label">Entry Point</div>
+            <div class="an-sub">DID / Channel</div>
           </div>
-        </section>
+        </div>
 
-        <!-- ── SELECTED SOLUTION ── -->
-        <section class="selected-solution" id="selectedSolution" aria-live="polite">
-          <div class="selected-intro">
-            <span>Selected Solution</span>
-            <h2 id="dpTitle">Choose a topic to explore</h2>
-            <p id="dpSubtitle">Click any node, outcome, or journey step to see business value, use cases, code patterns, and next steps without leaving the page.</p>
+        <div class="arch-divider">&#x2193; Contact arrives in WxCC &#x2193;</div>
+
+        <div class="arch-row">
+          <div class="arch-node highlight">
+            <span class="an-icon">&#x1F500;</span>
+            <div class="an-label">Flow Designer</div>
+            <div class="an-sub">IVR + HTTP Nodes</div>
           </div>
-          <div class="selected-panel">
-            <div class="dp-badge" id="dpBadge">Explorer</div>
-            <div class="dp-body" id="dpBody">
-              <div class="dp-section">
-                <h3>How to use this portal</h3>
-                <p>Start with the business outcome you want to improve. The panel will show what the capability enables, where it fits, and which deeper guide page to open next.</p>
-              </div>
-            </div>
+          <div class="arch-node">
+            <span class="an-icon">&#x1F50C;</span>
+            <div class="an-label">Your API</div>
+            <div class="an-sub">CRM / Auth / AI</div>
           </div>
-        </section>
+        </div>
 
-        <!-- ── CONSOLIDATED NEXT STEPS ── -->
-        <section class="next-steps-section">
-          <div class="next-steps-copy">
-            <span>Next Steps</span>
-            <h2 id="nextStepsTitle">Turn the selected topic into a working path</h2>
-            <p id="nextStepsDesc">Use the selected panel above for the business context and code pattern, then choose the guide or sample path that matches your implementation stage.</p>
+        <div class="arch-divider">&#x2193; Task routed to agent &#x2193;</div>
+
+        <div class="arch-row">
+          <div class="arch-node highlight">
+            <span class="an-icon">&#x1F5A5;&#xFE0F;</span>
+            <div class="an-label">Agent Desktop</div>
+            <div class="an-sub">iFrame Widgets</div>
           </div>
-          <div class="next-steps-grid" id="nextStepsGrid">
-            <a class="next-step-card" href="getting-started.html">
-              <strong>Set up access</strong>
-              <span>OAuth, service apps, scopes, and base URLs.</span>
-            </a>
-            <a class="next-step-card" href="samples.html">
-              <strong>Use samples</strong>
-              <span>Business playbooks with code and diagrams.</span>
-            </a>
-            <a class="next-step-card" href="faq.html">
-              <strong>Check decisions</strong>
-              <span>Common integration questions and tradeoffs.</span>
-            </a>
+          <div class="arch-node highlight">
+            <span class="an-icon">&#x1F4E1;</span>
+            <div class="an-label">Webhooks</div>
+            <div class="an-sub">task:created → your server</div>
           </div>
-        </section>
+          <div class="arch-node">
+            <span class="an-icon">&#x1F50C;</span>
+            <div class="an-label">REST APIs</div>
+            <div class="an-sub">Config / Tasks / Agents</div>
+          </div>
+        </div>
 
-      </div><!-- /explorer-wrap -->
-    </main>
-  </div><!-- /page-wrapper -->
+        <div class="arch-divider">&#x2193; Contact ends — data available &#x2193;</div>
 
-  <footer class="page-footer">
-    <span>© 2026 Cisco Systems · Webex Contact Center Extensibility Hub</span>
-    <span>
-      <a href="https://developer.webex.com/webex-contact-center/docs" target="_blank" rel="noopener">Developer Portal</a> ·
-      <a href="samples.html">Solutions &amp; Samples</a> ·
-      <a href="faq.html">FAQ</a>
-    </span>
-  </footer>
+        <div class="arch-row">
+          <div class="arch-node highlight">
+            <span class="an-icon">&#x1F4CA;</span>
+            <div class="an-label">Reporting APIs</div>
+            <div class="an-sub">CDR / Real-time / Historical</div>
+          </div>
+          <div class="arch-node">
+            <span class="an-icon">&#x1F5C4;&#xFE0F;</span>
+            <div class="an-label">Your Data Warehouse</div>
+            <div class="an-sub">BigQuery / Power BI</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <button id="backToTop" title="Back to top" aria-label="Back to top">↑</button>
+<!-- CTA -->
+<section class="home-section" style="background: var(--bg-page);">
+  <div class="quickstart">
+    <div class="quickstart-text">
+      <h2>Ready to start building?</h2>
+      <p>Set up authentication and make your first API call in under 10 minutes.</p>
+    </div>
+    <div class="quickstart-actions">
+      <a href="getting-started.html" class="btn btn-primary">&#x1F511; Set Up Auth</a>
+      <a href="samples.html" class="btn btn-secondary">&#x1F9E9; See Samples</a>
+      <a href="https://developer.webex.com/webex-contact-center/docs" target="_blank" rel="noopener" class="btn btn-ghost">&#x1F4D8; Official Docs &#x2197;</a>
+    </div>
+  </div>
+</section>
 
-  <!-- scripts: global → data → explorer logic -->
-  <script src="js/app.js"></script>
-  <script src="js/nodes-data.js"></script>
-  <script src="js/explorer.js"></script>
+<!-- FOOTER -->
+<footer class="page-footer">
+  <div class="site-footer-meta">
+    <span>&#xA9; 2026 Cisco Systems &middot; Webex Contact Center Extensibility Hub</span>
+    <a href="https://developer.webex.com/webex-contact-center/docs" target="_blank" rel="noopener">Developer Portal &#x2197;</a>
+    <a href="samples.html">Samples</a>
+    <a href="faq.html">FAQ</a>
+  </div>
+</footer>
 
+<button class="back-to-top" title="Back to top">&#x2191;</button>
+<script src="js/main.js"></script>
 </body>
 </html>
