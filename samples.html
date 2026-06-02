@@ -51,7 +51,7 @@
       <div class="section-badge">🧩 Solutions & Samples</div>
       <h1>Build Business Confidence With Working Patterns</h1>
       <div class="divider"></div>
-      <p>Explore practical Webex Contact Center examples by business outcome, then open the sample source that helps your team move from idea to proof of value.</p>
+      <p>Explore practical Webex Contact Center examples by business outcome. Each sample is explained locally so readers can understand the value, flow, and implementation path without leaving this portal.</p>
     </div>
 
     <section id="journey">
@@ -94,7 +94,7 @@
             <li>Good for: demos, training, initial validation</li>
             <li>Source: WebexSamples API fundamentals</li>
           </ul>
-          <a href="https://github.com/WebexSamples/webex-contact-center-api-samples" target="_blank" rel="noopener">Open sample repository →</a>
+          <a href="#auth-playbook">View local playbook →</a>
         </article>
 
         <article class="sample-card accent-rest">
@@ -106,7 +106,7 @@
             <li>Good for: partner onboarding, admin automation</li>
             <li>Source: configuration samples</li>
           </ul>
-          <a href="https://github.com/WebexSamples/webex-contact-center-api-samples" target="_blank" rel="noopener">Explore configuration samples →</a>
+          <a href="#config-playbook">View local playbook →</a>
         </article>
 
         <article class="sample-card accent-webhooks">
@@ -118,7 +118,7 @@
             <li>Good for: alerts, recording workflows, CRM updates</li>
             <li>Source: webhook notification samples</li>
           </ul>
-          <a href="https://github.com/WebexSamples/webex-contact-center-api-samples" target="_blank" rel="noopener">Explore webhook samples →</a>
+          <a href="#webhook-playbook">View local playbook →</a>
         </article>
 
         <article class="sample-card accent-desktop">
@@ -130,7 +130,7 @@
             <li>Good for: CRM panels, screen pops, call controls</li>
             <li>Source: widget and Desktop JS SDK samples</li>
           </ul>
-          <a href="https://github.com/WebexSamples/webex-contact-center-api-samples" target="_blank" rel="noopener">Explore desktop samples →</a>
+          <a href="#desktop-playbook">View local playbook →</a>
         </article>
 
         <article class="sample-card accent-flow">
@@ -142,7 +142,7 @@
             <li>Good for: account lookup, priority routing, AI intent</li>
             <li>Source: provider and backend examples</li>
           </ul>
-          <a href="https://github.com/CiscoDevNet/webex-contact-center-provider-sample-code" target="_blank" rel="noopener">Explore provider samples →</a>
+          <a href="#provider-playbook">View local playbook →</a>
         </article>
 
         <article class="sample-card accent-reporting">
@@ -154,9 +154,170 @@
             <li>Good for: wallboards, Power BI, historical analysis</li>
             <li>Source: GraphQL and reporting samples</li>
           </ul>
-          <a href="https://github.com/WebexSamples/webex-contact-center-api-samples" target="_blank" rel="noopener">Explore reporting samples →</a>
+          <a href="#reporting-playbook">View local playbook →</a>
         </article>
       </div>
+    </section>
+
+    <section id="playbooks">
+      <h2 class="section-title">Local Implementation Playbooks</h2>
+      <p class="body-text">These playbooks are baked into the portal from the WebexSamples and CiscoDevNet sample sources. Use them to explain the business outcome first, then show how the technical pieces connect.</p>
+
+      <article class="playbook accent-auth" id="auth-playbook">
+        <div class="playbook-header">
+          <span>Auth Foundation</span>
+          <h3>Secure API access and first contact center data lookup</h3>
+          <p>Based on WebexSamples API fundamentals, app authentication, Postman, and token-management sample patterns.</p>
+        </div>
+        <div class="playbook-layout">
+          <div class="mini-architecture">
+            <div>Developer or App</div><span>OAuth</span><div>Webex Identity</div><span>Token</span><div>WxCC APIs</div>
+          </div>
+          <div>
+            <h4>Business benefit</h4>
+            <p>Gives teams confidence that integrations can authenticate safely and retrieve contact center data with the right scopes.</p>
+            <h4>What the sample teaches</h4>
+            <ul>
+              <li>Create an app integration or service-app style access pattern.</li>
+              <li>Request scopes for contact center configuration, people lookup, and reporting use cases.</li>
+              <li>Call task, agent, queue, user, or site endpoints with a bearer token.</li>
+              <li>Introduce token refresh or scheduled token management for longer-running demos.</li>
+            </ul>
+            <h4>Best demonstration</h4>
+            <p>Show a first successful API call, then explain how the same token foundation supports automation, dashboards, widgets, and event handlers.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="playbook accent-rest" id="config-playbook">
+        <div class="playbook-header">
+          <span>Operational Automation</span>
+          <h3>Configuration management and repeatable administration</h3>
+          <p>Based on WebexSamples configuration application and configuration extraction sample patterns.</p>
+        </div>
+        <div class="playbook-layout">
+          <div class="mini-architecture">
+            <div>Admin Need</div><span>REST</span><div>Queues / Teams / EPs</div><span>Export</span><div>Review or Automate</div>
+          </div>
+          <div>
+            <h4>Business benefit</h4>
+            <p>Reduces manual configuration effort and helps teams keep environments consistent during onboarding, audits, and changes.</p>
+            <h4>What the sample teaches</h4>
+            <ul>
+              <li>Read contact center configuration such as entry points, queues, teams, and related objects.</li>
+              <li>Expose configuration data in a front-end view for review and demos.</li>
+              <li>Extract configuration data to CSV for analysis, migration planning, or documentation.</li>
+              <li>Use API-backed workflows instead of manual screen-by-screen administration.</li>
+            </ul>
+            <h4>Best demonstration</h4>
+            <p>Show an existing queue/team configuration pulled through API, then explain how this becomes a foundation for governance and repeatable setup.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="playbook accent-webhooks" id="webhook-playbook">
+        <div class="playbook-header">
+          <span>Real-time Action</span>
+          <h3>Event-driven notifications and recording workflows</h3>
+          <p>Based on WebexSamples webhook email notification and call recording download sample patterns.</p>
+        </div>
+        <div class="playbook-layout">
+          <div class="mini-architecture">
+            <div>WxCC Event</div><span>Webhook</span><div>Listener</div><span>Action</span><div>Email / CRM / Download</div>
+          </div>
+          <div>
+            <h4>Business benefit</h4>
+            <p>Lets teams respond to customer moments immediately instead of waiting for reports, manual checks, or polling jobs.</p>
+            <h4>What the sample teaches</h4>
+            <ul>
+              <li>Register an HTTPS endpoint for Webex Contact Center event delivery.</li>
+              <li>Receive and validate event payloads in a listener service.</li>
+              <li>Trigger notifications when important contact center events occur.</li>
+              <li>Use recording-related events to start a secure download or archive workflow.</li>
+            </ul>
+            <h4>Best demonstration</h4>
+            <p>Show an event creating a downstream action such as an email alert, CRM update, compliance log, or recording workflow.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="playbook accent-desktop" id="desktop-playbook">
+        <div class="playbook-header">
+          <span>Agent Experience</span>
+          <h3>Desktop widgets, screen pops, and call-control experiences</h3>
+          <p>Based on WebexSamples widget, Desktop JS SDK, address book, call-control, audio widget, and iframe sample patterns.</p>
+        </div>
+        <div class="playbook-layout">
+          <div class="mini-architecture">
+            <div>Desktop Layout</div><span>iFrame</span><div>Widget</div><span>SDK</span><div>Agent Action</div>
+          </div>
+          <div>
+            <h4>Business benefit</h4>
+            <p>Improves agent productivity by bringing customer context, actions, and tools into the desktop where work already happens.</p>
+            <h4>What the sample teaches</h4>
+            <ul>
+              <li>Place a web component or iframe widget in the desktop layout.</li>
+              <li>Initialize the Desktop JS SDK from inside the widget.</li>
+              <li>Read task, customer, and agent context from desktop events or store data.</li>
+              <li>Support use cases like screen pop, address book, click-to-dial, transfer, consult, hold, and pause/resume.</li>
+            </ul>
+            <h4>Best demonstration</h4>
+            <p>Show a screen pop or embedded CRM panel that reduces tab switching and helps the agent resolve the customer issue faster.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="playbook accent-flow" id="provider-playbook">
+        <div class="playbook-header">
+          <span>Advanced Provider Patterns</span>
+          <h3>Virtual agent, media, and provider-side integrations</h3>
+          <p>Based on CiscoDevNet provider sample code for BYoVA, media forking, gRPC, WebSocket, Java, and Python simulator patterns.</p>
+        </div>
+        <div class="playbook-layout">
+          <div class="mini-architecture">
+            <div>WxCC Flow</div><span>Data Source</span><div>Provider Service</div><span>Media / Events</span><div>AI or Analytics</div>
+          </div>
+          <div>
+            <h4>Business benefit</h4>
+            <p>Shows that WxCC can support advanced partner and customer innovation, including external AI, virtual agents, media processing, and real-time analysis.</p>
+            <h4>What the sample teaches</h4>
+            <ul>
+              <li>Choose a provider path: BYoVA over gRPC, BYoVA over WebSocket, or real-time media forking.</li>
+              <li>Understand schemas, transports, simulator language options, and onboarding flow.</li>
+              <li>Validate runtime authentication with JWS/JWT patterns and optional mTLS considerations.</li>
+              <li>Respect audio/runtime constraints such as sample rate, mono audio, and supported encodings.</li>
+            </ul>
+            <h4>Best demonstration</h4>
+            <p>Explain how a customer could plug in an external AI service, bot, transcript engine, or analytics service while keeping the contact center flow controlled in WxCC.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="playbook accent-reporting" id="reporting-playbook">
+        <div class="playbook-header">
+          <span>Business Insight</span>
+          <h3>Wallboards, analytics, and reporting connectors</h3>
+          <p>Based on WebexSamples GraphQL, wallboard, custom report, and Power BI reporting connector sample patterns.</p>
+        </div>
+        <div class="playbook-layout">
+          <div class="mini-architecture">
+            <div>WxCC Data</div><span>GraphQL / Search</span><div>Transform</div><span>Visualize</span><div>BI / Wallboard</div>
+          </div>
+          <div>
+            <h4>Business benefit</h4>
+            <p>Turns contact center activity into measurable business insight for supervisors, leaders, and customer experience teams.</p>
+            <h4>What the sample teaches</h4>
+            <ul>
+              <li>Use search and GraphQL-oriented patterns for task, agent session, realtime, and historical reporting use cases.</li>
+              <li>Build wallboard cards that can be extended for operational dashboards.</li>
+              <li>Connect data into Power BI or another reporting surface.</li>
+              <li>Export and shape data for recurring business reviews.</li>
+            </ul>
+            <h4>Best demonstration</h4>
+            <p>Show queue, agent, or historical metrics flowing into a dashboard that helps leaders track service level, demand, and operational performance.</p>
+          </div>
+        </div>
+      </article>
     </section>
 
     <section id="ignite">

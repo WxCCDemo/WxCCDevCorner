@@ -1,6 +1,6 @@
 /* ============================================================
    explorer.js
-   Interactive tree, detail panel, FAQ toggles.
+   Interactive tree, inline detail panel, FAQ toggles.
    Depends on: nodes-data.js (NODES object)
    ============================================================ */
 
@@ -12,14 +12,13 @@
   const $$ = (sel, ctx) => [...(ctx || document).querySelectorAll(sel)];
 
   /* ============================================================
-     PANEL OPEN / CLOSE
+     INLINE PANEL UPDATE
   ============================================================ */
-  function openNode(id) {
+  function openNode(id, opts = {}) {
     const node = NODES[id];
     if (!node) return;
 
-    const overlay = $('#detailOverlay');
-    const panel   = $('#detailPanel');
+    const selected = $('#selectedSolution');
 
     /* badge */
     const badge = $('#dpBadge');
@@ -34,28 +33,14 @@
     /* body */
     $('#dpBody').innerHTML = buildPanelBody(node);
 
-    /* open */
-    overlay.classList.add('open');
-    document.body.style.overflow = 'hidden';
-    panel.scrollTop = 0;
+    selected.classList.add('has-selection');
+    if (opts.scroll !== false) {
+      selected.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }
 
-  function closePanel() {
-    $('#detailOverlay').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  /* ── close triggers ── */
   document.addEventListener('DOMContentLoaded', () => {
-    $('#dpClose').addEventListener('click', closePanel);
-
-    $('#detailOverlay').addEventListener('click', function (e) {
-      if (e.target === this) closePanel();
-    });
-
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') closePanel();
-    });
+    openNode('desktop', { scroll: false });
   });
 
   /* ============================================================
@@ -84,7 +69,8 @@
 
     if (node.link) {
       html += `<div class="dp-section dp-links">
-        <a href="${node.link}" class="dp-link primary">📖 Full Documentation →</a>
+        <a href="${node.link}" class="dp-link primary">Open the deeper guide →</a>
+        <a href="samples.html" class="dp-link secondary">Browse related samples →</a>
       </div>`;
     }
 

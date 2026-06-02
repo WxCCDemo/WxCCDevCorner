@@ -18,7 +18,7 @@
       <div class="topnav-logo">Wx</div>
       <div class="topnav-title">
         WxCC Extensibility Hub
-        <span>Webex Contact Center API Guide</span>
+        <span>Business-led API learning</span>
       </div>
     </a>
     <ul class="topnav-links">
@@ -37,21 +37,6 @@
 
   <!-- ── mobile sidebar overlay ── -->
   <div class="sidebar-overlay"></div>
-
-  <!-- ── detail panel overlay ── -->
-  <div class="detail-overlay" id="detailOverlay" role="dialog" aria-modal="true">
-    <div class="detail-panel" id="detailPanel">
-      <div class="dp-header">
-        <div>
-          <div class="dp-badge" id="dpBadge"></div>
-          <div class="dp-title"    id="dpTitle"></div>
-          <div class="dp-subtitle" id="dpSubtitle"></div>
-        </div>
-        <button class="dp-close" id="dpClose" aria-label="Close">✕</button>
-      </div>
-      <div class="dp-body" id="dpBody"></div>
-    </div>
-  </div>
 
   <!-- ── page wrapper (no sidebar on explorer) ── -->
   <div class="page-wrapper">
@@ -111,72 +96,72 @@
 
               <!-- ROOT node -->
               <g>
-                <rect x="370" y="6" width="360" height="52" rx="14" fill="#3730a3"/>
+                <rect x="370" y="6" width="360" height="52" rx="14" fill="#003050"/>
                 <text x="550" y="27" text-anchor="middle" fill="#fff"    font-size="15" font-weight="800" font-family="-apple-system,sans-serif">WxCC Extensibility Hub</text>
-                <text x="550" y="47" text-anchor="middle" fill="#a5b4fc" font-size="10" font-family="-apple-system,sans-serif">Official Cisco / Webex developer samples</text>
+                <text x="550" y="47" text-anchor="middle" fill="#33c9ef" font-size="10" font-family="-apple-system,sans-serif">Official Cisco / Webex developer samples</text>
               </g>
 
               <!-- CATEGORY nodes -->
               <g onclick="openNode('auth')"      style="cursor:pointer">
-                <rect x="28"  y="118" width="124" height="37" rx="10" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+                <rect x="28"  y="118" width="124" height="37" rx="10" fill="#ffffff" stroke="#3b82f6" stroke-width="2"/>
                 <text x="90"  y="133" text-anchor="middle" fill="#1d4ed8" font-size="12" font-weight="700" font-family="-apple-system,sans-serif">🔑 Auth &amp; Setup</text>
                 <text x="90"  y="148" text-anchor="middle" fill="#3b82f6" font-size="10" font-family="-apple-system,sans-serif">OAuth2 · Tokens · Scopes</text>
               </g>
               <g onclick="openNode('rest')"      style="cursor:pointer">
-                <rect x="208" y="118" width="124" height="37" rx="10" fill="#dcfce7" stroke="#10b981" stroke-width="2"/>
+                <rect x="208" y="118" width="124" height="37" rx="10" fill="#ffffff" stroke="#10b981" stroke-width="2"/>
                 <text x="270" y="133" text-anchor="middle" fill="#059669" font-size="12" font-weight="700" font-family="-apple-system,sans-serif">🔌 REST APIs</text>
                 <text x="270" y="148" text-anchor="middle" fill="#10b981" font-size="10" font-family="-apple-system,sans-serif">Tasks · Agents · Queues</text>
               </g>
               <g onclick="openNode('webhooks')"  style="cursor:pointer">
-                <rect x="388" y="118" width="124" height="37" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+                <rect x="388" y="118" width="124" height="37" rx="10" fill="#ffffff" stroke="#f59e0b" stroke-width="2"/>
                 <text x="450" y="133" text-anchor="middle" fill="#b45309" font-size="12" font-weight="700" font-family="-apple-system,sans-serif">📡 Webhooks</text>
                 <text x="450" y="148" text-anchor="middle" fill="#f59e0b" font-size="10" font-family="-apple-system,sans-serif">Real-time events · HMAC</text>
               </g>
               <g onclick="openNode('desktop')"   style="cursor:pointer">
-                <rect x="568" y="118" width="124" height="37" rx="10" fill="#f3e8ff" stroke="#8b5cf6" stroke-width="2"/>
+                <rect x="568" y="118" width="124" height="37" rx="10" fill="#ffffff" stroke="#8b5cf6" stroke-width="2"/>
                 <text x="630" y="133" text-anchor="middle" fill="#7c3aed" font-size="12" font-weight="700" font-family="-apple-system,sans-serif">🖥️ Desktop SDK</text>
                 <text x="630" y="148" text-anchor="middle" fill="#8b5cf6" font-size="10" font-family="-apple-system,sans-serif">JS SDK · Custom widgets</text>
               </g>
               <g onclick="openNode('flow')"      style="cursor:pointer">
-                <rect x="748" y="118" width="124" height="37" rx="10" fill="#fee2e2" stroke="#ef4444" stroke-width="2"/>
+                <rect x="748" y="118" width="124" height="37" rx="10" fill="#ffffff" stroke="#ef4444" stroke-width="2"/>
                 <text x="810" y="133" text-anchor="middle" fill="#b91c1c" font-size="12" font-weight="700" font-family="-apple-system,sans-serif">🔀 Flow Designer</text>
                 <text x="810" y="148" text-anchor="middle" fill="#ef4444" font-size="10" font-family="-apple-system,sans-serif">IVR · HTTP nodes · Routing</text>
               </g>
               <g onclick="openNode('reporting')" style="cursor:pointer">
-                <rect x="948" y="118" width="124" height="37" rx="10" fill="#cffafe" stroke="#06b6d4" stroke-width="2"/>
+                <rect x="948" y="118" width="124" height="37" rx="10" fill="#ffffff" stroke="#06b6d4" stroke-width="2"/>
                 <text x="1010" y="133" text-anchor="middle" fill="#0e7490" font-size="12" font-weight="700" font-family="-apple-system,sans-serif">📊 Reporting</text>
                 <text x="1010" y="148" text-anchor="middle" fill="#06b6d4" font-size="10" font-family="-apple-system,sans-serif">Analytics · CDRs · Live stats</text>
               </g>
 
               <!-- LEAF nodes — Auth -->
-              <g onclick="openNode('personal-token')" style="cursor:pointer"><rect x="0"   y="215" width="56" height="30" rx="7" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5"/><text x="28"  y="228" text-anchor="middle" fill="#1e40af" font-size="9" font-family="-apple-system,sans-serif">Personal</text><text x="28"  y="240" text-anchor="middle" fill="#1e40af" font-size="9" font-family="-apple-system,sans-serif">Token</text></g>
-              <g onclick="openNode('oauth')"          style="cursor:pointer"><rect x="62"  y="215" width="56" height="30" rx="7" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5"/><text x="90"  y="228" text-anchor="middle" fill="#1e40af" font-size="9" font-family="-apple-system,sans-serif">OAuth 2.0</text><text x="90"  y="240" text-anchor="middle" fill="#1e40af" font-size="9" font-family="-apple-system,sans-serif">Flow</text></g>
-              <g onclick="openNode('service-app')"    style="cursor:pointer"><rect x="124" y="215" width="56" height="30" rx="7" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5"/><text x="152" y="228" text-anchor="middle" fill="#1e40af" font-size="9" font-family="-apple-system,sans-serif">Service</text><text x="152" y="240" text-anchor="middle" fill="#1e40af" font-size="9" font-family="-apple-system,sans-serif">App</text></g>
+              <g onclick="openNode('personal-token')" style="cursor:pointer"><rect x="0"   y="215" width="56" height="30" rx="7" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/><text x="28"  y="228" text-anchor="middle" fill="#1e40af" font-size="9" font-family="-apple-system,sans-serif">Personal</text><text x="28"  y="240" text-anchor="middle" fill="#1e40af" font-size="9" font-family="-apple-system,sans-serif">Token</text></g>
+              <g onclick="openNode('oauth')"          style="cursor:pointer"><rect x="62"  y="215" width="56" height="30" rx="7" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/><text x="90"  y="228" text-anchor="middle" fill="#1e40af" font-size="9" font-family="-apple-system,sans-serif">OAuth 2.0</text><text x="90"  y="240" text-anchor="middle" fill="#1e40af" font-size="9" font-family="-apple-system,sans-serif">Flow</text></g>
+              <g onclick="openNode('service-app')"    style="cursor:pointer"><rect x="124" y="215" width="56" height="30" rx="7" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/><text x="152" y="228" text-anchor="middle" fill="#1e40af" font-size="9" font-family="-apple-system,sans-serif">Service</text><text x="152" y="240" text-anchor="middle" fill="#1e40af" font-size="9" font-family="-apple-system,sans-serif">App</text></g>
 
               <!-- LEAF nodes — REST APIs -->
-              <g onclick="openNode('tasks')"  style="cursor:pointer"><rect x="180" y="215" width="56" height="30" rx="7" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/><text x="208" y="228" text-anchor="middle" fill="#166534" font-size="9" font-family="-apple-system,sans-serif">Task</text><text x="208" y="240" text-anchor="middle" fill="#166534" font-size="9" font-family="-apple-system,sans-serif">APIs</text></g>
-              <g onclick="openNode('agents')" style="cursor:pointer"><rect x="242" y="215" width="56" height="30" rx="7" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/><text x="270" y="228" text-anchor="middle" fill="#166534" font-size="9" font-family="-apple-system,sans-serif">Agent</text><text x="270" y="240" text-anchor="middle" fill="#166534" font-size="9" font-family="-apple-system,sans-serif">APIs</text></g>
-              <g onclick="openNode('queues')" style="cursor:pointer"><rect x="304" y="215" width="56" height="30" rx="7" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/><text x="332" y="228" text-anchor="middle" fill="#166534" font-size="9" font-family="-apple-system,sans-serif">Queue</text><text x="332" y="240" text-anchor="middle" fill="#166534" font-size="9" font-family="-apple-system,sans-serif">APIs</text></g>
+              <g onclick="openNode('tasks')"  style="cursor:pointer"><rect x="180" y="215" width="56" height="30" rx="7" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/><text x="208" y="228" text-anchor="middle" fill="#166534" font-size="9" font-family="-apple-system,sans-serif">Task</text><text x="208" y="240" text-anchor="middle" fill="#166534" font-size="9" font-family="-apple-system,sans-serif">APIs</text></g>
+              <g onclick="openNode('agents')" style="cursor:pointer"><rect x="242" y="215" width="56" height="30" rx="7" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/><text x="270" y="228" text-anchor="middle" fill="#166534" font-size="9" font-family="-apple-system,sans-serif">Agent</text><text x="270" y="240" text-anchor="middle" fill="#166534" font-size="9" font-family="-apple-system,sans-serif">APIs</text></g>
+              <g onclick="openNode('queues')" style="cursor:pointer"><rect x="304" y="215" width="56" height="30" rx="7" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/><text x="332" y="228" text-anchor="middle" fill="#166534" font-size="9" font-family="-apple-system,sans-serif">Queue</text><text x="332" y="240" text-anchor="middle" fill="#166534" font-size="9" font-family="-apple-system,sans-serif">APIs</text></g>
 
               <!-- LEAF nodes — Webhooks -->
-              <g onclick="openNode('task-events')"       style="cursor:pointer"><rect x="360" y="215" width="56" height="30" rx="7" fill="#fffbeb" stroke="#fcd34d" stroke-width="1.5"/><text x="388" y="228" text-anchor="middle" fill="#92400e" font-size="9" font-family="-apple-system,sans-serif">Task</text><text x="388" y="240" text-anchor="middle" fill="#92400e" font-size="9" font-family="-apple-system,sans-serif">Events</text></g>
-              <g onclick="openNode('agent-events')"      style="cursor:pointer"><rect x="422" y="215" width="56" height="30" rx="7" fill="#fffbeb" stroke="#fcd34d" stroke-width="1.5"/><text x="450" y="228" text-anchor="middle" fill="#92400e" font-size="9" font-family="-apple-system,sans-serif">Agent</text><text x="450" y="240" text-anchor="middle" fill="#92400e" font-size="9" font-family="-apple-system,sans-serif">Events</text></g>
-              <g onclick="openNode('webhook-security')"  style="cursor:pointer"><rect x="484" y="215" width="56" height="30" rx="7" fill="#fffbeb" stroke="#fcd34d" stroke-width="1.5"/><text x="512" y="228" text-anchor="middle" fill="#92400e" font-size="9" font-family="-apple-system,sans-serif">Security</text><text x="512" y="240" text-anchor="middle" fill="#92400e" font-size="9" font-family="-apple-system,sans-serif">&amp; HMAC</text></g>
+              <g onclick="openNode('task-events')"       style="cursor:pointer"><rect x="360" y="215" width="56" height="30" rx="7" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/><text x="388" y="228" text-anchor="middle" fill="#92400e" font-size="9" font-family="-apple-system,sans-serif">Task</text><text x="388" y="240" text-anchor="middle" fill="#92400e" font-size="9" font-family="-apple-system,sans-serif">Events</text></g>
+              <g onclick="openNode('agent-events')"      style="cursor:pointer"><rect x="422" y="215" width="56" height="30" rx="7" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/><text x="450" y="228" text-anchor="middle" fill="#92400e" font-size="9" font-family="-apple-system,sans-serif">Agent</text><text x="450" y="240" text-anchor="middle" fill="#92400e" font-size="9" font-family="-apple-system,sans-serif">Events</text></g>
+              <g onclick="openNode('webhook-security')"  style="cursor:pointer"><rect x="484" y="215" width="56" height="30" rx="7" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/><text x="512" y="228" text-anchor="middle" fill="#92400e" font-size="9" font-family="-apple-system,sans-serif">Security</text><text x="512" y="240" text-anchor="middle" fill="#92400e" font-size="9" font-family="-apple-system,sans-serif">&amp; HMAC</text></g>
 
               <!-- LEAF nodes — Desktop SDK -->
-              <g onclick="openNode('screen-pop')"    style="cursor:pointer"><rect x="540" y="215" width="56" height="30" rx="7" fill="#faf5ff" stroke="#d8b4fe" stroke-width="1.5"/><text x="568" y="228" text-anchor="middle" fill="#6d28d9" font-size="9" font-family="-apple-system,sans-serif">Screen</text><text x="568" y="240" text-anchor="middle" fill="#6d28d9" font-size="9" font-family="-apple-system,sans-serif">Pop</text></g>
-              <g onclick="openNode('custom-widget')" style="cursor:pointer"><rect x="602" y="215" width="56" height="30" rx="7" fill="#faf5ff" stroke="#d8b4fe" stroke-width="1.5"/><text x="630" y="228" text-anchor="middle" fill="#6d28d9" font-size="9" font-family="-apple-system,sans-serif">Custom</text><text x="630" y="240" text-anchor="middle" fill="#6d28d9" font-size="9" font-family="-apple-system,sans-serif">Widget</text></g>
-              <g onclick="openNode('agent-state')"   style="cursor:pointer"><rect x="664" y="215" width="56" height="30" rx="7" fill="#faf5ff" stroke="#d8b4fe" stroke-width="1.5"/><text x="692" y="228" text-anchor="middle" fill="#6d28d9" font-size="9" font-family="-apple-system,sans-serif">Agent</text><text x="692" y="240" text-anchor="middle" fill="#6d28d9" font-size="9" font-family="-apple-system,sans-serif">State</text></g>
+              <g onclick="openNode('screen-pop')"    style="cursor:pointer"><rect x="540" y="215" width="56" height="30" rx="7" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/><text x="568" y="228" text-anchor="middle" fill="#6d28d9" font-size="9" font-family="-apple-system,sans-serif">Screen</text><text x="568" y="240" text-anchor="middle" fill="#6d28d9" font-size="9" font-family="-apple-system,sans-serif">Pop</text></g>
+              <g onclick="openNode('custom-widget')" style="cursor:pointer"><rect x="602" y="215" width="56" height="30" rx="7" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/><text x="630" y="228" text-anchor="middle" fill="#6d28d9" font-size="9" font-family="-apple-system,sans-serif">Custom</text><text x="630" y="240" text-anchor="middle" fill="#6d28d9" font-size="9" font-family="-apple-system,sans-serif">Widget</text></g>
+              <g onclick="openNode('agent-state')"   style="cursor:pointer"><rect x="664" y="215" width="56" height="30" rx="7" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/><text x="692" y="228" text-anchor="middle" fill="#6d28d9" font-size="9" font-family="-apple-system,sans-serif">Agent</text><text x="692" y="240" text-anchor="middle" fill="#6d28d9" font-size="9" font-family="-apple-system,sans-serif">State</text></g>
 
               <!-- LEAF nodes — Flow Designer -->
-              <g onclick="openNode('http-node')"      style="cursor:pointer"><rect x="720" y="215" width="56" height="30" rx="7" fill="#fff1f2" stroke="#fca5a5" stroke-width="1.5"/><text x="748" y="228" text-anchor="middle" fill="#9f1239" font-size="9" font-family="-apple-system,sans-serif">HTTP</text><text x="748" y="240" text-anchor="middle" fill="#9f1239" font-size="9" font-family="-apple-system,sans-serif">Node</text></g>
-              <g onclick="openNode('flow-variables')" style="cursor:pointer"><rect x="782" y="215" width="56" height="30" rx="7" fill="#fff1f2" stroke="#fca5a5" stroke-width="1.5"/><text x="810" y="228" text-anchor="middle" fill="#9f1239" font-size="9" font-family="-apple-system,sans-serif">Flow</text><text x="810" y="240" text-anchor="middle" fill="#9f1239" font-size="9" font-family="-apple-system,sans-serif">Variables</text></g>
-              <g onclick="openNode('routing')"        style="cursor:pointer"><rect x="844" y="215" width="56" height="30" rx="7" fill="#fff1f2" stroke="#fca5a5" stroke-width="1.5"/><text x="872" y="228" text-anchor="middle" fill="#9f1239" font-size="9" font-family="-apple-system,sans-serif">Routing</text><text x="872" y="240" text-anchor="middle" fill="#9f1239" font-size="9" font-family="-apple-system,sans-serif">Logic</text></g>
+              <g onclick="openNode('http-node')"      style="cursor:pointer"><rect x="720" y="215" width="56" height="30" rx="7" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/><text x="748" y="228" text-anchor="middle" fill="#9f1239" font-size="9" font-family="-apple-system,sans-serif">HTTP</text><text x="748" y="240" text-anchor="middle" fill="#9f1239" font-size="9" font-family="-apple-system,sans-serif">Node</text></g>
+              <g onclick="openNode('flow-variables')" style="cursor:pointer"><rect x="782" y="215" width="56" height="30" rx="7" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/><text x="810" y="228" text-anchor="middle" fill="#9f1239" font-size="9" font-family="-apple-system,sans-serif">Flow</text><text x="810" y="240" text-anchor="middle" fill="#9f1239" font-size="9" font-family="-apple-system,sans-serif">Variables</text></g>
+              <g onclick="openNode('routing')"        style="cursor:pointer"><rect x="844" y="215" width="56" height="30" rx="7" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/><text x="872" y="228" text-anchor="middle" fill="#9f1239" font-size="9" font-family="-apple-system,sans-serif">Routing</text><text x="872" y="240" text-anchor="middle" fill="#9f1239" font-size="9" font-family="-apple-system,sans-serif">Logic</text></g>
 
               <!-- LEAF nodes — Reporting -->
-              <g onclick="openNode('realtime')"   style="cursor:pointer"><rect x="920"  y="215" width="56" height="30" rx="7" fill="#ecfeff" stroke="#67e8f9" stroke-width="1.5"/><text x="948"  y="228" text-anchor="middle" fill="#0e7490" font-size="9" font-family="-apple-system,sans-serif">Real-time</text><text x="948"  y="240" text-anchor="middle" fill="#0e7490" font-size="9" font-family="-apple-system,sans-serif">Stats</text></g>
-              <g onclick="openNode('historical')" style="cursor:pointer"><rect x="982"  y="215" width="56" height="30" rx="7" fill="#ecfeff" stroke="#67e8f9" stroke-width="1.5"/><text x="1010" y="228" text-anchor="middle" fill="#0e7490" font-size="9" font-family="-apple-system,sans-serif">Historical</text><text x="1010" y="240" text-anchor="middle" fill="#0e7490" font-size="9" font-family="-apple-system,sans-serif">Reports</text></g>
-              <g onclick="openNode('cdr')"        style="cursor:pointer"><rect x="1044" y="215" width="56" height="30" rx="7" fill="#ecfeff" stroke="#67e8f9" stroke-width="1.5"/><text x="1072" y="228" text-anchor="middle" fill="#0e7490" font-size="9" font-family="-apple-system,sans-serif">CDR</text><text x="1072" y="240" text-anchor="middle" fill="#0e7490" font-size="9" font-family="-apple-system,sans-serif">Export</text></g>
+              <g onclick="openNode('realtime')"   style="cursor:pointer"><rect x="920"  y="215" width="56" height="30" rx="7" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/><text x="948"  y="228" text-anchor="middle" fill="#0e7490" font-size="9" font-family="-apple-system,sans-serif">Real-time</text><text x="948"  y="240" text-anchor="middle" fill="#0e7490" font-size="9" font-family="-apple-system,sans-serif">Stats</text></g>
+              <g onclick="openNode('historical')" style="cursor:pointer"><rect x="982"  y="215" width="56" height="30" rx="7" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/><text x="1010" y="228" text-anchor="middle" fill="#0e7490" font-size="9" font-family="-apple-system,sans-serif">Historical</text><text x="1010" y="240" text-anchor="middle" fill="#0e7490" font-size="9" font-family="-apple-system,sans-serif">Reports</text></g>
+              <g onclick="openNode('cdr')"        style="cursor:pointer"><rect x="1044" y="215" width="56" height="30" rx="7" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/><text x="1072" y="228" text-anchor="middle" fill="#0e7490" font-size="9" font-family="-apple-system,sans-serif">CDR</text><text x="1072" y="240" text-anchor="middle" fill="#0e7490" font-size="9" font-family="-apple-system,sans-serif">Export</text></g>
 
               <!-- hint text -->
               <text x="550" y="296" text-anchor="middle" fill="#94a3b8" font-size="12"
@@ -217,6 +202,24 @@
               <div class="mc-icon">📊</div>
               <div class="mc-title">Reporting</div>
               <div class="mc-sub">Analytics · CDR</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── SELECTED SOLUTION ── -->
+        <section class="selected-solution" id="selectedSolution" aria-live="polite">
+          <div class="selected-intro">
+            <span>Selected Solution</span>
+            <h2 id="dpTitle">Choose a topic to explore</h2>
+            <p id="dpSubtitle">Click any node, outcome, or journey step to see business value, use cases, code patterns, and next steps without leaving the page.</p>
+          </div>
+          <div class="selected-panel">
+            <div class="dp-badge" id="dpBadge">Explorer</div>
+            <div class="dp-body" id="dpBody">
+              <div class="dp-section">
+                <h3>How to use this portal</h3>
+                <p>Start with the business outcome you want to improve. The panel will show what the capability enables, where it fits, and which deeper guide page to open next.</p>
+              </div>
             </div>
           </div>
         </section>
