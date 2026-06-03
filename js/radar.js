@@ -109,7 +109,7 @@ function definitionCard(item) {
 
 function briefingActionCard(title, value, detail, actions, category) {
   return `<article class="radar-item">
-    <div class="radar-item-head"><div><h3 style="margin:0 0 4px;font-size:14px;">${esc(title)}</h3><p class="radar-metric" style="color:var(--accent-cyan);font-size:15px;font-weight:700;margin:0;line-height:1.35;">${esc(value)}</p></div>${pills([category])}</div>
+    <div class="radar-item-head"><div><h3 style="margin:0 0 4px;font-size:14px;">${esc(title)}</h3><p style="color:var(--accent-cyan);font-size:15px;font-weight:700;margin:0;line-height:1.35;">${esc(value)}</p></div>${pills([category])}</div>
     <p class="radar-detail">${esc(detail)}</p>
     <div class="radar-link-row">${actions.map(a => a.tab ? goTabBtn(a.label, a.tab) : `<a class="radar-link-btn" href="${esc(a.url)}" target="_blank">${esc(a.label)}</a>`).join('')}</div>
   </article>`;
@@ -174,14 +174,23 @@ async function rdrLoad() {
 function rdrRender() {
   const { latest, knowledge } = rdrState;
 
+  // Stats
   document.getElementById('rdrNewRepos').textContent = latest.summary.newRepos;
   document.getElementById('rdrUpdatedRepos').textContent = latest.summary.updatedTrackedRepos;
   document.getElementById('rdrNewDiscovery').textContent = latest.summary.newDiscoveryItems;
-  document.getElementById('rdrGeneratedAt').textContent = 'Last scan: ' + when(latest.generatedAt);
+
+  // Timestamps — sidebar + header
+  const scanTime = when(latest.generatedAt);
+  document.getElementById('rdrGeneratedAt').textContent = 'Last scan: ' + scanTime;
+  const navTime = document.getElementById('rdrNavTime');
+  if (navTime) navTime.textContent = scanTime;
+
+  // Knowledge
   document.getElementById('rdrMissionTitle').textContent = knowledge.mission.title;
   document.getElementById('rdrMissionSummary').textContent = knowledge.mission.summary;
   document.getElementById('rdrFocusList').innerHTML = knowledge.mission.focusAreas.map(a => `<div class="radar-kb-chip">${esc(a)}</div>`).join('');
 
+  // Badges
   const badgeChanges = document.getElementById('rdrBadgeChanges');
   const badgeDiscovery = document.getElementById('rdrBadgeDiscovery');
   const changesCount = latest.changes.filter(c => !c.type.includes('error')).length;
