@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dev Radar &middot; WxCC Dev Corner</title>
+  <link rel="stylesheet" href="css/styles.css?v=responsive-1">
+  <style>
+    .radar-shell { display: grid; grid-template-columns: 220px 1fr; min-height: calc(100vh - 64px); align-items: start; }
+    .radar-sidebar { background: var(--bg-surface); border-right: 1px solid var(--border-subtle); padding: 16px 10px 24px; position: sticky; top: 64px; height: calc(100vh - 64px); overflow-y: auto; display: flex; flex-direction: column; gap: 5px; }
+    .radar-main { padding: 24px 32px 48px; min-width: 0; }
+    .radar-kb { background: linear-gradient(135deg, rgba(0,71,107,0.3), rgba(0,188,235,0.06)); border: 1px solid var(--border-medium); border-radius: 8px; padding: 12px; margin-bottom: 5px; }
+    .radar-kb-eyebrow { font-size: 9.5px; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; color: var(--accent-cyan); margin-bottom: 3px; }
+    .radar-kb h3 { font-size: 13px; color: var(--text-primary); margin: 0 0 4px; }
+    .radar-kb p { font-size: 11px; color: var(--text-secondary); margin-bottom: 8px; line-height: 1.4; }
+    .radar-kb-chips { display: flex; flex-direction: column; gap: 4px; }
+    .radar-kb-chip { background: rgba(0,188,235,0.06); border: 1px solid var(--border-subtle); border-radius: 4px; padding: 4px 7px; font-size: 10.5px; color: var(--text-secondary); }
+    .radar-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 5px; margin-bottom: 4px; }
+    .radar-stat { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 7px; padding: 8px 4px; text-align: center; }
+    .radar-stat svg { display: block; margin: 0 auto 3px; color: var(--accent-cyan); }
+    .radar-stat-num { display: block; font-size: 20px; font-weight: 800; color: var(--accent-cyan); letter-spacing: -0.5px; line-height: 1; }
+    .radar-stat-label { font-size: 9.5px; color: var(--text-muted); margin-top: 2px; }
+    .radar-scan-info { font-size: 10.5px; color: var(--text-muted); margin: 2px 0 4px 2px; }
+    .radar-nav-group { margin-top: 6px; }
+    .radar-nav-label { font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: .07em; color: var(--text-muted); padding: 0 4px; margin-bottom: 2px; opacity: .7; }
+    .radar-tab { display: flex; align-items: center; gap: 8px; width: 100%; min-height: 33px; border: none; border-radius: 6px; padding: 5px 8px; background: transparent; color: var(--text-muted); font: inherit; font-size: 13px; font-weight: 500; cursor: pointer; text-align: left; transition: all .12s; }
+    .radar-tab svg { width: 14px; height: 14px; flex-shrink: 0; opacity: .55; }
+    .radar-tab:hover { background: var(--bg-elevated); color: var(--text-secondary); }
+    .radar-tab.active { background: rgba(0,188,235,0.1); color: var(--accent-cyan); font-weight: 600; }
+    .radar-tab.active svg { opacity: 1; }
+    .radar-badge { margin-left: auto; min-width: 17px; height: 17px; border-radius: 9px; background: var(--accent-cyan); color: #000; font-size: 9px; font-weight: 800; padding: 0 4px; display: inline-flex; align-items: center; justify-content: center; }
+    .radar-badge:empty { display: none; }
+    .radar-panel { display: none; }
+    .radar-panel.active { display: block; }
+    .radar-panel-head { margin-bottom: 18px; }
+    .radar-panel-head h2 { font-size: 18px; margin: 0 0 4px; }
+    .radar-panel-head p { font-size: 13px; color: var(--text-secondary); margin: 0; }
+    .radar-list { display: grid; gap: 10px; }
+    .radar-item { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 14px; transition: border-color .12s; }
+    .radar-item:hover { border-color: var(--border-medium); }
+    .radar-item-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 5px; }
+    .radar-item a { color: var(--accent-cyan); font-weight: 600; text-decoration: none; font-size: 13.5px; }
+    .radar-item a:hover { text-decoration: underline; }
+    .radar-meta { font-size: 11px; color: var(--text-muted); margin-top: 3px; }
+    .radar-detail { font-size: 13px; color: var(--text-secondary); line-height: 1.45; margin: 6px 0 0; }
+    .radar-pills { display: flex; gap: 5px; flex-wrap: wrap; justify-content: flex-end; }
+    .radar-pill { border-radius: 999px; padding: 2px 7px; font-size: 10.5px; font-weight: 600; background: rgba(0,188,235,0.1); border: 1px solid rgba(0,188,235,0.2); color: var(--accent-cyan); white-space: nowrap; }
+    .radar-pill.warm { background: rgba(245,158,11,0.1); border-color: rgba(245,158,11,0.25); color: var(--accent-amber); }
+    .radar-briefing-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 12px; }
+    .radar-link-row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+    .radar-link-btn { background: rgba(0,188,235,0.08); border: 1px solid rgba(0,188,235,0.2); border-radius: 5px; padding: 5px 9px; color: var(--accent-cyan); font-size: 12px; font-weight: 600; cursor: pointer; font: inherit; text-decoration: none; display: inline-flex; align-items: center; transition: background .12s; }
+    .radar-link-btn:hover { background: rgba(0,188,235,0.15); color: var(--accent-cyan); }
+    .radar-stacked { display: flex; flex-direction: column; gap: 4px; margin-top: 6px; }
+    .radar-stacked a { background: rgba(0,188,235,0.06); border: 1px solid var(--border-subtle); border-radius: 4px; padding: 3px 7px; color: var(--accent-cyan); font-size: 11.5px; font-weight: 600; text-decoration: none; }
+    .radar-readme { margin-top: 10px; border-top: 1px solid var(--border-subtle); padding-top: 10px; }
+    .radar-readme-label { font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--text-muted); margin-bottom: 5px; display: block; }
+    .radar-readme-sections { display: grid; gap: 7px; margin-bottom: 8px; }
+    .radar-readme-section { background: var(--bg-elevated); border: 1px solid var(--border-subtle); border-radius: 5px; padding: 7px 10px; }
+    .radar-readme-section h4 { font-size: 11.5px; color: var(--text-primary); margin: 0 0 3px; }
+    .radar-readme-section ul { margin: 0; padding-left: 15px; color: var(--text-secondary); font-size: 11.5px; line-height: 1.45; }
+    .radar-tracking { display: grid; grid-template-columns: repeat(3,1fr); gap: 7px; margin-top: 10px; border-top: 1px solid var(--border-subtle); padding-top: 10px; }
+    .radar-tracking div { background: rgba(0,188,235,0.04); border: 1px solid var(--border-subtle); border-radius: 5px; padding: 8px; }
+    .radar-tracking strong { display: block; font-size: 9.5px; text-transform: uppercase; letter-spacing: .04em; color: var(--accent-cyan); margin-bottom: 3px; }
+    .radar-tracking p { font-size: 11.5px; color: var(--text-secondary); margin: 0; line-height: 1.4; }
+    .radar-field { border-top: 1px solid var(--border-subtle); padding-top: 8px; margin-top: 8px; }
+    .radar-field strong { display: block; font-size: 9.5px; text-transform: uppercase; letter-spacing: .04em; color: var(--text-muted); margin-bottom: 2px; }
+    .radar-field p { font-size: 13px; color: var(--text-secondary); margin: 0; line-height: 1.4; }
+    .radar-lane-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 12px; }
+    .radar-query-title { margin: 14px 0 6px; color: var(--text-muted); font-size: 12px; font-weight: 700; }
+    .radar-two-col { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; }
+    @media (max-width: 860px) {
+      .radar-shell { grid-template-columns: 1fr; }
+      .radar-sidebar { position: static; height: auto; flex-direction: row; flex-wrap: wrap; border-right: none; border-bottom: 1px solid var(--border-subtle); padding: 10px; }
+      .radar-kb, .radar-stats, .radar-scan-info, .radar-nav-label { display: none; }
+      .radar-nav-group { display: contents; margin: 0; }
+      .radar-tab { width: auto; padding: 5px 9px; min-height: 30px; font-size: 12px; border: 1px solid var(--border-subtle); }
+      .radar-main { padding: 14px 16px 32px; }
+      .radar-briefing-grid, .radar-lane-grid, .radar-tracking, .radar-two-col { grid-template-columns: 1fr; }
+      .radar-item-head { flex-direction: column; }
+      .radar-pills { justify-content: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-mark">Wx</div>
+      <div class="nav-logo-text"><span>WxCC Dev Corner</span><span>Developer Portal</span></div>
+    </a>
+    <div class="nav-spacer"></div>
+    <ul class="nav-links">
+      <li><a href="samples.html">&#x1F9E9; Samples</a></li>
+      <li><a href="faq.html">&#x2753; FAQ</a></li>
+      <li><a href="radar.html" class="active">&#x1F4E1; Dev Radar</a></li>
+    </ul>
+    <a href="getting-started.html" class="nav-cta">Start Building &#x2192;</a>
+    <button class="nav-mobile-btn" aria-label="Open menu">&#x2630;</button>
+  </nav>
+</header>
+
+<div class="mobile-nav" id="mobile-nav">
+  <div class="mobile-nav-backdrop"></div>
+  <div class="mobile-nav-panel">
+    <button class="mobile-nav-close" aria-label="Close">&#x2715;</button>
+    <div class="mobile-nav-section">Guide</div>
+    <a href="getting-started.html">&#x1F511; Auth &amp; Setup</a>
+    <a href="rest-apis.html">&#x1F50C; REST APIs</a>
+    <a href="webhooks.html">&#x1F4E1; Webhooks</a>
+    <a href="desktop-sdk.html">&#x1F5A5;&#xFE0F; Desktop SDK</a>
+    <a href="flow-designer.html">&#x1F500; Flow Designer</a>
+    <a href="reporting.html">&#x1F4CA; Reporting</a>
+    <div class="mobile-nav-section">Resources</div>
+    <a href="samples.html">&#x1F9E9; Samples</a>
+    <a href="faq.html">&#x2753; FAQ</a>
+    <a href="radar.html" class="active">&#x1F4E1; Dev Radar</a>
+    <a href="index.html">&#x1F5FA;&#xFE0F; Overview</a>
+  </div>
+</div>
+
+<div class="radar-shell">
+  <nav class="radar-sidebar">
+    <div class="radar-kb">
+      <p class="radar-kb-eyebrow">Dev Radar</p>
+      <h3 id="rdrMissionTitle">WxCC Dev Hub</h3>
+      <p id="rdrMissionSummary">Loading...</p>
+      <div id="rdrFocusList" class="radar-kb-chips"></div>
+    </div>
+    <div class="radar-stats">
+      <div class="radar-stat">
+        <svg width="14" height="14" viewBox="0 0 20 20" fill="none"><rect x="3" y="10" width="3" height="7" rx="1" fill="currentColor" opacity=".4"/><rect x="8.5" y="6" width="3" height="11" rx="1" fill="currentColor" opacity=".7"/><rect x="14" y="2" width="3" height="15" rx="1" fill="currentColor"/></svg>
+        <span class="radar-stat-num" id="rdrNewRepos">0</span>
+        <div class="radar-stat-label">New repos</div>
+      </div>
+      <div class="radar-stat">
+        <svg width="14" height="14" viewBox="0 0 20 20" fill="none"><path d="M3 10a7 7 0 1 1 3.5 6.06" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><polyline points="3,6 3,10 7,10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+        <span class="radar-stat-num" id="rdrUpdatedRepos">0</span>
+        <div class="radar-stat-label">Updates</div>
+      </div>
+      <div class="radar-stat">
+        <svg width="14" height="14" viewBox="0 0 20 20" fill="none"><circle cx="9" cy="9" r="5.5" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="13.5" y1="13.5" x2="17" y2="17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <span class="radar-stat-num" id="rdrNewDiscovery">0</span>
+        <div class="radar-stat-label">Discovery</div>
+      </div>
+    </div>
+    <p class="radar-scan-info" id="rdrGeneratedAt">Not scanned yet</p>
+    <div class="radar-nav-group">
+      <p class="radar-nav-label">Daily</p>
+      <button class="radar-tab active" data-tab="briefing"><svg viewBox="0 0 20 20" fill="none"><rect x="3" y="2" width="14" height="16" rx="2" stroke="currentColor" stroke-width="1.4" fill="none"/><line x1="7" y1="7" x2="13" y2="7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><line x1="7" y1="10" x2="13" y2="10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>Briefing</button>
+      <button class="radar-tab" data-tab="changes"><svg viewBox="0 0 20 20" fill="none"><polyline points="2,12 6,8 10,11 14,6 18,9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>What changed<span class="radar-badge" id="rdrBadgeChanges"></span></button>
+      <button class="radar-tab" data-tab="discovery"><svg viewBox="0 0 20 20" fill="none"><circle cx="9" cy="9" r="5.5" stroke="currentColor" stroke-width="1.4" fill="none"/><line x1="13.5" y1="13.5" x2="17" y2="17" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>Discovery<span class="radar-badge" id="rdrBadgeDiscovery"></span></button>
+    </div>
+    <div class="radar-nav-group">
+      <p class="radar-nav-label">Reference</p>
+      <button class="radar-tab" data-tab="lanes"><svg viewBox="0 0 20 20" fill="none"><rect x="2" y="3" width="16" height="4" rx="1" stroke="currentColor" stroke-width="1.3" fill="none"/><rect x="2" y="9" width="16" height="4" rx="1" stroke="currentColor" stroke-width="1.3" fill="none"/></svg>Feature lanes</button>
+      <button class="radar-tab" data-tab="playbooks"><svg viewBox="0 0 20 20" fill="none"><path d="M4 3h9l3 3v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1.3" fill="none"/></svg>Playbooks</button>
+      <button class="radar-tab" data-tab="repos"><svg viewBox="0 0 20 20" fill="none"><circle cx="5" cy="4" r="1.5" stroke="currentColor" stroke-width="1.3" fill="none"/><circle cx="15" cy="4" r="1.5" stroke="currentColor" stroke-width="1.3" fill="none"/><circle cx="10" cy="16" r="1.5" stroke="currentColor" stroke-width="1.3" fill="none"/><line x1="5" y1="5.5" x2="10" y2="14.5" stroke="currentColor" stroke-width="1.2"/><line x1="15" y1="5.5" x2="10" y2="14.5" stroke="currentColor" stroke-width="1.2"/></svg>Tracked repos</button>
+      <button class="radar-tab" data-tab="glossary"><svg viewBox="0 0 20 20" fill="none"><path d="M3 5a2 2 0 0 1 2-2h7l3 3v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5z" stroke="currentColor" stroke-width="1.3" fill="none"/></svg>Glossary</button>
+    </div>
+  </nav>
+
+  <main class="radar-main">
+    <section id="briefing" class="radar-panel active">
+      <div class="radar-panel-head"><h2>Today's briefing</h2><p>Daily summary of new developer samples, SDK updates, and API changes.</p></div>
+      <div id="rdrBriefingList" class="radar-briefing-grid"></div>
+    </section>
+    <section id="changes" class="radar-panel">
+      <div class="radar-panel-head"><h2>What changed</h2><p>New and updated repositories detected in today's scan.</p></div>
+      <div id="rdrChangeList" class="radar-list"></div>
+    </section>
+    <section id="discovery" class="radar-panel">
+      <div class="radar-panel-head"><h2>Keyword discovery</h2><p>Daily GitHub searches for Webex CC API, webhooks, SDK, flow, and reporting patterns.</p></div>
+      <div id="rdrDiscoveryList"></div>
+    </section>
+    <section id="lanes" class="radar-panel">
+      <div class="radar-panel-head"><h2>Feature lanes</h2><p>Each Webex CC developer capability area — what to watch and how to build with it.</p></div>
+      <div id="rdrLaneList" class="radar-lane-grid"></div>
+    </section>
+    <section id="playbooks" class="radar-panel">
+      <div class="radar-panel-head"><h2>Operating playbooks</h2><p>Repeatable routines for evaluating new samples and turning discoveries into dev guidance.</p></div>
+      <div id="rdrPlaybookList" class="radar-lane-grid"></div>
+    </section>
+    <section id="repos" class="radar-panel">
+      <div class="radar-panel-head"><h2>Tracked repositories</h2><p>Core sources watched every scan.</p></div>
+      <div id="rdrRepoList" class="radar-list"></div>
+    </section>
+    <section id="glossary" class="radar-panel">
+      <div class="radar-panel-head"><h2>Glossary and source map</h2><p>Quick definitions and source types used by the radar.</p></div>
+      <div class="radar-two-col"><div id="rdrGlossaryList" class="radar-list"></div><div id="rdrSourceTypeList" class="radar-list"></div></div>
+    </section>
+  </main>
+</div>
+
+<button class="back-to-top" title="Back to top">&#x2191;</button>
+<script src="js/main.js?v=clickable-cards-1"></script>
+<script src="js/radar.js"></script>
+</body>
+</html>
