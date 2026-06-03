@@ -1,5 +1,5 @@
 /* ===================================================================
-   WxCC Extensibility Hub — Unified Design System
+   WxCC Dev Corner — Unified Design System
    Cisco / Webex brand — dark developer portal theme
    =================================================================== */
 
@@ -1479,14 +1479,16 @@ tr:hover td { background: var(--bg-hover); }
 }
 
 .journey-flow-num {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
+  min-width: 48px;
+  height: 24px;
+  padding: 0 8px;
+  border-radius: 999px;
   background: var(--color-cisco-navy);
   border: 1px solid var(--accent-cyan);
   color: var(--accent-cyan);
-  font-size: 0.8125rem;
+  font-size: 0.6875rem;
   font-weight: 700;
+  text-transform: uppercase;
   display: flex;
   align-items: center;
   justify-content: center;

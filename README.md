@@ -1,8 +1,8 @@
-# WxCC Extensibility Guide
+# WxCC Dev Corner
 
-An interactive guide for exploring how Webex Contact Center can be extended with APIs, webhooks, desktop widgets, Flow Designer integrations, and reporting experiences.
+An interactive solution hub for exploring how Webex Contact Center can be extended with APIs, webhooks, desktop widgets, Flow Designer integrations, reporting experiences, and customer/partner use cases.
 
-This repository is intended for developers, solution engineers, architects, partners, and learners who want a clear starting point for understanding Webex Contact Center extensibility.
+This repository is intended for developers, solution engineers, architects, partners, and customer-facing teams who want a practical catalog of extensibility capabilities and implementation patterns.
 
 ## What You Can Explore
 
@@ -19,18 +19,19 @@ The guide is organized around the main ways builders extend Webex Contact Center
 | Reporting | Realtime dashboards, historical analytics, CDR exports, and reporting APIs |
 | FAQ | Common implementation questions and troubleshooting guidance |
 
-## Learning Path
+## Solution Capability Map
 
-If you are new to Webex Contact Center extensibility, start with the Explorer page and follow this path:
+Use the overview page to understand the scope of solution capabilities covered by this hub:
 
-1. Authentication and setup
-2. REST API fundamentals
-3. Webhooks and event-driven integrations
-4. Desktop SDK widgets
-5. Flow Designer HTTP integrations
-6. Reporting and analytics
+- Authentication and setup
+- REST API fundamentals
+- Webhooks and event-driven integrations
+- Desktop SDK widgets
+- Flow Designer HTTP integrations
+- Reporting and analytics
+- Published samples and solution patterns
 
-Each page is designed to help you move from concept to practical implementation: what the feature is, when to use it, what the code pattern looks like, and which sample can help you go deeper.
+Each page is designed to connect a capability area to practical implementation details: what the feature is, when to use it, what the API pattern looks like, and which published sample can help you go deeper.
 
 ## Design Goal
 
@@ -110,4 +111,6 @@ Use these patterns when deciding which extensibility option fits a use case:
 
 ## Disclaimer
 
-This guide is for learning, demos, and solution exploration. For production integrations, validate current behavior against the official Webex developer documentation and follow security-first design practices for credentials, scopes, reliability, and tenant isolation.
+This guide is for learning, demos, and solution exploration. It references public sample repositories from WebexSamples, CiscoDevNet, and related developer sources. Code, sample projects, and repository assets remain credited to their original owners and are governed by the license and README in each linked repository.
+
+For production integrations, validate current behavior against the official Webex developer documentation and follow security-first design practices for credentials, scopes, reliability, and tenant isolation.

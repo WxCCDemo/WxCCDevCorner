@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Solutions &amp; Samples — WxCC Extensibility Hub</title>
+  <title>Solutions &amp; Samples — WxCC Dev Corner</title>
   <link rel="stylesheet" href="css/styles.css?v=responsive-1" />
   <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 </head>
@@ -13,7 +13,7 @@
     <a href="index.html" class="nav-logo">
       <div class="nav-logo-mark">Wx</div>
       <div class="nav-logo-text">
-        <span>WxCC Extensibility Hub</span>
+        <span>WxCC Dev Corner</span>
         <span>Developer Portal</span>
       </div>
     </a>
@@ -456,7 +456,7 @@ flowchart LR
           <li>Use ANI, DNIS, or call variables to look up CRM context.</li>
           <li>Write disposition notes or outcome fields back after contact end.</li>
         </ul>
-        <div class="code-block"><div class="code-block-header"><span class="code-lang">HTTP</span><span class="code-label">CRM Screen Pop Lookup — application/json</span><button class="copy-btn">⎘ Copy</button></div>
+        <div class="code-block"><div class="code-block-header"><span class="code-lang">HTTP</span><span class="code-label">Agent Context Lookup — application/json</span><button class="copy-btn">⎘ Copy</button></div>
         <pre><code>POST https://crm.example.com/api/customer-lookup
 
 Headers
@@ -1187,7 +1187,7 @@ flowchart LR
           <div class="sample-screenshot">
             <div class="sample-shot-bar"><span class="sample-shot-dot"></span><span>Flow Designer Canvas</span></div>
             <div class="sample-shot-body">
-              <div class="sample-shot-title">Priority Routing Flow</div>
+              <div class="sample-shot-title">Flow-Based Routing</div>
               <div class="sample-shot-line"><span>HTTP Lookup</span><span class="sample-shot-value">Configured</span></div>
               <div class="sample-shot-line"><span>Condition</span><span class="sample-shot-value">Tier == Gold</span></div>
               <div class="sample-shot-line"><span>Fallback</span><span class="sample-shot-value">Standard Queue</span></div>
@@ -1308,106 +1308,106 @@ Body
       <div class="cta-grid">
         <details class="cta-card build-next-card">
           <summary>
-            <span class="cta-card-label">Revenue</span>
-            <span class="cta-card-title">Priority Routing</span>
-            <span class="cta-card-desc">Use Flow HTTP lookup plus provider responses to return customer tier, preferred queue, and routing reason.</span>
+            <span class="cta-card-label">Flow Designer</span>
+            <span class="cta-card-title">Flow-Based Routing</span>
+            <span class="cta-card-desc">Use Flow HTTP lookup and response variables to route contacts by customer context, language, or queue logic.</span>
           </summary>
           <div class="build-next-details">
             <span><strong>Trigger:</strong> Flow HTTP Request during IVR lookup.</span>
             <span><strong>Payload:</strong> ANI, account number, language, current queue.</span>
             <span><strong>Response:</strong> queueId, priority, tier, reason.</span>
-            <a href="#flow-template-playbook">Open flow template playbook →</a>
+            <a href="https://github.com/WebexSamples/webex-contact-center-flows" target="_blank" rel="noopener">Open published flow templates →</a>
           </div>
         </details>
         <details class="cta-card build-next-card">
           <summary>
-            <span class="cta-card-label">Agent UX</span>
-            <span class="cta-card-title">CRM Screen Pop</span>
+            <span class="cta-card-label">Desktop SDK</span>
+            <span class="cta-card-title">Agent Desktop Context</span>
             <span class="cta-card-desc">Start from task variables, request customer context, and render account actions inside the agent desktop.</span>
           </summary>
           <div class="build-next-details">
             <span><strong>Trigger:</strong> AgentContactOffered desktop event.</span>
             <span><strong>Payload:</strong> taskId, ANI, CAD variables, CRM record ID.</span>
             <span><strong>Output:</strong> account summary, case list, guided next action.</span>
-            <a href="#desktop-playbook">Open agent experience playbook →</a>
+            <a href="https://github.com/WebexSamples/webex-contact-center-api-samples/tree/main/widget-samples/desktop-js-sdk-sample" target="_blank" rel="noopener">Open published desktop SDK sample →</a>
           </div>
         </details>
         <details class="cta-card build-next-card">
           <summary>
             <span class="cta-card-label">Agent UX</span>
-            <span class="cta-card-title">Agent Assist Widget</span>
+            <span class="cta-card-title">AI Provider / Agent Assist</span>
             <span class="cta-card-desc">Combine AI provider intent, suggested response, and next best action with desktop task context.</span>
           </summary>
           <div class="build-next-details">
             <span><strong>Trigger:</strong> transcript, intent, or contact-offered event.</span>
             <span><strong>Payload:</strong> utterance, customer tier, queue, conversation state.</span>
             <span><strong>Output:</strong> suggested response, knowledge link, confidence.</span>
-            <a href="#ai-provider-playbook">Open AI provider playbook →</a>
+            <a href="https://github.com/CiscoDevNet/webex-contact-center-provider-sample-code" target="_blank" rel="noopener">Open published provider sample →</a>
           </div>
         </details>
         <details class="cta-card build-next-card">
           <summary>
-            <span class="cta-card-label">Operations</span>
-            <span class="cta-card-title">SLA Alerts</span>
-            <span class="cta-card-desc">Subscribe to contact and agent events, verify signatures, and post alerts to an operations channel.</span>
+            <span class="cta-card-label">Webhooks</span>
+            <span class="cta-card-title">Webhook Notifications</span>
+            <span class="cta-card-desc">Subscribe to contact or agent events, verify signatures, and send notifications to email or Webex spaces.</span>
           </summary>
           <div class="build-next-details">
-            <span><strong>Trigger:</strong> queue threshold, task event, or scheduled reporting snapshot.</span>
-            <span><strong>Payload:</strong> queueId, contacts waiting, longest wait, service level.</span>
-            <span><strong>Output:</strong> Webex space alert, ticket, or supervisor notification.</span>
-            <a href="#webhook-playbook">Open webhook listener playbook →</a>
+            <span><strong>Trigger:</strong> contact, task, recording, or agent event.</span>
+            <span><strong>Payload:</strong> event ID, resource ID, org ID, event type.</span>
+            <span><strong>Output:</strong> email, Webex space message, ticket, or downstream workflow.</span>
+            <a href="https://github.com/WebexSamples/webex-contact-center-api-samples/tree/main/webhook-email-notify-sample" target="_blank" rel="noopener">Open published webhook sample →</a>
           </div>
         </details>
         <details class="cta-card build-next-card">
           <summary>
             <span class="cta-card-label">Analytics</span>
-            <span class="cta-card-title">BI Connector</span>
+            <span class="cta-card-title">Reporting &amp; BI Export</span>
             <span class="cta-card-desc">Export CDRs, queue metrics, and agent activity into a refreshable Power BI model.</span>
           </summary>
           <div class="build-next-details">
             <span><strong>Trigger:</strong> nightly export or dashboard refresh.</span>
             <span><strong>Payload:</strong> date range, report fields, pagination cursor.</span>
             <span><strong>Output:</strong> fact table, dimensions, service-level dashboard.</span>
-            <a href="#powerbi-playbook">Open Power BI playbook →</a>
+            <a href="https://github.com/WebexSamples/webex-contact-center-api-samples/tree/main/reporting-samples/graphql-powerbi-sample" target="_blank" rel="noopener">Open published Power BI sample →</a>
           </div>
         </details>
         <details class="cta-card build-next-card">
           <summary>
             <span class="cta-card-label">CRM Action</span>
-            <span class="cta-card-title">Click To Call</span>
+            <span class="cta-card-title">Desktop Call Controls</span>
             <span class="cta-card-desc">Trigger outbound calls from CRM records with a JSON payload containing agent, destination, and context.</span>
           </summary>
           <div class="build-next-details">
             <span><strong>Trigger:</strong> CRM contact button or desktop widget action.</span>
             <span><strong>Payload:</strong> agentId, destination, outdial ANI, CRM context.</span>
             <span><strong>Output:</strong> outbound task, audit event, CRM activity note.</span>
-            <a href="#click-to-call-playbook">Open click-to-call playbook →</a>
+            <a href="https://github.com/WebexSamples/webex-contact-center-api-samples/tree/main/widget-samples/desktop-js-sdk-callcontrol-sample" target="_blank" rel="noopener">Open published call-control sample →</a>
           </div>
         </details>
         <details class="cta-card build-next-card">
           <summary>
             <span class="cta-card-label">Customer Experience</span>
-            <span class="cta-card-title">Callback Deflection</span>
+            <span class="cta-card-title">Callback Automation</span>
             <span class="cta-card-desc">Offer callback when estimated wait is high, then create the callback request with customer consent data.</span>
           </summary>
           <div class="build-next-details">
             <span><strong>Trigger:</strong> long wait time, after-hours flow, or web form.</span>
             <span><strong>Payload:</strong> callback number, queue, preferred time, consent.</span>
             <span><strong>Output:</strong> callback request, CRM status, customer confirmation.</span>
-            <a href="#callback-playbook">Open callback playbook →</a>
+            <a href="https://github.com/WebexSamples/webex-contact-center-api-samples/tree/main/callback-samples" target="_blank" rel="noopener">Open published callback samples →</a>
           </div>
         </details>
         <details class="cta-card build-next-card">
           <summary>
             <span class="cta-card-label">Admin Automation</span>
-            <span class="cta-card-title">Config Migration Audit</span>
-            <span class="cta-card-desc">Read queues, teams, sites, users, and skills into a baseline JSON file before making controlled changes.</span>
+            <span class="cta-card-title">Configuration Automation</span>
+            <span class="cta-card-desc">Read queues, teams, sites, users, and skills into baseline JSON before making controlled changes.</span>
           </summary>
           <div class="build-next-details">
             <span><strong>Trigger:</strong> migration readiness, pre-change audit, or scheduled compliance check.</span>
             <span><strong>Payload:</strong> orgId, site filters, object types, export format.</span>
             <span><strong>Output:</strong> baseline JSON, delta report, rollback reference.</span>
-            <a href="#config-playbook">Open config automation playbook →</a>
+            <a href="https://github.com/WebexSamples/webex-contact-center-api-samples/tree/main/configuration-samples" target="_blank" rel="noopener">Open published configuration samples →</a>
           </div>
         </details>
       </div>
@@ -1438,7 +1438,7 @@ Body
     <div class="nav-prev"><span class="nav-pn-label">← Previous</span><a href="reporting.html" class="nav-pn-link">📊 Reporting</a></div>
     <div class="nav-next"><span class="nav-pn-label">Next →</span><a href="faq.html" class="nav-pn-link">❓ FAQ</a></div>
   </div>
-  <div class="site-footer-meta"><span>© 2026 Cisco Systems · Webex Contact Center Extensibility Hub</span><a href="index.html">Home</a> <a href="faq.html">FAQ</a></div>
+  <div class="site-footer-meta"><span>© 2026 WxCC Dev Corner · Curated Webex Contact Center solution guide</span><a href="index.html">Home</a> <a href="faq.html">FAQ</a></div>
 </footer>
 <button class="back-to-top" title="Back to top">↑</button>
 <script src="js/main.js?v=clickable-cards-1"></script>
