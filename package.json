@@ -1,0 +1,13 @@
+{
+  "name": "webexdevcorner",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "serve": "node scripts/serve.mjs",
+    "start": "node scripts/serve.mjs"
+  },
+  "dependencies": {
+    "otpauth": "^9.5.1"
+  }
+}

@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: webexdevcorner
+    runtime: node
+    buildCommand: npm install
+    startCommand: npm start
+    plan: free
+    autoDeploy: true
+    envVars:
+      - key: TOTP_SECRET
+        sync: false
+      - key: PORT
+        value: 10000
