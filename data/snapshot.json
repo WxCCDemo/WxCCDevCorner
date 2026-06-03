@@ -1,1 +1,729 @@
-{"generatedAt":null,"repos":{},"discovery":{}}
+{
+  "generatedAt": "2026-06-03T07:48:09.604Z",
+  "repos": {
+    "WebexSamples/webex-contact-center-api-samples": {
+      "id": 460134251,
+      "fullName": "WebexSamples/webex-contact-center-api-samples",
+      "name": "webex-contact-center-api-samples",
+      "owner": "WebexSamples",
+      "description": "Official Code samples & snippets repository for Webex Contact Center APIs",
+      "url": "https://github.com/WebexSamples/webex-contact-center-api-samples",
+      "pushedAt": "2026-06-02T04:02:49Z",
+      "updatedAt": "2026-06-02T04:02:54Z",
+      "stars": 64,
+      "forks": 41,
+      "language": "CSS",
+      "topics": [
+        "api",
+        "contact-center",
+        "js",
+        "js-sdk",
+        "samples",
+        "sdk",
+        "webex-contact-center"
+      ],
+      "categories": [],
+      "readme": {
+        "url": "https://github.com/WebexSamples/webex-contact-center-api-samples/blob/main/README.md",
+        "excerpt": "Webex Contact Center API Samples Looking for something? Please take a look at the Index of all the Samples Below 👇👇 These basic samples will help you understand the Webex Contact Center APIs available today on the Webex Contact Center Developer Portal Watch Now: Welcome to the Webex Contact Center API Samples Getting Started To get started, create an App Integration on the Developer Portal: ( This will help you obtain your Client ID and Client Secret ). - Sign into developer.webex.com with a valid Webex Control Hub Account. - Create an Application Integration by going to your Profile Manage My Apps. - Creating an Application Integration will give you a set of Client ID and Client Secret th...",
+        "highlights": [
+          "Webex Contact Center API Samples Looking for something?",
+          "Please take a look at the Index of all the Samples Below 👇👇 These basic samples will help you understand the Webex Contact Center APIs available today on the Webex Contact Center Developer Portal Watch Now: Welcome to the Webex Contact Center API Samples Getting Started To get started, create an App Integration on the Developer Portal: ( This will help you obtain your Client ID and Client Secret ).",
+          "- Sign into developer.webex.com with a valid Webex Control Hub Account.",
+          "- Create an Application Integration by going to your Profile Manage My Apps."
+        ],
+        "sections": [
+          {
+            "title": "Webex Contact Center API Samples",
+            "bullets": [
+              "> Please take a look at the Index of all the Samples Below 👇👇",
+              "These basic samples will help you understand the Webex Contact Center APIs available today on the Webex Contact Center Developer Portal"
+            ]
+          },
+          {
+            "title": "Getting Started",
+            "bullets": [
+              "To get started, create an App Integration on the Developer Portal:",
+              "( This will help you obtain your Client ID and Client Secret ).",
+              "Sign into developer.webex.com with a valid Webex Control Hub Account.",
+              "Create an Application Integration by going to your Profile > Manage My Apps."
+            ]
+          },
+          {
+            "title": "Samples - Index",
+            "bullets": [
+              "The API samples are divided into several folders. It would be great to follow the samples in the following order. Each sample has a supporting ReadMe and/or a supporting video on how to get started.",
+              "| # | Folder Name | Domain | Variant | Comments | Link |",
+              "| --- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |",
+              "| 0 | postman-sample | API Fundamentals | Postman | Getting Started with the Webex Contact Center APIs and how to create a pair of Client ID or Client Secret for OAuth2 etc. | Postman Sample |"
+            ]
+          }
+        ]
+      },
+      "tracking": {
+        "trackedBecause": "Primary source for Webex CC REST API, webhook, reporting, and desktop SDK samples.",
+        "requestedBy": "WxCC Dev Corner baseline",
+        "reviewFocus": "Watch for new API samples, webhook listeners, desktop SDK widgets, and reporting integrations."
+      }
+    },
+    "WebexSamples/webex-contact-center-flows": {
+      "id": 754827931,
+      "fullName": "WebexSamples/webex-contact-center-flows",
+      "name": "webex-contact-center-flows",
+      "owner": "WebexSamples",
+      "description": "Official Repository for Sample Webex Contact Center Flow Templates that are usable on Flow Designer",
+      "url": "https://github.com/WebexSamples/webex-contact-center-flows",
+      "pushedAt": "2026-04-01T17:55:56Z",
+      "updatedAt": "2026-05-23T11:40:48Z",
+      "stars": 2,
+      "forks": 0,
+      "language": "Unknown",
+      "topics": [
+        "flows",
+        "samples",
+        "templates",
+        "webexcontactcenter"
+      ],
+      "categories": [
+        "Flow Designer"
+      ],
+      "readme": {
+        "url": "https://github.com/WebexSamples/webex-contact-center-flows/blob/main/README.md",
+        "excerpt": "Webex Contact Center Flow Templates Official Repository for Sample Webex Contact Center Flow Templates that are usable on Flow Designer Contributing to Webex Contact Center Flow Templates Welcome to the webex-contact-center-flows repository! 🚀 This repo contains a curated collection of ready-to-use Flow Templates for Webex Contact Center. We welcome external contributions to grow this library. --- 📁 Contribution Scope Our primary contribution area is adding new Flow Templates . Each new template must follow the existing structure and documentation format. --- 🧩 Contribution Steps 1. Fork the Repository Start by forking this repo / creating a new branch if you're an admin. Work on your tem...",
+        "highlights": [
+          "Webex Contact Center Flow Templates Official Repository for Sample Webex Contact Center Flow Templates that are usable on Flow Designer Contributing to Webex Contact Center Flow Templates Welcome to the webex-contact-center-flows repository!",
+          "🚀 This repo contains a curated collection of ready-to-use Flow Templates for Webex Contact Center.",
+          "We welcome external contributions to grow this library.",
+          "--- 📁 Contribution Scope Our primary contribution area is adding new Flow Templates ."
+        ],
+        "sections": [
+          {
+            "title": "Webex Contact Center Flow Templates",
+            "bullets": [
+              "Official Repository for Sample Webex Contact Center Flow Templates that are usable on Flow Designer"
+            ]
+          },
+          {
+            "title": "Contributing to Webex Contact Center Flow Templates",
+            "bullets": [
+              "Welcome to the webex-contact-center-flows repository! 🚀",
+              "This repo contains a curated collection of ready-to-use Flow Templates for Webex Contact Center.",
+              "We welcome external contributions to grow this library."
+            ]
+          },
+          {
+            "title": "📁 Contribution Scope",
+            "bullets": [
+              "Our primary contribution area is adding new Flow Templates.",
+              "Each new template must follow the existing structure and documentation format."
+            ]
+          }
+        ]
+      },
+      "tracking": {
+        "trackedBecause": "Official Flow Designer template repository for Webex CC IVR and routing patterns.",
+        "requestedBy": "WxCC Dev Corner baseline",
+        "reviewFocus": "Watch for new flow templates, HTTP node patterns, AI integration flows, and routing use cases."
+      }
+    },
+    "WebexSamples/webex-ai-cookbook": {
+      "id": 1178255263,
+      "fullName": "WebexSamples/webex-ai-cookbook",
+      "name": "webex-ai-cookbook",
+      "owner": "WebexSamples",
+      "description": "Documentation-first sample repository for Webex AI agents and Webex Contact Center flow patterns.",
+      "url": "https://github.com/WebexSamples/webex-ai-cookbook",
+      "pushedAt": "2026-06-03T00:40:09Z",
+      "updatedAt": "2026-06-03T00:39:51Z",
+      "stars": 1,
+      "forks": 1,
+      "language": "CSS",
+      "topics": [
+        "ai-agent",
+        "documentation",
+        "sample-repo",
+        "use-cases",
+        "webex",
+        "webex-ai",
+        "webex-contact-center"
+      ],
+      "categories": [
+        "AI Agent"
+      ],
+      "readme": {
+        "url": "https://github.com/WebexSamples/webex-ai-cookbook/blob/main/README.md",
+        "excerpt": "webex-ai-agents webex-ai-agents is a documentation-first sample repository that captures the intent, structure, and collaboration model for Webex AI agent use cases. It is designed to show how an AI-first customer interaction can connect to a Webex Contact Center flow when self-service is no longer sufficient. Repository Intent This repository provides a clean starting point for documenting: - Sample Webex AI agent use cases - Sample Webex Contact Center flow design - The relationship between AI-led self-service and human-assisted escalation The current sample scenario focuses on customer support triage. In this example, a Webex AI agent handles initial intake, identifies the customer issue,...",
+        "highlights": [
+          "webex-ai-agents webex-ai-agents is a documentation-first sample repository that captures the intent, structure, and collaboration model for Webex AI agent use cases.",
+          "It is designed to show how an AI-first customer interaction can connect to a Webex Contact Center flow when self-service is no longer sufficient.",
+          "Repository Intent This repository provides a clean starting point for documenting: - Sample Webex AI agent use cases - Sample Webex Contact Center flow design - The relationship between AI-led self-service and human-assisted escalation The current sample scenario focuses on customer support triage.",
+          "In this example, a Webex AI agent handles initial intake, identifies the customer issue, attempts resolution for common requests, and passes structured context into Webex Contact Center when escalation is required."
+        ],
+        "sections": [
+          {
+            "title": "webex-ai-agents",
+            "bullets": [
+              "webex-ai-agents is a documentation-first sample repository that captures the intent, structure, and collaboration model for Webex AI agent use cases. It is designed to show how an AI-first customer interaction can connect to a Webex Contact Center flow when self-service is no longer sufficient."
+            ]
+          },
+          {
+            "title": "Repository Intent",
+            "bullets": [
+              "This repository provides a clean starting point for documenting:",
+              "Sample Webex AI agent use cases",
+              "Sample Webex Contact Center flow design",
+              "The relationship between AI-led self-service and human-assisted escalation"
+            ]
+          },
+          {
+            "title": "Included Example",
+            "bullets": [
+              "The sample content is organized around a single customer support triage journey:",
+              "sample-use-case/ explains the end-to-end example",
+              "sample-use-case/sample-ai-agent/ describes the AI agent responsibilities and escalation logic",
+              "sample-use-case/sample-flow/ outlines the related Webex Contact Center flow"
+            ]
+          }
+        ]
+      },
+      "tracking": {
+        "trackedBecause": "AI Agent patterns and Webex CC AI integration examples.",
+        "requestedBy": "WxCC Dev Corner baseline",
+        "reviewFocus": "Watch for new AI Agent flows, MCP integrations, and autonomous service patterns."
+      }
+    },
+    "WebexSamples/webex-contact-center-agent-desktop-api-sample": {
+      "id": 885068193,
+      "fullName": "WebexSamples/webex-contact-center-agent-desktop-api-sample",
+      "name": "webex-contact-center-agent-desktop-api-sample",
+      "owner": "WebexSamples",
+      "description": "Webex CC RESTful API Agent Desktop STARTER",
+      "url": "https://github.com/WebexSamples/webex-contact-center-agent-desktop-api-sample",
+      "pushedAt": "2025-07-18T20:20:32Z",
+      "updatedAt": "2026-05-23T11:45:04Z",
+      "stars": 2,
+      "forks": 0,
+      "language": "Python",
+      "topics": [],
+      "categories": [],
+      "readme": {
+        "url": "https://github.com/WebexSamples/webex-contact-center-agent-desktop-api-sample/blob/main/README.md",
+        "excerpt": "Webex Contact Center Agent Desktop API Sample A comprehensive Flask application demonstrating how to integrate with the Webex Contact Center REST API. This sample showcases agent desktop session management, OAuth authentication, and seamless integration with Webex Contact Center services. 🎯 Features This sample shows how to use the Webex Contact Center API to do the following: OAuth Authentication with Webex Contact Center Agent Login to desktop sessions programmatically Agent Logout from desktop sessions Token Management with automatic refresh handling Session Management with Flask session storage Error Handling with retry logic for expired tokens 📚 Prerequisites Software Requirements - P...",
+        "highlights": [
+          "Webex Contact Center Agent Desktop API Sample A comprehensive Flask application demonstrating how to integrate with the Webex Contact Center REST API.",
+          "This sample showcases agent desktop session management, OAuth authentication, and seamless integration with Webex Contact Center services.",
+          "🎯 Features This sample shows how to use the Webex Contact Center API to do the following: OAuth Authentication with Webex Contact Center Agent Login to desktop sessions programmatically Agent Logout from desktop sessions Token Management with automatic refresh handling Session Management with Flask session storage Error Handling with retry logic for expired tokens 📚 Prerequisites Software Requirements - Python 3.6 or higher - Flask web framework - Requests library for HTTP calls Webex Contact Center Requirements - Webex Contact Center Account or Developer Sandbox - Webex Contact Center Integration with cjp:user scope - Agent ID and Team ID from your Contact Center configuration - Dial Number for agent extension 🚀 Quick Start Getting Your Integration Credentials 1.",
+          "Request Developer Sandbox : Visit developer.webex-cx.com/sandbox 2."
+        ],
+        "sections": [
+          {
+            "title": "Webex Contact Center Agent Desktop API Sample",
+            "bullets": [
+              "A comprehensive Flask application demonstrating how to integrate with the Webex Contact Center REST API. This sample showcases agent desktop session management, OAuth authentication, and seamless integration with Webex Contact Center services."
+            ]
+          },
+          {
+            "title": "🎯 Features",
+            "bullets": [
+              "This sample shows how to use the Webex Contact Center API to do the following:",
+              "OAuth Authentication with Webex Contact Center",
+              "Agent Login to desktop sessions programmatically",
+              "Agent Logout from desktop sessions"
+            ]
+          },
+          {
+            "title": "Software Requirements",
+            "bullets": [
+              "Python 3.6 or higher",
+              "Flask web framework",
+              "Requests library for HTTP calls"
+            ]
+          }
+        ]
+      },
+      "tracking": {
+        "trackedBecause": "Desktop SDK examples for custom agent widgets, CRM screen pops, and iFrame integrations.",
+        "requestedBy": "WxCC Dev Corner baseline",
+        "reviewFocus": "Watch for new desktop widget patterns, SDK events, and CRM integration examples."
+      }
+    },
+    "WebexSamples/webex-byods-manager": {
+      "id": 1024548705,
+      "fullName": "WebexSamples/webex-byods-manager",
+      "name": "webex-byods-manager",
+      "owner": "WebexSamples",
+      "description": "",
+      "url": "https://github.com/WebexSamples/webex-byods-manager",
+      "pushedAt": "2026-03-11T16:53:08Z",
+      "updatedAt": "2026-05-23T11:41:43Z",
+      "stars": 2,
+      "forks": 1,
+      "language": "Python",
+      "topics": [],
+      "categories": [
+        "BYODS"
+      ],
+      "readme": {
+        "url": "https://github.com/WebexSamples/webex-byods-manager/blob/main/README.md",
+        "excerpt": "Webex BYO Data Source Management This script manages Webex BYODS (Bring Your Own Data Source) system using the Webex Admin API. Vidcast Watch the Vidcast of this app Main Script data-sources.py - Unified interface for all data source operations including: - Listing and viewing existing data sources - Registering new data sources - Updating existing data source configurations - Quick token extension without configuration changes - Interactive menu-driven interface extend data source.py - Standalone script for quick token extension: - Extends data source tokens with minimal user interaction - Automatically generates new nonce (no input required) - Preserves all existing configuration values -...",
+        "highlights": [
+          "Webex BYO Data Source Management This script manages Webex BYODS (Bring Your Own Data Source) system using the Webex Admin API.",
+          "Vidcast Watch the Vidcast of this app Main Script data-sources.py - Unified interface for all data source operations including: - Listing and viewing existing data sources - Registering new data sources - Updating existing data source configurations - Quick token extension without configuration changes - Interactive menu-driven interface extend data source.py - Standalone script for quick token extension: - Extends data source tokens with minimal user interaction - Automatically generates new nonce (no input required) - Preserves all existing configuration values - Configurable token lifetime - Command-line automation friendly Token Management This project includes automated token refresh functionality to handle service app token expiration: Files: - token manager.py - Core token management class with smart refresh logic - refresh token.py - Standalone script for manual token refresh - TOKEN MANAGEMENT.md - Complete setup and usage documentation Key Features: - Smart refresh strategy : Uses refresh tokens when available, falls back to personal access tokens - Real-time token management : Automatically detects and handles token expiration during API operations - Seamless retry mechanism : Automatically retries failed requests after successful token refresh - OAuth support : Automatic refresh of personal access tokens via OAuth (optional) - Automatic validation : Checks token validity before operations - Zero-downtime integration : Eliminates 401 errors without user intervention - Multiple setup options : Portal tokens, integration tokens, or full OAuth automation Test Credentials: For complete setup instructions, see TOKEN MANAGEMENT.md.",
+          "Requirements - Python 3.6 or higher - A Webex Service App with appropriate scopes: - spark-admin:datasource write (for registration and updates) - spark-admin:datasource read (for listing/viewing) - Authentication credentials to request service app tokens (choose one): - Option A (Quick Start) : Personal Access Token from developer.webex.com (expires every 12 hours) - Option B (Production) : Integration with spark:applications token scope for OAuth-based refresh Setup 1.",
+          "Create and activate a virtual environment (recommended): 2."
+        ],
+        "sections": [
+          {
+            "title": "Webex BYO Data Source Management",
+            "bullets": [
+              "This script manages Webex BYODS (Bring Your Own Data Source) system using the Webex Admin API."
+            ]
+          },
+          {
+            "title": "Vidcast",
+            "bullets": [
+              "Watch the Vidcast of this app](https://app.vidcast.io/share/63e954e4-f0ae-4c20-82c3-c666cda6aad3?playerMode=vidcast)"
+            ]
+          },
+          {
+            "title": "Main Script",
+            "bullets": [
+              "data-sources.py - Unified interface for all data source operations including:",
+              "Listing and viewing existing data sources",
+              "Registering new data sources",
+              "Updating existing data source configurations"
+            ]
+          }
+        ]
+      },
+      "tracking": {
+        "trackedBecause": "Bring-your-own solutions patterns for Webex CC custom integrations.",
+        "requestedBy": "WxCC Dev Corner baseline",
+        "reviewFocus": "Watch for BYODS/BYOVA configuration and deployment patterns."
+      }
+    },
+    "modelcontextprotocol/servers": {
+      "id": 890668799,
+      "fullName": "modelcontextprotocol/servers",
+      "name": "servers",
+      "owner": "modelcontextprotocol",
+      "description": "Model Context Protocol Servers",
+      "url": "https://github.com/modelcontextprotocol/servers",
+      "pushedAt": "2026-05-30T18:35:21Z",
+      "updatedAt": "2026-06-03T07:26:10Z",
+      "stars": 86670,
+      "forks": 10902,
+      "language": "TypeScript",
+      "topics": [],
+      "categories": [],
+      "readme": {
+        "url": "https://github.com/modelcontextprotocol/servers/blob/main/README.md",
+        "excerpt": "Model Context Protocol servers This repository is a collection of reference implementations for the Model Context Protocol (MCP), as well as references to community-built servers and additional resources. [!IMPORTANT] If you are looking for a list of MCP servers, you can browse published servers on the MCP Registry. The repository served by this README is dedicated to housing just the small number of reference servers maintained by the MCP steering group. [!WARNING] The servers in this repository are intended as reference implementations to demonstrate MCP features and SDK usage. They are meant to serve as educational examples for developers building their own MCP servers, not as production-...",
+        "highlights": [
+          "Model Context Protocol servers This repository is a collection of reference implementations for the Model Context Protocol (MCP), as well as references to community-built servers and additional resources.",
+          "[!IMPORTANT] If you are looking for a list of MCP servers, you can browse published servers on the MCP Registry.",
+          "The repository served by this README is dedicated to housing just the small number of reference servers maintained by the MCP steering group.",
+          "[!WARNING] The servers in this repository are intended as reference implementations to demonstrate MCP features and SDK usage."
+        ],
+        "sections": [
+          {
+            "title": "Model Context Protocol servers",
+            "bullets": [
+              "This repository is a collection of reference implementations for the Model Context Protocol (MCP), as well as references to community-built servers and additional resources.",
+              "> If you are looking for a list of MCP servers, you can browse published servers on the MCP Registry. The repository served by this README is dedicated to housing just the small number of reference servers maintained by the MCP steering group.",
+              "> The servers in this repository are intended as reference implementations to demonstrate MCP features and SDK usage. They are meant to serve as educational examples for developers building their own MCP servers, not as production-ready solutions. Developers should evaluate their own security requirements and implement appropriate safeguards based on their specific threat model and use case.",
+              "The servers in this repository showcase the versatility and extensibility of MCP, demonstrating how it can be used to give Large Language Models (LLMs) secure, controlled access to tools and data sources."
+            ]
+          },
+          {
+            "title": "🌟 Reference Servers",
+            "bullets": [
+              "These servers aim to demonstrate MCP features and the official SDKs.",
+              "Everything - Reference / test server with prompts, resources, and tools.",
+              "Fetch - Web content fetching and conversion for efficient LLM usage.",
+              "Filesystem - Secure file operations with configurable access controls."
+            ]
+          },
+          {
+            "title": "Archived",
+            "bullets": [
+              "The following reference servers are now archived and can be found at servers-archived.",
+              "AWS KB Retrieval - Retrieval from AWS Knowledge Base using Bedrock Agent Runtime.",
+              "Brave Search - Web and local search using Brave's Search API. Has been replaced by the official server.",
+              "EverArt - AI image generation using various models."
+            ]
+          }
+        ]
+      },
+      "tracking": {
+        "trackedBecause": "MCP server patterns for building AI-capable Webex CC integrations.",
+        "requestedBy": "Developer tools expansion",
+        "reviewFocus": "Watch for server patterns useful for Webex CC agentic and tool-use scenarios."
+      }
+    },
+    "a2aproject/A2A": {
+      "id": 954873280,
+      "fullName": "a2aproject/A2A",
+      "name": "A2A",
+      "owner": "a2aproject",
+      "description": "Agent2Agent (A2A) is an open protocol enabling communication and interoperability between opaque agentic applications.",
+      "url": "https://github.com/a2aproject/A2A",
+      "pushedAt": "2026-06-02T19:08:42Z",
+      "updatedAt": "2026-06-03T07:45:34Z",
+      "stars": 24107,
+      "forks": 2444,
+      "language": "Shell",
+      "topics": [
+        "a2a",
+        "a2a-mcp",
+        "a2a-protocol",
+        "a2a-server",
+        "agents",
+        "generative-ai",
+        "linux-foundation"
+      ],
+      "categories": [
+        "MCP",
+        "A2A"
+      ],
+      "readme": {
+        "url": "https://github.com/a2aproject/A2A/blob/main/README.md",
+        "excerpt": "Agent2Agent (A2A) Protocol <a href=\"https://codewiki.google/github.com/a2aproject/a2a\" <img src=\"https://www.gstatic.com/ /boq-sdlc-agents-ui/ /r/Mvosg4klCA4.svg\" alt=\"Ask Code Wiki\" height=\"20\" </a <div style=\"text-align: left;\" <details <summary 🌐 Language</summary <div <div style=\"text-align: center;\" <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=en\" English</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=zh-CN\" 简体中文</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=zh-TW\" 繁體中文</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=ja\" 日本語</a <a href=\"https://open...",
+        "highlights": [
+          "Agent2Agent (A2A) Protocol <a href=\"https://codewiki.google/github.com/a2aproject/a2a\" <img src=\"https://www.gstatic.com/ /boq-sdlc-agents-ui/ /r/Mvosg4klCA4.svg\" alt=\"Ask Code Wiki\" height=\"20\" </a <div style=\"text-align: left;\" <details <summary 🌐 Language</summary <div <div style=\"text-align: center;\" <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=en\" English</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=zh-CN\" 简体中文</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=zh-TW\" 繁體中文</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=ja\" 日本語</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=ko\" 한국어</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=hi\" हिन्दी</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=th\" ไทย</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=fr\" Français</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=de\" Deutsch</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=es\" Español</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=it\" Italiano</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=ru\" Русский</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=pt\" Português</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=nl\" Nederlands</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=pl\" Polski</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=ar\" العربية</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=fa\" فارسی</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=tr\" Türkçe</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=vi\" Tiếng Việt</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=id\" Bahasa Indonesia</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=as\" অসমীয়া</a </div </div </details </div <!-- markdownlint-disable MD041 -- <div style=\"text-align: center;\" <div class=\"centered-logo-text-group\" <img src=\"docs/assets/a2a-logo-black.svg\" alt=\"Agent2Agent Protocol Logo\" width=\"100\" <h1 Agent2Agent (A2A) Protocol</h1 </div </div An open protocol enabling communication and interoperability between opaque agentic applications.",
+          "The Agent2Agent (A2A) protocol addresses a critical challenge in the AI landscape: enabling gen AI agents, built on diverse frameworks by different companies running on separate servers, to communicate and collaborate effectively - as agents, not just as tools.",
+          "A2A aims to provide a common language for agents, fostering a more interconnected, powerful, and innovative AI ecosystem.",
+          "With A2A, agents can: - Discover each other's capabilities."
+        ],
+        "sections": [
+          {
+            "title": "Agent2Agent (A2A) Protocol",
+            "bullets": [
+              "[](https://pypi.org/project/a2a-sdk)",
+              "<a href=\"https://codewiki.google/github.com/a2aproject/a2a\">",
+              "<img src=\"https://www.gstatic.com//boq-sdlc-agents-ui//r/Mvosg4klCA4.svg\" alt=\"Ask Code Wiki\" height=\"20\">",
+              "<a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=en\">English</a>"
+            ]
+          },
+          {
+            "title": "DeepLearning.AI Course",
+            "bullets": [
+              "Join this short course on A2A: The Agent2Agent Protocol, built in partnership with Google Cloud and IBM Research, and taught by Holt Skinner, Ivan Nardini, and Sandi Besen.",
+              "Make agents A2A-compliant: Expose agents built with frameworks like Google ADK, LangGraph, or BeeAI as A2A servers.",
+              "Connect agents: Create A2A clients from scratch or using integrations to connect to A2A-compliant agents.",
+              "Orchestrate workflows: Build sequential and hierarchical workflows of A2A-compliant agents."
+            ]
+          },
+          {
+            "title": "Why A2A?",
+            "bullets": [
+              "As AI agents become more prevalent, their ability to interoperate is crucial for building complex, multi-functional applications. A2A aims to:",
+              "Break Down Silos: Connect agents across different ecosystems.",
+              "Enable Complex Collaboration: Allow specialized agents to work together on tasks that a single agent cannot handle alone.",
+              "Promote Open Standards: Foster a community-driven approach to agent communication, encouraging innovation and broad adoption."
+            ]
+          }
+        ]
+      },
+      "tracking": {
+        "trackedBecause": "Agent-to-agent protocol relevant to future Webex CC agentic architecture.",
+        "requestedBy": "Developer tools expansion",
+        "reviewFocus": "Watch for agent handoff patterns applicable to Webex CC multi-agent flows."
+      }
+    }
+  },
+  "discovery": {
+    "webex contact center API developer:api-evangelist/webex": {
+      "id": 928641586,
+      "fullName": "api-evangelist/webex",
+      "name": "webex",
+      "owner": "api-evangelist",
+      "description": "Cisco Webex is a comprehensive collaboration platform offering APIs for messaging, meetings, calling, devices, and contact center workflows. The Webex Developer Platform enables developers to build integrations, bots, embedded apps, and automations using REST APIs, SDKs, and webhooks.",
+      "url": "https://github.com/api-evangelist/webex",
+      "pushedAt": "2026-06-02T12:42:08Z",
+      "updatedAt": "2026-06-02T12:42:13Z",
+      "stars": 0,
+      "forks": 0,
+      "language": "Unknown",
+      "topics": [
+        "apis-json",
+        "calling",
+        "collaboration",
+        "communication",
+        "enterprise",
+        "messaging",
+        "naftiko",
+        "video-conferencing"
+      ],
+      "categories": [
+        "REST API",
+        "Webhook"
+      ],
+      "readme": {
+        "url": "https://github.com/api-evangelist/webex/blob/main/README.md",
+        "excerpt": "Webex (webex) Cisco Webex is a comprehensive collaboration platform offering APIs for messaging, meetings, calling, devices, and contact center workflows. The Webex Developer Platform enables developers to build integrations, bots, embedded apps, and automations using REST APIs, SDKs, and webhooks. Webex supports OAuth 2.0 authentication and provides separate API surfaces for messaging, video conferencing, cloud calling, admin management, and more. URL: https://developer.webex.com/ Run: Capabilities Using Naftiko Tags: - Calling, Collaboration, Communication, Enterprise, Messaging, Video Conferencing Timestamps - Created: 2025-02-06 - Modified: 2026-05-03 APIs Webex Messaging Webex Messaging...",
+        "highlights": [
+          "Webex (webex) Cisco Webex is a comprehensive collaboration platform offering APIs for messaging, meetings, calling, devices, and contact center workflows.",
+          "The Webex Developer Platform enables developers to build integrations, bots, embedded apps, and automations using REST APIs, SDKs, and webhooks.",
+          "Webex supports OAuth 2.0 authentication and provides separate API surfaces for messaging, video conferencing, cloud calling, admin management, and more.",
+          "URL: https://developer.webex.com/ Run: Capabilities Using Naftiko Tags: - Calling, Collaboration, Communication, Enterprise, Messaging, Video Conferencing Timestamps - Created: 2025-02-06 - Modified: 2026-05-03 APIs Webex Messaging Webex Messaging API for creating and managing rooms, messages, attachments, teams, memberships, and real-time collaboration."
+        ],
+        "sections": [
+          {
+            "title": "Webex (webex)",
+            "bullets": [
+              "Cisco Webex is a comprehensive collaboration platform offering APIs for messaging, meetings, calling, devices, and contact center workflows. The Webex Developer Platform enables developers to build integrations, bots, embedded apps, and automations using REST APIs, SDKs, and webhooks. Webex supports OAuth 2.0 authentication and provides separate API surfaces for messaging, video conferencing, cloud calling, admin management, and more."
+            ]
+          },
+          {
+            "title": "Tags:",
+            "bullets": [
+              "Calling, Collaboration, Communication, Enterprise, Messaging, Video Conferencing"
+            ]
+          },
+          {
+            "title": "Timestamps",
+            "bullets": [
+              "Created: 2025-02-06",
+              "Modified: 2026-05-03"
+            ]
+          }
+        ]
+      }
+    },
+    "webex contact center webhook integration:api-evangelist/webex": {
+      "id": 928641586,
+      "fullName": "api-evangelist/webex",
+      "name": "webex",
+      "owner": "api-evangelist",
+      "description": "Cisco Webex is a comprehensive collaboration platform offering APIs for messaging, meetings, calling, devices, and contact center workflows. The Webex Developer Platform enables developers to build integrations, bots, embedded apps, and automations using REST APIs, SDKs, and webhooks.",
+      "url": "https://github.com/api-evangelist/webex",
+      "pushedAt": "2026-06-02T12:42:08Z",
+      "updatedAt": "2026-06-02T12:42:13Z",
+      "stars": 0,
+      "forks": 0,
+      "language": "Unknown",
+      "topics": [
+        "apis-json",
+        "calling",
+        "collaboration",
+        "communication",
+        "enterprise",
+        "messaging",
+        "naftiko",
+        "video-conferencing"
+      ],
+      "categories": [
+        "REST API",
+        "Webhook"
+      ],
+      "readme": {
+        "url": "https://github.com/api-evangelist/webex/blob/main/README.md",
+        "excerpt": "Webex (webex) Cisco Webex is a comprehensive collaboration platform offering APIs for messaging, meetings, calling, devices, and contact center workflows. The Webex Developer Platform enables developers to build integrations, bots, embedded apps, and automations using REST APIs, SDKs, and webhooks. Webex supports OAuth 2.0 authentication and provides separate API surfaces for messaging, video conferencing, cloud calling, admin management, and more. URL: https://developer.webex.com/ Run: Capabilities Using Naftiko Tags: - Calling, Collaboration, Communication, Enterprise, Messaging, Video Conferencing Timestamps - Created: 2025-02-06 - Modified: 2026-05-03 APIs Webex Messaging Webex Messaging...",
+        "highlights": [
+          "Webex (webex) Cisco Webex is a comprehensive collaboration platform offering APIs for messaging, meetings, calling, devices, and contact center workflows.",
+          "The Webex Developer Platform enables developers to build integrations, bots, embedded apps, and automations using REST APIs, SDKs, and webhooks.",
+          "Webex supports OAuth 2.0 authentication and provides separate API surfaces for messaging, video conferencing, cloud calling, admin management, and more.",
+          "URL: https://developer.webex.com/ Run: Capabilities Using Naftiko Tags: - Calling, Collaboration, Communication, Enterprise, Messaging, Video Conferencing Timestamps - Created: 2025-02-06 - Modified: 2026-05-03 APIs Webex Messaging Webex Messaging API for creating and managing rooms, messages, attachments, teams, memberships, and real-time collaboration."
+        ],
+        "sections": [
+          {
+            "title": "Webex (webex)",
+            "bullets": [
+              "Cisco Webex is a comprehensive collaboration platform offering APIs for messaging, meetings, calling, devices, and contact center workflows. The Webex Developer Platform enables developers to build integrations, bots, embedded apps, and automations using REST APIs, SDKs, and webhooks. Webex supports OAuth 2.0 authentication and provides separate API surfaces for messaging, video conferencing, cloud calling, admin management, and more."
+            ]
+          },
+          {
+            "title": "Tags:",
+            "bullets": [
+              "Calling, Collaboration, Communication, Enterprise, Messaging, Video Conferencing"
+            ]
+          },
+          {
+            "title": "Timestamps",
+            "bullets": [
+              "Created: 2025-02-06",
+              "Modified: 2026-05-03"
+            ]
+          }
+        ]
+      }
+    },
+    "webex contact center desktop SDK widget:kadammmmm/wxcc-journey-widget": {
+      "id": 1232377152,
+      "fullName": "kadammmmm/wxcc-journey-widget",
+      "name": "wxcc-journey-widget",
+      "owner": "kadammmmm",
+      "description": "Webex Contact Center Customer Journey timeline widget — LitElement, CJDS API, WxCC Desktop SDK",
+      "url": "https://github.com/kadammmmm/wxcc-journey-widget",
+      "pushedAt": "2026-05-08T19:12:18Z",
+      "updatedAt": "2026-05-08T19:12:22Z",
+      "stars": 0,
+      "forks": 0,
+      "language": "JavaScript",
+      "topics": [],
+      "categories": [
+        "Desktop SDK"
+      ],
+      "readme": {
+        "url": "https://github.com/kadammmmm/wxcc-journey-widget/blob/main/README.md",
+        "excerpt": "journey-widget A Customer Journey timeline viewer for the Webex Contact Center Agent Desktop. Reads events from the Cisco Customer Journey Data Service (CJDS) and renders them as a polished activity timeline directly in the agent's sidebar — no backend required. What it does - Listens for contact events via the WxCC Desktop JS SDK - Resolves the customer's identity (ANI or email) against the CJDS API - Fetches up to 25 journey events and renders them as a live-updating timeline - Polls every 15 seconds while a contact is active; freezes on contact end - Supports light and dark mode via CSS custom properties Build Watch mode for development: Dev harness Open dev.html in a browser after buildi...",
+        "highlights": [
+          "journey-widget A Customer Journey timeline viewer for the Webex Contact Center Agent Desktop.",
+          "Reads events from the Cisco Customer Journey Data Service (CJDS) and renders them as a polished activity timeline directly in the agent's sidebar — no backend required.",
+          "What it does - Listens for contact events via the WxCC Desktop JS SDK - Resolves the customer's identity (ANI or email) against the CJDS API - Fetches up to 25 journey events and renders them as a live-updating timeline - Polls every 15 seconds while a contact is active; freezes on contact end - Supports light and dark mode via CSS custom properties Build Watch mode for development: Dev harness Open dev.html in a browser after building: The harness provides: - A mock window.Desktop SDK that intercepts all API calls - Buttons to fire accepted , ended , and contactRefreshed events - 7 pre-built mock events across 2 days with varied source types - Dark mode toggle - Simulate API error toggle (tests error state and retry flow) - Panel width slider (280px – 420px) to test sidebar sizing All mock data is clearly grouped at the top of the <script block in dev.html for easy editing.",
+          "Register in Agent Desktop Add this JSON to your WxCC Desktop Layout configuration: Note: The element name journey-widget is already registered by the native Cisco JDS widget."
+        ],
+        "sections": [
+          {
+            "title": "journey-widget",
+            "bullets": [
+              "A Customer Journey timeline viewer for the Webex Contact Center Agent Desktop. Reads events from the Cisco Customer Journey Data Service (CJDS) and renders them as a polished activity timeline directly in the agent's sidebar — no backend required."
+            ]
+          },
+          {
+            "title": "What it does",
+            "bullets": [
+              "Listens for contact events via the WxCC Desktop JS SDK",
+              "Resolves the customer's identity (ANI or email) against the CJDS API",
+              "Fetches up to 25 journey events and renders them as a live-updating timeline",
+              "Polls every 15 seconds while a contact is active; freezes on contact end"
+            ]
+          },
+          {
+            "title": "Dev harness",
+            "bullets": [
+              "Open dev.html in a browser after building:",
+              "A mock window.Desktop SDK that intercepts all API calls",
+              "Buttons to fire accepted, ended, and contactRefreshed events",
+              "7 pre-built mock events across 2 days with varied source types"
+            ]
+          }
+        ]
+      }
+    },
+    "webex contact center CRM integration:webex/webex-contact-center-crm-connectors": {
+      "id": 869577849,
+      "fullName": "webex/webex-contact-center-crm-connectors",
+      "name": "webex-contact-center-crm-connectors",
+      "owner": "webex",
+      "description": "Location for config files and samples related to Cisco's Webex Contact Center CRM integrations",
+      "url": "https://github.com/webex/webex-contact-center-crm-connectors",
+      "pushedAt": "2026-05-20T13:08:48Z",
+      "updatedAt": "2026-05-20T13:08:57Z",
+      "stars": 1,
+      "forks": 2,
+      "language": "Unknown",
+      "topics": [
+        "crm",
+        "crm-connector-salesforce",
+        "crm-connector-servicenow",
+        "flows",
+        "integrations",
+        "salesforce",
+        "servicenow",
+        "webexcontactcenter"
+      ],
+      "categories": [
+        "CRM Integration"
+      ],
+      "readme": {
+        "url": "https://github.com/webex/webex-contact-center-crm-connectors/blob/main/README.md",
+        "excerpt": "Webex Contact Center CRM Connectors This repository contains connector assets, metadata, and deployment examples for Webex Contact Center integrations with Salesforce and ServiceNow. Use the folder-level README files to identify the correct connector type, locate the packaged assets, and follow the applicable deployment guidance. Repository layout Platform Folder Connector types covered --- --- --- Salesforce salesforce/ CTI, Service Cloud Voice ServiceNow servicenow/ CTI, ServiceNow CCIF (update set, sample flow, and subflow) Connector matrix Platform Connector Repository guide Product documentation --- --- --- --- Salesforce CTI salesforce/cti Webex Help: Integrate Webex Contact Center wit...",
+        "highlights": [
+          "Webex Contact Center CRM Connectors This repository contains connector assets, metadata, and deployment examples for Webex Contact Center integrations with Salesforce and ServiceNow.",
+          "Use the folder-level README files to identify the correct connector type, locate the packaged assets, and follow the applicable deployment guidance.",
+          "Repository layout Platform Folder Connector types covered --- --- --- Salesforce salesforce/ CTI, Service Cloud Voice ServiceNow servicenow/ CTI, ServiceNow CCIF (update set, sample flow, and subflow) Connector matrix Platform Connector Repository guide Product documentation --- --- --- --- Salesforce CTI salesforce/cti Webex Help: Integrate Webex Contact Center with Salesforce (Version 2-New)) Salesforce Service Cloud Voice salesforce/servicecloudvoice Repository guidance in this repo ServiceNow CTI servicenow/cti Webex Help: Integrate Webex Contact Center with ServiceNow (Version 2-New) reference-template 0b9dece3-d6e9-47c2-ae59-3b0c7ac71882) ServiceNow ServiceNow CCIF servicenow/servicenow-ccif Repository guidance in this folder What is included - Salesforce CTI call center metadata used to configure the Open CTI connector.",
+          "- Salesforce Service Cloud Voice contact center metadata, sample Salesforce routing flow assets, and a Webex Flow Designer template."
+        ],
+        "sections": [
+          {
+            "title": "Webex Contact Center CRM Connectors",
+            "bullets": [
+              "This repository contains connector assets, metadata, and deployment examples for Webex Contact Center integrations with Salesforce and ServiceNow. Use the folder-level README files to identify the correct connector type, locate the packaged assets, and follow the applicable deployment guidance."
+            ]
+          },
+          {
+            "title": "Repository layout",
+            "bullets": [
+              "| Platform | Folder | Connector types covered |",
+              "| Salesforce | salesforce/ | CTI, Service Cloud Voice |",
+              "| ServiceNow | servicenow/ | CTI, ServiceNow CCIF (update set, sample flow, and subflow) |"
+            ]
+          },
+          {
+            "title": "Connector matrix",
+            "bullets": [
+              "| Platform | Connector | Repository guide | Product documentation |",
+              "| Salesforce | CTI | salesforce/cti | Webex Help: Integrate Webex Contact Center with Salesforce (Version 2-New)) |",
+              "| Salesforce | Service Cloud Voice | salesforce/servicecloudvoice | Repository guidance in this repo |",
+              "| ServiceNow | CTI | servicenow/cti | Webex Help: Integrate Webex Contact Center with ServiceNow (Version 2-New)#reference-template0b9dece3-d6e9-47c2-ae59-3b0c7ac71882) |"
+            ]
+          }
+        ]
+      }
+    },
+    "webex contact center CRM integration:CiscoDevNet/webex-contact-center-crm-integrations": {
+      "id": 484785827,
+      "fullName": "CiscoDevNet/webex-contact-center-crm-integrations",
+      "name": "webex-contact-center-crm-integrations",
+      "owner": "CiscoDevNet",
+      "description": "Official Repository for Webex Contact Center CRM Integrations & Connectors",
+      "url": "https://github.com/CiscoDevNet/webex-contact-center-crm-integrations",
+      "pushedAt": "2026-03-13T15:18:08Z",
+      "updatedAt": "2026-05-23T11:36:09Z",
+      "stars": 24,
+      "forks": 11,
+      "language": "Unknown",
+      "topics": [
+        "contact-center",
+        "contact-centers-and-telephony",
+        "crm",
+        "crm-platform",
+        "javascript",
+        "json",
+        "webex-contact-center",
+        "widgets"
+      ],
+      "categories": [
+        "CRM Integration"
+      ],
+      "readme": {
+        "url": "https://github.com/CiscoDevNet/webex-contact-center-crm-integrations/blob/main/README.md",
+        "excerpt": "Webex Contact Center CRM Integrations - Legacy Version 1 Legacy Version 1 desktop layouts and companion assets for Webex Contact Center CRM integrations. This repository is the public landing point for the Salesforce, ServiceNow, Microsoft Dynamics 365, Zendesk, and Freshdesk connector packages referenced by the official help.webex.com guides. Supported Connectors Connector Latest layout asset Other included assets Official guide --- --- --- --- Salesforce salesforce desktop 0.1.0 v1.1.9.json sfdc-callcenter-definition-file.xml , IVR HTTP connector Salesforce - Legacy install guide) ServiceNow ServiceNow Desktop 0.1.0 v4.0.1.json webexcc-servicenow-update-setv7-1.xml , ActionsWidget bundle,...",
+        "highlights": [
+          "Webex Contact Center CRM Integrations - Legacy Version 1 Legacy Version 1 desktop layouts and companion assets for Webex Contact Center CRM integrations.",
+          "This repository is the public landing point for the Salesforce, ServiceNow, Microsoft Dynamics 365, Zendesk, and Freshdesk connector packages referenced by the official help.webex.com guides.",
+          "Supported Connectors Connector Latest layout asset Other included assets Official guide --- --- --- --- Salesforce salesforce desktop 0.1.0 v1.1.9.json sfdc-callcenter-definition-file.xml , IVR HTTP connector Salesforce - Legacy install guide) ServiceNow ServiceNow Desktop 0.1.0 v4.0.1.json webexcc-servicenow-update-setv7-1.xml , ActionsWidget bundle, IVR HTTP connector ServiceNow - Legacy install guide) Microsoft Dynamics 365 MSDynamics Desktop 0.1.0 v1.5.3.json IVR HTTP connector Microsoft Dynamics 365 - Legacy install guide) Zendesk Zendesk Desktop 0.1.0 v1.2.2.json IVR HTTP connector Zendesk - Legacy install guide Freshdesk Freshdesk Desktop 0.1.0 2.1.4.json Desktop layout package only Freshdesk - Legacy install guide What This Repo Contains - Legacy Version 1 desktop layouts for the five supported CRM connectors.",
+          "- Companion files such as call center definitions, update sets, and HTTP connector examples."
+        ],
+        "sections": [
+          {
+            "title": "Webex Contact Center CRM Integrations - Legacy Version 1",
+            "bullets": [
+              "Legacy Version 1 desktop layouts and companion assets for Webex Contact Center CRM integrations. This repository is the public landing point for the Salesforce, ServiceNow, Microsoft Dynamics 365, Zendesk, and Freshdesk connector packages referenced by the official help.webex.com guides."
+            ]
+          },
+          {
+            "title": "Supported Connectors",
+            "bullets": [
+              "| Connector | Latest layout asset | Other included assets | Official guide |",
+              "| Salesforce | salesforcedesktop0.1.0v1.1.9.json | sfdc-callcenter-definition-file.xml, IVR HTTP connector | Salesforce - Legacy install guide) |",
+              "| ServiceNow | ServiceNowDesktop0.1.0v4.0.1.json | webexcc-servicenow-update-setv7-1.xml, ActionsWidget bundle, IVR HTTP connector | ServiceNow - Legacy install guide) |",
+              "| Microsoft Dynamics 365 | MSDynamicsDesktop0.1.0v1.5.3.json | IVR HTTP connector | Microsoft Dynamics 365 - Legacy install guide) |"
+            ]
+          },
+          {
+            "title": "What This Repo Contains",
+            "bullets": [
+              "Legacy Version 1 desktop layouts for the five supported CRM connectors.",
+              "Companion files such as call center definitions, update sets, and HTTP connector examples.",
+              "Connector-specific README files with setup context, datacenter URLs, feature summaries, and changelog history.",
+              "Existing sample flows and screenshots that help operators understand the legacy integration behavior."
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
