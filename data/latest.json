@@ -1,0 +1,14 @@
+{
+  "generatedAt": null,
+  "date": null,
+  "scanCount": 0,
+  "newThisRun": 0,
+  "summary": {
+    "newRepos": 0,
+    "updatedTrackedRepos": 0,
+    "newDiscoveryItems": 0
+  },
+  "changes": [],
+  "trackedRepos": [],
+  "discovery": []
+}
