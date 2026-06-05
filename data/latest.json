@@ -1,66 +1,50 @@
 {
-  "generatedAt": "2026-06-04T23:59:27.987Z",
-  "date": "2026-06-05",
+  "generatedAt": "2026-06-05T23:59:35.566Z",
+  "date": "2026-06-06",
   "mode": "daily",
   "scanCount": 1,
-  "firstScanAt": "2026-06-04T23:59:27.987Z",
-  "lastScanAt": "2026-06-04T23:59:27.987Z",
-  "newThisRun": 3,
+  "firstScanAt": "2026-06-05T23:59:35.566Z",
+  "lastScanAt": "2026-06-05T23:59:35.566Z",
+  "newThisRun": 2,
   "summary": {
     "newRepos": 0,
-    "updatedTrackedRepos": 3,
+    "updatedTrackedRepos": 2,
     "newDiscoveryItems": 0
   },
   "changes": [
     {
       "type": "tracked-repo-updated",
-      "title": "WebexSamples/webex-ai-cookbook",
-      "source": "https://github.com/WebexSamples/webex-ai-cookbook",
-      "category": "AI Agent",
-      "detectedAt": "2026-06-04T23:59:27.987Z",
-      "detail": "Repository pushed date changed from 2026-06-03T22:48:51Z to 2026-06-04T22:53:36Z."
-    },
-    {
-      "type": "tracked-repo-updated",
       "title": "modelcontextprotocol/servers",
       "source": "https://github.com/modelcontextprotocol/servers",
       "category": "Tracked Repo",
-      "detectedAt": "2026-06-04T23:59:27.987Z",
-      "detail": "Repository pushed date changed from 2026-06-03T20:40:12Z to 2026-06-04T01:19:42Z."
+      "detectedAt": "2026-06-05T23:59:35.566Z",
+      "detail": "Repository pushed date changed from 2026-06-04T01:19:42Z to 2026-06-05T15:24:07Z."
     },
     {
       "type": "tracked-repo-updated",
       "title": "a2aproject/A2A",
       "source": "https://github.com/a2aproject/A2A",
       "category": "MCP",
-      "detectedAt": "2026-06-04T23:59:27.987Z",
-      "detail": "Repository pushed date changed from 2026-06-02T19:08:42Z to 2026-06-04T16:39:10Z."
+      "detectedAt": "2026-06-05T23:59:35.566Z",
+      "detail": "Repository pushed date changed from 2026-06-04T16:39:10Z to 2026-06-05T12:56:39Z."
     }
   ],
   "runChanges": [
     {
       "type": "tracked-repo-updated",
-      "title": "WebexSamples/webex-ai-cookbook",
-      "source": "https://github.com/WebexSamples/webex-ai-cookbook",
-      "category": "AI Agent",
-      "detectedAt": "2026-06-04T23:59:27.987Z",
-      "detail": "Repository pushed date changed from 2026-06-03T22:48:51Z to 2026-06-04T22:53:36Z."
-    },
-    {
-      "type": "tracked-repo-updated",
       "title": "modelcontextprotocol/servers",
       "source": "https://github.com/modelcontextprotocol/servers",
       "category": "Tracked Repo",
-      "detectedAt": "2026-06-04T23:59:27.987Z",
-      "detail": "Repository pushed date changed from 2026-06-03T20:40:12Z to 2026-06-04T01:19:42Z."
+      "detectedAt": "2026-06-05T23:59:35.566Z",
+      "detail": "Repository pushed date changed from 2026-06-04T01:19:42Z to 2026-06-05T15:24:07Z."
     },
     {
       "type": "tracked-repo-updated",
       "title": "a2aproject/A2A",
       "source": "https://github.com/a2aproject/A2A",
       "category": "MCP",
-      "detectedAt": "2026-06-04T23:59:27.987Z",
-      "detail": "Repository pushed date changed from 2026-06-02T19:08:42Z to 2026-06-04T16:39:10Z."
+      "detectedAt": "2026-06-05T23:59:35.566Z",
+      "detail": "Repository pushed date changed from 2026-06-04T16:39:10Z to 2026-06-05T12:56:39Z."
     }
   ],
   "scanErrors": [],
@@ -75,7 +59,7 @@
       "pushedAt": "2026-06-02T04:02:49Z",
       "updatedAt": "2026-06-02T04:02:54Z",
       "stars": 64,
-      "forks": 41,
+      "forks": 42,
       "language": "CSS",
       "topics": [
         "api",
@@ -140,7 +124,7 @@
       "pushedAt": "2026-04-01T17:55:56Z",
       "updatedAt": "2026-05-23T11:40:48Z",
       "stars": 2,
-      "forks": 0,
+      "forks": 1,
       "language": "Unknown",
       "topics": [
         "flows",
@@ -373,10 +357,10 @@
       "owner": "modelcontextprotocol",
       "description": "Model Context Protocol Servers",
       "url": "https://github.com/modelcontextprotocol/servers",
-      "pushedAt": "2026-06-04T01:19:42Z",
-      "updatedAt": "2026-06-04T23:42:37Z",
-      "stars": 86739,
-      "forks": 10919,
+      "pushedAt": "2026-06-05T15:24:07Z",
+      "updatedAt": "2026-06-05T22:28:18Z",
+      "stars": 86787,
+      "forks": 10927,
       "language": "TypeScript",
       "topics": [],
       "categories": [],
@@ -432,9 +416,9 @@
       "owner": "a2aproject",
       "description": "Agent2Agent (A2A) is an open protocol enabling communication and interoperability between opaque agentic applications.",
       "url": "https://github.com/a2aproject/A2A",
-      "pushedAt": "2026-06-04T16:39:10Z",
-      "updatedAt": "2026-06-04T23:35:14Z",
-      "stars": 24132,
+      "pushedAt": "2026-06-05T12:56:39Z",
+      "updatedAt": "2026-06-05T22:28:45Z",
+      "stars": 24145,
       "forks": 2448,
       "language": "Shell",
       "topics": [
