@@ -207,6 +207,22 @@
           "detail": "Repository pushed date changed from 2026-06-06T19:14:23Z to 2026-06-07T22:29:30Z."
         }
       ]
+    },
+    "2026-06-09": {
+      "date": "2026-06-09",
+      "firstScanAt": "2026-06-08T23:58:04.728Z",
+      "lastScanAt": "2026-06-08T23:58:04.728Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "WebexSamples/webex-ai-cookbook",
+          "source": "https://github.com/WebexSamples/webex-ai-cookbook",
+          "category": "AI Agent",
+          "detectedAt": "2026-06-08T23:58:04.728Z",
+          "detail": "Repository pushed date changed from 2026-06-04T22:53:36Z to 2026-06-08T15:32:06Z."
+        }
+      ]
     }
   }
 }

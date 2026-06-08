@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-06-07T23:59:40.817Z",
-  "date": "2026-06-08",
+  "generatedAt": "2026-06-08T23:58:04.728Z",
+  "date": "2026-06-09",
   "mode": "daily",
   "scanCount": 1,
-  "firstScanAt": "2026-06-07T23:59:40.817Z",
-  "lastScanAt": "2026-06-07T23:59:40.817Z",
+  "firstScanAt": "2026-06-08T23:58:04.728Z",
+  "lastScanAt": "2026-06-08T23:58:04.728Z",
   "newThisRun": 1,
   "summary": {
     "newRepos": 0,
@@ -14,21 +14,21 @@
   "changes": [
     {
       "type": "tracked-repo-updated",
-      "title": "modelcontextprotocol/servers",
-      "source": "https://github.com/modelcontextprotocol/servers",
-      "category": "Tracked Repo",
-      "detectedAt": "2026-06-07T23:59:40.817Z",
-      "detail": "Repository pushed date changed from 2026-06-06T19:14:23Z to 2026-06-07T22:29:30Z."
+      "title": "WebexSamples/webex-ai-cookbook",
+      "source": "https://github.com/WebexSamples/webex-ai-cookbook",
+      "category": "AI Agent",
+      "detectedAt": "2026-06-08T23:58:04.728Z",
+      "detail": "Repository pushed date changed from 2026-06-04T22:53:36Z to 2026-06-08T15:32:06Z."
     }
   ],
   "runChanges": [
     {
       "type": "tracked-repo-updated",
-      "title": "modelcontextprotocol/servers",
-      "source": "https://github.com/modelcontextprotocol/servers",
-      "category": "Tracked Repo",
-      "detectedAt": "2026-06-07T23:59:40.817Z",
-      "detail": "Repository pushed date changed from 2026-06-06T19:14:23Z to 2026-06-07T22:29:30Z."
+      "title": "WebexSamples/webex-ai-cookbook",
+      "source": "https://github.com/WebexSamples/webex-ai-cookbook",
+      "category": "AI Agent",
+      "detectedAt": "2026-06-08T23:58:04.728Z",
+      "detail": "Repository pushed date changed from 2026-06-04T22:53:36Z to 2026-06-08T15:32:06Z."
     }
   ],
   "scanErrors": [],
@@ -165,8 +165,8 @@
       "owner": "WebexSamples",
       "description": "Documentation-first sample repository for Webex AI agents and Webex Contact Center flow patterns.",
       "url": "https://github.com/WebexSamples/webex-ai-cookbook",
-      "pushedAt": "2026-06-04T22:53:36Z",
-      "updatedAt": "2026-06-04T22:53:24Z",
+      "pushedAt": "2026-06-08T15:32:06Z",
+      "updatedAt": "2026-06-08T15:34:13Z",
       "stars": 1,
       "forks": 1,
       "language": "CSS",
@@ -342,9 +342,9 @@
       "description": "Model Context Protocol Servers",
       "url": "https://github.com/modelcontextprotocol/servers",
       "pushedAt": "2026-06-07T22:29:30Z",
-      "updatedAt": "2026-06-07T23:37:35Z",
-      "stars": 86865,
-      "forks": 10941,
+      "updatedAt": "2026-06-08T22:17:34Z",
+      "stars": 86912,
+      "forks": 10950,
       "language": "TypeScript",
       "topics": [],
       "categories": [],
@@ -401,9 +401,9 @@
       "description": "Agent2Agent (A2A) is an open protocol enabling communication and interoperability between opaque agentic applications.",
       "url": "https://github.com/a2aproject/A2A",
       "pushedAt": "2026-06-05T12:56:39Z",
-      "updatedAt": "2026-06-07T22:42:40Z",
-      "stars": 24177,
-      "forks": 2452,
+      "updatedAt": "2026-06-08T22:50:56Z",
+      "stars": 24198,
+      "forks": 2453,
       "language": "Shell",
       "topics": [
         "a2a",
