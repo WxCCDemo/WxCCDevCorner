@@ -237,6 +237,13 @@
       "lastScanAt": "2026-06-11T00:09:22.390Z",
       "scanCount": 1,
       "changes": []
+    },
+    "2026-06-12": {
+      "date": "2026-06-12",
+      "firstScanAt": "2026-06-12T00:15:04.466Z",
+      "lastScanAt": "2026-06-12T00:15:04.466Z",
+      "scanCount": 1,
+      "changes": []
     }
   }
 }
