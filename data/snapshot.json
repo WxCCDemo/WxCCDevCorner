@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-12T00:15:04.466Z",
+  "generatedAt": "2026-06-13T00:13:42.839Z",
   "repos": {
     "WebexSamples/webex-contact-center-api-samples": {
       "id": 460134251,
@@ -310,9 +310,9 @@
       "description": "Model Context Protocol Servers",
       "url": "https://github.com/modelcontextprotocol/servers",
       "pushedAt": "2026-06-07T22:29:30Z",
-      "updatedAt": "2026-06-11T23:43:10Z",
-      "stars": 87071,
-      "forks": 10980,
+      "updatedAt": "2026-06-12T23:38:56Z",
+      "stars": 87130,
+      "forks": 10989,
       "language": "TypeScript",
       "topics": [],
       "categories": [],
@@ -368,10 +368,10 @@
       "owner": "a2aproject",
       "description": "Agent2Agent (A2A) is an open protocol enabling communication and interoperability between opaque agentic applications.",
       "url": "https://github.com/a2aproject/A2A",
-      "pushedAt": "2026-06-05T12:56:39Z",
-      "updatedAt": "2026-06-12T00:11:15Z",
-      "stars": 24244,
-      "forks": 2459,
+      "pushedAt": "2026-06-12T10:40:26Z",
+      "updatedAt": "2026-06-12T21:39:25Z",
+      "stars": 24260,
+      "forks": 2463,
       "language": "Shell",
       "topics": [
         "a2a",
@@ -390,7 +390,7 @@
         "url": "https://github.com/a2aproject/A2A/blob/main/README.md",
         "excerpt": "Agent2Agent (A2A) Protocol <a href=\"https://codewiki.google/github.com/a2aproject/a2a\" <img src=\"https://www.gstatic.com/ /boq-sdlc-agents-ui/ /r/Mvosg4klCA4.svg\" alt=\"Ask Code Wiki\" height=\"20\" </a <div style=\"text-align: left;\" <details <summary 🌐 Language</summary <div <div style=\"text-align: center;\" <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=en\" English</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=zh-CN\" 简体中文</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=zh-TW\" 繁體中文</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=ja\" 日本語</a <a href=\"https://open...",
         "highlights": [
-          "Agent2Agent (A2A) Protocol <a href=\"https://codewiki.google/github.com/a2aproject/a2a\" <img src=\"https://www.gstatic.com/ /boq-sdlc-agents-ui/ /r/Mvosg4klCA4.svg\" alt=\"Ask Code Wiki\" height=\"20\" </a <div style=\"text-align: left;\" <details <summary 🌐 Language</summary <div <div style=\"text-align: center;\" <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=en\" English</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=zh-CN\" 简体中文</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=zh-TW\" 繁體中文</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=ja\" 日本語</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=ko\" 한국어</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=hi\" हिन्दी</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=th\" ไทย</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=fr\" Français</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=de\" Deutsch</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=es\" Español</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=it\" Italiano</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=ru\" Русский</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=pt\" Português</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=nl\" Nederlands</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=pl\" Polski</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=ar\" العربية</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=fa\" فارسی</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=tr\" Türkçe</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=vi\" Tiếng Việt</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=id\" Bahasa Indonesia</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=as\" অসমীয়া</a </div </div </details </div <!-- markdownlint-disable MD041 -- <div style=\"text-align: center;\" <div class=\"centered-logo-text-group\" <img src=\"docs/assets/a2a-logo-black.svg\" alt=\"Agent2Agent Protocol Logo\" width=\"100\" <h1 Agent2Agent (A2A) Protocol</h1 </div </div An open protocol enabling communication and interoperability between opaque agentic applications.",
+          "Agent2Agent (A2A) Protocol <a href=\"https://codewiki.google/github.com/a2aproject/a2a\" <img src=\"https://www.gstatic.com/ /boq-sdlc-agents-ui/ /r/Mvosg4klCA4.svg\" alt=\"Ask Code Wiki\" height=\"20\" </a <div style=\"text-align: left;\" <details <summary 🌐 Language</summary <div <div style=\"text-align: center;\" <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=en\" English</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=zh-CN\" 简体中文</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=zh-TW\" 繁體中文</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=ja\" 日本語</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=ko\" 한국어</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=hi\" हिन्दी</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=th\" ไทย</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=fr\" Français</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=de\" Deutsch</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=es\" Español</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=it\" Italiano</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=ru\" Русский</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=pt\" Português</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=nl\" Nederlands</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=pl\" Polski</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=ar\" العربية</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=fa\" فارسی</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=tr\" Türkçe</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=vi\" Tiếng Việt</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=id\" Bahasa Indonesia</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=as\" অসমীয়া</a </div </div </details </div <!-- markdownlint-disable MD041 -- <div style=\"text-align: center;\" <div class=\"centered-logo-text-group\" <img src=\"docs/assets/a2a logo/color/SVG/a2a color.svg\" alt=\"Agent2Agent Protocol Logo\" width=\"100\" <h1 Agent2Agent (A2A) Protocol</h1 </div </div An open protocol enabling communication and interoperability between opaque agentic applications.",
           "The Agent2Agent (A2A) protocol addresses a critical challenge in the AI landscape: enabling gen AI agents, built on diverse frameworks by different companies running on separate servers, to communicate and collaborate effectively - as agents, not just as tools.",
           "A2A aims to provide a common language for agents, fostering a more interconnected, powerful, and innovative AI ecosystem.",
           "With A2A, agents can: - Discover each other's capabilities."
