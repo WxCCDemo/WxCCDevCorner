@@ -1,18 +1,36 @@
 {
-  "generatedAt": "2026-06-22T00:03:50.826Z",
-  "date": "2026-06-22",
+  "generatedAt": "2026-06-23T00:00:05.534Z",
+  "date": "2026-06-23",
   "mode": "daily",
   "scanCount": 1,
-  "firstScanAt": "2026-06-22T00:03:50.826Z",
-  "lastScanAt": "2026-06-22T00:03:50.826Z",
-  "newThisRun": 0,
+  "firstScanAt": "2026-06-23T00:00:05.534Z",
+  "lastScanAt": "2026-06-23T00:00:05.534Z",
+  "newThisRun": 1,
   "summary": {
     "newRepos": 0,
-    "updatedTrackedRepos": 0,
+    "updatedTrackedRepos": 1,
     "newDiscoveryItems": 0
   },
-  "changes": [],
-  "runChanges": [],
+  "changes": [
+    {
+      "type": "tracked-repo-updated",
+      "title": "a2aproject/A2A",
+      "source": "https://github.com/a2aproject/A2A",
+      "category": "MCP",
+      "detectedAt": "2026-06-23T00:00:05.534Z",
+      "detail": "Repository pushed date changed from 2026-06-12T10:40:26Z to 2026-06-22T22:53:40Z."
+    }
+  ],
+  "runChanges": [
+    {
+      "type": "tracked-repo-updated",
+      "title": "a2aproject/A2A",
+      "source": "https://github.com/a2aproject/A2A",
+      "category": "MCP",
+      "detectedAt": "2026-06-23T00:00:05.534Z",
+      "detail": "Repository pushed date changed from 2026-06-12T10:40:26Z to 2026-06-22T22:53:40Z."
+    }
+  ],
   "scanErrors": [],
   "trackedRepos": [
     {
@@ -324,9 +342,9 @@
       "description": "Model Context Protocol Servers",
       "url": "https://github.com/modelcontextprotocol/servers",
       "pushedAt": "2026-06-17T01:40:52Z",
-      "updatedAt": "2026-06-21T23:48:34Z",
-      "stars": 87531,
-      "forks": 11047,
+      "updatedAt": "2026-06-22T23:24:07Z",
+      "stars": 87560,
+      "forks": 11056,
       "language": "TypeScript",
       "topics": [],
       "categories": [],
@@ -382,10 +400,10 @@
       "owner": "a2aproject",
       "description": "Agent2Agent (A2A) is an open protocol enabling communication and interoperability between opaque agentic applications.",
       "url": "https://github.com/a2aproject/A2A",
-      "pushedAt": "2026-06-12T10:40:26Z",
-      "updatedAt": "2026-06-21T21:06:10Z",
-      "stars": 24380,
-      "forks": 2470,
+      "pushedAt": "2026-06-22T22:53:40Z",
+      "updatedAt": "2026-06-22T22:51:37Z",
+      "stars": 24402,
+      "forks": 2471,
       "language": "Shell",
       "topics": [
         "a2a",
