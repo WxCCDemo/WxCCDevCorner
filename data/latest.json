@@ -1,18 +1,52 @@
 {
-  "generatedAt": "2026-07-05T23:57:54.280Z",
-  "date": "2026-07-06",
+  "generatedAt": "2026-07-06T23:59:07.249Z",
+  "date": "2026-07-07",
   "mode": "daily",
   "scanCount": 1,
-  "firstScanAt": "2026-07-05T23:57:54.280Z",
-  "lastScanAt": "2026-07-05T23:57:54.280Z",
-  "newThisRun": 0,
+  "firstScanAt": "2026-07-06T23:59:07.249Z",
+  "lastScanAt": "2026-07-06T23:59:07.249Z",
+  "newThisRun": 2,
   "summary": {
     "newRepos": 0,
-    "updatedTrackedRepos": 0,
+    "updatedTrackedRepos": 2,
     "newDiscoveryItems": 0
   },
-  "changes": [],
-  "runChanges": [],
+  "changes": [
+    {
+      "type": "tracked-repo-updated",
+      "title": "WebexSamples/webex-contact-center-api-samples",
+      "source": "https://github.com/WebexSamples/webex-contact-center-api-samples",
+      "category": "Tracked Repo",
+      "detectedAt": "2026-07-06T23:59:07.249Z",
+      "detail": "Repository pushed date changed from 2026-06-02T04:02:49Z to 2026-07-06T08:52:32Z."
+    },
+    {
+      "type": "tracked-repo-updated",
+      "title": "modelcontextprotocol/servers",
+      "source": "https://github.com/modelcontextprotocol/servers",
+      "category": "Tracked Repo",
+      "detectedAt": "2026-07-06T23:59:07.249Z",
+      "detail": "Repository pushed date changed from 2026-07-04T23:04:27Z to 2026-07-06T17:15:49Z."
+    }
+  ],
+  "runChanges": [
+    {
+      "type": "tracked-repo-updated",
+      "title": "WebexSamples/webex-contact-center-api-samples",
+      "source": "https://github.com/WebexSamples/webex-contact-center-api-samples",
+      "category": "Tracked Repo",
+      "detectedAt": "2026-07-06T23:59:07.249Z",
+      "detail": "Repository pushed date changed from 2026-06-02T04:02:49Z to 2026-07-06T08:52:32Z."
+    },
+    {
+      "type": "tracked-repo-updated",
+      "title": "modelcontextprotocol/servers",
+      "source": "https://github.com/modelcontextprotocol/servers",
+      "category": "Tracked Repo",
+      "detectedAt": "2026-07-06T23:59:07.249Z",
+      "detail": "Repository pushed date changed from 2026-07-04T23:04:27Z to 2026-07-06T17:15:49Z."
+    }
+  ],
   "scanErrors": [],
   "trackedRepos": [
     {
@@ -22,7 +56,7 @@
       "owner": "WebexSamples",
       "description": "Official Code samples & snippets repository for Webex Contact Center APIs",
       "url": "https://github.com/WebexSamples/webex-contact-center-api-samples",
-      "pushedAt": "2026-06-02T04:02:49Z",
+      "pushedAt": "2026-07-06T08:52:32Z",
       "updatedAt": "2026-06-02T04:02:54Z",
       "stars": 64,
       "forks": 41,
@@ -323,10 +357,10 @@
       "owner": "modelcontextprotocol",
       "description": "Model Context Protocol Servers",
       "url": "https://github.com/modelcontextprotocol/servers",
-      "pushedAt": "2026-07-04T23:04:27Z",
-      "updatedAt": "2026-07-05T22:49:31Z",
-      "stars": 88091,
-      "forks": 11159,
+      "pushedAt": "2026-07-06T17:15:49Z",
+      "updatedAt": "2026-07-06T22:57:39Z",
+      "stars": 88123,
+      "forks": 11170,
       "language": "TypeScript",
       "topics": [],
       "categories": [],
@@ -383,9 +417,9 @@
       "description": "Agent2Agent (A2A) is an open protocol enabling communication and interoperability between opaque agentic applications.",
       "url": "https://github.com/a2aproject/A2A",
       "pushedAt": "2026-07-02T08:55:16Z",
-      "updatedAt": "2026-07-05T20:46:21Z",
-      "stars": 24634,
-      "forks": 2493,
+      "updatedAt": "2026-07-06T22:20:24Z",
+      "stars": 24657,
+      "forks": 2494,
       "language": "Shell",
       "topics": [
         "a2a",
