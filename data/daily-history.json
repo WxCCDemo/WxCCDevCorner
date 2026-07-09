@@ -577,6 +577,30 @@
           "detail": "Repository pushed date changed from 2026-07-02T08:55:16Z to 2026-07-07T18:30:28Z."
         }
       ]
+    },
+    "2026-07-09": {
+      "date": "2026-07-09",
+      "firstScanAt": "2026-07-09T00:00:13.443Z",
+      "lastScanAt": "2026-07-09T00:00:13.443Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "WebexSamples/webex-ai-cookbook",
+          "source": "https://github.com/WebexSamples/webex-ai-cookbook",
+          "category": "AI Agent",
+          "detectedAt": "2026-07-09T00:00:13.443Z",
+          "detail": "Repository pushed date changed from 2026-07-07T22:18:41Z to 2026-07-08T22:04:33Z."
+        },
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-07-09T00:00:13.443Z",
+          "detail": "Repository pushed date changed from 2026-07-07T18:30:28Z to 2026-07-08T16:20:24Z."
+        }
+      ]
     }
   }
 }
