@@ -1,34 +1,50 @@
 {
-  "generatedAt": "2026-07-09T23:58:11.490Z",
-  "date": "2026-07-10",
+  "generatedAt": "2026-07-10T23:49:47.181Z",
+  "date": "2026-07-11",
   "mode": "daily",
   "scanCount": 1,
-  "firstScanAt": "2026-07-09T23:58:11.490Z",
-  "lastScanAt": "2026-07-09T23:58:11.490Z",
-  "newThisRun": 1,
+  "firstScanAt": "2026-07-10T23:49:47.181Z",
+  "lastScanAt": "2026-07-10T23:49:47.181Z",
+  "newThisRun": 2,
   "summary": {
     "newRepos": 0,
-    "updatedTrackedRepos": 1,
+    "updatedTrackedRepos": 2,
     "newDiscoveryItems": 0
   },
   "changes": [
     {
       "type": "tracked-repo-updated",
-      "title": "a2aproject/A2A",
-      "source": "https://github.com/a2aproject/A2A",
-      "category": "MCP",
-      "detectedAt": "2026-07-09T23:58:11.490Z",
-      "detail": "Repository pushed date changed from 2026-07-08T16:20:24Z to 2026-07-09T16:25:20Z."
+      "title": "WebexSamples/webex-byods-manager",
+      "source": "https://github.com/WebexSamples/webex-byods-manager",
+      "category": "BYODS",
+      "detectedAt": "2026-07-10T23:49:47.181Z",
+      "detail": "Repository pushed date changed from 2026-03-11T16:53:08Z to 2026-07-10T20:28:35Z."
+    },
+    {
+      "type": "tracked-repo-updated",
+      "title": "modelcontextprotocol/servers",
+      "source": "https://github.com/modelcontextprotocol/servers",
+      "category": "Tracked Repo",
+      "detectedAt": "2026-07-10T23:49:47.181Z",
+      "detail": "Repository pushed date changed from 2026-07-06T17:15:49Z to 2026-07-10T03:30:19Z."
     }
   ],
   "runChanges": [
     {
       "type": "tracked-repo-updated",
-      "title": "a2aproject/A2A",
-      "source": "https://github.com/a2aproject/A2A",
-      "category": "MCP",
-      "detectedAt": "2026-07-09T23:58:11.490Z",
-      "detail": "Repository pushed date changed from 2026-07-08T16:20:24Z to 2026-07-09T16:25:20Z."
+      "title": "WebexSamples/webex-byods-manager",
+      "source": "https://github.com/WebexSamples/webex-byods-manager",
+      "category": "BYODS",
+      "detectedAt": "2026-07-10T23:49:47.181Z",
+      "detail": "Repository pushed date changed from 2026-03-11T16:53:08Z to 2026-07-10T20:28:35Z."
+    },
+    {
+      "type": "tracked-repo-updated",
+      "title": "modelcontextprotocol/servers",
+      "source": "https://github.com/modelcontextprotocol/servers",
+      "category": "Tracked Repo",
+      "detectedAt": "2026-07-10T23:49:47.181Z",
+      "detail": "Repository pushed date changed from 2026-07-06T17:15:49Z to 2026-07-10T03:30:19Z."
     }
   ],
   "scanErrors": [
@@ -37,7 +53,7 @@
       "title": "WebexSamples/webex-ai-cookbook",
       "source": "https://github.com/WebexSamples/webex-ai-cookbook",
       "category": "Error",
-      "detectedAt": "2026-07-09T23:58:11.490Z",
+      "detectedAt": "2026-07-10T23:49:47.181Z",
       "detail": "404 Not Found: /repos/WebexSamples/webex-ai-cookbook"
     }
   ],
@@ -296,8 +312,8 @@
       "owner": "WebexSamples",
       "description": "",
       "url": "https://github.com/WebexSamples/webex-byods-manager",
-      "pushedAt": "2026-03-11T16:53:08Z",
-      "updatedAt": "2026-05-23T11:41:43Z",
+      "pushedAt": "2026-07-10T20:28:35Z",
+      "updatedAt": "2026-07-10T20:28:46Z",
       "stars": 2,
       "forks": 1,
       "language": "Python",
@@ -310,9 +326,9 @@
         "excerpt": "Webex BYO Data Source Management This script manages Webex BYODS (Bring Your Own Data Source) system using the Webex Admin API. Vidcast Watch the Vidcast of this app Main Script data-sources.py - Unified interface for all data source operations including: - Listing and viewing existing data sources - Registering new data sources - Updating existing data source configurations - Quick token extension without configuration changes - Interactive menu-driven interface extend data source.py - Standalone script for quick token extension: - Extends data source tokens with minimal user interaction - Automatically generates new nonce (no input required) - Preserves all existing configuration values -...",
         "highlights": [
           "Webex BYO Data Source Management This script manages Webex BYODS (Bring Your Own Data Source) system using the Webex Admin API.",
-          "Vidcast Watch the Vidcast of this app Main Script data-sources.py - Unified interface for all data source operations including: - Listing and viewing existing data sources - Registering new data sources - Updating existing data source configurations - Quick token extension without configuration changes - Interactive menu-driven interface extend data source.py - Standalone script for quick token extension: - Extends data source tokens with minimal user interaction - Automatically generates new nonce (no input required) - Preserves all existing configuration values - Configurable token lifetime - Command-line automation friendly Token Management This project includes automated token refresh functionality to handle service app token expiration: Files: - token manager.py - Core token management class with smart refresh logic - refresh token.py - Standalone script for manual token refresh - TOKEN MANAGEMENT.md - Complete setup and usage documentation Key Features: - Smart refresh strategy : Uses refresh tokens when available, falls back to personal access tokens - Real-time token management : Automatically detects and handles token expiration during API operations - Seamless retry mechanism : Automatically retries failed requests after successful token refresh - OAuth support : Automatic refresh of personal access tokens via OAuth (optional) - Automatic validation : Checks token validity before operations - Zero-downtime integration : Eliminates 401 errors without user intervention - Multiple setup options : Portal tokens, integration tokens, or full OAuth automation Test Credentials: For complete setup instructions, see TOKEN MANAGEMENT.md.",
-          "Requirements - Python 3.6 or higher - A Webex Service App with appropriate scopes: - spark-admin:datasource write (for registration and updates) - spark-admin:datasource read (for listing/viewing) - Authentication credentials to request service app tokens (choose one): - Option A (Quick Start) : Personal Access Token from developer.webex.com (expires every 12 hours) - Option B (Production) : Integration with spark:applications token scope for OAuth-based refresh Setup 1.",
-          "Create and activate a virtual environment (recommended): 2."
+          "Vidcast Watch the Vidcast of this app Main Script data-sources.py - Unified interface for all data source operations including: - Listing and viewing existing data sources - Registering new data sources - Updating existing data source configurations - Quick token extension without configuration changes - Interactive menu-driven interface extend data source.py - Standalone script for quick token extension: - Extends data source tokens with minimal user interaction - Automatically generates new nonce (no input required) - Preserves all existing configuration values - Configurable token lifetime - Command-line automation friendly SDK Dependency This CLI and Lambda consume webex-byods-sdk at the version pinned in requirements.txt .",
+          "The SDK owns BYODS API operations and token-provider behavior; this repository owns the interactive prompts, JSON configuration, AWS Secrets Manager adapter, and operation records.",
+          "Token Management This project includes automated token refresh functionality to handle service app token expiration: Files: - token manager.py - CLI/Lambda adapter that creates SDK token providers - refresh token.py - Standalone script for manual token refresh - TOKEN MANAGEMENT.md - Complete setup and usage documentation Key Features: - Smart refresh strategy : Uses refresh tokens when available, falls back to personal access tokens - Real-time token management : Automatically detects and handles token expiration during API operations - Seamless retry mechanism : Automatically retries failed requests after successful token refresh - OAuth support : Automatic refresh of personal access tokens via OAuth (optional) - Automatic validation : Checks token validity before operations - Zero-downtime integration : Eliminates 401 errors without user intervention - Multiple setup options : Portal tokens, integration tokens, or full OAuth automation Test Credentials: For complete setup instructions, see TOKEN MANAGEMENT.md."
         ],
         "sections": [
           {
@@ -351,10 +367,10 @@
       "owner": "modelcontextprotocol",
       "description": "Model Context Protocol Servers",
       "url": "https://github.com/modelcontextprotocol/servers",
-      "pushedAt": "2026-07-06T17:15:49Z",
-      "updatedAt": "2026-07-09T23:40:34Z",
-      "stars": 88277,
-      "forks": 11191,
+      "pushedAt": "2026-07-10T03:30:19Z",
+      "updatedAt": "2026-07-10T23:28:13Z",
+      "stars": 88310,
+      "forks": 11205,
       "language": "TypeScript",
       "topics": [],
       "categories": [],
@@ -411,9 +427,9 @@
       "description": "Agent2Agent (A2A) is an open protocol enabling communication and interoperability between opaque agentic applications.",
       "url": "https://github.com/a2aproject/A2A",
       "pushedAt": "2026-07-09T16:25:20Z",
-      "updatedAt": "2026-07-09T22:12:48Z",
-      "stars": 24714,
-      "forks": 2496,
+      "updatedAt": "2026-07-10T20:47:56Z",
+      "stars": 24735,
+      "forks": 2502,
       "language": "Shell",
       "topics": [
         "a2a",
