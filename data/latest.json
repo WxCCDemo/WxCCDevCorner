@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-07-15T23:51:28.130Z",
-  "date": "2026-07-16",
+  "generatedAt": "2026-07-16T23:51:22.127Z",
+  "date": "2026-07-17",
   "mode": "daily",
   "scanCount": 1,
-  "firstScanAt": "2026-07-15T23:51:28.130Z",
-  "lastScanAt": "2026-07-15T23:51:28.130Z",
+  "firstScanAt": "2026-07-16T23:51:22.127Z",
+  "lastScanAt": "2026-07-16T23:51:22.127Z",
   "newThisRun": 1,
   "summary": {
     "newRepos": 0,
@@ -17,8 +17,8 @@
       "title": "a2aproject/A2A",
       "source": "https://github.com/a2aproject/A2A",
       "category": "MCP",
-      "detectedAt": "2026-07-15T23:51:28.130Z",
-      "detail": "Repository pushed date changed from 2026-07-14T16:42:00Z to 2026-07-15T13:59:02Z."
+      "detectedAt": "2026-07-16T23:51:22.127Z",
+      "detail": "Repository pushed date changed from 2026-07-15T13:59:02Z to 2026-07-16T14:15:38Z."
     }
   ],
   "runChanges": [
@@ -27,8 +27,8 @@
       "title": "a2aproject/A2A",
       "source": "https://github.com/a2aproject/A2A",
       "category": "MCP",
-      "detectedAt": "2026-07-15T23:51:28.130Z",
-      "detail": "Repository pushed date changed from 2026-07-14T16:42:00Z to 2026-07-15T13:59:02Z."
+      "detectedAt": "2026-07-16T23:51:22.127Z",
+      "detail": "Repository pushed date changed from 2026-07-15T13:59:02Z to 2026-07-16T14:15:38Z."
     }
   ],
   "scanErrors": [
@@ -37,7 +37,7 @@
       "title": "WebexSamples/webex-ai-cookbook",
       "source": "https://github.com/WebexSamples/webex-ai-cookbook",
       "category": "Error",
-      "detectedAt": "2026-07-15T23:51:28.130Z",
+      "detectedAt": "2026-07-16T23:51:22.127Z",
       "detail": "404 Not Found: /repos/WebexSamples/webex-ai-cookbook"
     }
   ],
@@ -352,9 +352,9 @@
       "description": "Model Context Protocol Servers",
       "url": "https://github.com/modelcontextprotocol/servers",
       "pushedAt": "2026-07-10T03:30:19Z",
-      "updatedAt": "2026-07-15T21:57:52Z",
-      "stars": 88514,
-      "forks": 11227,
+      "updatedAt": "2026-07-16T23:03:25Z",
+      "stars": 88555,
+      "forks": 11233,
       "language": "TypeScript",
       "topics": [],
       "categories": [],
@@ -410,10 +410,10 @@
       "owner": "a2aproject",
       "description": "Agent2Agent (A2A) is an open protocol enabling communication and interoperability between opaque agentic applications.",
       "url": "https://github.com/a2aproject/A2A",
-      "pushedAt": "2026-07-15T13:59:02Z",
-      "updatedAt": "2026-07-15T17:35:30Z",
-      "stars": 24804,
-      "forks": 2507,
+      "pushedAt": "2026-07-16T14:15:38Z",
+      "updatedAt": "2026-07-16T22:46:56Z",
+      "stars": 24813,
+      "forks": 2509,
       "language": "Shell",
       "topics": [
         "a2a",
