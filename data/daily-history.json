@@ -719,6 +719,22 @@
           "detail": "Repository pushed date changed from 2026-07-15T13:59:02Z to 2026-07-16T14:15:38Z."
         }
       ]
+    },
+    "2026-07-18": {
+      "date": "2026-07-18",
+      "firstScanAt": "2026-07-17T23:42:57.944Z",
+      "lastScanAt": "2026-07-17T23:42:57.944Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-07-17T23:42:57.944Z",
+          "detail": "Repository pushed date changed from 2026-07-16T14:15:38Z to 2026-07-17T17:29:34Z."
+        }
+      ]
     }
   }
 }
