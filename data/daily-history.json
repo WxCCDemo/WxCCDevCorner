@@ -749,6 +749,13 @@
       "lastScanAt": "2026-07-19T23:48:48.599Z",
       "scanCount": 1,
       "changes": []
+    },
+    "2026-07-21": {
+      "date": "2026-07-21",
+      "firstScanAt": "2026-07-20T23:47:53.696Z",
+      "lastScanAt": "2026-07-20T23:47:53.696Z",
+      "scanCount": 1,
+      "changes": []
     }
   }
 }
