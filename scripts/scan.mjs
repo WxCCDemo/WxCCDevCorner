@@ -1,6 +1,7 @@
 import { readFile, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
+import { GoogleGenAI } from "@google/genai";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const dataDir = path.join(root, "data");
@@ -12,6 +13,7 @@ const writeJson = async (file, value) => {
 
 const token = process.env.GITHUB_TOKEN;
 const radarTimeZone = process.env.RADAR_TIMEZONE || "Asia/Singapore";
+const MISSION_SUMMARY = "Track the latest Webex Contact Center API samples, SDK updates, flow templates, webhook patterns, and developer tooling.";
 const headers = { "Accept": "application/vnd.github+json", "User-Agent": "wxcc-devcorner-radar" };
 if (token) headers.Authorization = `Bearer ${token}`;
 
@@ -107,6 +109,52 @@ function addTracking(repo, config) {
   return repo;
 }
 
+async function generateReviewCards(candidates, categories, missionSummary) {
+  const apiKey = process.env.GEMINI_API_KEY;
+  if (!apiKey) {
+    console.log("  Gemini: GEMINI_API_KEY not set, skipping review card generation.");
+    return [];
+  }
+  if (!candidates.length) {
+    console.log("  Gemini: no new candidates for review cards.");
+    return [];
+  }
+
+  const ai = new GoogleGenAI({ apiKey });
+  const prompt = `You are curating a "Review Later" list of business-oriented cards for a Webex Contact Center developer radar.
+Mission: ${missionSummary}
+Categories to choose from: ${categories.join(", ")}
+
+For each item below, write ONE card as a JSON object with exactly these fields:
+id (short kebab-case slug unique to this item), title, source (the given source URL, unchanged), category (single best fit from the categories list), status (always "review-later"), priority ("high", "medium", or "low"), objective (1 sentence), businessBenefits (1-2 sentences), appliesTo (1 sentence), howToUse (1-2 sentences), howToBuild (1-2 sentences), expectedOutcome (1 sentence), notes (1 short sentence).
+
+Items:
+${candidates.map((c, i) => `${i + 1}. Title: ${c.title}\n   Source: ${c.source}\n   Category hint: ${c.category}\n   Detail: ${c.detail}`).join("\n")}
+
+Return ONLY a JSON array of exactly ${candidates.length} card objects in the same order as the items above. No other text.`;
+
+  try {
+    const response = await ai.models.generateContent({
+      model: "gemini-2.5-flash",
+      contents: prompt,
+      config: { responseMimeType: "application/json" }
+    });
+    const generated = JSON.parse(response.text);
+    const now = new Date().toISOString();
+    const cards = generated.map((card, i) => ({
+      ...card,
+      source: candidates[i]?.source || card.source,
+      createdAt: now,
+      updatedAt: now
+    }));
+    console.log(`  Gemini: generated ${cards.length} review card(s).`);
+    return cards;
+  } catch (error) {
+    console.log(`  Gemini: card generation failed (${error.message}).`);
+    return [];
+  }
+}
+
 const config = await readJson("config.json");
 const previous = await readJson("snapshot.json");
 const dailyHistory = await readJson("daily-history.json");
@@ -177,7 +225,16 @@ const latest = {
   changes: day.changes, runChanges: newDailyChanges, scanErrors, trackedRepos, discovery
 };
 
+const existingCards = await readJson("cards.json");
+const existingCardSources = new Set(existingCards.map((c) => c.source));
+const cardCandidates = newDailyChanges
+  .filter((c) => (c.type === "new-tracked-repo" || c.type === "new-discovery-item") && !existingCardSources.has(c.source))
+  .slice(0, 6);
+const newCards = await generateReviewCards(cardCandidates, config.categories, MISSION_SUMMARY);
+const nextCards = [...existingCards, ...newCards];
+
+await writeJson("cards.json", nextCards);
 await writeJson("snapshot.json", nextSnapshot);
 await writeJson("daily-history.json", dailyHistory);
 await writeJson("latest.json", latest);
-console.log(`Scan complete: ${newDailyChanges.length} new daily change(s), ${day.changes.length} total for ${today}.`);
+console.log(`Scan complete: ${newDailyChanges.length} new daily change(s), ${day.changes.length} total for ${today}. Cards: +${newCards.length} new, ${nextCards.length} total.`);

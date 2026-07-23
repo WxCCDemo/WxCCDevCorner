@@ -9,6 +9,7 @@
     "start": "node scripts/serve.mjs"
   },
   "dependencies": {
+    "@google/genai": "^2.13.0",
     "otpauth": "^9.5.1"
   }
 }
