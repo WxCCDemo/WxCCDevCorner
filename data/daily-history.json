@@ -784,8 +784,8 @@
     "2026-07-23": {
       "date": "2026-07-23",
       "firstScanAt": "2026-07-22T23:54:59.521Z",
-      "lastScanAt": "2026-07-22T23:54:59.521Z",
-      "scanCount": 1,
+      "lastScanAt": "2026-07-23T15:57:05.148Z",
+      "scanCount": 2,
       "changes": [
         {
           "type": "tracked-repo-updated",
@@ -794,6 +794,14 @@
           "category": "AI Agent",
           "detectedAt": "2026-07-22T23:54:59.521Z",
           "detail": "Repository pushed date changed from 2026-07-08T22:04:33Z to 2026-07-22T22:30:25Z."
+        },
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-07-23T15:57:05.148Z",
+          "detail": "Repository pushed date changed from 2026-07-21T19:50:00Z to 2026-07-23T13:37:47Z."
         }
       ]
     }
