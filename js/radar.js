@@ -107,6 +107,27 @@ function definitionCard(item) {
   return `<article class="radar-item"><h3 style="margin:0 0 5px;font-size:14px;">${esc(item.term || item.name)}</h3><p class="radar-detail" style="margin:0;">${esc(item.meaning || item.purpose)}</p></article>`;
 }
 
+function reviewCard(c) {
+  const fields = [
+    ['Objective', c.objective],
+    ['Business Benefits', c.businessBenefits],
+    ['Applies To', c.appliesTo],
+    ['How To Use It', c.howToUse],
+    ['How To Build It', c.howToBuild],
+    ['Expected Outcome', c.expectedOutcome]
+  ];
+  return `<article class="radar-item">
+    <div class="radar-item-head">
+      <div>
+        <a href="${esc(c.source)}" target="_blank" rel="noreferrer">${esc(c.title)}</a>
+        <p class="radar-meta">${esc(c.category)} &middot; ${esc(c.priority)} priority &middot; ${esc(c.status)}</p>
+      </div>
+      ${pills([c.category], c.priority === 'high')}
+    </div>
+    ${fields.map(([label, value]) => value ? `<div class="radar-field"><strong>${esc(label)}</strong><p>${esc(value)}</p></div>` : '').join('')}
+  </article>`;
+}
+
 function briefingActionCard(title, value, detail, actions, category) {
   return `<article class="radar-item">
     <div class="radar-item-head"><div><h3 style="margin:0 0 4px;font-size:14px;">${esc(title)}</h3><p style="color:var(--accent-cyan);font-size:15px;font-weight:700;margin:0;line-height:1.35;">${esc(value)}</p></div>${pills([category])}</div>
@@ -193,10 +214,12 @@ function rdrRender() {
   // Badges
   const badgeChanges = document.getElementById('rdrBadgeChanges');
   const badgeDiscovery = document.getElementById('rdrBadgeDiscovery');
+  const badgeCards = document.getElementById('rdrBadgeCards');
   const changesCount = latest.changes.filter(c => !c.type.includes('error')).length;
   const discoveryCount = latest.discovery.reduce((s, g) => s + g.items.length, 0);
   if (badgeChanges) badgeChanges.textContent = changesCount > 0 ? changesCount : '';
   if (badgeDiscovery) badgeDiscovery.textContent = discoveryCount > 0 ? discoveryCount : '';
+  if (badgeCards) badgeCards.textContent = rdrState.cards.length > 0 ? rdrState.cards.length : '';
 
   const categories = topCategories(latest);
   const actions = nextActions(latest);
@@ -227,6 +250,10 @@ function rdrRender() {
   document.getElementById('rdrRepoList').innerHTML = latest.trackedRepos.length
     ? latest.trackedRepos.map(r => repoCard(r, { showTracking: true, showReadme: true })).join('')
     : `<article class="radar-item"><p class="radar-detail">No repositories scanned yet.</p></article>`;
+
+  document.getElementById('rdrCardList').innerHTML = rdrState.cards.length
+    ? rdrState.cards.map(reviewCard).join('')
+    : `<article class="radar-item"><p class="radar-detail">No review cards yet. Run a scan to generate AI-written summaries for new discoveries.</p></article>`;
 
   document.getElementById('rdrDiscoveryList').innerHTML = latest.discovery.length
     ? latest.discovery.map(g => `<p class="radar-query-title">${esc(g.query)}</p><div class="radar-list">${g.items.map(r => repoCard(r, { showReadme: true })).join('')}</div>`).join('')

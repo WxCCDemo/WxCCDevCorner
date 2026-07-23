@@ -167,6 +167,10 @@
       <button class="radar-tab" data-tab="repos"><svg viewBox="0 0 20 20" fill="none"><circle cx="5" cy="4" r="1.5" stroke="currentColor" stroke-width="1.3" fill="none"/><circle cx="15" cy="4" r="1.5" stroke="currentColor" stroke-width="1.3" fill="none"/><circle cx="10" cy="16" r="1.5" stroke="currentColor" stroke-width="1.3" fill="none"/><line x1="5" y1="5.5" x2="10" y2="14.5" stroke="currentColor" stroke-width="1.2"/><line x1="15" y1="5.5" x2="10" y2="14.5" stroke="currentColor" stroke-width="1.2"/></svg>Tracked repos</button>
       <button class="radar-tab" data-tab="glossary"><svg viewBox="0 0 20 20" fill="none"><path d="M3 5a2 2 0 0 1 2-2h7l3 3v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5z" stroke="currentColor" stroke-width="1.3" fill="none"/></svg>Glossary</button>
     </div>
+    <div class="radar-nav-group">
+      <p class="radar-nav-label">Workspace</p>
+      <button class="radar-tab" data-tab="cards"><svg viewBox="0 0 20 20" fill="none"><path d="M10 2l2.4 5 5.6.8-4 3.9 1 5.5L10 14.5 5 17.2l1-5.5L2 7.8l5.6-.8L10 2z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" fill="none"/></svg>Review later<span class="radar-badge" id="rdrBadgeCards"></span></button>
+    </div>
   </nav>
 
   <main class="radar-main">
@@ -193,6 +197,10 @@
     <section id="repos" class="radar-panel">
       <div class="radar-panel-head"><h2>Tracked repositories</h2><p>Core sources watched every scan.</p></div>
       <div id="rdrRepoList" class="radar-list"></div>
+    </section>
+    <section id="cards" class="radar-panel">
+      <div class="radar-panel-head"><h2>Review later</h2><p>AI-generated business cards for new samples and discoveries worth a deeper look.</p></div>
+      <div id="rdrCardList" class="radar-list"></div>
     </section>
     <section id="glossary" class="radar-panel">
       <div class="radar-panel-head"><h2>Glossary and source map</h2><p>Quick definitions and source types used by the radar.</p></div>
