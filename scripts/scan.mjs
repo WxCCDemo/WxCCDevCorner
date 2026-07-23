@@ -135,7 +135,7 @@ Return ONLY a JSON array of exactly ${candidates.length} card objects in the sam
 
   try {
     const response = await ai.models.generateContent({
-      model: "gemini-2.5-flash",
+      model: "gemini-flash-latest",
       contents: prompt,
       config: { responseMimeType: "application/json" }
     });
