@@ -223,3 +223,21 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 })();
+
+// ------------------------------------------------------------------
+// 11. New Badge Expiry — auto-hide ".new-badge" elements 14 days
+//     after their container's [data-added="YYYY-MM-DD"] date.
+// ------------------------------------------------------------------
+(function expireNewBadges() {
+  const NEW_BADGE_DAYS = 14;
+  const now = Date.now();
+  document.querySelectorAll('[data-added]').forEach(el => {
+    const added = new Date(el.getAttribute('data-added'));
+    if (isNaN(added.getTime())) return;
+    const ageDays = (now - added.getTime()) / 86400000;
+    if (ageDays >= NEW_BADGE_DAYS) {
+      const badge = el.querySelector('.new-badge');
+      if (badge) badge.remove();
+    }
+  });
+})();
