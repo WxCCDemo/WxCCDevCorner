@@ -182,7 +182,7 @@ async function fetchSampleCodeSnippet(fullName) {
   }
 }
 
-async function generateSampleCards(candidates, repoLookup, categories) {
+async function generateSampleCards(candidates, repoLookup, categories, todayShort) {
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey || !candidates.length) return [];
   const ai = new GoogleGenAI({ apiKey });
@@ -218,7 +218,8 @@ title (short, 2-5 words), level ("beginner", "intermediate", or "advanced"), tag
         bullets: Array.isArray(parsed.bullets) ? parsed.bullets.slice(0, 3) : [],
         codeLang: code ? (parsed.codeLang || "Code") : "",
         codeLabel: code ? (parsed.codeLabel || code.path) : "",
-        codeSnippet: code ? code.snippet : ""
+        codeSnippet: code ? code.snippet : "",
+        addedDate: todayShort
       });
       console.log(`  Gemini: generated sample card for ${candidate.fullName}`);
     } catch (error) {
@@ -237,8 +238,8 @@ function buildSampleCardHtml(card) {
         <pre><code>${escapeHtml(card.codeSnippet)}</code></pre></div>`
     : "";
   return `
-        <div class="sample-card" data-source="auto">
-          <div class="sample-card-meta"><span class="sample-card-level level-${levelClass}">${levelLabel}</span><span class="tag">${escapeHtml(card.tag)}</span></div>
+        <div class="sample-card" data-source="auto" data-added="${escapeHtml(card.addedDate)}">
+          <div class="sample-card-meta"><span class="sample-card-level level-${levelClass}">${levelLabel}</span><span class="tag">${escapeHtml(card.tag)}</span><span class="new-badge" style="background:#00BCEB;color:#04121f;font-size:9.5px;font-weight:800;letter-spacing:.05em;padding:2px 7px;border-radius:999px;text-transform:uppercase;margin-left:4px;">New</span></div>
           <h3>${escapeHtml(card.title)}</h3>
           <p>${escapeHtml(card.description)}</p>
           <ul class="sample-card-bullets">
@@ -354,7 +355,7 @@ const sampleCandidates = newDailyChanges
   .filter((c, i, arr) => arr.findIndex((x) => x.title === c.title) === i)
   .map((c) => ({ fullName: c.title }))
   .slice(0, 2);
-const newSampleCards = await generateSampleCards(sampleCandidates, repoLookup, config.categories);
+const newSampleCards = await generateSampleCards(sampleCandidates, repoLookup, config.categories, today);
 if (newSampleCards.length) {
   const samplesHtmlPath = path.join(root, "samples.html");
   const samplesHtml = await readFile(samplesHtmlPath, "utf8");
