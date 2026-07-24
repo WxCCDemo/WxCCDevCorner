@@ -34,6 +34,6 @@ jobs:
         run: |
           git config user.name "wxcc-devcorner[bot]"
           git config user.email "wxcc-devcorner[bot]@users.noreply.github.com"
-          git add data/latest.json data/snapshot.json data/daily-history.json data/cards.json
+          git add data/latest.json data/snapshot.json data/daily-history.json data/cards.json data/samples-added.json samples.html
           git diff --staged --quiet || git commit -m "scan: $(date -u +%Y-%m-%d)"
           git push

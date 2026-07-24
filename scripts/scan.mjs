@@ -17,6 +17,10 @@ const MISSION_SUMMARY = "Track the latest Webex Contact Center API samples, SDK 
 const headers = { "Accept": "application/vnd.github+json", "User-Agent": "wxcc-devcorner-radar" };
 if (token) headers.Authorization = `Bearer ${token}`;
 
+function escapeHtml(str = "") {
+  return String(str).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" }[c]));
+}
+
 async function github(pathname) {
   const response = await fetch(`https://api.github.com${pathname}`, { headers });
   if (!response.ok) throw new Error(`${response.status} ${response.statusText}: ${pathname}`);
@@ -155,6 +159,114 @@ Return ONLY a JSON array of exactly ${candidates.length} card objects in the sam
   }
 }
 
+async function fetchSampleCodeSnippet(fullName) {
+  try {
+    const items = await github(`/repos/${fullName}/contents/`);
+    if (!Array.isArray(items)) return null;
+    const exts = [".js", ".ts", ".py", ".cs", ".java", ".go", ".json", ".yaml", ".yml"];
+    const priority = [".js", ".ts", ".py"];
+    const candidates = items.filter((it) => it.type === "file" && exts.some((e) => it.name.endsWith(e)) && it.size >= 50 && it.size <= 6000);
+    if (!candidates.length) return null;
+    candidates.sort((a, b) => {
+      const pa = priority.findIndex((e) => a.name.endsWith(e));
+      const pb = priority.findIndex((e) => b.name.endsWith(e));
+      return (pa === -1 ? 99 : pa) - (pb === -1 ? 99 : pb);
+    });
+    const pick = candidates[0];
+    const file = await github(`/repos/${fullName}/contents/${encodeURIComponent(pick.path)}`);
+    const text = Buffer.from(file.content || "", "base64").toString("utf8");
+    const lines = text.split(/\r?\n/).slice(0, 35);
+    return { path: pick.path, snippet: lines.join("\n").slice(0, 1800) };
+  } catch {
+    return null;
+  }
+}
+
+async function generateSampleCards(candidates, repoLookup, categories) {
+  const apiKey = process.env.GEMINI_API_KEY;
+  if (!apiKey || !candidates.length) return [];
+  const ai = new GoogleGenAI({ apiKey });
+  const results = [];
+  for (const candidate of candidates.slice(0, 2)) {
+    const repo = repoLookup.get(candidate.fullName);
+    if (!repo) continue;
+    const code = await fetchSampleCodeSnippet(candidate.fullName);
+    const prompt = `Write a short "sample gallery" card for a Webex Contact Center developer portal, describing this real GitHub repository.
+Repository: ${repo.fullName}
+Description: ${repo.description || "(no description)"}
+README excerpt: ${repo.readme?.excerpt || "(none)"}
+Categories to pick a tag from: ${categories.join(", ")}
+${code ? `Real code file found at ${code.path}:\n${code.snippet}` : "No representative code file was found in the repo root."}
+
+Return ONLY a JSON object with exactly these fields:
+title (short, 2-5 words), level ("beginner", "intermediate", or "advanced"), tag (one category from the list above), description (1-2 sentences: what this sample demonstrates and why it's useful), bullets (array of exactly 3 short bullet points, each under 10 words), codeLang (short label like "JavaScript", "Python", "JSON" — only meaningful if a code file was provided, else empty string), codeLabel (a short caption for the code block, e.g. "server.js — Webhook Listener" — only meaningful if a code file was provided, else empty string).`;
+
+    try {
+      const response = await ai.models.generateContent({
+        model: "gemini-flash-latest",
+        contents: prompt,
+        config: { responseMimeType: "application/json" }
+      });
+      const parsed = JSON.parse(response.text);
+      results.push({
+        fullName: candidate.fullName,
+        url: repo.url,
+        title: parsed.title,
+        level: parsed.level,
+        tag: parsed.tag,
+        description: parsed.description,
+        bullets: Array.isArray(parsed.bullets) ? parsed.bullets.slice(0, 3) : [],
+        codeLang: code ? (parsed.codeLang || "Code") : "",
+        codeLabel: code ? (parsed.codeLabel || code.path) : "",
+        codeSnippet: code ? code.snippet : ""
+      });
+      console.log(`  Gemini: generated sample card for ${candidate.fullName}`);
+    } catch (error) {
+      console.log(`  Gemini: sample card generation failed for ${candidate.fullName} (${error.message})`);
+    }
+  }
+  return results;
+}
+
+function buildSampleCardHtml(card) {
+  const levelClass = ["beginner", "intermediate", "advanced"].includes(card.level) ? card.level : "beginner";
+  const levelLabel = levelClass.charAt(0).toUpperCase() + levelClass.slice(1);
+  const codeBlock = card.codeSnippet
+    ? `
+          <div class="code-block"><div class="code-block-header"><span class="code-lang">${escapeHtml(card.codeLang)}</span><span class="code-label">${escapeHtml(card.codeLabel)}</span><button class="copy-btn">⎘ Copy</button></div>
+        <pre><code>${escapeHtml(card.codeSnippet)}</code></pre></div>`
+    : "";
+  return `
+        <div class="sample-card" data-source="auto">
+          <div class="sample-card-meta"><span class="sample-card-level level-${levelClass}">${levelLabel}</span><span class="tag">${escapeHtml(card.tag)}</span></div>
+          <h3>${escapeHtml(card.title)}</h3>
+          <p>${escapeHtml(card.description)}</p>
+          <ul class="sample-card-bullets">
+            ${card.bullets.map((b) => `<li>${escapeHtml(b)}</li>`).join("\n            ")}
+          </ul>${codeBlock}
+          <a href="${escapeHtml(card.url)}" target="_blank" rel="noreferrer" class="sample-card-link">View on GitHub →</a>
+        </div>
+`;
+}
+
+function insertSampleCards(html, cardsHtml) {
+  if (!cardsHtml) return html;
+  const gridOpenMatch = html.match(/<div class="sample-cards-grid">/);
+  if (!gridOpenMatch) return html;
+  const gridStart = gridOpenMatch.index;
+  const tagRe = /<(\/?)div\b[^>]*>/g;
+  tagRe.lastIndex = gridStart;
+  let depth = 0;
+  let m;
+  let closeIdx = null;
+  while ((m = tagRe.exec(html))) {
+    depth += m[1] === "" ? 1 : -1;
+    if (depth === 0) { closeIdx = m.index; break; }
+  }
+  if (closeIdx === null) return html;
+  return html.slice(0, closeIdx) + cardsHtml + "\n      " + html.slice(closeIdx);
+}
+
 const config = await readJson("config.json");
 const previous = await readJson("snapshot.json");
 const dailyHistory = await readJson("daily-history.json");
@@ -233,8 +345,31 @@ const cardCandidates = newDailyChanges
 const newCards = await generateReviewCards(cardCandidates, config.categories, MISSION_SUMMARY);
 const nextCards = [...existingCards, ...newCards];
 
+let samplesAdded = [];
+try { samplesAdded = await readJson("samples-added.json"); } catch { samplesAdded = []; }
+const samplesAddedSet = new Set(samplesAdded);
+const repoLookup = new Map([...trackedRepos, ...discovery.flatMap((g) => g.items)].map((r) => [r.fullName, r]));
+const sampleCandidates = newDailyChanges
+  .filter((c) => (c.type === "new-tracked-repo" || c.type === "new-discovery-item") && !samplesAddedSet.has(c.title))
+  .filter((c, i, arr) => arr.findIndex((x) => x.title === c.title) === i)
+  .map((c) => ({ fullName: c.title }))
+  .slice(0, 2);
+const newSampleCards = await generateSampleCards(sampleCandidates, repoLookup, config.categories);
+if (newSampleCards.length) {
+  const samplesHtmlPath = path.join(root, "samples.html");
+  const samplesHtml = await readFile(samplesHtmlPath, "utf8");
+  const cardsHtml = newSampleCards.map(buildSampleCardHtml).join("");
+  const updatedHtml = insertSampleCards(samplesHtml, cardsHtml);
+  await writeFile(samplesHtmlPath, updatedHtml);
+  samplesAdded.push(...newSampleCards.map((c) => c.fullName));
+  await writeJson("samples-added.json", samplesAdded);
+  console.log(`  Samples: added ${newSampleCards.length} new sample card(s) to samples.html.`);
+} else {
+  console.log("  Samples: no new sample cards to add.");
+}
+
 await writeJson("cards.json", nextCards);
 await writeJson("snapshot.json", nextSnapshot);
 await writeJson("daily-history.json", dailyHistory);
 await writeJson("latest.json", latest);
-console.log(`Scan complete: ${newDailyChanges.length} new daily change(s), ${day.changes.length} total for ${today}. Cards: +${newCards.length} new, ${nextCards.length} total.`);
+console.log(`Scan complete: ${newDailyChanges.length} new daily change(s), ${day.changes.length} total for ${today}. Cards: +${newCards.length} new, ${nextCards.length} total. Samples: +${newSampleCards.length} new.`);
