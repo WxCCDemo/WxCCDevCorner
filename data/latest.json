@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-09-30T01:44:46.287Z",
-  "date": "2026-09-30",
+  "generatedAt": "2026-10-01T01:42:12.827Z",
+  "date": "2026-10-01",
   "mode": "daily",
   "scanCount": 1,
-  "firstScanAt": "2026-09-30T01:44:46.287Z",
-  "lastScanAt": "2026-09-30T01:44:46.287Z",
+  "firstScanAt": "2026-10-01T01:42:12.827Z",
+  "lastScanAt": "2026-10-01T01:42:12.827Z",
   "newThisRun": 2,
   "summary": {
     "newRepos": 0,
@@ -17,16 +17,16 @@
       "title": "modelcontextprotocol/servers",
       "source": "https://github.com/modelcontextprotocol/servers",
       "category": "Tracked Repo",
-      "detectedAt": "2026-09-30T01:44:46.287Z",
-      "detail": "Repository pushed date changed from 2026-09-28T04:06:36Z to 2026-09-29T13:39:48Z."
+      "detectedAt": "2026-10-01T01:42:12.827Z",
+      "detail": "Repository pushed date changed from 2026-09-29T13:39:48Z to 2026-10-01T01:38:49Z."
     },
     {
       "type": "tracked-repo-updated",
       "title": "a2aproject/A2A",
       "source": "https://github.com/a2aproject/A2A",
       "category": "MCP",
-      "detectedAt": "2026-09-30T01:44:46.287Z",
-      "detail": "Repository pushed date changed from 2026-09-25T13:44:10Z to 2026-09-29T16:16:48Z."
+      "detectedAt": "2026-10-01T01:42:12.827Z",
+      "detail": "Repository pushed date changed from 2026-09-29T16:16:48Z to 2026-10-01T00:10:17Z."
     }
   ],
   "runChanges": [
@@ -35,16 +35,16 @@
       "title": "modelcontextprotocol/servers",
       "source": "https://github.com/modelcontextprotocol/servers",
       "category": "Tracked Repo",
-      "detectedAt": "2026-09-30T01:44:46.287Z",
-      "detail": "Repository pushed date changed from 2026-09-28T04:06:36Z to 2026-09-29T13:39:48Z."
+      "detectedAt": "2026-10-01T01:42:12.827Z",
+      "detail": "Repository pushed date changed from 2026-09-29T13:39:48Z to 2026-10-01T01:38:49Z."
     },
     {
       "type": "tracked-repo-updated",
       "title": "a2aproject/A2A",
       "source": "https://github.com/a2aproject/A2A",
       "category": "MCP",
-      "detectedAt": "2026-09-30T01:44:46.287Z",
-      "detail": "Repository pushed date changed from 2026-09-25T13:44:10Z to 2026-09-29T16:16:48Z."
+      "detectedAt": "2026-10-01T01:42:12.827Z",
+      "detail": "Repository pushed date changed from 2026-09-29T16:16:48Z to 2026-10-01T00:10:17Z."
     }
   ],
   "scanErrors": [],
@@ -59,7 +59,7 @@
       "pushedAt": "2026-09-24T05:58:36Z",
       "updatedAt": "2026-09-24T14:13:55Z",
       "stars": 65,
-      "forks": 46,
+      "forks": 47,
       "language": "CSS",
       "topics": [
         "api",
@@ -357,10 +357,10 @@
       "owner": "modelcontextprotocol",
       "description": "Model Context Protocol Servers",
       "url": "https://github.com/modelcontextprotocol/servers",
-      "pushedAt": "2026-09-29T13:39:48Z",
-      "updatedAt": "2026-09-30T00:19:47Z",
-      "stars": 90685,
-      "forks": 11711,
+      "pushedAt": "2026-10-01T01:38:49Z",
+      "updatedAt": "2026-10-01T01:42:01Z",
+      "stars": 90822,
+      "forks": 11725,
       "language": "TypeScript",
       "topics": [],
       "categories": [],
@@ -416,10 +416,10 @@
       "owner": "a2aproject",
       "description": "Agent2Agent (A2A) is an open protocol enabling communication and interoperability between opaque agentic applications.",
       "url": "https://github.com/a2aproject/A2A",
-      "pushedAt": "2026-09-29T16:16:48Z",
-      "updatedAt": "2026-09-30T00:01:15Z",
-      "stars": 25966,
-      "forks": 2637,
+      "pushedAt": "2026-10-01T00:10:17Z",
+      "updatedAt": "2026-10-01T01:39:10Z",
+      "stars": 25977,
+      "forks": 2638,
       "language": "Shell",
       "topics": [
         "a2a",
