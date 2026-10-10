@@ -1,0 +1,2002 @@
+{
+  "days": {
+    "2026-06-03": {
+      "date": "2026-06-03",
+      "firstScanAt": "2026-06-03T07:48:09.604Z",
+      "lastScanAt": "2026-06-03T07:48:09.604Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "new-tracked-repo",
+          "title": "WebexSamples/webex-contact-center-api-samples",
+          "source": "https://github.com/WebexSamples/webex-contact-center-api-samples",
+          "category": "Tracked Repo",
+          "detectedAt": "2026-06-03T07:48:09.604Z",
+          "detail": "Official Code samples & snippets repository for Webex Contact Center APIs"
+        },
+        {
+          "type": "new-tracked-repo",
+          "title": "WebexSamples/webex-contact-center-flows",
+          "source": "https://github.com/WebexSamples/webex-contact-center-flows",
+          "category": "Flow Designer",
+          "detectedAt": "2026-06-03T07:48:09.604Z",
+          "detail": "Official Repository for Sample Webex Contact Center Flow Templates that are usable on Flow Designer"
+        },
+        {
+          "type": "new-tracked-repo",
+          "title": "WebexSamples/webex-ai-cookbook",
+          "source": "https://github.com/WebexSamples/webex-ai-cookbook",
+          "category": "AI Agent",
+          "detectedAt": "2026-06-03T07:48:09.604Z",
+          "detail": "Documentation-first sample repository for Webex AI agents and Webex Contact Center flow patterns."
+        },
+        {
+          "type": "new-tracked-repo",
+          "title": "WebexSamples/webex-contact-center-agent-desktop-api-sample",
+          "source": "https://github.com/WebexSamples/webex-contact-center-agent-desktop-api-sample",
+          "category": "Tracked Repo",
+          "detectedAt": "2026-06-03T07:48:09.604Z",
+          "detail": "Webex CC RESTful API Agent Desktop STARTER"
+        },
+        {
+          "type": "new-tracked-repo",
+          "title": "WebexSamples/webex-byods-manager",
+          "source": "https://github.com/WebexSamples/webex-byods-manager",
+          "category": "BYODS",
+          "detectedAt": "2026-06-03T07:48:09.604Z",
+          "detail": "Tracked repository added to the radar."
+        },
+        {
+          "type": "new-tracked-repo",
+          "title": "modelcontextprotocol/servers",
+          "source": "https://github.com/modelcontextprotocol/servers",
+          "category": "Tracked Repo",
+          "detectedAt": "2026-06-03T07:48:09.604Z",
+          "detail": "Model Context Protocol Servers"
+        },
+        {
+          "type": "new-tracked-repo",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-06-03T07:48:09.604Z",
+          "detail": "Agent2Agent (A2A) is an open protocol enabling communication and interoperability between opaque agentic applications."
+        },
+        {
+          "type": "new-discovery-item",
+          "title": "api-evangelist/webex",
+          "source": "https://github.com/api-evangelist/webex",
+          "category": "REST API",
+          "detectedAt": "2026-06-03T07:48:09.604Z",
+          "detail": "Cisco Webex is a comprehensive collaboration platform offering APIs for messaging, meetings, calling, devices, and contact center workflows. The Webex Developer Platform enables developers to build integrations, bots, embedded apps, and automations using REST APIs, SDKs, and webhooks."
+        },
+        {
+          "type": "new-discovery-item",
+          "title": "kadammmmm/wxcc-journey-widget",
+          "source": "https://github.com/kadammmmm/wxcc-journey-widget",
+          "category": "Desktop SDK",
+          "detectedAt": "2026-06-03T07:48:09.604Z",
+          "detail": "Webex Contact Center Customer Journey timeline widget — LitElement, CJDS API, WxCC Desktop SDK"
+        },
+        {
+          "type": "new-discovery-item",
+          "title": "webex/webex-contact-center-crm-connectors",
+          "source": "https://github.com/webex/webex-contact-center-crm-connectors",
+          "category": "CRM Integration",
+          "detectedAt": "2026-06-03T07:48:09.604Z",
+          "detail": "Location for config files and samples related to Cisco's Webex Contact Center CRM integrations"
+        },
+        {
+          "type": "new-discovery-item",
+          "title": "CiscoDevNet/webex-contact-center-crm-integrations",
+          "source": "https://github.com/CiscoDevNet/webex-contact-center-crm-integrations",
+          "category": "CRM Integration",
+          "detectedAt": "2026-06-03T07:48:09.604Z",
+          "detail": "Official Repository for Webex Contact Center CRM Integrations & Connectors"
+        }
+      ]
+    },
+    "2026-06-04": {
+      "date": "2026-06-04",
+      "firstScanAt": "2026-06-04T00:25:40.184Z",
+      "lastScanAt": "2026-06-04T00:25:40.184Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "WebexSamples/webex-ai-cookbook",
+          "source": "https://github.com/WebexSamples/webex-ai-cookbook",
+          "category": "AI Agent",
+          "detectedAt": "2026-06-04T00:25:40.184Z",
+          "detail": "Repository pushed date changed from 2026-06-03T00:40:09Z to 2026-06-03T22:48:51Z."
+        },
+        {
+          "type": "tracked-repo-updated",
+          "title": "modelcontextprotocol/servers",
+          "source": "https://github.com/modelcontextprotocol/servers",
+          "category": "Tracked Repo",
+          "detectedAt": "2026-06-04T00:25:40.184Z",
+          "detail": "Repository pushed date changed from 2026-05-30T18:35:21Z to 2026-06-03T20:40:12Z."
+        }
+      ]
+    },
+    "2026-06-05": {
+      "date": "2026-06-05",
+      "firstScanAt": "2026-06-04T23:59:27.987Z",
+      "lastScanAt": "2026-06-04T23:59:27.987Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "WebexSamples/webex-ai-cookbook",
+          "source": "https://github.com/WebexSamples/webex-ai-cookbook",
+          "category": "AI Agent",
+          "detectedAt": "2026-06-04T23:59:27.987Z",
+          "detail": "Repository pushed date changed from 2026-06-03T22:48:51Z to 2026-06-04T22:53:36Z."
+        },
+        {
+          "type": "tracked-repo-updated",
+          "title": "modelcontextprotocol/servers",
+          "source": "https://github.com/modelcontextprotocol/servers",
+          "category": "Tracked Repo",
+          "detectedAt": "2026-06-04T23:59:27.987Z",
+          "detail": "Repository pushed date changed from 2026-06-03T20:40:12Z to 2026-06-04T01:19:42Z."
+        },
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-06-04T23:59:27.987Z",
+          "detail": "Repository pushed date changed from 2026-06-02T19:08:42Z to 2026-06-04T16:39:10Z."
+        }
+      ]
+    },
+    "2026-06-06": {
+      "date": "2026-06-06",
+      "firstScanAt": "2026-06-05T23:59:35.566Z",
+      "lastScanAt": "2026-06-05T23:59:35.566Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "modelcontextprotocol/servers",
+          "source": "https://github.com/modelcontextprotocol/servers",
+          "category": "Tracked Repo",
+          "detectedAt": "2026-06-05T23:59:35.566Z",
+          "detail": "Repository pushed date changed from 2026-06-04T01:19:42Z to 2026-06-05T15:24:07Z."
+        },
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-06-05T23:59:35.566Z",
+          "detail": "Repository pushed date changed from 2026-06-04T16:39:10Z to 2026-06-05T12:56:39Z."
+        }
+      ]
+    },
+    "2026-06-07": {
+      "date": "2026-06-07",
+      "firstScanAt": "2026-06-06T23:57:18.468Z",
+      "lastScanAt": "2026-06-06T23:57:18.468Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "modelcontextprotocol/servers",
+          "source": "https://github.com/modelcontextprotocol/servers",
+          "category": "Tracked Repo",
+          "detectedAt": "2026-06-06T23:57:18.468Z",
+          "detail": "Repository pushed date changed from 2026-06-05T15:24:07Z to 2026-06-06T19:14:23Z."
+        }
+      ]
+    },
+    "2026-06-08": {
+      "date": "2026-06-08",
+      "firstScanAt": "2026-06-07T23:59:40.817Z",
+      "lastScanAt": "2026-06-07T23:59:40.817Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "modelcontextprotocol/servers",
+          "source": "https://github.com/modelcontextprotocol/servers",
+          "category": "Tracked Repo",
+          "detectedAt": "2026-06-07T23:59:40.817Z",
+          "detail": "Repository pushed date changed from 2026-06-06T19:14:23Z to 2026-06-07T22:29:30Z."
+        }
+      ]
+    },
+    "2026-06-09": {
+      "date": "2026-06-09",
+      "firstScanAt": "2026-06-08T23:58:04.728Z",
+      "lastScanAt": "2026-06-08T23:58:04.728Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "WebexSamples/webex-ai-cookbook",
+          "source": "https://github.com/WebexSamples/webex-ai-cookbook",
+          "category": "AI Agent",
+          "detectedAt": "2026-06-08T23:58:04.728Z",
+          "detail": "Repository pushed date changed from 2026-06-04T22:53:36Z to 2026-06-08T15:32:06Z."
+        }
+      ]
+    },
+    "2026-06-10": {
+      "date": "2026-06-10",
+      "firstScanAt": "2026-06-10T00:05:32.152Z",
+      "lastScanAt": "2026-06-10T00:05:32.152Z",
+      "scanCount": 1,
+      "changes": []
+    },
+    "2026-06-11": {
+      "date": "2026-06-11",
+      "firstScanAt": "2026-06-11T00:09:22.390Z",
+      "lastScanAt": "2026-06-11T00:09:22.390Z",
+      "scanCount": 1,
+      "changes": []
+    },
+    "2026-06-12": {
+      "date": "2026-06-12",
+      "firstScanAt": "2026-06-12T00:15:04.466Z",
+      "lastScanAt": "2026-06-12T00:15:04.466Z",
+      "scanCount": 1,
+      "changes": []
+    },
+    "2026-06-13": {
+      "date": "2026-06-13",
+      "firstScanAt": "2026-06-13T00:13:42.839Z",
+      "lastScanAt": "2026-06-13T00:13:42.839Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-06-13T00:13:42.839Z",
+          "detail": "Repository pushed date changed from 2026-06-05T12:56:39Z to 2026-06-12T10:40:26Z."
+        }
+      ]
+    },
+    "2026-06-14": {
+      "date": "2026-06-14",
+      "firstScanAt": "2026-06-13T23:59:25.363Z",
+      "lastScanAt": "2026-06-13T23:59:25.363Z",
+      "scanCount": 1,
+      "changes": []
+    },
+    "2026-06-15": {
+      "date": "2026-06-15",
+      "firstScanAt": "2026-06-15T00:02:36.120Z",
+      "lastScanAt": "2026-06-15T00:02:36.120Z",
+      "scanCount": 1,
+      "changes": []
+    },
+    "2026-06-16": {
+      "date": "2026-06-16",
+      "firstScanAt": "2026-06-16T00:23:57.970Z",
+      "lastScanAt": "2026-06-16T00:23:57.970Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "WebexSamples/webex-contact-center-flows",
+          "source": "https://github.com/WebexSamples/webex-contact-center-flows",
+          "category": "Flow Designer",
+          "detectedAt": "2026-06-16T00:23:57.970Z",
+          "detail": "Repository pushed date changed from 2026-04-01T17:55:56Z to 2026-06-15T03:29:06Z."
+        }
+      ]
+    },
+    "2026-06-17": {
+      "date": "2026-06-17",
+      "firstScanAt": "2026-06-17T00:09:58.225Z",
+      "lastScanAt": "2026-06-17T00:09:58.225Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "modelcontextprotocol/servers",
+          "source": "https://github.com/modelcontextprotocol/servers",
+          "category": "Tracked Repo",
+          "detectedAt": "2026-06-17T00:09:58.225Z",
+          "detail": "Repository pushed date changed from 2026-06-07T22:29:30Z to 2026-06-16T14:53:13Z."
+        }
+      ]
+    },
+    "2026-06-18": {
+      "date": "2026-06-18",
+      "firstScanAt": "2026-06-18T00:08:10.921Z",
+      "lastScanAt": "2026-06-18T00:08:10.921Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "modelcontextprotocol/servers",
+          "source": "https://github.com/modelcontextprotocol/servers",
+          "category": "Tracked Repo",
+          "detectedAt": "2026-06-18T00:08:10.921Z",
+          "detail": "Repository pushed date changed from 2026-06-16T14:53:13Z to 2026-06-17T01:40:52Z."
+        }
+      ]
+    },
+    "2026-06-19": {
+      "date": "2026-06-19",
+      "firstScanAt": "2026-06-19T00:20:29.561Z",
+      "lastScanAt": "2026-06-19T00:20:29.561Z",
+      "scanCount": 1,
+      "changes": []
+    },
+    "2026-06-20": {
+      "date": "2026-06-20",
+      "firstScanAt": "2026-06-20T00:01:24.234Z",
+      "lastScanAt": "2026-06-20T00:01:24.234Z",
+      "scanCount": 1,
+      "changes": []
+    },
+    "2026-06-21": {
+      "date": "2026-06-21",
+      "firstScanAt": "2026-06-20T23:59:34.679Z",
+      "lastScanAt": "2026-06-20T23:59:34.679Z",
+      "scanCount": 1,
+      "changes": []
+    },
+    "2026-06-22": {
+      "date": "2026-06-22",
+      "firstScanAt": "2026-06-22T00:03:50.826Z",
+      "lastScanAt": "2026-06-22T00:03:50.826Z",
+      "scanCount": 1,
+      "changes": []
+    },
+    "2026-06-23": {
+      "date": "2026-06-23",
+      "firstScanAt": "2026-06-23T00:00:05.534Z",
+      "lastScanAt": "2026-06-23T00:00:05.534Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-06-23T00:00:05.534Z",
+          "detail": "Repository pushed date changed from 2026-06-12T10:40:26Z to 2026-06-22T22:53:40Z."
+        }
+      ]
+    },
+    "2026-06-24": {
+      "date": "2026-06-24",
+      "firstScanAt": "2026-06-23T23:49:23.558Z",
+      "lastScanAt": "2026-06-23T23:49:23.558Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-06-23T23:49:23.558Z",
+          "detail": "Repository pushed date changed from 2026-06-22T22:53:40Z to 2026-06-23T12:29:56Z."
+        }
+      ]
+    },
+    "2026-06-25": {
+      "date": "2026-06-25",
+      "firstScanAt": "2026-06-24T23:59:22.119Z",
+      "lastScanAt": "2026-06-24T23:59:22.119Z",
+      "scanCount": 1,
+      "changes": []
+    },
+    "2026-06-26": {
+      "date": "2026-06-26",
+      "firstScanAt": "2026-06-26T00:04:02.314Z",
+      "lastScanAt": "2026-06-26T00:04:02.314Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-06-26T00:04:02.314Z",
+          "detail": "Repository pushed date changed from 2026-06-23T12:29:56Z to 2026-06-25T10:48:58Z."
+        }
+      ]
+    },
+    "2026-06-27": {
+      "date": "2026-06-27",
+      "firstScanAt": "2026-06-26T23:55:52.039Z",
+      "lastScanAt": "2026-06-26T23:55:52.039Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-06-26T23:55:52.039Z",
+          "detail": "Repository pushed date changed from 2026-06-25T10:48:58Z to 2026-06-26T15:12:53Z."
+        }
+      ]
+    },
+    "2026-06-28": {
+      "date": "2026-06-28",
+      "firstScanAt": "2026-06-27T23:55:30.905Z",
+      "lastScanAt": "2026-06-27T23:55:30.905Z",
+      "scanCount": 1,
+      "changes": []
+    },
+    "2026-06-29": {
+      "date": "2026-06-29",
+      "firstScanAt": "2026-06-29T00:01:09.016Z",
+      "lastScanAt": "2026-06-29T00:01:09.016Z",
+      "scanCount": 1,
+      "changes": []
+    },
+    "2026-06-30": {
+      "date": "2026-06-30",
+      "firstScanAt": "2026-06-29T23:54:42.706Z",
+      "lastScanAt": "2026-06-29T23:54:42.706Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "modelcontextprotocol/servers",
+          "source": "https://github.com/modelcontextprotocol/servers",
+          "category": "Tracked Repo",
+          "detectedAt": "2026-06-29T23:54:42.706Z",
+          "detail": "Repository pushed date changed from 2026-06-17T01:40:52Z to 2026-06-29T07:13:57Z."
+        }
+      ]
+    },
+    "2026-07-01": {
+      "date": "2026-07-01",
+      "firstScanAt": "2026-06-30T23:58:43.921Z",
+      "lastScanAt": "2026-06-30T23:58:43.921Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-06-30T23:58:43.921Z",
+          "detail": "Repository pushed date changed from 2026-06-26T15:12:53Z to 2026-06-30T17:32:08Z."
+        }
+      ]
+    },
+    "2026-07-02": {
+      "date": "2026-07-02",
+      "firstScanAt": "2026-07-02T00:01:06.450Z",
+      "lastScanAt": "2026-07-02T00:01:06.450Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-07-02T00:01:06.450Z",
+          "detail": "Repository pushed date changed from 2026-06-30T17:32:08Z to 2026-07-01T00:09:58Z."
+        }
+      ]
+    },
+    "2026-07-03": {
+      "date": "2026-07-03",
+      "firstScanAt": "2026-07-02T23:56:00.817Z",
+      "lastScanAt": "2026-07-02T23:56:00.817Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-07-02T23:56:00.817Z",
+          "detail": "Repository pushed date changed from 2026-07-01T00:09:58Z to 2026-07-02T08:55:16Z."
+        }
+      ]
+    },
+    "2026-07-04": {
+      "date": "2026-07-04",
+      "firstScanAt": "2026-07-03T23:57:22.854Z",
+      "lastScanAt": "2026-07-03T23:57:22.854Z",
+      "scanCount": 1,
+      "changes": []
+    },
+    "2026-07-05": {
+      "date": "2026-07-05",
+      "firstScanAt": "2026-07-04T23:53:54.169Z",
+      "lastScanAt": "2026-07-04T23:53:54.169Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "modelcontextprotocol/servers",
+          "source": "https://github.com/modelcontextprotocol/servers",
+          "category": "Tracked Repo",
+          "detectedAt": "2026-07-04T23:53:54.169Z",
+          "detail": "Repository pushed date changed from 2026-06-29T07:13:57Z to 2026-07-04T23:04:27Z."
+        }
+      ]
+    },
+    "2026-07-06": {
+      "date": "2026-07-06",
+      "firstScanAt": "2026-07-05T23:57:54.280Z",
+      "lastScanAt": "2026-07-05T23:57:54.280Z",
+      "scanCount": 1,
+      "changes": []
+    },
+    "2026-07-07": {
+      "date": "2026-07-07",
+      "firstScanAt": "2026-07-06T23:59:07.249Z",
+      "lastScanAt": "2026-07-06T23:59:07.249Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "WebexSamples/webex-contact-center-api-samples",
+          "source": "https://github.com/WebexSamples/webex-contact-center-api-samples",
+          "category": "Tracked Repo",
+          "detectedAt": "2026-07-06T23:59:07.249Z",
+          "detail": "Repository pushed date changed from 2026-06-02T04:02:49Z to 2026-07-06T08:52:32Z."
+        },
+        {
+          "type": "tracked-repo-updated",
+          "title": "modelcontextprotocol/servers",
+          "source": "https://github.com/modelcontextprotocol/servers",
+          "category": "Tracked Repo",
+          "detectedAt": "2026-07-06T23:59:07.249Z",
+          "detail": "Repository pushed date changed from 2026-07-04T23:04:27Z to 2026-07-06T17:15:49Z."
+        }
+      ]
+    },
+    "2026-07-08": {
+      "date": "2026-07-08",
+      "firstScanAt": "2026-07-07T23:48:12.429Z",
+      "lastScanAt": "2026-07-07T23:48:12.429Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "WebexSamples/webex-ai-cookbook",
+          "source": "https://github.com/WebexSamples/webex-ai-cookbook",
+          "category": "AI Agent",
+          "detectedAt": "2026-07-07T23:48:12.429Z",
+          "detail": "Repository pushed date changed from 2026-06-08T15:32:06Z to 2026-07-07T22:18:41Z."
+        },
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-07-07T23:48:12.429Z",
+          "detail": "Repository pushed date changed from 2026-07-02T08:55:16Z to 2026-07-07T18:30:28Z."
+        }
+      ]
+    },
+    "2026-07-09": {
+      "date": "2026-07-09",
+      "firstScanAt": "2026-07-09T00:00:13.443Z",
+      "lastScanAt": "2026-07-09T00:00:13.443Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "WebexSamples/webex-ai-cookbook",
+          "source": "https://github.com/WebexSamples/webex-ai-cookbook",
+          "category": "AI Agent",
+          "detectedAt": "2026-07-09T00:00:13.443Z",
+          "detail": "Repository pushed date changed from 2026-07-07T22:18:41Z to 2026-07-08T22:04:33Z."
+        },
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-07-09T00:00:13.443Z",
+          "detail": "Repository pushed date changed from 2026-07-07T18:30:28Z to 2026-07-08T16:20:24Z."
+        }
+      ]
+    },
+    "2026-07-10": {
+      "date": "2026-07-10",
+      "firstScanAt": "2026-07-09T23:58:11.490Z",
+      "lastScanAt": "2026-07-09T23:58:11.490Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-07-09T23:58:11.490Z",
+          "detail": "Repository pushed date changed from 2026-07-08T16:20:24Z to 2026-07-09T16:25:20Z."
+        }
+      ]
+    },
+    "2026-07-11": {
+      "date": "2026-07-11",
+      "firstScanAt": "2026-07-10T23:49:47.181Z",
+      "lastScanAt": "2026-07-10T23:49:47.181Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "WebexSamples/webex-byods-manager",
+          "source": "https://github.com/WebexSamples/webex-byods-manager",
+          "category": "BYODS",
+          "detectedAt": "2026-07-10T23:49:47.181Z",
+          "detail": "Repository pushed date changed from 2026-03-11T16:53:08Z to 2026-07-10T20:28:35Z."
+        },
+        {
+          "type": "tracked-repo-updated",
+          "title": "modelcontextprotocol/servers",
+          "source": "https://github.com/modelcontextprotocol/servers",
+          "category": "Tracked Repo",
+          "detectedAt": "2026-07-10T23:49:47.181Z",
+          "detail": "Repository pushed date changed from 2026-07-06T17:15:49Z to 2026-07-10T03:30:19Z."
+        }
+      ]
+    },
+    "2026-07-12": {
+      "date": "2026-07-12",
+      "firstScanAt": "2026-07-11T23:43:59.594Z",
+      "lastScanAt": "2026-07-11T23:43:59.594Z",
+      "scanCount": 1,
+      "changes": []
+    },
+    "2026-07-13": {
+      "date": "2026-07-13",
+      "firstScanAt": "2026-07-12T23:43:39.034Z",
+      "lastScanAt": "2026-07-12T23:43:39.034Z",
+      "scanCount": 1,
+      "changes": []
+    },
+    "2026-07-14": {
+      "date": "2026-07-14",
+      "firstScanAt": "2026-07-13T23:43:22.760Z",
+      "lastScanAt": "2026-07-13T23:43:22.760Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-07-13T23:43:22.760Z",
+          "detail": "Repository pushed date changed from 2026-07-09T16:25:20Z to 2026-07-13T09:54:10Z."
+        }
+      ]
+    },
+    "2026-07-15": {
+      "date": "2026-07-15",
+      "firstScanAt": "2026-07-14T23:42:36.934Z",
+      "lastScanAt": "2026-07-14T23:42:36.934Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-07-14T23:42:36.934Z",
+          "detail": "Repository pushed date changed from 2026-07-13T09:54:10Z to 2026-07-14T16:42:00Z."
+        }
+      ]
+    },
+    "2026-07-16": {
+      "date": "2026-07-16",
+      "firstScanAt": "2026-07-15T23:51:28.130Z",
+      "lastScanAt": "2026-07-15T23:51:28.130Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-07-15T23:51:28.130Z",
+          "detail": "Repository pushed date changed from 2026-07-14T16:42:00Z to 2026-07-15T13:59:02Z."
+        }
+      ]
+    },
+    "2026-07-17": {
+      "date": "2026-07-17",
+      "firstScanAt": "2026-07-16T23:51:22.127Z",
+      "lastScanAt": "2026-07-16T23:51:22.127Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-07-16T23:51:22.127Z",
+          "detail": "Repository pushed date changed from 2026-07-15T13:59:02Z to 2026-07-16T14:15:38Z."
+        }
+      ]
+    },
+    "2026-07-18": {
+      "date": "2026-07-18",
+      "firstScanAt": "2026-07-17T23:42:57.944Z",
+      "lastScanAt": "2026-07-17T23:42:57.944Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-07-17T23:42:57.944Z",
+          "detail": "Repository pushed date changed from 2026-07-16T14:15:38Z to 2026-07-17T17:29:34Z."
+        }
+      ]
+    },
+    "2026-07-19": {
+      "date": "2026-07-19",
+      "firstScanAt": "2026-07-18T23:42:53.321Z",
+      "lastScanAt": "2026-07-18T23:42:53.321Z",
+      "scanCount": 1,
+      "changes": []
+    },
+    "2026-07-20": {
+      "date": "2026-07-20",
+      "firstScanAt": "2026-07-19T23:48:48.599Z",
+      "lastScanAt": "2026-07-19T23:48:48.599Z",
+      "scanCount": 1,
+      "changes": []
+    },
+    "2026-07-21": {
+      "date": "2026-07-21",
+      "firstScanAt": "2026-07-20T23:47:53.696Z",
+      "lastScanAt": "2026-07-20T23:47:53.696Z",
+      "scanCount": 1,
+      "changes": []
+    },
+    "2026-07-22": {
+      "date": "2026-07-22",
+      "firstScanAt": "2026-07-21T23:48:29.924Z",
+      "lastScanAt": "2026-07-21T23:48:29.924Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "WebexSamples/webex-contact-center-api-samples",
+          "source": "https://github.com/WebexSamples/webex-contact-center-api-samples",
+          "category": "Tracked Repo",
+          "detectedAt": "2026-07-21T23:48:29.924Z",
+          "detail": "Repository pushed date changed from 2026-07-06T08:52:32Z to 2026-07-21T03:51:15Z."
+        },
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-07-21T23:48:29.924Z",
+          "detail": "Repository pushed date changed from 2026-07-17T17:29:34Z to 2026-07-21T19:50:00Z."
+        }
+      ]
+    },
+    "2026-07-23": {
+      "date": "2026-07-23",
+      "firstScanAt": "2026-07-22T23:54:59.521Z",
+      "lastScanAt": "2026-07-23T15:57:05.148Z",
+      "scanCount": 2,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "WebexSamples/webex-ai-cookbook",
+          "source": "https://github.com/WebexSamples/webex-ai-cookbook",
+          "category": "AI Agent",
+          "detectedAt": "2026-07-22T23:54:59.521Z",
+          "detail": "Repository pushed date changed from 2026-07-08T22:04:33Z to 2026-07-22T22:30:25Z."
+        },
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-07-23T15:57:05.148Z",
+          "detail": "Repository pushed date changed from 2026-07-21T19:50:00Z to 2026-07-23T13:37:47Z."
+        }
+      ]
+    },
+    "2026-07-24": {
+      "date": "2026-07-24",
+      "firstScanAt": "2026-07-23T23:52:28.135Z",
+      "lastScanAt": "2026-07-24T05:20:33.804Z",
+      "scanCount": 2,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-07-23T23:52:28.135Z",
+          "detail": "Repository pushed date changed from 2026-07-23T13:37:47Z to 2026-07-23T16:23:40Z."
+        }
+      ]
+    },
+    "2026-07-25": {
+      "date": "2026-07-25",
+      "firstScanAt": "2026-07-24T23:56:18.212Z",
+      "lastScanAt": "2026-07-24T23:56:18.212Z",
+      "scanCount": 1,
+      "changes": []
+    },
+    "2026-07-26": {
+      "date": "2026-07-26",
+      "firstScanAt": "2026-07-25T23:52:14.767Z",
+      "lastScanAt": "2026-07-25T23:52:14.767Z",
+      "scanCount": 1,
+      "changes": []
+    },
+    "2026-07-27": {
+      "date": "2026-07-27",
+      "firstScanAt": "2026-07-26T23:52:26.720Z",
+      "lastScanAt": "2026-07-26T23:52:26.720Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "modelcontextprotocol/servers",
+          "source": "https://github.com/modelcontextprotocol/servers",
+          "category": "Tracked Repo",
+          "detectedAt": "2026-07-26T23:52:26.720Z",
+          "detail": "Repository pushed date changed from 2026-07-10T03:30:19Z to 2026-07-26T03:16:32Z."
+        }
+      ]
+    },
+    "2026-07-28": {
+      "date": "2026-07-28",
+      "firstScanAt": "2026-07-27T23:55:59.789Z",
+      "lastScanAt": "2026-07-27T23:55:59.789Z",
+      "scanCount": 1,
+      "changes": []
+    },
+    "2026-07-29": {
+      "date": "2026-07-29",
+      "firstScanAt": "2026-07-28T23:52:08.703Z",
+      "lastScanAt": "2026-07-28T23:52:08.703Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-07-28T23:52:08.703Z",
+          "detail": "Repository pushed date changed from 2026-07-23T16:23:40Z to 2026-07-28T14:11:45Z."
+        }
+      ]
+    },
+    "2026-07-30": {
+      "date": "2026-07-30",
+      "firstScanAt": "2026-07-29T23:53:54.645Z",
+      "lastScanAt": "2026-07-29T23:53:54.645Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "modelcontextprotocol/servers",
+          "source": "https://github.com/modelcontextprotocol/servers",
+          "category": "Tracked Repo",
+          "detectedAt": "2026-07-29T23:53:54.645Z",
+          "detail": "Repository pushed date changed from 2026-07-26T03:16:32Z to 2026-07-29T23:09:46Z."
+        }
+      ]
+    },
+    "2026-07-31": {
+      "date": "2026-07-31",
+      "firstScanAt": "2026-07-30T23:53:54.092Z",
+      "lastScanAt": "2026-07-30T23:53:54.092Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-07-30T23:53:54.092Z",
+          "detail": "Repository pushed date changed from 2026-07-28T14:11:45Z to 2026-07-30T20:26:54Z."
+        }
+      ]
+    },
+    "2026-08-01": {
+      "date": "2026-08-01",
+      "firstScanAt": "2026-07-31T23:54:09.080Z",
+      "lastScanAt": "2026-07-31T23:54:09.080Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-07-31T23:54:09.080Z",
+          "detail": "Repository pushed date changed from 2026-07-30T20:26:54Z to 2026-07-31T17:27:31Z."
+        }
+      ]
+    },
+    "2026-08-02": {
+      "date": "2026-08-02",
+      "firstScanAt": "2026-08-01T23:49:09.054Z",
+      "lastScanAt": "2026-08-01T23:49:09.054Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "modelcontextprotocol/servers",
+          "source": "https://github.com/modelcontextprotocol/servers",
+          "category": "Tracked Repo",
+          "detectedAt": "2026-08-01T23:49:09.054Z",
+          "detail": "Repository pushed date changed from 2026-07-29T23:09:46Z to 2026-08-01T22:22:31Z."
+        },
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-08-01T23:49:09.054Z",
+          "detail": "Repository pushed date changed from 2026-07-31T17:27:31Z to 2026-08-01T00:08:07Z."
+        }
+      ]
+    },
+    "2026-08-03": {
+      "date": "2026-08-03",
+      "firstScanAt": "2026-08-02T23:50:46.001Z",
+      "lastScanAt": "2026-08-02T23:50:46.001Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "modelcontextprotocol/servers",
+          "source": "https://github.com/modelcontextprotocol/servers",
+          "category": "Tracked Repo",
+          "detectedAt": "2026-08-02T23:50:46.001Z",
+          "detail": "Repository pushed date changed from 2026-08-01T22:22:31Z to 2026-08-02T01:52:52Z."
+        }
+      ]
+    },
+    "2026-08-04": {
+      "date": "2026-08-04",
+      "firstScanAt": "2026-08-03T23:59:50.505Z",
+      "lastScanAt": "2026-08-03T23:59:50.505Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "modelcontextprotocol/servers",
+          "source": "https://github.com/modelcontextprotocol/servers",
+          "category": "Tracked Repo",
+          "detectedAt": "2026-08-03T23:59:50.505Z",
+          "detail": "Repository pushed date changed from 2026-08-02T01:52:52Z to 2026-08-03T18:36:22Z."
+        }
+      ]
+    },
+    "2026-08-05": {
+      "date": "2026-08-05",
+      "firstScanAt": "2026-08-04T23:55:26.612Z",
+      "lastScanAt": "2026-08-04T23:55:26.612Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "modelcontextprotocol/servers",
+          "source": "https://github.com/modelcontextprotocol/servers",
+          "category": "Tracked Repo",
+          "detectedAt": "2026-08-04T23:55:26.612Z",
+          "detail": "Repository pushed date changed from 2026-08-03T18:36:22Z to 2026-08-04T23:54:25Z."
+        },
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-08-04T23:55:26.612Z",
+          "detail": "Repository pushed date changed from 2026-08-01T00:08:07Z to 2026-08-04T15:50:49Z."
+        }
+      ]
+    },
+    "2026-08-06": {
+      "date": "2026-08-06",
+      "firstScanAt": "2026-08-05T23:50:13.007Z",
+      "lastScanAt": "2026-08-05T23:50:13.007Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "modelcontextprotocol/servers",
+          "source": "https://github.com/modelcontextprotocol/servers",
+          "category": "Tracked Repo",
+          "detectedAt": "2026-08-05T23:50:13.007Z",
+          "detail": "Repository pushed date changed from 2026-08-04T23:54:25Z to 2026-08-05T13:50:29Z."
+        }
+      ]
+    },
+    "2026-08-07": {
+      "date": "2026-08-07",
+      "firstScanAt": "2026-08-07T01:39:51.445Z",
+      "lastScanAt": "2026-08-07T01:39:51.445Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-08-07T01:39:51.445Z",
+          "detail": "Repository pushed date changed from 2026-08-04T15:50:49Z to 2026-08-06T14:33:56Z."
+        }
+      ]
+    },
+    "2026-08-08": {
+      "date": "2026-08-08",
+      "firstScanAt": "2026-08-07T23:25:02.643Z",
+      "lastScanAt": "2026-08-07T23:25:02.643Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-08-07T23:25:02.643Z",
+          "detail": "Repository pushed date changed from 2026-08-06T14:33:56Z to 2026-08-07T16:21:22Z."
+        }
+      ]
+    },
+    "2026-08-09": {
+      "date": "2026-08-09",
+      "firstScanAt": "2026-08-08T23:18:51.333Z",
+      "lastScanAt": "2026-08-08T23:18:51.333Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-08-08T23:18:51.333Z",
+          "detail": "Repository pushed date changed from 2026-08-07T16:21:22Z to 2026-08-08T09:48:45Z."
+        }
+      ]
+    },
+    "2026-08-10": {
+      "date": "2026-08-10",
+      "firstScanAt": "2026-08-09T23:21:15.210Z",
+      "lastScanAt": "2026-08-09T23:21:15.210Z",
+      "scanCount": 1,
+      "changes": []
+    },
+    "2026-08-11": {
+      "date": "2026-08-11",
+      "firstScanAt": "2026-08-10T23:25:35.589Z",
+      "lastScanAt": "2026-08-10T23:25:35.589Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "modelcontextprotocol/servers",
+          "source": "https://github.com/modelcontextprotocol/servers",
+          "category": "Tracked Repo",
+          "detectedAt": "2026-08-10T23:25:35.589Z",
+          "detail": "Repository pushed date changed from 2026-08-05T13:50:29Z to 2026-08-10T02:41:59Z."
+        },
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-08-10T23:25:35.589Z",
+          "detail": "Repository pushed date changed from 2026-08-08T09:48:45Z to 2026-08-10T08:49:51Z."
+        }
+      ]
+    },
+    "2026-08-12": {
+      "date": "2026-08-12",
+      "firstScanAt": "2026-08-11T23:30:20.595Z",
+      "lastScanAt": "2026-08-11T23:30:20.595Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-08-11T23:30:20.595Z",
+          "detail": "Repository pushed date changed from 2026-08-10T08:49:51Z to 2026-08-11T20:01:05Z."
+        }
+      ]
+    },
+    "2026-08-13": {
+      "date": "2026-08-13",
+      "firstScanAt": "2026-08-12T23:30:52.194Z",
+      "lastScanAt": "2026-08-12T23:30:52.194Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-08-12T23:30:52.194Z",
+          "detail": "Repository pushed date changed from 2026-08-11T20:01:05Z to 2026-08-12T11:44:58Z."
+        }
+      ]
+    },
+    "2026-08-14": {
+      "date": "2026-08-14",
+      "firstScanAt": "2026-08-13T23:31:41.656Z",
+      "lastScanAt": "2026-08-13T23:31:41.656Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-08-13T23:31:41.656Z",
+          "detail": "Repository pushed date changed from 2026-08-12T11:44:58Z to 2026-08-13T20:53:21Z."
+        }
+      ]
+    },
+    "2026-08-15": {
+      "date": "2026-08-15",
+      "firstScanAt": "2026-08-14T23:12:42.759Z",
+      "lastScanAt": "2026-08-14T23:12:42.759Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-08-14T23:12:42.759Z",
+          "detail": "Repository pushed date changed from 2026-08-13T20:53:21Z to 2026-08-14T07:45:26Z."
+        }
+      ]
+    },
+    "2026-08-16": {
+      "date": "2026-08-16",
+      "firstScanAt": "2026-08-15T23:11:32.277Z",
+      "lastScanAt": "2026-08-15T23:11:32.277Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-08-15T23:11:32.277Z",
+          "detail": "Repository pushed date changed from 2026-08-14T07:45:26Z to 2026-08-15T15:41:01Z."
+        }
+      ]
+    },
+    "2026-08-17": {
+      "date": "2026-08-17",
+      "firstScanAt": "2026-08-16T23:10:52.035Z",
+      "lastScanAt": "2026-08-16T23:10:52.035Z",
+      "scanCount": 1,
+      "changes": []
+    },
+    "2026-08-18": {
+      "date": "2026-08-18",
+      "firstScanAt": "2026-08-17T23:13:32.746Z",
+      "lastScanAt": "2026-08-17T23:13:32.746Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-08-17T23:13:32.746Z",
+          "detail": "Repository pushed date changed from 2026-08-15T15:41:01Z to 2026-08-17T21:13:46Z."
+        }
+      ]
+    },
+    "2026-08-19": {
+      "date": "2026-08-19",
+      "firstScanAt": "2026-08-18T23:13:06.346Z",
+      "lastScanAt": "2026-08-18T23:13:06.346Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "WebexSamples/webex-contact-center-flows",
+          "source": "https://github.com/WebexSamples/webex-contact-center-flows",
+          "category": "Flow Designer",
+          "detectedAt": "2026-08-18T23:13:06.346Z",
+          "detail": "Repository pushed date changed from 2026-06-15T03:29:06Z to 2026-08-18T21:52:58Z."
+        },
+        {
+          "type": "tracked-repo-updated",
+          "title": "modelcontextprotocol/servers",
+          "source": "https://github.com/modelcontextprotocol/servers",
+          "category": "Tracked Repo",
+          "detectedAt": "2026-08-18T23:13:06.346Z",
+          "detail": "Repository pushed date changed from 2026-08-10T02:41:59Z to 2026-08-18T16:04:56Z."
+        },
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-08-18T23:13:06.346Z",
+          "detail": "Repository pushed date changed from 2026-08-17T21:13:46Z to 2026-08-18T17:09:57Z."
+        }
+      ]
+    },
+    "2026-08-20": {
+      "date": "2026-08-20",
+      "firstScanAt": "2026-08-19T23:14:17.286Z",
+      "lastScanAt": "2026-08-19T23:14:17.286Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "WebexSamples/webex-contact-center-flows",
+          "source": "https://github.com/WebexSamples/webex-contact-center-flows",
+          "category": "Flow Designer",
+          "detectedAt": "2026-08-19T23:14:17.286Z",
+          "detail": "Repository pushed date changed from 2026-08-18T21:52:58Z to 2026-08-19T20:58:00Z."
+        }
+      ]
+    },
+    "2026-08-21": {
+      "date": "2026-08-21",
+      "firstScanAt": "2026-08-20T23:16:53.276Z",
+      "lastScanAt": "2026-08-20T23:16:53.276Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "modelcontextprotocol/servers",
+          "source": "https://github.com/modelcontextprotocol/servers",
+          "category": "Tracked Repo",
+          "detectedAt": "2026-08-20T23:16:53.276Z",
+          "detail": "Repository pushed date changed from 2026-08-18T16:04:56Z to 2026-08-20T01:12:36Z."
+        }
+      ]
+    },
+    "2026-08-22": {
+      "date": "2026-08-22",
+      "firstScanAt": "2026-08-21T23:14:18.678Z",
+      "lastScanAt": "2026-08-21T23:14:18.678Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-08-21T23:14:18.678Z",
+          "detail": "Repository pushed date changed from 2026-08-18T17:09:57Z to 2026-08-21T19:46:58Z."
+        }
+      ]
+    },
+    "2026-08-23": {
+      "date": "2026-08-23",
+      "firstScanAt": "2026-08-22T23:11:18.009Z",
+      "lastScanAt": "2026-08-22T23:11:18.009Z",
+      "scanCount": 1,
+      "changes": []
+    },
+    "2026-08-24": {
+      "date": "2026-08-24",
+      "firstScanAt": "2026-08-23T23:11:55.311Z",
+      "lastScanAt": "2026-08-23T23:11:55.311Z",
+      "scanCount": 1,
+      "changes": []
+    },
+    "2026-08-25": {
+      "date": "2026-08-25",
+      "firstScanAt": "2026-08-24T23:14:33.210Z",
+      "lastScanAt": "2026-08-24T23:14:33.210Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "WebexSamples/webex-contact-center-api-samples",
+          "source": "https://github.com/WebexSamples/webex-contact-center-api-samples",
+          "category": "Tracked Repo",
+          "detectedAt": "2026-08-24T23:14:33.210Z",
+          "detail": "Repository pushed date changed from 2026-07-21T03:51:15Z to 2026-08-24T18:49:55Z."
+        },
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-08-24T23:14:33.210Z",
+          "detail": "Repository pushed date changed from 2026-08-21T19:46:58Z to 2026-08-24T20:57:49Z."
+        }
+      ]
+    },
+    "2026-08-26": {
+      "date": "2026-08-26",
+      "firstScanAt": "2026-08-25T23:16:55.760Z",
+      "lastScanAt": "2026-08-25T23:16:55.760Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "WebexSamples/webex-contact-center-api-samples",
+          "source": "https://github.com/WebexSamples/webex-contact-center-api-samples",
+          "category": "Tracked Repo",
+          "detectedAt": "2026-08-25T23:16:55.760Z",
+          "detail": "Repository pushed date changed from 2026-08-24T18:49:55Z to 2026-08-25T07:14:37Z."
+        },
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-08-25T23:16:55.760Z",
+          "detail": "Repository pushed date changed from 2026-08-24T20:57:49Z to 2026-08-25T16:28:14Z."
+        }
+      ]
+    },
+    "2026-08-27": {
+      "date": "2026-08-27",
+      "firstScanAt": "2026-08-27T04:08:51.852Z",
+      "lastScanAt": "2026-08-27T04:08:51.852Z",
+      "scanCount": 1,
+      "changes": []
+    },
+    "2026-08-28": {
+      "date": "2026-08-28",
+      "firstScanAt": "2026-08-28T06:25:56.899Z",
+      "lastScanAt": "2026-08-28T06:25:56.899Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "modelcontextprotocol/servers",
+          "source": "https://github.com/modelcontextprotocol/servers",
+          "category": "Tracked Repo",
+          "detectedAt": "2026-08-28T06:25:56.899Z",
+          "detail": "Repository pushed date changed from 2026-08-20T01:12:36Z to 2026-08-28T02:36:45Z."
+        }
+      ]
+    },
+    "2026-08-29": {
+      "date": "2026-08-29",
+      "firstScanAt": "2026-08-29T03:58:06.177Z",
+      "lastScanAt": "2026-08-29T03:58:06.177Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "modelcontextprotocol/servers",
+          "source": "https://github.com/modelcontextprotocol/servers",
+          "category": "Tracked Repo",
+          "detectedAt": "2026-08-29T03:58:06.177Z",
+          "detail": "Repository pushed date changed from 2026-08-28T02:36:45Z to 2026-08-28T17:58:20Z."
+        },
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-08-29T03:58:06.177Z",
+          "detail": "Repository pushed date changed from 2026-08-25T16:28:14Z to 2026-08-28T13:20:05Z."
+        }
+      ]
+    },
+    "2026-08-30": {
+      "date": "2026-08-30",
+      "firstScanAt": "2026-08-30T00:54:38.864Z",
+      "lastScanAt": "2026-08-30T00:54:38.864Z",
+      "scanCount": 1,
+      "changes": []
+    },
+    "2026-08-31": {
+      "date": "2026-08-31",
+      "firstScanAt": "2026-08-31T01:00:17.582Z",
+      "lastScanAt": "2026-08-31T01:00:17.582Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "modelcontextprotocol/servers",
+          "source": "https://github.com/modelcontextprotocol/servers",
+          "category": "Tracked Repo",
+          "detectedAt": "2026-08-31T01:00:17.582Z",
+          "detail": "Repository pushed date changed from 2026-08-28T17:58:20Z to 2026-08-30T21:43:38Z."
+        }
+      ]
+    },
+    "2026-09-01": {
+      "date": "2026-09-01",
+      "firstScanAt": "2026-09-01T01:30:56.360Z",
+      "lastScanAt": "2026-09-01T01:30:56.360Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "modelcontextprotocol/servers",
+          "source": "https://github.com/modelcontextprotocol/servers",
+          "category": "Tracked Repo",
+          "detectedAt": "2026-09-01T01:30:56.360Z",
+          "detail": "Repository pushed date changed from 2026-08-30T21:43:38Z to 2026-08-31T18:37:08Z."
+        },
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-09-01T01:30:56.360Z",
+          "detail": "Repository pushed date changed from 2026-08-28T13:20:05Z to 2026-09-01T00:15:09Z."
+        }
+      ]
+    },
+    "2026-09-02": {
+      "date": "2026-09-02",
+      "firstScanAt": "2026-09-02T00:40:55.747Z",
+      "lastScanAt": "2026-09-02T00:40:55.747Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-09-02T00:40:55.747Z",
+          "detail": "Repository pushed date changed from 2026-09-01T00:15:09Z to 2026-09-01T08:25:08Z."
+        }
+      ]
+    },
+    "2026-09-03": {
+      "date": "2026-09-03",
+      "firstScanAt": "2026-09-03T00:52:31.652Z",
+      "lastScanAt": "2026-09-03T00:52:31.652Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "WebexSamples/webex-contact-center-api-samples",
+          "source": "https://github.com/WebexSamples/webex-contact-center-api-samples",
+          "category": "Tracked Repo",
+          "detectedAt": "2026-09-03T00:52:31.652Z",
+          "detail": "Repository pushed date changed from 2026-08-25T07:14:37Z to 2026-09-02T13:44:31Z."
+        },
+        {
+          "type": "tracked-repo-updated",
+          "title": "modelcontextprotocol/servers",
+          "source": "https://github.com/modelcontextprotocol/servers",
+          "category": "Tracked Repo",
+          "detectedAt": "2026-09-03T00:52:31.652Z",
+          "detail": "Repository pushed date changed from 2026-08-31T18:37:08Z to 2026-09-02T15:04:35Z."
+        }
+      ]
+    },
+    "2026-09-04": {
+      "date": "2026-09-04",
+      "firstScanAt": "2026-09-04T00:39:20.440Z",
+      "lastScanAt": "2026-09-04T00:39:20.440Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "modelcontextprotocol/servers",
+          "source": "https://github.com/modelcontextprotocol/servers",
+          "category": "Tracked Repo",
+          "detectedAt": "2026-09-04T00:39:20.440Z",
+          "detail": "Repository pushed date changed from 2026-09-02T15:04:35Z to 2026-09-03T01:42:26Z."
+        }
+      ]
+    },
+    "2026-09-05": {
+      "date": "2026-09-05",
+      "firstScanAt": "2026-09-05T00:28:43.203Z",
+      "lastScanAt": "2026-09-05T00:28:43.203Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-09-05T00:28:43.203Z",
+          "detail": "Repository pushed date changed from 2026-09-01T08:25:08Z to 2026-09-04T16:46:10Z."
+        }
+      ]
+    },
+    "2026-09-06": {
+      "date": "2026-09-06",
+      "firstScanAt": "2026-09-06T00:23:21.041Z",
+      "lastScanAt": "2026-09-06T00:23:21.041Z",
+      "scanCount": 1,
+      "changes": []
+    },
+    "2026-09-07": {
+      "date": "2026-09-07",
+      "firstScanAt": "2026-09-07T00:30:12.197Z",
+      "lastScanAt": "2026-09-07T00:30:12.197Z",
+      "scanCount": 1,
+      "changes": []
+    },
+    "2026-09-08": {
+      "date": "2026-09-08",
+      "firstScanAt": "2026-09-08T00:48:55.269Z",
+      "lastScanAt": "2026-09-08T00:48:55.269Z",
+      "scanCount": 1,
+      "changes": []
+    },
+    "2026-09-09": {
+      "date": "2026-09-09",
+      "firstScanAt": "2026-09-09T00:52:46.798Z",
+      "lastScanAt": "2026-09-09T00:52:46.798Z",
+      "scanCount": 1,
+      "changes": []
+    },
+    "2026-09-10": {
+      "date": "2026-09-10",
+      "firstScanAt": "2026-09-10T00:43:11.467Z",
+      "lastScanAt": "2026-09-10T00:43:11.467Z",
+      "scanCount": 1,
+      "changes": []
+    },
+    "2026-09-11": {
+      "date": "2026-09-11",
+      "firstScanAt": "2026-09-11T00:41:08.043Z",
+      "lastScanAt": "2026-09-11T00:41:08.043Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-09-11T00:41:08.043Z",
+          "detail": "Repository pushed date changed from 2026-09-04T16:46:10Z to 2026-09-10T20:30:11Z."
+        }
+      ]
+    },
+    "2026-09-12": {
+      "date": "2026-09-12",
+      "firstScanAt": "2026-09-12T00:48:34.008Z",
+      "lastScanAt": "2026-09-12T00:48:34.008Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-09-12T00:48:34.008Z",
+          "detail": "Repository pushed date changed from 2026-09-10T20:30:11Z to 2026-09-11T11:07:06Z."
+        }
+      ]
+    },
+    "2026-09-13": {
+      "date": "2026-09-13",
+      "firstScanAt": "2026-09-13T00:30:06.328Z",
+      "lastScanAt": "2026-09-13T00:30:06.328Z",
+      "scanCount": 1,
+      "changes": []
+    },
+    "2026-09-14": {
+      "date": "2026-09-14",
+      "firstScanAt": "2026-09-14T00:32:31.061Z",
+      "lastScanAt": "2026-09-14T00:32:31.061Z",
+      "scanCount": 1,
+      "changes": []
+    },
+    "2026-09-15": {
+      "date": "2026-09-15",
+      "firstScanAt": "2026-09-15T01:04:26.868Z",
+      "lastScanAt": "2026-09-15T01:04:26.868Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-09-15T01:04:26.868Z",
+          "detail": "Repository pushed date changed from 2026-09-11T11:07:06Z to 2026-09-14T16:28:09Z."
+        }
+      ]
+    },
+    "2026-09-16": {
+      "date": "2026-09-16",
+      "firstScanAt": "2026-09-16T00:53:47.586Z",
+      "lastScanAt": "2026-09-16T00:53:47.586Z",
+      "scanCount": 1,
+      "changes": []
+    },
+    "2026-09-17": {
+      "date": "2026-09-17",
+      "firstScanAt": "2026-09-17T00:57:54.273Z",
+      "lastScanAt": "2026-09-17T00:57:54.273Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-09-17T00:57:54.273Z",
+          "detail": "Repository pushed date changed from 2026-09-14T16:28:09Z to 2026-09-16T11:56:05Z."
+        }
+      ]
+    },
+    "2026-09-18": {
+      "date": "2026-09-18",
+      "firstScanAt": "2026-09-18T00:53:54.518Z",
+      "lastScanAt": "2026-09-18T00:53:54.518Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "WebexSamples/webex-contact-center-api-samples",
+          "source": "https://github.com/WebexSamples/webex-contact-center-api-samples",
+          "category": "Tracked Repo",
+          "detectedAt": "2026-09-18T00:53:54.518Z",
+          "detail": "Repository pushed date changed from 2026-09-02T13:44:31Z to 2026-09-17T02:06:09Z."
+        }
+      ]
+    },
+    "2026-09-19": {
+      "date": "2026-09-19",
+      "firstScanAt": "2026-09-19T00:48:03.852Z",
+      "lastScanAt": "2026-09-19T00:48:03.852Z",
+      "scanCount": 1,
+      "changes": []
+    },
+    "2026-09-20": {
+      "date": "2026-09-20",
+      "firstScanAt": "2026-09-20T00:30:19.992Z",
+      "lastScanAt": "2026-09-20T00:30:19.992Z",
+      "scanCount": 1,
+      "changes": []
+    },
+    "2026-09-21": {
+      "date": "2026-09-21",
+      "firstScanAt": "2026-09-21T00:39:54.972Z",
+      "lastScanAt": "2026-09-21T00:39:54.972Z",
+      "scanCount": 1,
+      "changes": []
+    },
+    "2026-09-22": {
+      "date": "2026-09-22",
+      "firstScanAt": "2026-09-22T01:21:22.695Z",
+      "lastScanAt": "2026-09-22T01:21:22.695Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-09-22T01:21:22.695Z",
+          "detail": "Repository pushed date changed from 2026-09-16T11:56:05Z to 2026-09-21T16:16:51Z."
+        }
+      ]
+    },
+    "2026-09-23": {
+      "date": "2026-09-23",
+      "firstScanAt": "2026-09-23T01:03:57.992Z",
+      "lastScanAt": "2026-09-23T01:03:57.992Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "WebexSamples/webex-contact-center-api-samples",
+          "source": "https://github.com/WebexSamples/webex-contact-center-api-samples",
+          "category": "Tracked Repo",
+          "detectedAt": "2026-09-23T01:03:57.992Z",
+          "detail": "Repository pushed date changed from 2026-09-17T02:06:09Z to 2026-09-22T07:13:42Z."
+        },
+        {
+          "type": "tracked-repo-updated",
+          "title": "modelcontextprotocol/servers",
+          "source": "https://github.com/modelcontextprotocol/servers",
+          "category": "Tracked Repo",
+          "detectedAt": "2026-09-23T01:03:57.992Z",
+          "detail": "Repository pushed date changed from 2026-09-03T01:42:26Z to 2026-09-22T14:30:16Z."
+        },
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-09-23T01:03:57.992Z",
+          "detail": "Repository pushed date changed from 2026-09-21T16:16:51Z to 2026-09-22T13:28:54Z."
+        }
+      ]
+    },
+    "2026-09-24": {
+      "date": "2026-09-24",
+      "firstScanAt": "2026-09-24T00:58:09.061Z",
+      "lastScanAt": "2026-09-24T00:58:09.061Z",
+      "scanCount": 1,
+      "changes": []
+    },
+    "2026-09-25": {
+      "date": "2026-09-25",
+      "firstScanAt": "2026-09-25T01:01:00.597Z",
+      "lastScanAt": "2026-09-25T01:01:00.597Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "WebexSamples/webex-contact-center-api-samples",
+          "source": "https://github.com/WebexSamples/webex-contact-center-api-samples",
+          "category": "Tracked Repo",
+          "detectedAt": "2026-09-25T01:01:00.597Z",
+          "detail": "Repository pushed date changed from 2026-09-22T07:13:42Z to 2026-09-24T05:58:36Z."
+        }
+      ]
+    },
+    "2026-09-26": {
+      "date": "2026-09-26",
+      "firstScanAt": "2026-09-26T01:03:57.258Z",
+      "lastScanAt": "2026-09-26T01:03:57.258Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-09-26T01:03:57.258Z",
+          "detail": "Repository pushed date changed from 2026-09-22T13:28:54Z to 2026-09-25T13:44:10Z."
+        }
+      ]
+    },
+    "2026-09-27": {
+      "date": "2026-09-27",
+      "firstScanAt": "2026-09-27T01:01:24.838Z",
+      "lastScanAt": "2026-09-27T01:01:24.838Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "modelcontextprotocol/servers",
+          "source": "https://github.com/modelcontextprotocol/servers",
+          "category": "Tracked Repo",
+          "detectedAt": "2026-09-27T01:01:24.838Z",
+          "detail": "Repository pushed date changed from 2026-09-22T14:30:16Z to 2026-09-26T23:13:19Z."
+        }
+      ]
+    },
+    "2026-09-28": {
+      "date": "2026-09-28",
+      "firstScanAt": "2026-09-28T01:19:02.164Z",
+      "lastScanAt": "2026-09-28T01:19:02.164Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "modelcontextprotocol/servers",
+          "source": "https://github.com/modelcontextprotocol/servers",
+          "category": "Tracked Repo",
+          "detectedAt": "2026-09-28T01:19:02.164Z",
+          "detail": "Repository pushed date changed from 2026-09-26T23:13:19Z to 2026-09-27T04:29:15Z."
+        }
+      ]
+    },
+    "2026-09-29": {
+      "date": "2026-09-29",
+      "firstScanAt": "2026-09-29T02:25:05.692Z",
+      "lastScanAt": "2026-09-29T02:25:05.692Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "modelcontextprotocol/servers",
+          "source": "https://github.com/modelcontextprotocol/servers",
+          "category": "Tracked Repo",
+          "detectedAt": "2026-09-29T02:25:05.692Z",
+          "detail": "Repository pushed date changed from 2026-09-27T04:29:15Z to 2026-09-28T04:06:36Z."
+        }
+      ]
+    },
+    "2026-09-30": {
+      "date": "2026-09-30",
+      "firstScanAt": "2026-09-30T01:44:46.287Z",
+      "lastScanAt": "2026-09-30T01:44:46.287Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "modelcontextprotocol/servers",
+          "source": "https://github.com/modelcontextprotocol/servers",
+          "category": "Tracked Repo",
+          "detectedAt": "2026-09-30T01:44:46.287Z",
+          "detail": "Repository pushed date changed from 2026-09-28T04:06:36Z to 2026-09-29T13:39:48Z."
+        },
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-09-30T01:44:46.287Z",
+          "detail": "Repository pushed date changed from 2026-09-25T13:44:10Z to 2026-09-29T16:16:48Z."
+        }
+      ]
+    },
+    "2026-10-01": {
+      "date": "2026-10-01",
+      "firstScanAt": "2026-10-01T01:42:12.827Z",
+      "lastScanAt": "2026-10-01T01:42:12.827Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "modelcontextprotocol/servers",
+          "source": "https://github.com/modelcontextprotocol/servers",
+          "category": "Tracked Repo",
+          "detectedAt": "2026-10-01T01:42:12.827Z",
+          "detail": "Repository pushed date changed from 2026-09-29T13:39:48Z to 2026-10-01T01:38:49Z."
+        },
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-10-01T01:42:12.827Z",
+          "detail": "Repository pushed date changed from 2026-09-29T16:16:48Z to 2026-10-01T00:10:17Z."
+        }
+      ]
+    },
+    "2026-10-02": {
+      "date": "2026-10-02",
+      "firstScanAt": "2026-10-02T01:53:08.458Z",
+      "lastScanAt": "2026-10-02T01:53:08.458Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "modelcontextprotocol/servers",
+          "source": "https://github.com/modelcontextprotocol/servers",
+          "category": "Tracked Repo",
+          "detectedAt": "2026-10-02T01:53:08.458Z",
+          "detail": "Repository pushed date changed from 2026-10-01T01:38:49Z to 2026-10-01T15:33:30Z."
+        },
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-10-02T01:53:08.458Z",
+          "detail": "Repository pushed date changed from 2026-10-01T00:10:17Z to 2026-10-01T18:08:54Z."
+        }
+      ]
+    },
+    "2026-10-03": {
+      "date": "2026-10-03",
+      "firstScanAt": "2026-10-03T01:34:34.470Z",
+      "lastScanAt": "2026-10-03T01:34:34.470Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-10-03T01:34:34.470Z",
+          "detail": "Repository pushed date changed from 2026-10-01T18:08:54Z to 2026-10-02T22:19:07Z."
+        }
+      ]
+    },
+    "2026-10-04": {
+      "date": "2026-10-04",
+      "firstScanAt": "2026-10-04T02:15:48.375Z",
+      "lastScanAt": "2026-10-04T02:15:48.375Z",
+      "scanCount": 1,
+      "changes": []
+    },
+    "2026-10-05": {
+      "date": "2026-10-05",
+      "firstScanAt": "2026-10-05T01:25:14.594Z",
+      "lastScanAt": "2026-10-05T01:25:14.594Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "modelcontextprotocol/servers",
+          "source": "https://github.com/modelcontextprotocol/servers",
+          "category": "Tracked Repo",
+          "detectedAt": "2026-10-05T01:25:14.594Z",
+          "detail": "Repository pushed date changed from 2026-10-01T15:33:30Z to 2026-10-05T01:24:48Z."
+        }
+      ]
+    },
+    "2026-10-06": {
+      "date": "2026-10-06",
+      "firstScanAt": "2026-10-06T02:35:47.948Z",
+      "lastScanAt": "2026-10-06T02:35:47.948Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "modelcontextprotocol/servers",
+          "source": "https://github.com/modelcontextprotocol/servers",
+          "category": "Tracked Repo",
+          "detectedAt": "2026-10-06T02:35:47.948Z",
+          "detail": "Repository pushed date changed from 2026-10-05T01:24:48Z to 2026-10-05T05:59:16Z."
+        },
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-10-06T02:35:47.948Z",
+          "detail": "Repository pushed date changed from 2026-10-02T22:19:07Z to 2026-10-05T16:26:14Z."
+        }
+      ]
+    },
+    "2026-10-07": {
+      "date": "2026-10-07",
+      "firstScanAt": "2026-10-07T01:53:59.619Z",
+      "lastScanAt": "2026-10-07T01:53:59.619Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-10-07T01:53:59.619Z",
+          "detail": "Repository pushed date changed from 2026-10-05T16:26:14Z to 2026-10-06T16:32:14Z."
+        }
+      ]
+    },
+    "2026-10-08": {
+      "date": "2026-10-08",
+      "firstScanAt": "2026-10-08T02:22:07.300Z",
+      "lastScanAt": "2026-10-08T02:22:07.300Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "modelcontextprotocol/servers",
+          "source": "https://github.com/modelcontextprotocol/servers",
+          "category": "Tracked Repo",
+          "detectedAt": "2026-10-08T02:22:07.300Z",
+          "detail": "Repository pushed date changed from 2026-10-05T05:59:16Z to 2026-10-07T21:22:09Z."
+        },
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-10-08T02:22:07.300Z",
+          "detail": "Repository pushed date changed from 2026-10-06T16:32:14Z to 2026-10-07T19:39:20Z."
+        }
+      ]
+    },
+    "2026-10-09": {
+      "date": "2026-10-09",
+      "firstScanAt": "2026-10-09T02:39:44.144Z",
+      "lastScanAt": "2026-10-09T02:39:44.144Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "a2aproject/A2A",
+          "source": "https://github.com/a2aproject/A2A",
+          "category": "MCP",
+          "detectedAt": "2026-10-09T02:39:44.144Z",
+          "detail": "Repository pushed date changed from 2026-10-07T19:39:20Z to 2026-10-08T15:12:13Z."
+        }
+      ]
+    },
+    "2026-10-10": {
+      "date": "2026-10-10",
+      "firstScanAt": "2026-10-10T01:59:32.295Z",
+      "lastScanAt": "2026-10-10T01:59:32.295Z",
+      "scanCount": 1,
+      "changes": []
+    }
+  }
+}

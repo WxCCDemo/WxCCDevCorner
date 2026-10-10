@@ -1,4 +1,4 @@
-# WxCCSolutionHub
+# WxCC Dev Corner
 
 An interactive solution hub for exploring how Webex Contact Center can be extended with APIs, webhooks, desktop widgets, Flow Designer integrations, reporting experiences, and customer/partner use cases.
 

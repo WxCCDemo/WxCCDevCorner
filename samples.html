@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Solutions &amp; Samples — WxCCSolutionHub</title>
+  <title>Solutions &amp; Samples — WxCC Dev Corner</title>
   <link rel="stylesheet" href="css/styles.css?v=responsive-1" />
   <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 </head>
@@ -13,7 +13,7 @@
     <a href="index.html" class="nav-logo">
       <div class="nav-logo-mark">Wx</div>
       <div class="nav-logo-text">
-        <span>WxCCSolutionHub</span>
+        <span>WxCC Dev Corner</span>
         <span>Developer Portal</span>
       </div>
     </a>
@@ -78,6 +78,7 @@
       <li><a href="#audio-widget-playbook"><span class="toc-icon">🔊</span> Audio Widget</a></li>
       <li><a href="#flow-template-playbook"><span class="toc-icon">🧩</span> Flow Templates</a></li>
       <li><a href="#ai-provider-playbook"><span class="toc-icon">🤖</span> AI Provider</a></li>
+      <li><a href="#ai-agent-flows-playbook"><span class="toc-icon">🧠</span> AI Agent Flows</a></li>
     </ul>
   </aside>
 
@@ -107,6 +108,14 @@ flowchart LR
     <!-- Sample Gallery -->
     <div id="gallery" class="content-section">
       <div class="section-header"><span class="section-icon">🗂️</span><h2>Sample Gallery</h2></div>
+      <div class="callout callout-info samples-refresh-bar" id="samplesRefreshBar" style="align-items:center;">
+        <span class="callout-icon">🛰️</span>
+        <div class="callout-body">
+          <strong id="samplesRefreshStatus">Checking latest scan…</strong>
+          <p id="samplesRefreshDetail">This gallery is generated from a scan of the WebexSamples GitHub org.</p>
+        </div>
+        <button type="button" id="samplesRefreshBtn" class="copy-btn" style="flex-shrink:0;">🔄 Refresh</button>
+      </div>
       <div class="sample-cards-grid">
 
         <div class="sample-card">
@@ -275,6 +284,18 @@ flowchart LR
             <li>Runtime auth and events</li>
           </ul>
           <a href="#ai-provider-playbook" class="sample-card-link">View Playbook →</a>
+        </div>
+
+        <div class="sample-card">
+          <div class="sample-card-meta"><span class="sample-card-level level-beginner">Beginner</span><span class="tag">AI Agent</span></div>
+          <h3>AI Agent Flows</h3>
+          <p>Document how a Webex AI agent triages a conversation and hands off structured context to a Webex Contact Center flow for seamless live-agent continuity.</p>
+          <ul class="sample-card-bullets">
+            <li>Intent triage & escalation triggers</li>
+            <li>Structured handoff context package</li>
+            <li>Flow-side context retrieval</li>
+          </ul>
+          <a href="#ai-agent-flows-playbook" class="sample-card-link">View Playbook →</a>
         </div>
 
       </div>
@@ -1302,6 +1323,78 @@ Body
       </div>
     </div>
 
+    <!-- AI Agent Flows Playbook -->
+    <div id="ai-agent-flows-playbook" class="content-section">
+      <div class="playbook">
+        <div class="playbook-header">
+          <span style="font-size:2rem;">🧠</span>
+          <div>
+            <span class="sample-card-level level-beginner">Beginner</span>
+            <h3>AI Agent Flows — Automated Triage to Live Handoff</h3>
+          </div>
+        </div>
+        <div class="diagram-wrap" style="margin-bottom:var(--space-md);">
+          <div class="mermaid">
+flowchart LR
+  A[Customer Message] --> B[AI Agent Triage]
+  B --> C{Resolvable?}
+  C -- Yes --> D[Self-Service Resolution]
+  C -- No --> E[Structured Handoff Package]
+  E --> F[WxCC Flow HTTP Lookup]
+  F --> G[Live Agent Desktop]
+  style B fill:#00476B,color:#fff
+  style E fill:#6366f1,color:#fff
+  style G fill:#10b981,color:#fff
+          </div>
+        </div>
+        <p><strong>Business benefit:</strong> Preserves continuity between automated and human support — the customer never repeats themselves, and agents open the interaction with full triage context already attached.</p>
+        <h4>Implementation checklist</h4>
+        <ul>
+          <li>Classify each conversation by intent, urgency, and support domain before deciding to resolve or escalate.</li>
+          <li>Package the triage summary, prior steps, and identifiers into a structured handoff object.</li>
+          <li>Retrieve that context in the Contact Center flow so the customer isn't asked to repeat themselves.</li>
+          <li>Escalate on repeated failed attempts, account-sensitive actions, or detected frustration — not just low confidence.</li>
+        </ul>
+        <div class="code-block"><div class="code-block-header"><span class="code-lang">JSON</span><span class="code-label">AI Agent Handoff Payload</span><button class="copy-btn">⎘ Copy</button></div>
+        <pre><code>{
+  "sessionId": "ai-session-58213",
+  "intent": "billing_dispute",
+  "urgency": "high",
+  "triageSummary": "Customer disputes a duplicate charge; two failed self-service attempts.",
+  "escalationReason": "repeated-failed-attempts",
+  "context": {
+    "priorSteps": ["Verified account", "Attempted refund via self-service"],
+    "accountId": "acct-90211",
+    "suggestedQueue": "billing-priority"
+  }
+}</code></pre></div>
+        <div class="code-block" style="margin-top:var(--space-md);"><div class="code-block-header"><span class="code-lang">HTTP</span><span class="code-label">Flow HTTP Request Node — Retrieve Handoff Context</span><button class="copy-btn">⎘ Copy</button></div>
+        <pre><code>GET https://your-api.example.com/api/ai-handoff/{{sessionId}}
+
+Headers
+X-Correlation-Id: {{flowExecutionId}}
+Accept: application/json</code></pre></div>
+        <div class="code-block" style="margin-top:var(--space-md);"><div class="code-block-header"><span class="code-lang">JSON</span><span class="code-label">Flow Response Mapping</span><button class="copy-btn">⎘ Copy</button></div>
+        <pre><code>{
+  "intent": "billing_dispute",
+  "queue": "billing-priority-queue-id",
+  "triageSummary": "Customer disputes a duplicate charge; two failed self-service attempts.",
+  "fallbackQueue": "standard-queue-id"
+}</code></pre></div>
+        <h4>Expected output</h4>
+        <ul>
+          <li>Flow variable <code>FlowVar_TriageSummary</code> populates the live agent's screen pop, so the customer doesn't repeat their issue.</li>
+          <li>Condition node routes <code>billing_dispute</code> intents to the priority queue; anything unmatched falls back to the standard queue.</li>
+        </ul>
+        <h4>Source references</h4>
+        <ul>
+          <li><a href="https://github.com/WebexSamples/webex-ai-cookbook" target="_blank" rel="noopener">Webex AI Cookbook</a></li>
+          <li><a href="https://github.com/WebexSamples/webex-ai-cookbook/tree/main/sample-use-case/sample-ai-agent" target="_blank" rel="noopener">Sample AI agent — triage &amp; escalation</a></li>
+          <li><a href="https://github.com/WebexSamples/webex-ai-cookbook/tree/main/sample-use-case/sample-flow" target="_blank" rel="noopener">Sample WxCC flow — context retrieval</a></li>
+        </ul>
+      </div>
+    </div>
+
     <!-- What to build next -->
     <div class="content-section">
       <div class="section-header"><span class="section-icon">✨</span><h2>What To Build Next</h2></div>
@@ -1438,9 +1531,10 @@ Body
     <div class="nav-prev"><span class="nav-pn-label">← Previous</span><a href="reporting.html" class="nav-pn-link">📊 Reporting</a></div>
     <div class="nav-next"><span class="nav-pn-label">Next →</span><a href="faq.html" class="nav-pn-link">❓ FAQ</a></div>
   </div>
-  <div class="site-footer-meta"><span>© 2026 WxCCSolutionHub · Curated Webex Contact Center solution guide</span><a href="index.html">Home</a> <a href="faq.html">FAQ</a></div>
+  <div class="site-footer-meta"><span>© 2026 WxCC Dev Corner · Curated Webex Contact Center solution guide</span><a href="index.html">Home</a> <a href="faq.html">FAQ</a></div>
 </footer>
 <button class="back-to-top" title="Back to top">↑</button>
 <script src="js/main.js?v=clickable-cards-1"></script>
+<script src="js/samples-refresh.js?v=1"></script>
 </body>
 </html>

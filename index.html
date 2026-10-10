@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WxCCSolutionHub — Developer Portal</title>
+  <title>WxCC Dev Corner — Developer Portal</title>
   <link rel="stylesheet" href="css/styles.css?v=responsive-1" />
   <style>
     .home-section-title {
@@ -85,7 +85,7 @@
     <a href="index.html" class="nav-logo">
       <div class="nav-logo-mark">Wx</div>
       <div class="nav-logo-text">
-        <span>WxCCSolutionHub</span>
+        <span>WxCC Dev Corner</span>
         <span>Developer Portal</span>
       </div>
     </a>
@@ -93,6 +93,7 @@
     <ul class="nav-links">
       <li><a href="samples.html">&#x1F9E9; Samples</a></li>
       <li><a href="faq.html">&#x2753; FAQ</a></li>
+      <li><a href="radar.html">&#x1F4E1; Dev Radar</a></li>
     </ul>
     <a href="getting-started.html" class="nav-cta">Start Building &#x2192;</a>
     <button class="nav-mobile-btn" aria-label="Open menu">&#x2630;</button>
@@ -114,6 +115,7 @@
     <div class="mobile-nav-section">Resources</div>
     <a href="samples.html">&#x1F9E9; Samples</a>
     <a href="faq.html">&#x2753; FAQ</a>
+    <a href="radar.html">&#x1F4E1; Dev Radar</a>
     <a href="index.html">&#x1F5FA;&#xFE0F; Overview</a>
   </div>
 </div>
@@ -264,23 +266,23 @@
         <span class="capability-card-icon">&#x1F9E9;</span>
         <h3>Solutions &amp; Samples</h3>
         <p>End-to-end implementation playbooks — Auth, Config Automation, Webhook Listeners, Screen Pops, and Dashboards.</p>
-        <div class="capability-card-tags">
-          <span class="tag tag-cyan">14 Playbooks</span>
+        <div class="capability-card-tags" id="samplesCapabilityTags">
+          <span class="tag tag-cyan">15 Playbooks</span>
           <span class="tag">Business Use Cases</span>
         </div>
         <span class="capability-card-link">Browse Samples &#x2192;</span>
       </a>
 
-      <a href="faq.html" class="capability-card" style="text-decoration:none;">
-        <span class="capability-card-icon">&#x2753;</span>
-        <h3>FAQ &amp; Troubleshooting</h3>
-        <p>37 answered questions covering auth, APIs, webhooks, SDK, flow, reporting, samples, errors, and production best practices.</p>
-        <div class="capability-card-tags">
-          <span class="tag">Debugging</span>
-          <span class="tag">Best Practices</span>
-          <span class="tag">Security</span>
+      <a href="radar.html" class="capability-card" style="text-decoration:none;">
+        <span class="capability-card-icon">&#x1F4E1;</span>
+        <h3>Dev Radar</h3>
+        <p>Daily scan of GitHub for new Webex CC API samples, SDK updates, flow templates, and developer tooling across the ecosystem.</p>
+        <div class="capability-card-tags" id="radarCapabilityTags">
+          <span class="tag tag-cyan">Daily scan</span>
+          <span class="tag">GitHub</span>
+          <span class="tag">Auto-updated</span>
         </div>
-        <span class="capability-card-link">Read FAQ &#x2192;</span>
+        <span class="capability-card-link">Open Radar &#x2192;</span>
       </a>
 
     </div>
@@ -295,66 +297,24 @@
     <div class="arch-overview">
       <div class="arch-nodes">
         <div class="arch-row">
-          <div class="arch-node">
-            <span class="an-icon">&#x1F4DE;</span>
-            <div class="an-label">Customer</div>
-            <div class="an-sub">Call / Chat / Email</div>
-          </div>
-          <div class="arch-node">
-            <span class="an-icon">&#x1F310;</span>
-            <div class="an-label">Entry Point</div>
-            <div class="an-sub">DID / Channel</div>
-          </div>
+          <div class="arch-node"><span class="an-icon">&#x1F4DE;</span><div class="an-label">Customer</div><div class="an-sub">Call / Chat / Email</div></div>
+          <div class="arch-node"><span class="an-icon">&#x1F310;</span><div class="an-label">Entry Point</div><div class="an-sub">DID / Channel</div></div>
         </div>
-
         <div class="arch-divider">&#x2193; Contact arrives in WxCC &#x2193;</div>
-
         <div class="arch-row">
-          <div class="arch-node highlight">
-            <span class="an-icon">&#x1F500;</span>
-            <div class="an-label">Flow Designer</div>
-            <div class="an-sub">IVR + HTTP Nodes</div>
-          </div>
-          <div class="arch-node">
-            <span class="an-icon">&#x1F50C;</span>
-            <div class="an-label">Your API</div>
-            <div class="an-sub">CRM / Auth / AI</div>
-          </div>
+          <div class="arch-node highlight"><span class="an-icon">&#x1F500;</span><div class="an-label">Flow Designer</div><div class="an-sub">IVR + HTTP Nodes</div></div>
+          <div class="arch-node"><span class="an-icon">&#x1F50C;</span><div class="an-label">Your API</div><div class="an-sub">CRM / Auth / AI</div></div>
         </div>
-
         <div class="arch-divider">&#x2193; Task routed to agent &#x2193;</div>
-
         <div class="arch-row">
-          <div class="arch-node highlight">
-            <span class="an-icon">&#x1F5A5;&#xFE0F;</span>
-            <div class="an-label">Agent Desktop</div>
-            <div class="an-sub">iFrame Widgets</div>
-          </div>
-          <div class="arch-node highlight">
-            <span class="an-icon">&#x1F4E1;</span>
-            <div class="an-label">Webhooks</div>
-            <div class="an-sub">task:created → your server</div>
-          </div>
-          <div class="arch-node">
-            <span class="an-icon">&#x1F50C;</span>
-            <div class="an-label">REST APIs</div>
-            <div class="an-sub">Config / Tasks / Agents</div>
-          </div>
+          <div class="arch-node highlight"><span class="an-icon">&#x1F5A5;&#xFE0F;</span><div class="an-label">Agent Desktop</div><div class="an-sub">iFrame Widgets</div></div>
+          <div class="arch-node highlight"><span class="an-icon">&#x1F4E1;</span><div class="an-label">Webhooks</div><div class="an-sub">task:created → your server</div></div>
+          <div class="arch-node"><span class="an-icon">&#x1F50C;</span><div class="an-label">REST APIs</div><div class="an-sub">Config / Tasks / Agents</div></div>
         </div>
-
         <div class="arch-divider">&#x2193; Contact ends — data available &#x2193;</div>
-
         <div class="arch-row">
-          <div class="arch-node highlight">
-            <span class="an-icon">&#x1F4CA;</span>
-            <div class="an-label">Reporting APIs</div>
-            <div class="an-sub">CDR / Real-time / Historical</div>
-          </div>
-          <div class="arch-node">
-            <span class="an-icon">&#x1F5C4;&#xFE0F;</span>
-            <div class="an-label">Your Data Warehouse</div>
-            <div class="an-sub">BigQuery / Power BI</div>
-          </div>
+          <div class="arch-node highlight"><span class="an-icon">&#x1F4CA;</span><div class="an-label">Reporting APIs</div><div class="an-sub">CDR / Real-time / Historical</div></div>
+          <div class="arch-node"><span class="an-icon">&#x1F5C4;&#xFE0F;</span><div class="an-label">Your Data Warehouse</div><div class="an-sub">BigQuery / Power BI</div></div>
         </div>
       </div>
     </div>
@@ -368,7 +328,7 @@
       <span class="callout-icon">&#x2139;&#xFE0F;</span>
       <div class="callout-body">
         <strong>Sample attribution</strong>
-        <p>WxCCSolutionHub is a curated guide that references public Webex Contact Center samples and developer repositories. Code, sample projects, and repository assets remain credited to their original GitHub owners, including WebexSamples and CiscoDevNet. Review each linked repository for its license, README, and support notes before reusing code in production.</p>
+        <p>WxCC Dev Corner is a curated guide that references public Webex Contact Center samples and developer repositories. Code, sample projects, and repository assets remain credited to their original GitHub owners, including WebexSamples and CiscoDevNet. Review each linked repository for its license, README, and support notes before reusing code in production.</p>
       </div>
     </div>
   </div>
@@ -392,14 +352,16 @@
 <!-- FOOTER -->
 <footer class="page-footer">
   <div class="site-footer-meta">
-    <span>&#xA9; 2026 WxCCSolutionHub &middot; Curated Webex Contact Center solution guide</span>
+    <span>&#xA9; 2026 WxCC Dev Corner &middot; Curated Webex Contact Center solution guide</span>
     <a href="https://developer.webex.com/webex-contact-center/docs" target="_blank" rel="noopener">Developer Portal &#x2197;</a>
     <a href="samples.html">Samples</a>
     <a href="faq.html">FAQ</a>
+    <a href="radar.html">Dev Radar</a>
   </div>
 </footer>
 
 <button class="back-to-top" title="Back to top">&#x2191;</button>
 <script src="js/main.js?v=clickable-cards-1"></script>
+<script src="js/home-refresh.js?v=1"></script>
 </body>
 </html>

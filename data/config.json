@@ -1,0 +1,77 @@
+{
+  "trackedRepos": [
+    "WebexSamples/webex-contact-center-api-samples",
+    "WebexSamples/webex-contact-center-flows",
+    "WebexSamples/webex-ai-cookbook",
+    "WebexSamples/webex-contact-center-agent-desktop-api-sample",
+    "WebexSamples/webex-byods-manager",
+    "modelcontextprotocol/servers",
+    "a2aproject/A2A"
+  ],
+  "trackedRepoDetails": {
+    "WebexSamples/webex-contact-center-api-samples": {
+      "trackedBecause": "Primary source for Webex CC REST API, webhook, reporting, and desktop SDK samples.",
+      "requestedBy": "WxCC Dev Corner baseline",
+      "reviewFocus": "Watch for new API samples, webhook listeners, desktop SDK widgets, and reporting integrations."
+    },
+    "WebexSamples/webex-contact-center-flows": {
+      "trackedBecause": "Official Flow Designer template repository for Webex CC IVR and routing patterns.",
+      "requestedBy": "WxCC Dev Corner baseline",
+      "reviewFocus": "Watch for new flow templates, HTTP node patterns, AI integration flows, and routing use cases."
+    },
+    "WebexSamples/webex-ai-cookbook": {
+      "trackedBecause": "AI Agent patterns and Webex CC AI integration examples.",
+      "requestedBy": "WxCC Dev Corner baseline",
+      "reviewFocus": "Watch for new AI Agent flows, MCP integrations, and autonomous service patterns."
+    },
+    "WebexSamples/webex-contact-center-agent-desktop-api-sample": {
+      "trackedBecause": "Desktop SDK examples for custom agent widgets, CRM screen pops, and iFrame integrations.",
+      "requestedBy": "WxCC Dev Corner baseline",
+      "reviewFocus": "Watch for new desktop widget patterns, SDK events, and CRM integration examples."
+    },
+    "WebexSamples/webex-byods-manager": {
+      "trackedBecause": "Bring-your-own solutions patterns for Webex CC custom integrations.",
+      "requestedBy": "WxCC Dev Corner baseline",
+      "reviewFocus": "Watch for BYODS/BYOVA configuration and deployment patterns."
+    },
+    "modelcontextprotocol/servers": {
+      "trackedBecause": "MCP server patterns for building AI-capable Webex CC integrations.",
+      "requestedBy": "Developer tools expansion",
+      "reviewFocus": "Watch for server patterns useful for Webex CC agentic and tool-use scenarios."
+    },
+    "a2aproject/A2A": {
+      "trackedBecause": "Agent-to-agent protocol relevant to future Webex CC agentic architecture.",
+      "requestedBy": "Developer tools expansion",
+      "reviewFocus": "Watch for agent handoff patterns applicable to Webex CC multi-agent flows."
+    }
+  },
+  "discoveryQueries": [
+    "webex contact center API developer",
+    "webex CC REST API sample",
+    "webex contact center webhook integration",
+    "webex contact center desktop SDK widget",
+    "webex contact center flow designer HTTP node",
+    "webex contact center reporting API analytics",
+    "webex CC OAuth service app",
+    "webex contact center CRM integration",
+    "webex CC developer sample",
+    "webex contact center AI agent developer"
+  ],
+  "categories": [
+    "REST API",
+    "Webhook",
+    "Desktop SDK",
+    "Flow Designer",
+    "Reporting",
+    "Authentication",
+    "CRM Integration",
+    "AI Agent",
+    "MCP",
+    "A2A",
+    "Sample Code",
+    "Configuration",
+    "BYODS",
+    "Real-time",
+    "Analytics"
+  ]
+}

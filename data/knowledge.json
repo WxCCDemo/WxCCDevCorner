@@ -1,0 +1,116 @@
+{
+  "mission": {
+    "title": "WxCC Developer Intelligence Hub",
+    "summary": "Tracking the latest Webex CC API samples, SDK updates, flow templates, webhook patterns, and developer tooling across GitHub.",
+    "focusAreas": [
+      "REST API and webhook samples",
+      "Desktop SDK widgets and CRM integrations",
+      "Flow Designer templates and HTTP node patterns",
+      "Reporting and analytics integrations",
+      "AI Agent and MCP developer tooling",
+      "Authentication and OAuth patterns"
+    ]
+  },
+  "featureLanes": [
+    {
+      "name": "REST API",
+      "whyItMatters": "The Webex CC REST API is the primary integration surface for tasks, agents, queues, and configuration management.",
+      "watchFor": "New API endpoints, updated authentication patterns, task management samples, and configuration automation scripts.",
+      "businessUse": "Automate contact center provisioning, build reporting dashboards, and integrate with CRM systems.",
+      "buildPath": "Start with OAuth 2.0 Service App setup, then explore /tasks, /agents, /queues endpoints with sample code from WebexSamples.",
+      "links": [{"label": "REST APIs guide", "url": "rest-apis.html"}]
+    },
+    {
+      "name": "Webhook",
+      "whyItMatters": "Webhooks deliver real-time events for task lifecycle, agent state, and queue activity to your application.",
+      "watchFor": "New event types, HMAC verification patterns, retry handling samples, and webhook listener examples.",
+      "businessUse": "Power real-time dashboards, trigger CRM updates on task creation, and build automated workflow responses.",
+      "buildPath": "Set up a webhook endpoint with HMAC verification, subscribe to task:created and agent:state events.",
+      "links": [{"label": "Webhooks guide", "url": "webhooks.html"}]
+    },
+    {
+      "name": "Desktop SDK",
+      "whyItMatters": "The Desktop JS SDK lets you embed custom panels and CRM screen pops directly inside the agent desktop iFrame.",
+      "watchFor": "New SDK events, custom widget examples, screen pop patterns, and CRM integration samples.",
+      "businessUse": "Give agents instant CRM context, build AI assistant panels, and automate after-call work.",
+      "buildPath": "Load the Desktop SDK, subscribe to task:incoming events, and render custom UI inside the iFrame widget.",
+      "links": [{"label": "Desktop SDK guide", "url": "desktop-sdk.html"}]
+    },
+    {
+      "name": "Flow Designer",
+      "whyItMatters": "Flow Designer's HTTP Request node lets flows call external APIs mid-IVR for intelligent, data-driven routing.",
+      "watchFor": "New flow templates, HTTP node patterns, AI integration flows, variable handling examples, and routing logic.",
+      "businessUse": "Route calls based on CRM data, authenticate callers via API, and deliver personalised IVR experiences.",
+      "buildPath": "Use the HTTP Request node to call your API, map response variables, and use them in Queue Contact or Branch nodes.",
+      "links": [{"label": "Flow Designer guide", "url": "flow-designer.html"}]
+    },
+    {
+      "name": "Reporting",
+      "whyItMatters": "The Reporting API delivers real-time queue stats, historical metrics, and CDRs for BI and analytics pipelines.",
+      "watchFor": "New reporting endpoints, CDR field updates, real-time subscription patterns, and export automation samples.",
+      "businessUse": "Build live supervisor dashboards, export data to BigQuery or Power BI, and automate SLA reporting.",
+      "buildPath": "Start with the /analyzerService/api endpoints for historical data and real-time subscriptions for live stats.",
+      "links": [{"label": "Reporting guide", "url": "reporting.html"}]
+    }
+  ],
+  "playbooks": [
+    {
+      "title": "New API Sample Review",
+      "objective": "Evaluate a newly discovered API sample for inclusion in the Dev Corner samples library.",
+      "steps": [
+        "Open the repository and read the README to understand the use case and scope.",
+        "Check the authentication method used — personal token vs OAuth 2.0 Service App.",
+        "Run or trace the code to understand the API endpoints and data flow.",
+        "Identify the business value — does it solve a common developer pain point?",
+        "Note any gaps, issues, or improvements before recommending it."
+      ],
+      "outcome": "A clear recommendation on whether to feature the sample and what context to add.",
+      "links": [{"label": "Open samples page", "url": "samples.html"}]
+    },
+    {
+      "title": "Flow Template Assessment",
+      "objective": "Assess a new Flow Designer template for reusability and documentation quality.",
+      "steps": [
+        "Download or inspect the flow JSON from the repository.",
+        "Identify the flow entry point, key nodes, and exit conditions.",
+        "Check whether HTTP Request nodes are used and what external APIs they call.",
+        "Test the flow in a sandbox Webex CC environment if possible.",
+        "Document the business use case, prerequisites, and customisation points."
+      ],
+      "outcome": "A documented flow template ready to feature in the Dev Corner with usage guidance.",
+      "links": [{"label": "Flow Designer guide", "url": "flow-designer.html"}]
+    },
+    {
+      "title": "Weekly Developer Update",
+      "objective": "Summarise the week's most relevant developer discoveries for sharing with the team.",
+      "steps": [
+        "Review the What Changed tab for all new and updated repositories this week.",
+        "Identify the top 3 items most relevant to REST API, Webhook, or SDK developers.",
+        "Check Discovery tab for any community repos worth highlighting.",
+        "Write a short summary with links and a one-line reason each item matters.",
+        "Share via your team channel or update the Dev Corner samples page."
+      ],
+      "outcome": "A concise weekly developer digest that keeps the team current without noise.",
+      "links": []
+    }
+  ],
+  "glossary": [
+    {"term": "REST API", "meaning": "Webex CC HTTP API for managing tasks, agents, queues, sites, teams, and configuration resources."},
+    {"term": "Webhook", "meaning": "Real-time HTTP push notifications for contact center events like task:created and agent:state."},
+    {"term": "Desktop SDK", "meaning": "JavaScript SDK for embedding custom widgets inside the Webex CC agent desktop iFrame."},
+    {"term": "Flow Designer", "meaning": "Visual IVR builder with HTTP Request nodes for calling external APIs mid-flow."},
+    {"term": "Service App", "meaning": "Machine-to-machine OAuth 2.0 application type for production API integrations without user login."},
+    {"term": "HMAC", "meaning": "Hash-based message authentication used to verify webhook payloads come from Webex CC."},
+    {"term": "MCP", "meaning": "Model Context Protocol — standard for giving AI agents access to tools and data sources."},
+    {"term": "A2A", "meaning": "Agent-to-Agent protocol for multi-agent orchestration and handoff between AI systems."},
+    {"term": "CDR", "meaning": "Call Detail Record — post-call data containing duration, queue, agent, and outcome fields."},
+    {"term": "iFrame Widget", "meaning": "Custom web application embedded in the agent desktop via the Desktop SDK iFrame mechanism."}
+  ],
+  "sourceTypes": [
+    {"name": "WebexSamples", "purpose": "Official Cisco/Webex GitHub org for Webex Contact Center code samples, SDKs, and flow templates."},
+    {"name": "CiscoDevNet", "purpose": "Cisco developer network GitHub org for broader Webex and Cisco platform samples."},
+    {"name": "Community Repos", "purpose": "GitHub repositories from partners, customers, and developers building on the Webex CC platform."},
+    {"name": "MCP Ecosystem", "purpose": "Model Context Protocol repositories relevant to building AI-capable contact center integrations."},
+    {"name": "A2A Project", "purpose": "Agent-to-agent protocol repositories relevant to future multi-agent Webex CC architectures."}
+  ]
+}
