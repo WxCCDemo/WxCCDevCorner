@@ -1,14 +1,14 @@
 {
-  "generatedAt": "2026-10-12T01:55:08.987Z",
-  "date": "2026-10-12",
+  "generatedAt": "2026-10-13T03:16:34.055Z",
+  "date": "2026-10-13",
   "mode": "daily",
   "scanCount": 1,
-  "firstScanAt": "2026-10-12T01:55:08.987Z",
-  "lastScanAt": "2026-10-12T01:55:08.987Z",
-  "newThisRun": 1,
+  "firstScanAt": "2026-10-13T03:16:34.055Z",
+  "lastScanAt": "2026-10-13T03:16:34.055Z",
+  "newThisRun": 2,
   "summary": {
     "newRepos": 0,
-    "updatedTrackedRepos": 1,
+    "updatedTrackedRepos": 2,
     "newDiscoveryItems": 0
   },
   "changes": [
@@ -17,8 +17,16 @@
       "title": "modelcontextprotocol/servers",
       "source": "https://github.com/modelcontextprotocol/servers",
       "category": "Tracked Repo",
-      "detectedAt": "2026-10-12T01:55:08.987Z",
-      "detail": "Repository pushed date changed from 2026-10-10T17:35:43Z to 2026-10-11T05:42:28Z."
+      "detectedAt": "2026-10-13T03:16:34.055Z",
+      "detail": "Repository pushed date changed from 2026-10-11T05:42:28Z to 2026-10-13T03:14:59Z."
+    },
+    {
+      "type": "tracked-repo-updated",
+      "title": "a2aproject/A2A",
+      "source": "https://github.com/a2aproject/A2A",
+      "category": "MCP",
+      "detectedAt": "2026-10-13T03:16:34.055Z",
+      "detail": "Repository pushed date changed from 2026-10-08T15:12:13Z to 2026-10-12T09:25:47Z."
     }
   ],
   "runChanges": [
@@ -27,8 +35,16 @@
       "title": "modelcontextprotocol/servers",
       "source": "https://github.com/modelcontextprotocol/servers",
       "category": "Tracked Repo",
-      "detectedAt": "2026-10-12T01:55:08.987Z",
-      "detail": "Repository pushed date changed from 2026-10-10T17:35:43Z to 2026-10-11T05:42:28Z."
+      "detectedAt": "2026-10-13T03:16:34.055Z",
+      "detail": "Repository pushed date changed from 2026-10-11T05:42:28Z to 2026-10-13T03:14:59Z."
+    },
+    {
+      "type": "tracked-repo-updated",
+      "title": "a2aproject/A2A",
+      "source": "https://github.com/a2aproject/A2A",
+      "category": "MCP",
+      "detectedAt": "2026-10-13T03:16:34.055Z",
+      "detail": "Repository pushed date changed from 2026-10-08T15:12:13Z to 2026-10-12T09:25:47Z."
     }
   ],
   "scanErrors": [],
@@ -341,10 +357,10 @@
       "owner": "modelcontextprotocol",
       "description": "Model Context Protocol Servers",
       "url": "https://github.com/modelcontextprotocol/servers",
-      "pushedAt": "2026-10-11T05:42:28Z",
-      "updatedAt": "2026-10-12T01:27:11Z",
-      "stars": 91152,
-      "forks": 11778,
+      "pushedAt": "2026-10-13T03:14:59Z",
+      "updatedAt": "2026-10-13T03:00:32Z",
+      "stars": 91191,
+      "forks": 11782,
       "language": "JavaScript",
       "topics": [],
       "categories": [],
@@ -400,10 +416,10 @@
       "owner": "a2aproject",
       "description": "Agent2Agent (A2A) is an open protocol enabling communication and interoperability between opaque agentic applications.",
       "url": "https://github.com/a2aproject/A2A",
-      "pushedAt": "2026-10-08T15:12:13Z",
-      "updatedAt": "2026-10-12T01:45:21Z",
-      "stars": 26109,
-      "forks": 2658,
+      "pushedAt": "2026-10-12T09:25:47Z",
+      "updatedAt": "2026-10-13T02:58:18Z",
+      "stars": 26123,
+      "forks": 2664,
       "language": "Shell",
       "topics": [
         "a2a",
@@ -475,8 +491,8 @@
           "owner": "api-evangelist",
           "description": "Webex — independent third-party profile of a public API surface, by API Evangelist. Cisco Webex is a comprehensive collaboration platform offering APIs for messaging, meetings, calling, devices, and contact center workflows. The Webex Developer Platform enables developers to build integrations, bots, embedded apps, and automations using REST APIs,",
           "url": "https://github.com/api-evangelist/webex",
-          "pushedAt": "2026-10-09T19:19:54Z",
-          "updatedAt": "2026-10-09T19:19:58Z",
+          "pushedAt": "2026-10-12T06:46:17Z",
+          "updatedAt": "2026-10-12T06:46:20Z",
           "stars": 0,
           "forks": 0,
           "language": "Unknown",
