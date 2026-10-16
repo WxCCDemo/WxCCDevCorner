@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-15T01:06:24.780Z",
+  "generatedAt": "2026-10-16T00:54:08.143Z",
   "repos": {
     "WebexSamples/webex-contact-center-api-samples": {
       "id": 460134251,
@@ -310,9 +310,9 @@
       "description": "Model Context Protocol Servers",
       "url": "https://github.com/modelcontextprotocol/servers",
       "pushedAt": "2026-10-13T05:54:47Z",
-      "updatedAt": "2026-10-15T00:11:33Z",
-      "stars": 91269,
-      "forks": 11790,
+      "updatedAt": "2026-10-16T00:52:08Z",
+      "stars": 91290,
+      "forks": 11788,
       "language": "JavaScript",
       "topics": [],
       "categories": [],
@@ -368,9 +368,9 @@
       "owner": "a2aproject",
       "description": "Agent2Agent (A2A) is an open protocol enabling communication and interoperability between opaque agentic applications.",
       "url": "https://github.com/a2aproject/A2A",
-      "pushedAt": "2026-10-13T16:48:44Z",
-      "updatedAt": "2026-10-14T22:10:49Z",
-      "stars": 26153,
+      "pushedAt": "2026-10-15T19:17:30Z",
+      "updatedAt": "2026-10-15T19:39:59Z",
+      "stars": 26166,
       "forks": 2673,
       "language": "Shell",
       "topics": [
@@ -440,8 +440,8 @@
       "owner": "api-evangelist",
       "description": "Webex — independent third-party profile of a public API surface, by API Evangelist. Cisco Webex is a comprehensive collaboration platform offering APIs for messaging, meetings, calling, devices, and contact center workflows. The Webex Developer Platform enables developers to build integrations, bots, embedded apps, and automations using REST APIs,",
       "url": "https://github.com/api-evangelist/webex",
-      "pushedAt": "2026-10-12T06:46:17Z",
-      "updatedAt": "2026-10-12T06:46:20Z",
+      "pushedAt": "2026-10-15T22:31:33Z",
+      "updatedAt": "2026-10-15T22:31:36Z",
       "stars": 0,
       "forks": 0,
       "language": "Unknown",
