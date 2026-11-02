@@ -1,36 +1,18 @@
 {
-  "generatedAt": "2026-11-01T01:40:13.124Z",
-  "date": "2026-11-01",
+  "generatedAt": "2026-11-02T01:58:30.277Z",
+  "date": "2026-11-02",
   "mode": "daily",
   "scanCount": 1,
-  "firstScanAt": "2026-11-01T01:40:13.124Z",
-  "lastScanAt": "2026-11-01T01:40:13.124Z",
-  "newThisRun": 1,
+  "firstScanAt": "2026-11-02T01:58:30.277Z",
+  "lastScanAt": "2026-11-02T01:58:30.277Z",
+  "newThisRun": 0,
   "summary": {
     "newRepos": 0,
-    "updatedTrackedRepos": 1,
+    "updatedTrackedRepos": 0,
     "newDiscoveryItems": 0
   },
-  "changes": [
-    {
-      "type": "tracked-repo-updated",
-      "title": "a2aproject/A2A",
-      "source": "https://github.com/a2aproject/A2A",
-      "category": "MCP",
-      "detectedAt": "2026-11-01T01:40:13.124Z",
-      "detail": "Repository pushed date changed from 2026-10-30T16:11:02Z to 2026-11-01T00:08:13Z."
-    }
-  ],
-  "runChanges": [
-    {
-      "type": "tracked-repo-updated",
-      "title": "a2aproject/A2A",
-      "source": "https://github.com/a2aproject/A2A",
-      "category": "MCP",
-      "detectedAt": "2026-11-01T01:40:13.124Z",
-      "detail": "Repository pushed date changed from 2026-10-30T16:11:02Z to 2026-11-01T00:08:13Z."
-    }
-  ],
+  "changes": [],
+  "runChanges": [],
   "scanErrors": [],
   "trackedRepos": [
     {
@@ -342,9 +324,9 @@
       "description": "Model Context Protocol Servers",
       "url": "https://github.com/modelcontextprotocol/servers",
       "pushedAt": "2026-10-29T05:27:40Z",
-      "updatedAt": "2026-11-01T01:10:10Z",
-      "stars": 91722,
-      "forks": 11896,
+      "updatedAt": "2026-11-02T01:38:20Z",
+      "stars": 91740,
+      "forks": 11902,
       "language": "TypeScript",
       "topics": [],
       "categories": [],
@@ -401,8 +383,8 @@
       "description": "Agent2Agent (A2A) is an open protocol enabling communication and interoperability between opaque agentic applications.",
       "url": "https://github.com/a2aproject/A2A",
       "pushedAt": "2026-11-01T00:08:13Z",
-      "updatedAt": "2026-11-01T01:07:04Z",
-      "stars": 26365,
+      "updatedAt": "2026-11-02T00:21:39Z",
+      "stars": 26382,
       "forks": 2687,
       "language": "Shell",
       "topics": [
@@ -475,8 +457,8 @@
           "owner": "api-evangelist",
           "description": "Webex — independent third-party profile of a public API surface, by API Evangelist. Cisco Webex is a comprehensive collaboration platform offering APIs for messaging, meetings, calling, devices, and contact center workflows. The Webex Developer Platform enables developers to build integrations, bots, embedded apps, and automations using REST APIs,",
           "url": "https://github.com/api-evangelist/webex",
-          "pushedAt": "2026-10-26T06:20:30Z",
-          "updatedAt": "2026-10-26T06:20:34Z",
+          "pushedAt": "2026-11-01T14:11:33Z",
+          "updatedAt": "2026-11-01T14:11:37Z",
           "stars": 0,
           "forks": 0,
           "language": "Unknown",
@@ -494,16 +476,16 @@
           ],
           "readme": {
             "url": "https://github.com/api-evangelist/webex/blob/main/README.md",
-            "excerpt": "Webex (webex) <!-- API-EVANGELIST-PROVENANCE:BEGIN -- About this repository This is not our API. This repository is an independent, third-party profile of a company's publicly available API surface, maintained by API Evangelist. API Evangelist does not operate, host, resell, or support this company's APIs, and is not affiliated with or endorsed by the company unless stated on the profile. Where the information came from. Everything here is assembled from material a member of the public can reach with a browser and no credentials — the company's own website, developer portal and documentation, the specifications it publishes for public use (OpenAPI, AsyncAPI, JSON Schema, apis.json , llms.txt...",
+            "excerpt": "Webex <!-- API-EVANGELIST-PROVENANCE:BEGIN -- About this repository This is not our API. This repository is an independent, third-party profile of a company's publicly available API surface, maintained by API Evangelist. API Evangelist does not operate, host, resell, or support this company's APIs, and is not affiliated with or endorsed by the company unless stated on the profile. Where the information came from. Everything here is assembled from material a member of the public can reach with a browser and no credentials — the company's own website, developer portal and documentation, the specifications it publishes for public use (OpenAPI, AsyncAPI, JSON Schema, apis.json , llms.txt and sim...",
             "highlights": [
-              "Webex (webex) <!-- API-EVANGELIST-PROVENANCE:BEGIN -- About this repository This is not our API.",
+              "Webex <!-- API-EVANGELIST-PROVENANCE:BEGIN -- About this repository This is not our API.",
               "This repository is an independent, third-party profile of a company's publicly available API surface, maintained by API Evangelist.",
               "API Evangelist does not operate, host, resell, or support this company's APIs, and is not affiliated with or endorsed by the company unless stated on the profile.",
               "Everything here is assembled from material a member of the public can reach with a browser and no credentials — the company's own website, developer portal and documentation, the specifications it publishes for public use (OpenAPI, AsyncAPI, JSON Schema, apis.json , llms.txt and similar), its public repositories, and its public status, pricing and changelog pages."
             ],
             "sections": [
               {
-                "title": "Webex (webex)",
+                "title": "Webex",
                 "bullets": [
                   "<!-- API-EVANGELIST-PROVENANCE:BEGIN -->",
                   "> This is not our API. This repository is an independent, third-party profile of a company's",
@@ -512,20 +494,18 @@
                 ]
               },
               {
-                "title": "Scope",
+                "title": "Webex on APIs.io",
                 "bullets": [
-                  "Type: Index",
-                  "Position: Consumer",
-                  "Access: 3rd-Party"
+                  "Everything profiled for Webex is published on APIs.io rather than in this repository. Start at the provider page — apis.io/providers/webex/ — or go straight to one of the APIs or properties below."
                 ]
               },
               {
-                "title": "Tags",
+                "title": "APIs (198)",
                 "bullets": [
-                  "Calling",
-                  "Collaboration",
-                  "Communication",
-                  "Enterprise"
+                  "Webex Address Book API — The Address Book API from Webex — 11 operation(s) for address book.",
+                  "Webex Admin Audit Events API — The Admin Audit Events API from Webex — 2 operation(s) for admin audit events.",
+                  "Webex Agent Personal Greeting Files API — The Agent Personal Greeting Files API from Webex — 6 operation(s) for agent personal greeting files.",
+                  "Webex Agent Summaries API — The Agent Summaries API from Webex — 1 operation(s) for agent summaries."
                 ]
               }
             ]
