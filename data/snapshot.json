@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-10T04:25:15.539Z",
+  "generatedAt": "2026-11-11T02:23:55.501Z",
   "repos": {
     "WebexSamples/webex-contact-center-api-samples": {
       "id": 460134251,
@@ -309,10 +309,10 @@
       "owner": "modelcontextprotocol",
       "description": "Model Context Protocol Reference Servers",
       "url": "https://github.com/modelcontextprotocol/servers",
-      "pushedAt": "2026-11-05T06:26:00Z",
-      "updatedAt": "2026-11-10T03:16:38Z",
-      "stars": 91897,
-      "forks": 11933,
+      "pushedAt": "2026-11-10T05:11:54Z",
+      "updatedAt": "2026-11-11T02:08:06Z",
+      "stars": 91916,
+      "forks": 11934,
       "language": "TypeScript",
       "topics": [],
       "categories": [],
@@ -368,10 +368,10 @@
       "owner": "a2aproject",
       "description": "Agent2Agent (A2A) is an open protocol enabling communication and interoperability between opaque agentic applications.",
       "url": "https://github.com/a2aproject/A2A",
-      "pushedAt": "2026-11-05T14:47:57Z",
-      "updatedAt": "2026-11-10T03:21:50Z",
-      "stars": 26469,
-      "forks": 2693,
+      "pushedAt": "2026-11-10T13:16:12Z",
+      "updatedAt": "2026-11-11T01:16:34Z",
+      "stars": 26482,
+      "forks": 2694,
       "language": "Shell",
       "topics": [
         "a2a",
