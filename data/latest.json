@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-11-11T02:23:55.501Z",
-  "date": "2026-11-11",
+  "generatedAt": "2026-11-12T03:29:32.316Z",
+  "date": "2026-11-12",
   "mode": "daily",
   "scanCount": 1,
-  "firstScanAt": "2026-11-11T02:23:55.501Z",
-  "lastScanAt": "2026-11-11T02:23:55.501Z",
+  "firstScanAt": "2026-11-12T03:29:32.316Z",
+  "lastScanAt": "2026-11-12T03:29:32.316Z",
   "newThisRun": 2,
   "summary": {
     "newRepos": 0,
@@ -17,16 +17,16 @@
       "title": "modelcontextprotocol/servers",
       "source": "https://github.com/modelcontextprotocol/servers",
       "category": "Tracked Repo",
-      "detectedAt": "2026-11-11T02:23:55.501Z",
-      "detail": "Repository pushed date changed from 2026-11-05T06:26:00Z to 2026-11-10T05:11:54Z."
+      "detectedAt": "2026-11-12T03:29:32.316Z",
+      "detail": "Repository pushed date changed from 2026-11-10T05:11:54Z to 2026-11-11T07:07:16Z."
     },
     {
       "type": "tracked-repo-updated",
       "title": "a2aproject/A2A",
       "source": "https://github.com/a2aproject/A2A",
       "category": "MCP",
-      "detectedAt": "2026-11-11T02:23:55.501Z",
-      "detail": "Repository pushed date changed from 2026-11-05T14:47:57Z to 2026-11-10T13:16:12Z."
+      "detectedAt": "2026-11-12T03:29:32.316Z",
+      "detail": "Repository pushed date changed from 2026-11-10T13:16:12Z to 2026-11-11T09:22:01Z."
     }
   ],
   "runChanges": [
@@ -35,16 +35,16 @@
       "title": "modelcontextprotocol/servers",
       "source": "https://github.com/modelcontextprotocol/servers",
       "category": "Tracked Repo",
-      "detectedAt": "2026-11-11T02:23:55.501Z",
-      "detail": "Repository pushed date changed from 2026-11-05T06:26:00Z to 2026-11-10T05:11:54Z."
+      "detectedAt": "2026-11-12T03:29:32.316Z",
+      "detail": "Repository pushed date changed from 2026-11-10T05:11:54Z to 2026-11-11T07:07:16Z."
     },
     {
       "type": "tracked-repo-updated",
       "title": "a2aproject/A2A",
       "source": "https://github.com/a2aproject/A2A",
       "category": "MCP",
-      "detectedAt": "2026-11-11T02:23:55.501Z",
-      "detail": "Repository pushed date changed from 2026-11-05T14:47:57Z to 2026-11-10T13:16:12Z."
+      "detectedAt": "2026-11-12T03:29:32.316Z",
+      "detail": "Repository pushed date changed from 2026-11-10T13:16:12Z to 2026-11-11T09:22:01Z."
     }
   ],
   "scanErrors": [],
@@ -357,10 +357,10 @@
       "owner": "modelcontextprotocol",
       "description": "Model Context Protocol Reference Servers",
       "url": "https://github.com/modelcontextprotocol/servers",
-      "pushedAt": "2026-11-10T05:11:54Z",
-      "updatedAt": "2026-11-11T02:08:06Z",
-      "stars": 91916,
-      "forks": 11934,
+      "pushedAt": "2026-11-11T07:07:16Z",
+      "updatedAt": "2026-11-12T03:13:36Z",
+      "stars": 91939,
+      "forks": 11947,
       "language": "TypeScript",
       "topics": [],
       "categories": [],
@@ -416,9 +416,9 @@
       "owner": "a2aproject",
       "description": "Agent2Agent (A2A) is an open protocol enabling communication and interoperability between opaque agentic applications.",
       "url": "https://github.com/a2aproject/A2A",
-      "pushedAt": "2026-11-10T13:16:12Z",
-      "updatedAt": "2026-11-11T01:16:34Z",
-      "stars": 26482,
+      "pushedAt": "2026-11-11T09:22:01Z",
+      "updatedAt": "2026-11-12T03:15:42Z",
+      "stars": 26498,
       "forks": 2694,
       "language": "Shell",
       "topics": [
@@ -436,9 +436,9 @@
       ],
       "readme": {
         "url": "https://github.com/a2aproject/A2A/blob/main/README.md",
-        "excerpt": "Agent2Agent (A2A) Protocol <a href=\"https://codewiki.google/github.com/a2aproject/a2a\" <img src=\"https://www.gstatic.com/ /boq-sdlc-agents-ui/ /r/Mvosg4klCA4.svg\" alt=\"Ask Code Wiki\" height=\"20\" </a <div style=\"text-align: left;\" <details <summary 🌐 Language</summary <div <div style=\"text-align: center;\" <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=en\" English</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=zh-CN\" 简体中文</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=zh-TW\" 繁體中文</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=ja\" 日本語</a <a href=\"https://open...",
+        "excerpt": "Agent2Agent (A2A) Protocol Part of the <a href=\"https://aaif.io/\" <picture <source media=\"(prefers-color-scheme: dark)\" srcset=\"docs/assets/aaif/AAIF Primary Logo White.svg\" <img src=\"docs/assets/aaif/AAIF Primary Logo Black.svg\" alt=\"Agentic AI Foundation\" height=\"40\" style=\"vertical-align: middle;\" </picture </a <a href=\"https://codewiki.google/github.com/a2aproject/a2a\" <img src=\"https://www.gstatic.com/ /boq-sdlc-agents-ui/ /r/Mvosg4klCA4.svg\" alt=\"Ask Code Wiki\" height=\"20\" </a <div style=\"text-align: left;\" <details <summary 🌐 Language</summary <div <div style=\"text-align: center;\" <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=en\" English</a <a href=\"h...",
         "highlights": [
-          "Agent2Agent (A2A) Protocol <a href=\"https://codewiki.google/github.com/a2aproject/a2a\" <img src=\"https://www.gstatic.com/ /boq-sdlc-agents-ui/ /r/Mvosg4klCA4.svg\" alt=\"Ask Code Wiki\" height=\"20\" </a <div style=\"text-align: left;\" <details <summary 🌐 Language</summary <div <div style=\"text-align: center;\" <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=en\" English</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=zh-CN\" 简体中文</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=zh-TW\" 繁體中文</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=ja\" 日本語</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=ko\" 한국어</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=hi\" हिन्दी</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=th\" ไทย</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=fr\" Français</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=de\" Deutsch</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=es\" Español</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=it\" Italiano</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=ru\" Русский</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=pt\" Português</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=nl\" Nederlands</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=pl\" Polski</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=ar\" العربية</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=fa\" فارسی</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=tr\" Türkçe</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=vi\" Tiếng Việt</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=id\" Bahasa Indonesia</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=as\" অসমীয়া</a </div </div </details </div <!-- markdownlint-disable MD041 -- <div style=\"text-align: center;\" <div class=\"centered-logo-text-group\" <img src=\"docs/assets/a2a logo/color/SVG/a2a color.svg\" alt=\"Agent2Agent Protocol Logo\" width=\"100\" <h1 Agent2Agent (A2A) Protocol</h1 </div </div An open protocol enabling communication and interoperability between opaque agentic applications.",
+          "Agent2Agent (A2A) Protocol Part of the <a href=\"https://aaif.io/\" <picture <source media=\"(prefers-color-scheme: dark)\" srcset=\"docs/assets/aaif/AAIF Primary Logo White.svg\" <img src=\"docs/assets/aaif/AAIF Primary Logo Black.svg\" alt=\"Agentic AI Foundation\" height=\"40\" style=\"vertical-align: middle;\" </picture </a <a href=\"https://codewiki.google/github.com/a2aproject/a2a\" <img src=\"https://www.gstatic.com/ /boq-sdlc-agents-ui/ /r/Mvosg4klCA4.svg\" alt=\"Ask Code Wiki\" height=\"20\" </a <div style=\"text-align: left;\" <details <summary 🌐 Language</summary <div <div style=\"text-align: center;\" <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=en\" English</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=zh-CN\" 简体中文</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=zh-TW\" 繁體中文</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=ja\" 日本語</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=ko\" 한국어</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=hi\" हिन्दी</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=th\" ไทย</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=fr\" Français</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=de\" Deutsch</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=es\" Español</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=it\" Italiano</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=ru\" Русский</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=pt\" Português</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=nl\" Nederlands</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=pl\" Polski</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=ar\" العربية</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=fa\" فارسی</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=tr\" Türkçe</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=vi\" Tiếng Việt</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=id\" Bahasa Indonesia</a <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=as\" অসমীয়া</a </div </div </details </div <!-- markdownlint-disable MD041 -- <div style=\"text-align: center;\" <div class=\"centered-logo-text-group\" <img src=\"docs/assets/a2a logo/color/SVG/a2a color.svg\" alt=\"Agent2Agent Protocol Logo\" width=\"100\" <h1 Agent2Agent (A2A) Protocol</h1 </div </div An open protocol enabling communication and interoperability between opaque agentic applications.",
           "The Agent2Agent (A2A) protocol addresses a critical challenge in the AI landscape: enabling gen AI agents, built on diverse frameworks by different companies running on separate servers, to communicate and collaborate effectively - as agents, not just as tools.",
           "A2A aims to provide a common language for agents, fostering a more interconnected, powerful, and innovative AI ecosystem.",
           "With A2A, agents can: - Discover each other's capabilities."
@@ -447,10 +447,10 @@
           {
             "title": "Agent2Agent (A2A) Protocol",
             "bullets": [
+              "Part of the <a href=\"https://aaif.io/\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"docs/assets/aaif/AAIFPrimaryLogoWhite.svg\"><img src=\"docs/assets/aaif/AAIFPrimaryLogoBlack.svg\" alt=\"Agentic AI Foundation\" height=\"40\" style=\"vertical-align: middle;\"></picture></a>",
               "[](https://pypi.org/project/a2a-sdk)",
               "<a href=\"https://codewiki.google/github.com/a2aproject/a2a\">",
-              "<img src=\"https://www.gstatic.com//boq-sdlc-agents-ui//r/Mvosg4klCA4.svg\" alt=\"Ask Code Wiki\" height=\"20\">",
-              "<a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=en\">English</a>"
+              "<img src=\"https://www.gstatic.com//boq-sdlc-agents-ui//r/Mvosg4klCA4.svg\" alt=\"Ask Code Wiki\" height=\"20\">"
             ]
           },
           {
