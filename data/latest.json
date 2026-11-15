@@ -1,52 +1,18 @@
 {
-  "generatedAt": "2026-11-14T02:48:22.700Z",
-  "date": "2026-11-14",
+  "generatedAt": "2026-11-15T02:17:11.791Z",
+  "date": "2026-11-15",
   "mode": "daily",
   "scanCount": 1,
-  "firstScanAt": "2026-11-14T02:48:22.700Z",
-  "lastScanAt": "2026-11-14T02:48:22.700Z",
-  "newThisRun": 2,
+  "firstScanAt": "2026-11-15T02:17:11.791Z",
+  "lastScanAt": "2026-11-15T02:17:11.791Z",
+  "newThisRun": 0,
   "summary": {
     "newRepos": 0,
-    "updatedTrackedRepos": 2,
+    "updatedTrackedRepos": 0,
     "newDiscoveryItems": 0
   },
-  "changes": [
-    {
-      "type": "tracked-repo-updated",
-      "title": "WebexSamples/webex-contact-center-api-samples",
-      "source": "https://github.com/WebexSamples/webex-contact-center-api-samples",
-      "category": "Tracked Repo",
-      "detectedAt": "2026-11-14T02:48:22.700Z",
-      "detail": "Repository pushed date changed from 2026-11-12T19:45:59Z to 2026-11-13T08:01:44Z."
-    },
-    {
-      "type": "tracked-repo-updated",
-      "title": "a2aproject/A2A",
-      "source": "https://github.com/a2aproject/A2A",
-      "category": "MCP",
-      "detectedAt": "2026-11-14T02:48:22.700Z",
-      "detail": "Repository pushed date changed from 2026-11-11T09:22:01Z to 2026-11-13T08:59:47Z."
-    }
-  ],
-  "runChanges": [
-    {
-      "type": "tracked-repo-updated",
-      "title": "WebexSamples/webex-contact-center-api-samples",
-      "source": "https://github.com/WebexSamples/webex-contact-center-api-samples",
-      "category": "Tracked Repo",
-      "detectedAt": "2026-11-14T02:48:22.700Z",
-      "detail": "Repository pushed date changed from 2026-11-12T19:45:59Z to 2026-11-13T08:01:44Z."
-    },
-    {
-      "type": "tracked-repo-updated",
-      "title": "a2aproject/A2A",
-      "source": "https://github.com/a2aproject/A2A",
-      "category": "MCP",
-      "detectedAt": "2026-11-14T02:48:22.700Z",
-      "detail": "Repository pushed date changed from 2026-11-11T09:22:01Z to 2026-11-13T08:59:47Z."
-    }
-  ],
+  "changes": [],
+  "runChanges": [],
   "scanErrors": [],
   "trackedRepos": [
     {
@@ -358,9 +324,9 @@
       "description": "Model Context Protocol Reference Servers",
       "url": "https://github.com/modelcontextprotocol/servers",
       "pushedAt": "2026-11-12T05:37:52Z",
-      "updatedAt": "2026-11-14T02:48:01Z",
-      "stars": 91976,
-      "forks": 11964,
+      "updatedAt": "2026-11-15T01:28:45Z",
+      "stars": 91999,
+      "forks": 11968,
       "language": "TypeScript",
       "topics": [],
       "categories": [],
@@ -417,9 +383,9 @@
       "description": "Agent2Agent (A2A) is an open protocol enabling communication and interoperability between opaque agentic applications.",
       "url": "https://github.com/a2aproject/A2A",
       "pushedAt": "2026-11-13T08:59:47Z",
-      "updatedAt": "2026-11-14T01:13:18Z",
-      "stars": 26535,
-      "forks": 2702,
+      "updatedAt": "2026-11-14T23:27:39Z",
+      "stars": 26539,
+      "forks": 2704,
       "language": "Shell",
       "topics": [
         "a2a",
