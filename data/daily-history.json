@@ -2714,6 +2714,22 @@
       "lastScanAt": "2026-11-22T02:44:37.466Z",
       "scanCount": 1,
       "changes": []
+    },
+    "2026-11-23": {
+      "date": "2026-11-23",
+      "firstScanAt": "2026-11-23T03:22:29.713Z",
+      "lastScanAt": "2026-11-23T03:22:29.713Z",
+      "scanCount": 1,
+      "changes": [
+        {
+          "type": "tracked-repo-updated",
+          "title": "WebexSamples/webex-contact-center-api-samples",
+          "source": "https://github.com/WebexSamples/webex-contact-center-api-samples",
+          "category": "Tracked Repo",
+          "detectedAt": "2026-11-23T03:22:29.713Z",
+          "detail": "Repository pushed date changed from 2026-11-20T17:07:58Z to 2026-11-22T19:01:40Z."
+        }
+      ]
     }
   }
 }

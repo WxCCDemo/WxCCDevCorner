@@ -1,18 +1,36 @@
 {
-  "generatedAt": "2026-11-22T02:44:37.466Z",
-  "date": "2026-11-22",
+  "generatedAt": "2026-11-23T03:22:29.713Z",
+  "date": "2026-11-23",
   "mode": "daily",
   "scanCount": 1,
-  "firstScanAt": "2026-11-22T02:44:37.466Z",
-  "lastScanAt": "2026-11-22T02:44:37.466Z",
-  "newThisRun": 0,
+  "firstScanAt": "2026-11-23T03:22:29.713Z",
+  "lastScanAt": "2026-11-23T03:22:29.713Z",
+  "newThisRun": 1,
   "summary": {
     "newRepos": 0,
-    "updatedTrackedRepos": 0,
+    "updatedTrackedRepos": 1,
     "newDiscoveryItems": 0
   },
-  "changes": [],
-  "runChanges": [],
+  "changes": [
+    {
+      "type": "tracked-repo-updated",
+      "title": "WebexSamples/webex-contact-center-api-samples",
+      "source": "https://github.com/WebexSamples/webex-contact-center-api-samples",
+      "category": "Tracked Repo",
+      "detectedAt": "2026-11-23T03:22:29.713Z",
+      "detail": "Repository pushed date changed from 2026-11-20T17:07:58Z to 2026-11-22T19:01:40Z."
+    }
+  ],
+  "runChanges": [
+    {
+      "type": "tracked-repo-updated",
+      "title": "WebexSamples/webex-contact-center-api-samples",
+      "source": "https://github.com/WebexSamples/webex-contact-center-api-samples",
+      "category": "Tracked Repo",
+      "detectedAt": "2026-11-23T03:22:29.713Z",
+      "detail": "Repository pushed date changed from 2026-11-20T17:07:58Z to 2026-11-22T19:01:40Z."
+    }
+  ],
   "scanErrors": [],
   "trackedRepos": [
     {
@@ -22,7 +40,7 @@
       "owner": "WebexSamples",
       "description": "Official Code samples & snippets repository for Webex Contact Center APIs",
       "url": "https://github.com/WebexSamples/webex-contact-center-api-samples",
-      "pushedAt": "2026-11-20T17:07:58Z",
+      "pushedAt": "2026-11-22T19:01:40Z",
       "updatedAt": "2026-11-19T14:58:37Z",
       "stars": 67,
       "forks": 48,
@@ -324,9 +342,9 @@
       "description": "Model Context Protocol Reference Servers",
       "url": "https://github.com/modelcontextprotocol/servers",
       "pushedAt": "2026-11-19T16:41:29Z",
-      "updatedAt": "2026-11-22T02:25:11Z",
-      "stars": 92149,
-      "forks": 11973,
+      "updatedAt": "2026-11-23T02:43:13Z",
+      "stars": 92168,
+      "forks": 11976,
       "language": "TypeScript",
       "topics": [],
       "categories": [],
@@ -383,9 +401,9 @@
       "description": "Agent2Agent (A2A) is an open protocol enabling communication and interoperability between opaque agentic applications.",
       "url": "https://github.com/a2aproject/A2A",
       "pushedAt": "2026-11-20T12:53:38Z",
-      "updatedAt": "2026-11-21T22:03:45Z",
-      "stars": 26625,
-      "forks": 2712,
+      "updatedAt": "2026-11-23T01:34:41Z",
+      "stars": 26634,
+      "forks": 2713,
       "language": "Shell",
       "topics": [
         "a2a",
